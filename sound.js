@@ -142,3 +142,4 @@ if (AUTH == "http://plug.dj/astroparty") {
  }
         }
     }
+);
