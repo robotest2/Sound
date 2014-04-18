@@ -187,7 +187,7 @@ API.sendChat("/em now live!");
                   		}*/
             }
         }
-            }
+            //}
     }catch(err){
   var date = new Date();
   API.chatLog("An error has occured on " + date + " for " + err, true);
