@@ -1,7 +1,5 @@
 /*
 
-//THIS HAS TO BE USED IN Mozilla Firefox DUE TO THE AUTHENTICATION CODE
-
 Hey there!
 
 This is property of Pr0Code.
@@ -12,12 +10,17 @@ Enjoy using it in my room!
 
 //Get user id
 
+var unloader = function(){
+	API.off(API.CHAT);
+	API.setVolume(100);
+	API.
+/*
 var nameId = function getUser(name) {
         var users = API.getUsers();
         for (var i in users) if (users[i].username == name) return users[i].id;
         return null;
 }
-
+*/
 API.sendChat("/em now live!");
 //Commands
 
@@ -138,13 +141,13 @@ API.sendChat("/em now live!");
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em [" + data.from + "] kicked " + userid + " for 1 minute!");
                       var name = command.substr(command.indexOf('@')+1);
-                      var userid = API.getUserID(username);
+                      var userid = API.getUser(user.id);
                       API.moderateBanUser(userid, 0, API.BAN.HOUR);
                       setTimeout(function(){
                         API.moderateUnbanUser(userID)
                       }, 60000);
                       setTimeout(function(){
-                        API.sendChat("/em [" + data.from + "] User can now login!");
+                        API.sendChat("/em Kicked user can now login!");
                       }, 60010);
                     }
                     break;
@@ -153,23 +156,35 @@ API.sendChat("/em now live!");
                     if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       var name = cmdm.substr(cmdm.indexOf('@')+1);
-                      API.moderateAddDJ(nameId);
+                      var user = API.getUser(user.id);
+                      API.moderateAddDJ(user);
                       API.sendChat("/em [" + data.from + " used add]");
                     }
                     break;
                     
+                    //Manager commands
+                    /*
                   case "kill":
-                  	if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
+                  	if(API.getUser(data.fromID).permission > 3 || API.getUser(fromID).permission < 10){
                   		API.moderateDeleteChat(data.chatID);
                   		API.sendChat("/em Shutting down...");
                   		setTimeout(function(){
                   			unloader;
                   		}, 2000);
                   		setTimeout(function(){
-                  		("/em Sucessfully shut down.");
+                  		API.sendChat("/em Sucessfully shut down.");
                   		API.chatLog(data.from + " shut me down!");
                   	}, 2125);
                   	break;
+                  
+                  case "reload":
+                  	if(API.getUser(data.fromID).permission > 3 || API.getUser(fromID).permission < 10){
+                  		API.moderateDeleteChat(data.chatID);
+                  		API.sendChat("/em [" + data.from + "] Realoading...");
+                  		unloader;
+                  		setTimeout(function(){
+                  			loader;
+                  		}*/
             }
         }
             }
