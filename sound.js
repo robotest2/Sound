@@ -135,9 +135,10 @@ if (AUTH == "http://plug.dj/astroparty") {
                     break;
             }
         }
-    }
- }catch(err){
+    }catch(err){
   var date = new Date(year, month, day, hour, minute, second);
   API.chatLog("An error has occured on " + date + " for " + err, true);
   API.sendChat("/em An error has occured on " + date + " for " + err);
  }
+        }
+    }
