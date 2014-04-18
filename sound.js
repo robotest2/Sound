@@ -88,7 +88,7 @@ API.sendChat("/em now live!");
                     //Resident DJ Commands
                     
                   case "space":
-                    if(API.getUser(data.fromID).permission > 0 || API.getUser(fromID).permission < 10){
+                    if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em I refuse to serve people with spaces!");
                     }
@@ -97,7 +97,7 @@ API.sendChat("/em now live!");
                     //Bouncer Commands
                     
                   case "skip":
-                  	if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                  	if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                   		API.moderateDeleteChat(data.chatID);
                   		API.sendChat("/em [" + data.from + " used skip]");
                   		API.moderateForceSkip();
@@ -105,14 +105,14 @@ API.sendChat("/em now live!");
                   	break;
                     
                   case "say":
-                    if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                    if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em [" + data.from + "] " + command[1]);
                     }
                     break;
                     
                   case "lock":
-                    if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                    if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em [" + data.from + " used lock]");
                       API.moderateLockWaitList(true, false);
@@ -120,7 +120,7 @@ API.sendChat("/em now live!");
                     break;
                     
                   case "unlock":
-                  	if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                  	if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                   		API.moderateDeleteChat(data.chatID);
                   		API.sendChat("/em [" + data.from + " used unlock]");
                   		API.moderateLockWaitList(false);
@@ -128,7 +128,7 @@ API.sendChat("/em now live!");
                   	break;
                     
                   case "lockskip":
-                    if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                    if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em [" + data.from + " used lockskip]");
                       API.moderateLockWaitList(true, false);
@@ -137,7 +137,7 @@ API.sendChat("/em now live!");
                     break;
                     
                   case "clear":
-                    if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                    if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em [" + data.from + " used clear]");
                                    var messages = $('#chat-messages').children();
@@ -152,7 +152,7 @@ API.sendChat("/em now live!");
                     break;
                     
                   case "kick":
-                    if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                    if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em [" + data.from + "] kicked " + userid + " for 1 minute!");
                       var name = msg.substr(msg.indexOf('@')+1);
@@ -168,7 +168,7 @@ API.sendChat("/em now live!");
                     break;
                     
                   case "add":
-                    if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                    if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       var name = msg.substr(msg.indexOf('@')+1);
                       var userid = getUserID(username);
@@ -176,6 +176,16 @@ API.sendChat("/em now live!");
                       API.sendChat("/em [" + data.from + " used add]");
                     }
                     break;
+                    
+                  case "kill":
+                  	if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
+                  		API.moderateDeleteChat(data.chatID);
+                  		API.sendChat("/em Shutting down...");
+                  		setTimeout(function(){
+                  			unload;
+                  		}, 2000);
+                  	}
+                  	break;
             }
         }
     }catch(err){
