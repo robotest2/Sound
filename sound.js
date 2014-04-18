@@ -57,7 +57,7 @@ API.sendChat("/em now live!");
                   case "help":
                     if(typeof command[1] == "undefined"){
                       API.moderateDeleteChat(data.chatID);
-                      API.sendChat("/em Here's my commands: | User !help, !ba, !me | Rdj !space | Bouncer !say, !lock, !lockskip, !clear, !kick, !add | More coming soon!");
+                      API.sendChat("/em Here's my commands: | User !help, !ba, !me | Rdj !space | Bouncer !skip, !say, !lock, !unlock, !lockskip, !clear, !kick, !add | More coming soon!");
                       
 
                     }
@@ -88,6 +88,14 @@ API.sendChat("/em now live!");
                     
                     //Bouncer Commands
                     
+                  case "skip":
+                  	if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                  		API.moderateDeleteChat(data.chatID);
+                  		API.sendChat("/em [" + data.from + " used skip]");
+                  		API.moderateForceSkip();
+                  	}
+                  	break;
+                    
                   case "say":
                     if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
@@ -102,6 +110,14 @@ API.sendChat("/em now live!");
                       API.moderateLockWaitList(true, false);
                     }
                     break;
+                    
+                  case "unlock":
+                  	if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
+                  		API.moderateDeleteChat(data.chatID);
+                  		API.sendChat("/em [" + data.from + " used unlock]");
+                  		API.moderateLockWaitList(false);
+                  	}
+                  	break;
                     
                   case "lockskip":
                     if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
