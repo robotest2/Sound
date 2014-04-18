@@ -87,7 +87,7 @@ if (AUTH == "http://plug.dj/astroparty") {
                   case "lockskip":
                     if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
-                      API.sendChat("/em [" + data.from + " used lockskip]);
+                      API.sendChat("/em [" + data.from + " used lockskip]");
                       API.moderateLockWaitList(true, false);
                       API.moderateForceSkip();
                     }
@@ -96,15 +96,15 @@ if (AUTH == "http://plug.dj/astroparty") {
                   case "clear":
                     if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
-                      API.sendChat("/em [" + data.from + " used clear]);
+                      API.sendChat("/em [" + data.from + " used clear]");
                                    var messages = $('#chat-messages').children();
-																		for (var i = 0; i < messages.length; i++) {
-    																	for (var j = 0; j < messages[i].classList.length; j++) {
-        															if (messages[i].classList[j].indexOf('cid-') == 0) {
-            													API.moderateDeleteChat(messages[i].classList[j].substr(4));
-        																}
-    																}
-																}
+				   for (var i = 0; i < messages.length; i++) {
+    				   for (var j = 0; j < messages[i].classList.length; j++) {
+        			   if (messages[i].classList[j].indexOf('cid-') == 0) {
+            			   API.moderateDeleteChat(messages[i].classList[j].substr(4));
+        				}
+    				}
+			}
                     }
                     break;
                     
