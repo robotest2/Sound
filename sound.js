@@ -57,11 +57,17 @@ API.sendChat("/em now live!");
                   case "help":
                     if(typeof command[1] == "undefined"){
                       API.moderateDeleteChat(data.chatID);
-                      API.sendChat("/em Here's my commands: | User !help, !ba, !me | Rdj !space | Bouncer !skip, !say, !lock, !unlock, !lockskip, !clear, !kick, !add | More coming soon!");
+                      API.sendChat("/em Here's my commands: | User !help, !admins, !ba, !me | Rdj !space | Bouncer !skip, !say, !lock, !unlock, !lockskip, !clear, !kick, !add | More coming soon!");
                       
 
                     }
                 break;
+                    
+                  case "admins":
+                  	if(typeof command[1] == "undefined"){
+                  		API.moderateDeleteChat(data.chatID);
+                  		var admin = API.getAdmins();
+                  		API.sendChat("/em [" + data.from + "] Admins currently online: " + admin);
                     
                   case "ba":
                     if(typeof command[1] == "undefined"){
