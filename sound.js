@@ -36,7 +36,7 @@ if (AUTH == "http://plug.dj/astroparty") {
                 switch(command[0].toLowerCase()){
                     
                   case "help":
-                    if(if(typeof command[1] == "undefined"){
+                    if(typeof command[1] == "undefined"){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em Here's my commands: !help");
                       
@@ -45,14 +45,14 @@ if (AUTH == "http://plug.dj/astroparty") {
                 break;
                     
                   case "ba":
-                    if(if(typeof command[1] == "undefined"){
+                    if(typeof command[1] == "undefined"){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em Brand Ambassadors (BA's) are Plug.Dj's global moderators. More infro here: http://blog.plug.dj/brand-ambassadors/");
                     }
                     break;
                     
                   case "me":
-                    if(if(typeof command[1] == "undefined"){
+                    if(typeof command[1] == "undefined"){
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em [" + data.from + "] You are: " + data.from + ", otherwise known as " + data.fromID + ".");
                     }
