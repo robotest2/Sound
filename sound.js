@@ -184,7 +184,8 @@ API.sendChat("/em now live!");
                   		setTimeout(function(){
                   			unloader;
                   		}, 2000);
-                  		setTimeout("/em Sucessfully shut down.");
+                  		setTimeout(function(){
+                  		("/em Sucessfully shut down.");
                   		API.chatLog(data.from + " shut me down!");
                   	}, 2125);
                   	break;
