@@ -156,7 +156,7 @@ API.sendChat("/em now live!");
                       API.moderateDeleteChat(data.chatID);
                       API.sendChat("/em [" + data.from + "] kicked " + userid + " for 1 minute!");
                       var name = command.substr(command.indexOf('@')+1);
-                      var userid = getUserID(username);
+                      var userid = API.getUserID(username);
                       API.moderateBanUser(userid, 0, API.BAN.HOUR);
                       setTimeout(function(){
                         API.moderateUnbanUser(userID)
@@ -171,7 +171,7 @@ API.sendChat("/em now live!");
                     if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       var name = cmdm.substr(cmdm.indexOf('@')+1);
-                      var userid = getUserID(username);
+                      var userid = API.getUserID(username);
                       API.moderateAddDJ(userid);
                       API.sendChat("/em [" + data.from + " used add]");
                     }
