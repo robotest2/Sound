@@ -9,15 +9,17 @@ Enjoy using it in my room!
 */
 
 //Room Authenticator
-/*
+
 var AUTH = document.write(location.href);
-if (AUTH == "http://plug.dj/astroparty") {
+if (AUTH = 'http://plug.dj/astroparty') {
   //Load the js file
 }else{
   API.chatLog("I'm sorry, but you are not authenticated to use this script in the specified room.");
   //stop loading the js file
 }
-*/
+
+
+
 
 API.sendChat("/em now live!");
 //Commands
