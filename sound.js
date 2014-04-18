@@ -27,7 +27,7 @@ API.sendChat("/em now live!");
             var cmd = data.message, from = data.from, fromID = data.fromID;
             var id = data.fromID;
             var cmdm = data.message;
-            var command = msg.substring(1).split(' ');
+            var command = cmdm.substring(1).split(' ');
                 for(var i = 2; i<command.length; i++){
                     command[1] = command[1] + ' ' + command[i];
             }
