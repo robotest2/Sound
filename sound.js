@@ -2,7 +2,7 @@
 
 Hey there!
 
-This is property of AstroShock.
+This is property of Pr0Code.
 
 Enjoy using it in my room!
 
