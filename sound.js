@@ -138,7 +138,7 @@ API.sendChat("/em now live!");
             }
         }
     }catch(err){
-  var date = new Date(year, month, day, hour, minute, second);
+  var date = new Date();
   API.chatLog("An error has occured on " + date + " for " + err, true);
   API.sendChat("/em An error has occured on " + date + " for " + err);
  }
