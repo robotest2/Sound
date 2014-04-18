@@ -68,6 +68,8 @@ API.sendChat("/em now live!");
                   		API.moderateDeleteChat(data.chatID);
                   		var admin = API.getAdmins();
                   		API.sendChat("/em [" + data.from + "] Admins currently online: " + admin);
+                  	}
+                  	break;
                     
                   case "ba":
                     if(typeof command[1] == "undefined"){
