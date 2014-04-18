@@ -1,5 +1,7 @@
 /*
 
+//THIS HAS TO BE USED IN Mozilla Firefox DUE TO THE AUTHENTICATION CODE
+
 Hey there!
 
 This is property of Pr0Code.
@@ -10,13 +12,26 @@ Enjoy using it in my room!
 
 //Room Authenticator
 
+var loader = (function(){
+	API.setVolume(0);
+	$.getScript("http://goo.gl/aAaUr3");
+});
+
+var unloader = (function(){
+	API.setVolume(100);
+	API.off(API.CHAT);
+	API.chatLog("Loading aborted!", true);
+	API.sendChat("/em This script can only function in http://plug.dj/astroparty");
+});
+
 var AUTH = window.location.assign = 'http://plug.dj/astroparty';
 if (AUTH = true) {
-	API.chatLog("Authentication Sucessfull!");
-  //Load the js file
+	API.chatLog("Authentication Sucessfull!", true);
+	loader;
+  
 }else{
-  API.chatLog("I'm sorry, but you are not authenticated to use this script in the specified room.");
-  //stop loading the js file
+  API.chatLog("I'm sorry, but you are not authenticated to use this script in the specified room.", true);
+  unloader;
 }
 
 
