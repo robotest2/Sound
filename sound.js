@@ -14,6 +14,7 @@ var unloader = function(){
 	API.off(API.CHAT);
 	API.setVolume(100);
 	API.
+}
 /*
 var nameId = function getUser(name) {
         var users = API.getUsers();
