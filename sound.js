@@ -184,6 +184,8 @@ API.sendChat("/em now live!");
                   		setTimeout(function(){
                   			unload;
                   		}, 2000);
+                  		setTimeout("/em Sucessfully shut down.");
+                  		API.chatLog(data.from + " shut me down!");
                   	}
                   	break;
             }
@@ -192,6 +194,7 @@ API.sendChat("/em now live!");
   var date = new Date();
   API.chatLog("An error has occured on " + date + " for " + err, true);
   API.sendChat("/em An error has occured on " + date + " for " + err);
+  unload;
  }
         }
     }
