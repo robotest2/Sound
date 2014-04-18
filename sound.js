@@ -25,10 +25,9 @@ var unloader = (function(){
 });
 
 var AUTH = window.location.assign = 'http://plug.dj/astroparty';
-if (AUTH = true) {
+if (AUTH = true){
 	API.chatLog("Authentication Sucessfull!", true);
 	loader;
-  
 }else{
   API.chatLog("I'm sorry, but you are not authenticated to use this script in the specified room.", true);
   unloader;
@@ -58,7 +57,7 @@ API.sendChat("/em now live!");
                   case "help":
                     if(typeof command[1] == "undefined"){
                       API.moderateDeleteChat(data.chatID);
-                      API.sendChat("/em Here's my commands: !help");
+                      API.sendChat("/em Here's my commands: | User !help, !ba, !me | Rdj !space | Bouncer !say, !lock, !lockskip, !clear, !kick, !add | More coming soon!");
                       
 
                     }
