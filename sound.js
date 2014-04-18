@@ -10,6 +10,15 @@ Enjoy using it in my room!
 
 */
 
+//Get user id
+
+var nameId = function getUser(name) {
+        var users = API.getUsers();
+        for (var i in users) if (users[i].username == name) return users[i].id;
+        return null;
+}
+
+
 //Room Authenticator
 
 var loader = (function(){
@@ -171,8 +180,7 @@ API.sendChat("/em now live!");
                     if(API.getUser(data.fromID).permission > 2 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
                       var name = cmdm.substr(cmdm.indexOf('@')+1);
-                      var userid = API.getUserID(username);
-                      API.moderateAddDJ(userid);
+                      API.moderateAddDJ(nameId);
                       API.sendChat("/em [" + data.from + " used add]");
                     }
                     break;
