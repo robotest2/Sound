@@ -79,7 +79,7 @@ if (AUTH == "http://plug.dj/astroparty") {
                   case "lock":
                     if(API.getUser(data.fromID).permission > 1 || API.getUser(fromID).permission < 10){
                       API.moderateDeleteChat(data.chatID);
-                      API.sendChat("/em [" + data.from + " used lock]);
+                      API.sendChat("/em [" + data.from + " used lock]");
                       API.moderateLockWaitList(true, false);
                     }
                     break;
