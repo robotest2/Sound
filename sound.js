@@ -196,4 +196,4 @@ API.sendChat("/em now live!");
  }
         }
     }
-);
+});
