@@ -10,8 +10,8 @@ Enjoy using it in my room!
 
 //Room Authenticator
 
-var AUTH = window.location = '';
-if (AUTH = 'http://plug.dj/astroparty') {
+var AUTH = window.location = 'http://plug.dj/astroparty';
+if (AUTH = true) {
 	API.chatLog("Authentication Sucessfull!");
   //Load the js file
 }else{
