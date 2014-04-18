@@ -29,10 +29,11 @@ if (AUTH == "http://plug.dj/astroparty") {
                 for(var i = 2; i<command.length; i++){
                     command[1] = command[1] + ' ' + command[i];
             }
+            
+            try{
+            
             if(API.getUser(data.fromID).permission > -1 || API.getUser(fromID).permission < 7){
                 switch(command[0].toLowerCase()){
-                    
-                    try{
                     
                   case "help":
                     if(if(typeof command[1] == "undefined"){
@@ -132,16 +133,11 @@ if (AUTH == "http://plug.dj/astroparty") {
                       API.sendChat("/em [" + data.from + " used add]");
                     }
                     break;
-                      
-                
-                
-                
-                
-                }catch(err){
-                var date = new Date(year, month, day, hour, minute, second);
-                API.chatLog("An error has occured on " + date + " for " + err, true);
-                API.sendChat("/em An error has occured on " + date + " for " + err);
             }
         }
     }
+ }catch(err){
+  var date = new Date(year, month, day, hour, minute, second);
+  API.chatLog("An error has occured on " + date + " for " + err, true);
+  API.sendChat("/em An error has occured on " + date + " for " + err);
  }
