@@ -72,4 +72,20 @@ API.sendChat("/em now live!");
     		}, 2000);
     	}
     });
+    
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!clear') === 0 && API.getUser(data.fromID).permission > 1){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em [" + data.from + " used clear]");
+		var messages = $('#chat-messages').children();
+		for (var i = 0; i < messages.length; i++) {
+			for (var j = 0; j < messages[i].classList.length; j++) {
+				if (messages[i].classList[j].indexOf('cid-') == 0) {
+					API.moderateDeleteChat(messages[i].classList[j].substr(4));
+					}
+				}
+			}
+    		}
+    });
+    
     //End of script (for now) 
