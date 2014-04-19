@@ -45,7 +45,8 @@ API.sendChat("/em now live!");
           //Experiment 
            API.moderateDeleteChat(data.from);
            API.sendChat("/em Help commands: TEST");
-        });
+        );
+       }
            
            
            
