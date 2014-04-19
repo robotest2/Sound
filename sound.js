@@ -56,7 +56,7 @@ getUserByName = function(name) {
 }
 dcLookup = function(id) {
         if(typeof users[id] !== 'undefined') API.sendChat(API.getUser(id).username + ' disconnected ~' + Math.round((Date.now() - users[id].time) / 60000) + ' minutes ago at position ' + (users[id].index + 1));
-        else API.sendChat('I haven\'t seen that user disconnect!');
+        else API.sendChat("/emI haven\'t seen " + data.from + " disconnect!");
 }
 API.on(API.USER_LEAVE, function(data){
         users[data.id] = { id: data.id, index: data.wlIndex, time: Date.now() }
