@@ -9,6 +9,43 @@ Enjoy using it in my room!
 */
 API.sendChat("/em now live!");
 
+var askArray = [
+	"Why is an alarm clock going 'off' when it actually turns on?",
+	"If you mated a bull dog and a shitsu, would it be called a bullsh*t?",
+	"If an ambulance is on its way to save someone, and it runs someone over, does it stop to help them?",
+	"Why is Grape Nuts cereal called that, when it contains neither grapes, nor nuts?",
+	"Why is it called a 'drive through' if you have to stop?",
+	"Why are Softballs hard?",
+	"Do the minutes on the movie boxes include the previews, credits, and special features, or just the movie itself?",
+	"If the professor on Giligan's Island can make a radio out of coconut, why can't he fix a hole in a boat?",
+	"Why do we scrub Down and wash Up?",
+	"Why is an electrical outlet called an outlet when you plug things into it? Shouldn't it be called an inlet.",
+	"Why do people point to their wrist when asking for the time, but people don't point to their crotch when they ask where the bathroom is?",
+	"Can blind people see their dreams?",
+	"Why do most cars have speedometers that go up to at least 130 when you legally can't go that fast on any road?",
+	"Why do they call it 'getting your dog fixed' if afterwards it doesn't work anymore?",
+	"Why do they call it taking a dump? Shouldn't it be leaving a dump?",
+	"Where in the nursery rhyme does it say humpty dumpty is an egg?",
+	"Why do they sterilize needles for lethal injections?",
+	"Why do banks leave the door wide open but the pens chained to the counter?",
+	"If electricity comes from electrons, does morality come from morons?",
+	"If all the countries in the world are in debt, where did all the money go?",
+	"Why does Donald Duck wear a towel when he comes out of the shower, when he doesn't usually wear any pants?",
+	"How come you press harder on a remote control when you know the battery is dead?",
+	"If an orange is orange, why isn't a lime called a green or a lemon called a yellow?",
+	"If a cat always lands on its feet, and buttered bread always lands butter side down, what would happen if you tied buttered bread on top of a cat?",
+	"If the #2 pencil is the most popular, why's it still #2?",
+	"What color would a smurf turn if you choked it?",
+	"Where's the egg in an egg roll?",
+	"Why aren't blue berries blue?",
+	"Where is the lead in a lead pencil?",
+	"Why is Greenland called green when it is covered in ice?",
+	"If a person owns a piece of land, do they own it all the way down to the center of the earth?",
+	"Why are they called stairs inside but steps outside?",
+	"Why is there a light in the fridge but not in the freezer?",
+	"Why does mineral water that has trickled through mountains for centuries have a use by date?",
+	"Why do toasters always have a setting on them which burns your toast to a horrible crisp no one would eat?"];
+
 //Commands
 
 //User
@@ -16,7 +53,7 @@ API.sendChat("/em now live!");
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
-           API.sendChat("/em Help commands: | User | !help, !ba, !link | Bouncer | !lock, !unlock, !wlclear, !clear, !skip");
+           API.sendChat("/em Help commands: | User | !help, !ba, !link, !ask | Bouncer | !lock, !unlock, !wlclear, !clear, !skip");
        
        }
     });
@@ -43,6 +80,13 @@ API.sendChat("/em now live!");
     	}
     });
     
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!ask') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		var askR = Math.floor(Math.random() * askArray.length);
+    		API.sendChat("/em [" + data.from + "] " + askArray[askR]);
+    	}
+    }
     //Put more here soon
     
     //Bouncer
