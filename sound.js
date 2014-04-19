@@ -47,6 +47,17 @@ API.sendChat("/em now live!");
 
                     }
                 break;
+                   
+                  case "link":
+                  	if(API.getMedia().format == 1){
+				API.sendChat("/em [" + data.from + "] Link to current song: http://youtu.be/" + API.getMedia().cid);
+			}else{
+				var md = API.getMedia().cid;
+				SC.get('/tracks', { ids: id,}, function(tracks) {
+					API.sendChat("/em [" + data.from + "] Link to current song: " + tracks[0].permalink_url);
+				});
+			}
+			break;
                     
                   case "staff":
                   	if(typeof command[1] == "undefined"){
