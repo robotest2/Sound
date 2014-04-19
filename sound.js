@@ -86,7 +86,7 @@ var askArray = [
     		var askR = Math.floor(Math.random() * askArray.length);
     		API.sendChat("/em [" + data.from + "] " + askArray[askR]);
     	}
-    }
+    });
     //Put more here soon
     
     //Bouncer
