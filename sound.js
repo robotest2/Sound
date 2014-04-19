@@ -7,20 +7,24 @@ This is property of Pr0Code.
 Enjoy using it in my room!
 
 */
-
-//Get user id
-
-var unloader = function(){
-	
-	API.off(API.CHAT);
-	
-	API.setVolume(100);
-
-}
-
 API.sendChat("/em now live!");
 
+//Auth
+function(auth){
 
+var auth = window.location = "";
+if(auth = "http://plug.dj/astroparty"){
+	return true;
+}else{
+	return false;
+}
+
+if(auth = true{
+	hook;
+}else{
+	API.chatLog("You are not authenticated to use this script in this room.", true);
+	}
+}
 //Commands
 
 //User
