@@ -2,7 +2,7 @@
 This is used as a gateway to the script, so it's only used in my room
 */
 
-function(){
+javascript: function(){
 
 var hook = (function(data){
 	API.on(API.CHAT);
