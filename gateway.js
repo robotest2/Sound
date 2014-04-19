@@ -4,7 +4,13 @@ This is used as a gateway to the script, so it's only used in my room
 
 API.on(API.CHAT, function(auth){
 
-var auth = window.location = "";
+var hook = (function(data){
+	API.on(API.CHAT);
+	API.setVolume(0);
+	$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
+});
+
+var auth = window.location = "http://plug.dj/astroparty";
 if(auth = "http://plug.dj/astroparty"){
 	return true;
 }else{
