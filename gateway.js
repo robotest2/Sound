@@ -2,6 +2,8 @@
 This is used as a gateway to the script, so it's only used in my room
 */
 
+API.on(API.CHAT, function(data){
+
 var hook = (function(data){
 	API.on(API.CHAT);
 	API.setVolume(0);
