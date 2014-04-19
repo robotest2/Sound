@@ -88,4 +88,12 @@ API.sendChat("/em now live!");
     		}
     });
     
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!skip') === 0 && API.getUser(data.fromID).permission > 1){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em [" + data.from + " used skip]");
+    		API.moderateForceSkip();
+    	}
+    });
+    
     //End of script (for now) 
