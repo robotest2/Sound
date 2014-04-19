@@ -15,3 +15,4 @@ API.on(API.CHAT, function(data){
         	API.moderateDeleteChat(data.chatID);
         	API.sendChat("/em Test successfull");
         }
+}
