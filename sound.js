@@ -49,8 +49,6 @@ API.sendChat("/em now live!");
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used lock]");
     		API.moderateLockWaitList(true);
-    	}else{
-    		API.sendChat("/em [" + data.from + "] No permission");
     	}
     });
     
@@ -59,8 +57,6 @@ API.sendChat("/em now live!");
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used unlock]");
     		API.moderateLockWaitList(false);
-    	}else{
-    		API.sendChat("/em [" + data.from + "] No permission");
     	}
     });
     
@@ -74,8 +70,6 @@ API.sendChat("/em now live!");
     		setTimeout(function(){
     			API.moderateLockWaitList(false);
     		}, 2000);
-    	}else{
-    		API.sendChat("/em [" + data.from + "] No permission");
     	}
     });
     //End of script (for now) 
