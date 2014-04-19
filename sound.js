@@ -64,11 +64,12 @@ API.sendChat("/em now live!");
     	if(data.message.indexOf('!wlclear') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used wlclear]");
-    		API.moderateLockWaitList(false);
+    		setTimeout(function(){
     		API.moderateLockWaitList(true, true);
+    		}, 1000);
     		setTimeout(function(){
     			API.moderateLockWaitList(false);
-    		}, 1000);
+    		}, 2000);
     	}
     });
     //End of script (for now) 
