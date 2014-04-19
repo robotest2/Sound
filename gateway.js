@@ -9,6 +9,7 @@ var hook = (function(data){
 	API.setVolume(0);
 	$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
 });
+);
 
 var auth = window.location = "http://plug.dj/astroparty";
 if(auth = "http://plug.dj/astroparty"){
@@ -17,10 +18,10 @@ if(auth = "http://plug.dj/astroparty"){
 	return false;
 }
 
-if(auth = true{
+if(auth = true){
 	hook;
-});
+}
 else{
 	API.chatLog("You are not authenticated to use this script in this room.", true);
 	}
-});
+}
