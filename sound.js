@@ -62,7 +62,9 @@ API.on(API.USER_LEAVE, function(data){
         users[data.id] = { id: data.id, index: data.wlIndex, time: Date.now() }
 });
 API.on(API.CHAT, function(data){
-        if (data.message.indexOf('!dc') === 0 && API.getUser(data.fromID).permission > 1) dcLookup(getUserByName(data.message.substring(11)));
+        if (data.message.indexOf('!dc') === 0 && API.getUser(data.fromID).permission > 1) dcLookup(getUserByName(data.message.substring(11))){
+        	API.moderateDeleteChat(data.chatID);
+        }
 });
 
 //User
