@@ -53,7 +53,7 @@ var askArray = [
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
-           API.sendChat("/em Help commands: | User | !help, !ba, !link, !ask | Bouncer | !lock, !unlock, !wlclear, !clear, !skip");
+           API.sendChat("/em Help commands: | User | !help, !ba, !link, !ask | Bouncer | !mute @[username], !lock, !unlock, !wlclear, !clear, !skip");
        
        }
     });
@@ -90,6 +90,14 @@ var askArray = [
     //Put more here soon
     
     //Bouncer
+    API.on(API.CHAT, function(data){
+    if(data.message.indexOf('!mute') === 0){
+    	API.moderateDeleteChat(data.chatID);
+    	API.sendChat("/em [" + data.from + " used mute]");
+    	var mute = function(a){ if (a.from == "insert name here" || a.fromID == "insert id here") API.moderateDeleteChat(a.chatID); }
+    	mute;
+    	}	
+    });
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!lock') === 0 && API.getUser(data.fromID).permission > 1){
