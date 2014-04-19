@@ -12,7 +12,7 @@ API.sendChat("/em now live!");
 
 //test
 
-help = function(API.CHAT){
+help = function(){
         if(typeof users[id] !== 'undefined') API.sendChat("/em [" + data.from + "] Test sucessfull");
 }
 
