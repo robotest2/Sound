@@ -45,7 +45,7 @@ API.sendChat("/em now live!");
     //Bouncer
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!lock') === 0 || API.getUser(data.fromID).permission > 1){
+    	if(data.message.indexOf('!lock') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used lock]");
     		API.moderateLockWaitList(true);
@@ -53,7 +53,7 @@ API.sendChat("/em now live!");
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!unlock') === 0 || API.getUser(data.fromID).permission > 1){
+    	if(data.message.indexOf('!unlock') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used unlock]");
     		API.moderateLockWaitList(false);
@@ -61,7 +61,7 @@ API.sendChat("/em now live!");
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!wlclear') === 0 || API.getUser(data.fromID).permission > 1){
+    	if(data.message.indexOf('!wlclear') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used wlclear]");
     		API.moderateLockWaitList(true, true);
