@@ -16,7 +16,7 @@ API.sendChat("/em now live!");
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
-           API.sendChat("/em Help commands: !help, !ba");
+           API.sendChat("/em Help commands: | User | !help, !ba, !link | Bouncer | !lock, !unlock, !wlclear, !clear, !skip");
        
        }
     });
@@ -25,6 +25,21 @@ API.sendChat("/em now live!");
     	if(data.message.indexOf('!ba') === 0){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Brand Ambassaadors (BA's) are PlugDJ's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
+    	}
+    });
+    
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!link') === 0 && if(API.getMedia().format == 1){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em [" + data.from + "] Link to current song: http://youtu.be/" + API.getMedia().cid);
+    	});
+    	else{
+    		if(data.message.indexOf('link') === 0 && if(API.getMedia().format == 2){
+    			var id = API.getMedia().cid;
+    			SC.get('/tracks', { ids: id,}, function(tracks) {
+    				API.sendChat("/em [" + data.from + "] Link to current song: " + tracks[0].permalink_url);
+    			});
+    		});
     	}
     });
     
