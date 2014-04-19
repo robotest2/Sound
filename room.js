@@ -16,3 +16,4 @@ API.on(API.CHAT, function(data){
         	API.sendChat("/em Test successfull");
         }
 }
+);
