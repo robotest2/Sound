@@ -123,7 +123,6 @@ var askArray = [
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!clear') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + " used clear]");
 		var messages = $('#chat-messages').children();
 		for (var i = 0; i < messages.length; i++) {
 			for (var j = 0; j < messages[i].classList.length; j++) {
@@ -132,6 +131,7 @@ var askArray = [
 					}
 				}
 			}
+			API.sendChat("/em [" + data.from + " used clear]");
     		}
     });
     
