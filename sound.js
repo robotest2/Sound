@@ -51,7 +51,7 @@ API.sendChat("/em now live!");
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!ba') === 0){
-    		API.modeerateDeleteChat(data.chatID);
+    		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Brand Ambassaadors (BA's) are PlugDJ's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
     	}
     });
