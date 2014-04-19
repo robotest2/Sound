@@ -8,8 +8,7 @@ var hook = (function(data){
 	API.on(API.CHAT);
 	API.setVolume(0);
 	$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
-});
-);
+}));
 
 var auth = window.location = "http://plug.dj/astroparty";
 if(auth = "http://plug.dj/astroparty"){
