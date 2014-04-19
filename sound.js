@@ -34,6 +34,7 @@ API.sendChat("/em now live!");
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Link to current song: http://youtu.be/" + API.getMedia().cid);
     		}else{
+    			API.moderateDeleteChat(data.chatID);
     			var id = API.getMedia().cid;
     			SC.get('/tracks', { ids: id,}, function(tracks) {
     				API.sendChat("/em [" + data.from + "] Link to current song: " + tracks[0].permalink_url);
