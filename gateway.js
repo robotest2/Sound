@@ -2,7 +2,7 @@
 This is used as a gateway to the script, so it's only used in my room
 */
 
-var hook = (function(data){
+var hook = (function(){
 	API.on(API.CHAT);
 	API.setVolume(0);
 	$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
