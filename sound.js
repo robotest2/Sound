@@ -50,7 +50,7 @@ var askArray = [
 
 var cookieArray = [" a chocolate chip ", " a sugar ", " a banana ", " a morphed ", " a slime "];
 
-var outcome = [" touching it duplicates it. Wierd, but AWESOME!", " when you eat it, it makes you fall asleep.", " you decide to plant it, and it gives money!", data.from + " takes it back and eats it. D:", " you accidently throw it out the window while driving."];
+var outcome = [" touching it duplicates it. Wierd, but AWESOME!", " when you eat it, it makes you fall asleep.", " you decide to plant it, and it gives money!", " they take it back and eats it D:", " you accidently throw it out the window while driving."];
 //Commands
 
 //User
