@@ -155,8 +155,8 @@ try{
     	API.sendChat("/em [" + data.from + " used mute]");
     	var mute = function(a){ if (a.from == "user.username" || a.fromID == "user.userID") API.moderateDeleteChat(a.chatID); }
     	mute;
-    	}	
-    });
+    	});	
+    }
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
