@@ -67,6 +67,14 @@ try{
     });
     
     API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!staff') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		var online = API.getStaff();
+    		API.sendChat("/em [" + data.from + "] Staff that's online: " + online.username);
+    	}
+    });
+    
+    API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!theme') === 0){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] The theme is Electronic Dance Music. (EDM)");
