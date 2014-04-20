@@ -65,7 +65,7 @@ try{
        }
     });
     
-    API.on(API.CHAT, function(){
+    API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!cookie') === 0){
     		API.moderateDeleteChat(data.chatID);
     		var room = API.getUsers();
