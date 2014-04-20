@@ -10,7 +10,7 @@ var hook = (function(){
 });
 
 var auth = window.location.assign = "http://plug.dj/astroparty";
-if(auth = true){
+if(auth = "http://plug.dj/astroparty"){
 	API.chatLog("Authentication Successful!");
         hook;
 }else{
