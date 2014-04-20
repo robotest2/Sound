@@ -61,14 +61,7 @@ try{
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
-           API.sendChat("/em My commands:");
-           API.sendChat("/em | USER |");
-           API.sendChat(" ");
-           API.sendChat("/em !help, !theme, !emoji, !cookie, !ba, !link, !ask");
-           API.sendChat(" ");
-           API.sendChat("/em | BOUNCER |");
-           API.sendChat("/em !mute @[username], !lock, !unlock, !lskip, !wlclear, !clear, !skip");
-           API.sendChat("/em More commands coming!");
+           API.sendChat("/em My commands can be found here: http://goo.gl/PzvBL8");
        
        }
     });
@@ -129,6 +122,14 @@ try{
     });
     //Put more here soon
     
+    //Rdj
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!space') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em SoundBot refuses to serve people with spaces!");
+    	}
+    });
+    
     //Bouncer
     API.on(API.CHAT, function(data){
     if(data.message.indexOf('!mute') === 0){
@@ -137,6 +138,13 @@ try{
     	var mute = function(a){ if (a.from == "user.username" || a.fromID == "user.userID") API.moderateDeleteChat(a.chatID); }
     	mute;
     	}	
+    });
+    
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!say') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em [" + data.from + "] " + data.message);
+    	}
     });
     
     API.on(API.CHAT, function(data){
