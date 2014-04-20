@@ -70,7 +70,8 @@ try{
     	if(data.message.indexOf('!staff') === 0){
     		API.moderateDeleteChat(data.chatID);
     		var online = API.getStaff();
-    		API.sendChat("/em [" + data.from + "] Staff that's online: " + online.username);
+    		var onlineR = Math.floor(Math.random() * online.length);
+    		API.sendChat("/em [" + data.from + "] Staff that's online: " + online[onlineR].username);
     	}
     });
     
