@@ -13,14 +13,6 @@ API.sendChat("/em now live!");
 
 //Song check
 
-function lengthCheck(data) {
-    if (data.media.duration > 600) {
-        var currentSong = data.media.cid;
-        API.sendChat("@" + currentDJ + " your song is longer than 10 minutes. I will now skip it.");
-                API.moderateForceSkip();
-       }
-}
-
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
 	"If you mated a bull dog and a shitsu, would it be called a bullsh*t?",
@@ -147,8 +139,18 @@ try{
     
     //Bouncer
     
+    API.on(API.CHAT, function lengthCheck(data) {
+    	if(data.message.indexOf('!check') === 0 && API.getUser(data.fromID).permmission > 1){
+    if (data.media.duration > 600) {
+        var currentSong = data.media.cid;
+        API.sendChat("@" + currentDJ + " your song is longer than 10 minutes. I will now skip it.");
+                API.moderateForceSkip();
+    }       
+       }
+}
+    
     API.on(API.CHAT, function(data){
-    if(data.message.indexOf('!mute') === 0){
+    if(data.message.indexOf('!mute') === 0 && API.getUser(data.fromID).permission > 1){
     	API.moderateDeleteChat(data.chatID);
     	API.sendChat("/em [" + data.from + " used mute]");
     	var mute = function(a){ if (a.from == "user.username" || a.fromID == "user.userID") API.moderateDeleteChat(a.chatID); }
@@ -157,7 +159,7 @@ try{
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!say') === 0){
+    	if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] " + data.message);
     	}
