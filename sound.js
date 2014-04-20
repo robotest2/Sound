@@ -73,7 +73,7 @@ try{
     		var cookieR = Math.floor(Math.random() * cookieArray.length);
     		var userR = Math.floor(Math.random() * room.length);
     		var outcomeR = Math.floor(Math.random() * outcome.length);
-    		API.sendChat("@" + userR + data.from + " gives you " cookieArray[cookieR] + outcome[outcomeR]);
+    		API.sendChat("@" + userR + data.from + " gives you " + cookieArray[cookieR] + outcome[outcomeR]);
     	}
     });
     
