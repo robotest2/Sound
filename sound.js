@@ -61,7 +61,7 @@ try{
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
-           API.sendChat("/em My commands can be found here: http://goo.gl/PzvBL8");
+           API.sendChat("/em [" + data.from + " My commands can be found here: http://goo.gl/PzvBL8]");
        
        }
     });
@@ -71,21 +71,21 @@ try{
     		API.moderateDeleteChat(data.chatID);
     		var online = API.getStaff();
     		var onlineR = Math.floor(Math.random() * online.length);
-    		API.sendChat("/em [" + data.from + "] Staff that's online: " + online[onlineR].username);
+    		API.sendChat("/em [" + data.from + " Staff that's online: " + online[onlineR].username + "]");
     	}
     });
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!theme') === 0){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + "] The theme is Electronic Dance Music. (EDM)");
+    		API.sendChat("/em [" + data.from + " The theme is Electronic Dance Music. (EDM)]");
     	}
     });
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!emoji') === 0){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + "] List of all emoji's here: http://www.emoji-cheat-sheet.com");
+    		API.sendChat("/em [" + data.from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
     	}
     });
     
@@ -96,14 +96,14 @@ try{
     		var cookieR = Math.floor(Math.random() * cookieArray.length);
     		var userR = Math.floor(Math.random() * room.length);
     		var outcomeR = Math.floor(Math.random() * outcome.length);
-    		API.sendChat("@" + room[userR].username + ", " + data.from + " gives you " + cookieArray[cookieR] + " cookie " + ", " + outcome[outcomeR]);
+    		API.sendChat("[@" + room[userR].username + ", " + data.from + " gives you " + cookieArray[cookieR] + " cookie " + ", " + outcome[outcomeR] + "]");
     	}
     });
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!ba') === 0){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + "] Brand Ambassaadors (BA's) are PlugDJ's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
+    		API.sendChat("/em [" + data.from + " Brand Ambassaadors (BA's) are PlugDJ's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/]");
     	}
     });
     
@@ -111,12 +111,12 @@ try{
     	if(data.message.indexOf('!link') === 0){
     		if(API.getMedia().format == 1){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + "] Link to current song: http://youtu.be/" + API.getMedia().cid);
+    		API.sendChat("/em [" + data.from + " Link to current song: http://youtu.be/" + API.getMedia().cid + "]");
     		}else{
     			API.moderateDeleteChat(data.chatID);
     			var id = API.getMedia().cid;
     			SC.get('/tracks', { ids: id,}, function(tracks) {
-    				API.sendChat("/em [" + data.from + "] Link to current song: " + tracks[0].permalink_url);
+    				API.sendChat("/em [" + data.from + " Link to current song: " + tracks[0].permalink_url + "]");
     			});
     		}
     	}
@@ -132,14 +132,11 @@ try{
     //Put more here soon
     
     //Rdj
-    API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!space') === 0){
-    		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em SoundBot refuses to serve people with spaces!");
-    	}
-    });
+    
+    //Coming soon
     
     //Bouncer
+    
     API.on(API.CHAT, function(data){
     if(data.message.indexOf('!mute') === 0){
     	API.moderateDeleteChat(data.chatID);
@@ -218,7 +215,7 @@ try{
     });
 }catch(err){
 	var d = new Date();
-	API.sendChat("/em An error has occurred on " + d + " for " + err);
+	API.sendChat("/em [An error has occurred on " + d + " for " + err + "]");
 	API.chatLog("Error: " + d + " on " + err);
 }
     //End of script (for now) 
