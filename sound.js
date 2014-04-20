@@ -11,6 +11,16 @@ Enjoy using it in my room!
 */
 API.sendChat("/em now live!");
 
+//Song check
+
+function lengthCheck(data) {
+    if (data.media.duration > 600) {
+        var currentSong = data.media.cid;
+        API.sendChat("@" + currentDJ + " your song is longer than 10 minutes. I will now skip it.");
+                API.moderateForceSkip();
+       }
+}
+
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
 	"If you mated a bull dog and a shitsu, would it be called a bullsh*t?",
