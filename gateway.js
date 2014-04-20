@@ -1,7 +1,7 @@
 /*
 This is used as a gateway to the script, so it's only used in my room
 */
-
+try{
 var hook = (function(){
 	API.on(API.CHAT);
 	API.setVolume(0);
@@ -10,9 +10,18 @@ var hook = (function(){
 });
 
 var auth = document.url = "http://plug.dj/astroparty";
-if(auth = "http://plug.dj/astroparty"){
-	API.chatLog("Authentication Successful!");
-        hook;
+if(auth = true){
+	return true;
 }else{
-	API.chatLog("You are not authenticated to use this script in the specified room!", true);
+	return false;
+}
+
+if(auth return = true){
+	hook;
+}else{
+	API.chatLog("You are not authenticated to use this in the specified room!", true);
+}
+}catch(err){
+	var d = new Date();
+	API.chatLog("Authentication error on " + d + " for " + err, true);
 }
