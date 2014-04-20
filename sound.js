@@ -50,7 +50,7 @@ var askArray = [
 
 var cookieArray = [" a chocolate chip ", " a sugar ", " a banana ", " a morphed ", " a slime "];
 
-var outcome = [" touching it duplicates it. Wierd, but AWESOME!", " when you eat it, it makes you fall asleep.", " you decide to plant it, and it gives money!", " they take it back and eats it D:", " you accidently throw it out the window while driving."];
+var outcome = [" touching it duplicates it. Wierd, but AWESOME!", " when you eat it, it makes you fall asleep.", " you decide to plant it, and it gives money!", " they take it back and eat it D:", " you accidently throw it out the window while driving."];
 //Commands
 
 //User
@@ -73,7 +73,7 @@ try{
     		var cookieR = Math.floor(Math.random() * cookieArray.length);
     		var userR = Math.floor(Math.random() * room.length);
     		var outcomeR = Math.floor(Math.random() * outcome.length);
-    		API.sendChat("@" + room[userR].username + ", " + data.from + " gives you " + cookieArray[cookieR] + " cookie " + outcome[outcomeR]);
+    		API.sendChat("@" + room[userR].username + ", " + data.from + " gives you " + cookieArray[cookieR] + " cookie " + ", " + outcome[outcomeR]);
     	}
     });
     
