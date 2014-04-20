@@ -48,6 +48,8 @@ var askArray = [
 	"Why does mineral water that has trickled through mountains for centuries have a use by date?",
 	"Why do toasters always have a setting on them which burns your toast to a horrible crisp no one would eat?"];
 
+var cookieArray = [" a chocolate chip ", " a sugar ", " a banana ", " a morphed ", " a slime "];
+
 //Commands
 
 //User
@@ -61,6 +63,16 @@ try{
            API.sendChat("/em Help commands: | User | !help, !ba, !link, !ask | Bouncer | !mute @[username], !lock, !unlock, !lskip, !wlclear, !clear, !skip");
        
        }
+    });
+    
+    API.on(API.CHAT, function(){
+    	if(data.message.indexOf('!cookie') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		var room = API.getUsers();
+    		var cookieR = Math.floor(Math.random() * cookieArray.length);
+    		var userR = Math.floor(Math.random() * room.length);
+    		API.sendChat("@" + userR + cookieArray[cookieR])
+    	}
     });
     
     API.on(API.CHAT, function(data){
