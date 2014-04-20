@@ -61,9 +61,16 @@ try{
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
-           API.sendChat("/em Help commands: | User | !help, !cookie, !ba, !link, !ask | Bouncer | !mute @[username], !lock, !unlock, !lskip, !wlclear, !clear, !skip");
+           API.sendChat("/em Help commands: | User | !help, !theme, !emoji, !cookie, !ba, !link, !ask | Bouncer | !mute @[username], !lock, !unlock, !lskip, !wlclear, !clear, !skip");
        
        }
+    });
+    
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!theme') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em [" + data.from + "] The theme is Electronic Dance Music. (EDM)");
+    	}
     });
     
     API.on(API.CHAT, function(data){
