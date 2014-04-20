@@ -11,15 +11,8 @@ var hook = (function(data){
 
 var auth = window.location = "http://plug.dj/astroparty";
 if(auth = "http://plug.dj/astroparty"){
-	return true;
+	API.chatLog("Authentication Successful!");
+       hook;
 }else{
-	return false;
+	API.chatLog("You are not authenticated to use this script in the specified room!", true);
 }
-
-if(auth = true){
-	hook;
-}
-else{
-	API.chatLog("You are not authenticated to use this script in this room.", true);
-	}
-});
