@@ -61,7 +61,14 @@ try{
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
-           API.sendChat("/em Help commands: | User | !help, !theme, !emoji, !cookie, !ba, !link, !ask | Bouncer | !mute @[username], !lock, !unlock, !lskip, !wlclear, !clear, !skip");
+           API.sendChat("/em My commands:");
+           API.sendChat("/em | USER |");
+           API.sendChat(" ");
+           API.sendChat("/em !help, !theme, !emoji, !cookie, !ba, !link, !ask");
+           API.sendChat(" ");
+           API.sendChat("/em | BOUNCER |");
+           API.sendChat("/em !mute @[username], !lock, !unlock, !lskip, !wlclear, !clear, !skip");
+           API.sendChat("/em More commands coming!");
        
        }
     });
