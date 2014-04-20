@@ -49,7 +49,7 @@ var askArray = [
 //Commands
 
 //User
-
+try{
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
@@ -150,5 +150,9 @@ var askArray = [
     		API.moderateForceSkip();
     	}
     });
-    
+}catch(err){
+	var d = new Date();
+	API.sendChat("/em An error has occurred on " + d + " for " + err);
+	API.chatLog("Error: " + d + " on " + err);
+}
     //End of script (for now) 
