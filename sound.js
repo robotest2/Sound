@@ -144,10 +144,10 @@ try{
     if (data.media.duration > 600) {
         var currentSong = data.media.cid;
         API.sendChat("@" + currentDJ + " your song is longer than 10 minutes. I will now skip it.");
-                API.moderateForceSkip();
-    }       
-       }
-}
+        API.moderateForceSkip();
+    	}
+    }
+});
     
     API.on(API.CHAT, function(data){
     if(data.message.indexOf('!mute') === 0 && API.getUser(data.fromID).permission > 1){
