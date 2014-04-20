@@ -49,7 +49,10 @@ var askArray = [
 //Commands
 
 //User
+
+//Any errors that occur, will be sent. catch @ bottom of script.
 try{
+	
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
