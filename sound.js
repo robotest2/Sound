@@ -67,6 +67,13 @@ try{
     });
     
     API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!emoji') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em [" + data.from + "] List of all emoji's here: http://www.emoji-cheat-sheet.com");
+    	}
+    });
+    
+    API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!cookie') === 0){
     		API.moderateDeleteChat(data.chatID);
     		var room = API.getUsers();
