@@ -58,7 +58,7 @@ try{
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
-           API.sendChat("/em Help commands: | User | !help, !ba, !link, !ask | Bouncer | !mute @[username], !lock, !unlock, !lockskip, !wlclear, !clear, !skip");
+           API.sendChat("/em Help commands: | User | !help, !ba, !link, !ask | Bouncer | !mute @[username], !lock, !unlock, !lskip, !wlclear, !clear, !skip");
        
        }
     });
@@ -121,9 +121,9 @@ try{
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!lockskip') === 0 && API.getUser(data.fromID).permission > 1){
+    	if(data.message.indexOf('!lskip') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + " used locksip]");
+    		API.sendChat("/em [" + data.from + " used lockskip]");
     		API.moderateLockWaitList(true);
     		API.moderateForceSkip();
     	}
