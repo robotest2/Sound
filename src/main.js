@@ -51,13 +51,14 @@ SoundBot.options.allowCommands = true;
 SoundBot.options.logUserJoin = true; //Figure this out
 
 
-SoundBot.options.logUserJoin = {
+SoundBot.options.logUserJoin = [
+{
 API.on(API.USER_JOIN, callback);
 function callback(user) {
   console.log(user.username + " joined the room");
   API.chatLog(user.username + " joined the room");
 }
-}
+}];
 //Startup
 
 var on = "Enabled ";
