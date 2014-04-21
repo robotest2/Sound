@@ -46,7 +46,7 @@ SoundBot.options.songIntervalMessage = [
 	offset: 0,
 	msg: sendMsg
 	}
-	true];
+	];
 SoundBot.options.allowCommands = true;
 SoundBot.options.logUserJoin = true; //Figure this out
 
