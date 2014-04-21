@@ -36,7 +36,7 @@ Here's a breif list of what this can do:
 !lock
 !unlock
 !lskip
-!wlclear - MUST HAVE UNLOCKED WAITLIST 
+!wlclear 
 !clear
 !skip**
 
