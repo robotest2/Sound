@@ -10,7 +10,7 @@ if(auth = "http://plug.dj/astroparty"){
 
 if(auth = true){
 	API.chatLog("Authentication Successful!");
-	jQuery.getScript("https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js");
+	jQuery.getScript("https://raw.githubusercontent.com/Pr0Code/Sound/master/src/main.js");
 }
 if(auth = false){
 	API.chatLog("You are not authenticated to use this script in the requested room.", true);
