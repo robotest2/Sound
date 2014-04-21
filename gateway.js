@@ -1,12 +1,17 @@
 /*
 This is used as a gateway to the script, so it's only used in my room
 */
+var gate = {};
+
 API.on(API.CHAT, function(){
 
-var hook = function(){
-	API.chatLog("Hooking...");
-	$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
-}
+gate.hook = function(){
+(function(){$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
+API.chatLog("Authentication Successful!");
+setTimeout(function(){
+API.chatLog("Hooking...");
+}, 500);
+});
 
 var auth = document.url;
 if(auth = "http://plug.dj/astroparty"){
