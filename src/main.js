@@ -12,9 +12,18 @@ Enjoy using it in my room!
 
 //Startup
 
-API.sendChat("/em now live! Type !help for a list of commands.");
+var on = "Enabled ";
+var version = "Beta 2.3";
 
-//Song check
+API.chatLog("Loading file...");
+setTimeout(function(){
+	API.chatLog(on.fontcolor('limegreen') + "version ".fontcolor('lightblue') + version.fontcolor('lightblue'));
+}, 1000);
+setTimeout(function(){
+API.sendChat("/em now live!");
+}, 2000);
+
+//Arrays here
 
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
