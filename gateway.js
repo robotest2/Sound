@@ -3,7 +3,7 @@ This is used as a gateway to the script, so it's only used in my room
 */
 API.on(API.CHAT, function(){
 
-var hook = {
+var hook = function(){
 	API.chatLog("Hooking...");
 	$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
 }
