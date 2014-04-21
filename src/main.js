@@ -219,7 +219,7 @@ try{
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + "] Settings: " + SoundBot.options.authSeperateFile + ", " + SoundBot.options.announcementMsg + ", " + SoundBot.options.songIntervalMessage + ", " + SoundBot.options.allowCommands + ", " + SoundBot.options.logUserJoin + ".");
+    		API.sendChat("/em [" + data.from + "] Settings: Auth File: " + SoundBot.options.authSeperateFile + ", Announcement Message: " + SoundBot.options.announcementMsg + ", Interval Message: " + SoundBot.options.songIntervalMessage + ", Allow Commands: " + SoundBot.options.allowCommands + ", Log User Join: " + SoundBot.options.logUserJoin + ".");
     	}
     });
     
