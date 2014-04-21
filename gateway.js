@@ -5,7 +5,6 @@ var gate = {};
 
 gate.hook = function(){
 (function(){$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
-API.chatLog("Authentication Successful!");
 	});
 }
 
@@ -21,6 +20,7 @@ if(auth = "http://plug.dj/astroparty"){
 
 if(auth = true){
 	gate.hook;
+	API.chatLog("Authentication Successful!");
 }else{
 	API.chatLog("You are not authenticated to use this in the requested room.", true);
 }
