@@ -20,7 +20,7 @@ if(auth = "http://plug.dj/astroparty"){
 });
 
 if(auth = true){
-	API.chatLog("true");
+	gate.hook;
 }else{
-	API.chatLog("false");
+	API.chatLog("You are not authenticated to use this in the requested room.", true);
 }
