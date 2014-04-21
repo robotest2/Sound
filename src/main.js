@@ -53,10 +53,11 @@ SoundBot.options.logUserJoin = true; //Figure this out
 
 SoundBot.options.logUserJoin = [
 {
-API.on(API.USER_JOIN, callback):
+API.on(API.USER_JOIN, callback){
 function callback(user) {
   console.log(user.username + " joined the room");
   API.chatLog(user.username + " joined the room");
+}
 }
 }];
 //Startup
