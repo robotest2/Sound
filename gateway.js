@@ -8,8 +8,8 @@ var hook = {
 	$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
 }
 
-var auth = document.url = "http://plug.dj/astroparty";
-if(auth = true){
+var auth = document.url;
+if(auth = "http://plug.dj/astroparty"){
 	hook;
 }else{
 	API.chatLog("You are not authenticated to use this in the specified room!", true);
