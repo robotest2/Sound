@@ -9,7 +9,7 @@ var hook = {
 }
 
 var auth = document.url = "http://plug.dj/astroparty";
-if(auth = "http://plug.dj/astroparty"){
+if(auth = true){
 	hook;
 }else{
 	API.chatLog("You are not authenticated to use this in the specified room!", true);
