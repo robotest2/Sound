@@ -41,13 +41,12 @@ $.ajax({
 })];*/
 SoundBot.options.announcementMsg = true;
 SoundBot.options.songIntervalMessage = [
-	true;
 	{
 	interval: 10,
 	offset: 0,
 	msg: sendMsg
 	}
-	];
+	true];
 SoundBot.options.allowCommands = true;
 SoundBot.options.logUserJoin = true; //Figure this out
 
