@@ -9,6 +9,51 @@ http://plug.dj/astroparty
 Enjoy using it in my room!
 
 */
+var msgArray = [
+	"Welcome to the AstroShock plug.dj room!",
+	"Make sure to help out new users!",
+	"Need help? Type !help for a list of commands",
+	"This script is protected with an authentication system!",
+	"More commands are on the way!",
+	"The song limit for this room is 10 minutes.",
+	"Please do not spam."];
+var msgR = Math.floor(Math.random() * msgArray.length);
+var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
+	
+
+//Settings
+SoundBot = {};
+SoundBot.options = {};
+SoundBot.options.songIntervalMessage = [
+	{
+	interval: 15,
+	offset: 0,
+	msg: sendMsg
+	}
+	];
+SoundBot.options.allowCommands = true;
+
+//Allow and disallow commands
+
+SoundBot.options.allowCommands = (function(){
+	if(SoundBot.options.allowCommands = true){
+		return true;
+	}else{
+		return false;
+	}
+	if(SoundBot.options.allowCommands = true){
+	cmd = true;
+	}else{
+		cmd = false;
+	}
+	if(cmd = true){
+		cmd;
+	}else{
+		API.sendChat("/em Commands are not enabled!");
+	}
+}
+
+
 
 //Startup
 
@@ -17,7 +62,7 @@ var version = "Beta 2.3";
 
 API.chatLog("Loading file...");
 setTimeout(function(){
-	API.chatLog(on.fontcolor('limegreen') + "version ".fontcolor('lightblue') + version.fontcolor('lightblue'));
+	API.chatLog(on + "version " + version);
 }, 1000);
 setTimeout(function(){
 API.sendChat("/em now live!");
@@ -84,6 +129,7 @@ var fightArray = [
 
 //Any errors that occur, will be sent. catch @ bottom of script.
 try{
+var cmd = {	
 	
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
@@ -260,9 +306,13 @@ try{
     		API.moderateForceSkip();
     	}
     });
+}
 }catch(err){
 	var d = new Date();
 	API.sendChat("/em [An error has occurred on " + d + " for " + err + "]");
 	API.chatLog("Error: " + d + " on " + err);
 }
+    
+    
+    
     //End of script (for now) 
