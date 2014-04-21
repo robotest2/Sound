@@ -19,8 +19,8 @@ if(auth = "http://plug.dj/astroparty"){
 	}
 });
 
-if(auth = true{
+if(auth = true){
 	API.chatLog("true");
 }else{
 	API.chatLog("false");
-});
+}
