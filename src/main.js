@@ -51,7 +51,7 @@ SoundBot.options.allowCommands = (function(){
 	}else{
 		API.sendChat("/em Commands are not enabled!");
 	}
-}
+});
 
 
 
