@@ -6,7 +6,8 @@ var gate = {};
 gate.hook = function(){
 (function(){$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
 API.chatLog("Authentication Successful!");
-});
+	});
+}
 
 API.on(API.CHAT, function(){
 
