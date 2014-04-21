@@ -15,6 +15,7 @@ if(auth = true){
 	API.chatLog("Authentication Successful!");
 	(function(){$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
 });
-else{
+else
+{
 	API.chatLog("You are not authenticated to use this in the requested room.", true);
 }
