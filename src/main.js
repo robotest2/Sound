@@ -42,7 +42,7 @@ $.ajax({
 SoundBot.options.announcementMsg = true;
 SoundBot.options.songIntervalMessage = [
 	{
-	interval: 15,
+	interval: 10,
 	offset: 0,
 	msg: sendMsg
 	}
