@@ -4,11 +4,8 @@ This is used as a gateway to the script, so it's only used in my room
 var gate = {};
 
 gate.hook = function(){
-(function(){$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');}
-API.chatLog("Authentication Successful!"));
-setTimeout(function(){
-API.chatLog("Hooking...");
-}, 500);
+(function(){$.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/sound.js');
+API.chatLog("Authentication Successful!");
 });
 
 API.on(API.CHAT, function(){
