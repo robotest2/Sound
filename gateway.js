@@ -9,12 +9,18 @@ API.chatLog("Authentication Successful!");
 	});
 }
 
-API.on(API.CHAT, function(){
+API.on(API.CHAT, function get(url){
 
 var auth = document.url;
 if(auth = "http://plug.dj/astroparty"){
-	gate.hook;
+	return true;
 }else{
-	API.chatLog("You are not authenticated to use this in the specified room!", true);
+	return false;
 	}
+});
+
+if(auth = true{
+	API.chatLog("true");
+}else{
+	API.chatLog("false");
 });
