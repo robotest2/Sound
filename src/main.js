@@ -25,11 +25,20 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 SoundBot = {};
 SoundBot.options = {};
 SoundBot.options.authSeperateFile = [
-	if(jQuery.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/Loader.js') = true){
-		return true;
-	}else{
-		return false;
-	}
+$.ajax({
+    url:'https://raw.githubusercontent.com/Pr0Code/Sound/master/Loader.js',
+    type:'HEAD',
+    error: function()
+    {
+        return false;
+	API.chatLog("Authentication file does not exist.");
+    },
+    success: function()
+    {
+        return true;
+	API.chatLog("File exists.");
+    }
+});
 	];
 SoundBot.options.announcementMsg = true;
 SoundBot.options.songIntervalMessage = [
