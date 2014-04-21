@@ -38,8 +38,7 @@ $.ajax({
         return true;
 	API.chatLog("File exists.");
     }
-});
-	];
+})];
 SoundBot.options.announcementMsg = true;
 SoundBot.options.songIntervalMessage = [
 	if(SoundBot.options.announcementMsg = true){
