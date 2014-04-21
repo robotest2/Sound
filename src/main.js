@@ -24,37 +24,36 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 //Settings
 SoundBot = {};
 SoundBot.options = {};
-SoundBot.options.songIntervalMessage = [
-	{
-	interval: 15,
-	offset: 0,
-	msg: sendMsg
-	}
-	];
-SoundBot.options.allowCommands = true;
-
-//Allow and disallow commands
-
-SoundBot.options.allowCommands = (function(){
-	if(SoundBot.options.allowCommands = true){
+SoundBot.options.authSeperateFile = [
+	if(jQuery.getScript('https://raw.githubusercontent.com/Pr0Code/Sound/master/Loader.js') = true){
 		return true;
 	}else{
 		return false;
 	}
-	if(SoundBot.options.allowCommands = true){
-	cmd = true;
-	}else{
-		cmd = false;
+	];
+SoundBot.options.announcementMsg = true;
+SoundBot.options.songIntervalMessage = [
+	if(SoundBot.options.announcementMsg = true){
+		
+	interval: 15,
+	offset: 0,
+	msg: sendMsg
 	}
-	if(cmd = true){
-		cmd;
-	}else{
-		API.sendChat("/em Commands are not enabled!");
+	if(SoundBot.options.announcementMsg = false){
+		API.chatLog("Announcements are off!");
 	}
-});
+	];
+SoundBot.options.allowCommands = true;
+SoundBot.options.logUserJoin = true; //Figure this out
 
 
-
+SoundBot.options.logUserJoin = {
+API.on(API.USER_JOIN, callback);
+function callback(user) {
+  console.log(user.username + " joined the room");
+  API.chatLog(user.username + " joined the room");
+}
+}
 //Startup
 
 var on = "Enabled ";
@@ -129,7 +128,6 @@ var fightArray = [
 
 //Any errors that occur, will be sent. catch @ bottom of script.
 try{
-var cmd = {	
 	
     API.on(API.CHAT, function(data){
         if(data.message.indexOf('!help') === 0){
@@ -220,6 +218,13 @@ var cmd = {
     
     //Bouncer
     
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em [" + data.from + "] Settings: " + SoundBot.options.authSeperateFile + ", " + SoundBot.options.announcementMsg + ", " + SoundBot.options.songIntervalMessage + ", " + SoundBot.options.allowCommands + ", " + SoundBot.options.logUserJoin + ".");
+    	}
+    });
+    
     API.on(API.CHAT, function lengthCheck(data) {
     	if(data.message.indexOf('!check') === 0 && API.getUser(data.fromID).permmission > 1){
     if (data.media.duration > 600) {
@@ -306,7 +311,6 @@ var cmd = {
     		API.moderateForceSkip();
     	}
     });
-}
 }catch(err){
 	var d = new Date();
 	API.sendChat("/em [An error has occurred on " + d + " for " + err + "]");
