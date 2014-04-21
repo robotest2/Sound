@@ -24,7 +24,7 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 //Settings
 SoundBot = {};
 SoundBot.options = {};
-SoundBot.options.authSeperateFile = [
+SoundBot.options.authSeperateFile = true; /*[
 $.ajax({
     url:'https://raw.githubusercontent.com/Pr0Code/Sound/master/Loader.js',
     type:'HEAD',
@@ -38,9 +38,10 @@ $.ajax({
         return true;
 	API.chatLog("File exists.");
     }
-})];
+})];*/
 SoundBot.options.announcementMsg = true;
 SoundBot.options.songIntervalMessage = [
+	true;
 	{
 	interval: 10,
 	offset: 0,
