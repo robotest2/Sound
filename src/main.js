@@ -41,14 +41,10 @@ $.ajax({
 })];
 SoundBot.options.announcementMsg = true;
 SoundBot.options.songIntervalMessage = [
-	if(SoundBot.options.announcementMsg == true){
-		
+	{
 	interval: 15,
 	offset: 0,
 	msg: sendMsg
-	}
-	if(SoundBot.options.announcementMsg == false){
-		API.chatLog("Announcements are off!");
 	}
 	];
 SoundBot.options.allowCommands = true;
