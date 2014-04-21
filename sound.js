@@ -51,8 +51,21 @@ var askArray = [
 	"Why do toasters always have a setting on them which burns your toast to a horrible crisp no one would eat?"];
 
 var cookieArray = [" a chocolate chip ", " a sugar ", " a banana ", " a morphed ", " a slime "];
-
 var outcome = [" touching it duplicates it. Wierd, but AWESOME!", " when you eat it, it makes you fall asleep.", " you decide to plant it, and it gives money!", " they take it back and eat it D:", " you accidently throw it out the window while driving."];
+
+var fightArray = [
+	" doesn't like water.",
+	" likes to wear thier pants at their knees.",
+	" hates cookies.",
+	" likes to take hot showers infront of homeless people.",
+	" doesn't know how to use an ipad.",
+	" abuses people.",
+	" wears hello-kitty clothes to work (or school).",
+	" is 40 years old and lives in their parents basement.",
+	" takes long walks in volcanos.",
+	" has water, never wakes up.",
+	" loves one-direction.",
+	" eats coconuts"];
 //Commands
 
 //User
@@ -66,6 +79,16 @@ try{
            API.sendChat("/em [" + data.from + " My commands can be found here: http://goo.gl/PzvBL8]");
        
        }
+    });
+    
+    API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!fight') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		var fightUser = API.getUsers();
+    		var fightR = Math.floor(Math.random() * fightArray.length);
+    		var userFR = Math.floor(Math.random() * fightUser.length);
+    		API.sendChat("[" + data.from + "] @" + fightUser[userFR].username + fightArray[fightR]);
+    	}
     });
     
     API.on(API.CHAT, function(data){
