@@ -23,7 +23,7 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 //Options
 options = {
-botWoot = true,
+
 announcementMsg = true,
 songIntervalMessage = [
 	{
@@ -44,13 +44,6 @@ options.startup = {
 API.chatLog("Starting Up...");
 
 API.chatLog("Options: ");
-
-if(options.botWoot = true){
-	API.chatLog("Woot: " + options.woot);
-	$('#woot').click();
-}else{
-	API.chatLog("Woot: " + options.woot);
-}
 
 if(options.announcementMsg = true){
 	API.chatLog("Announcements: true");
@@ -237,11 +230,14 @@ var fightArray = [
 	" has water, never wakes up.",
 	" loves one-direction.",
 	" eats coconuts"];
+	
+//Woot
+
+$('#woot').click();
+	
 //Commands
 
 //User
-
-//Any errors that occur, will be sent. catch @ bottom of script.
 	
   API.on(API.CHAT, function(data){
     if(data.message.indexOf('!help') === 0){
