@@ -291,6 +291,7 @@ try{
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!add') === 0 && API.getuser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
+    		function getUser(name){
     		var users = API.getusers(), result = '';
     		for(var i users) if (users[i].username == name) return users[i].id;{
     			result = users[i].id;
@@ -301,6 +302,7 @@ try{
     		API.sendChat("/em [" + data.from + "] User not found.");
     	}
     	API.moderateAddDJ(users[i].id(data.message.split(' ')[1]));
+    		}
     	}
     });
     
