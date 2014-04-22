@@ -9,6 +9,7 @@ http://plug.dj/astroparty
 Enjoy using it in my room!
 
 */
+
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
@@ -48,6 +49,81 @@ SoundBot.options.songIntervalMessage = [
 	}
 	];
 SoundBot.options.logUserJoin = true;
+
+//AFK removal
+
+var afkB = {
+
+afkLimit: 60,
+users: {},
+getTime: function(ms){
+	ms = Math.floor(ms / 60000);
+	var t = ms - Math.floor(ms / 60) * 60;
+	var n = (ms - t) / 60
+	var r = '';
+	r + = n < 10 ? '0' : '';
+	r + = n + 'h';
+	r + = t < 10 ? '0' : '';
+	r + = t;
+	return r
+},
+afkRemover: function(){
+	var waitList = API.getWaitList(),
+	now = Date.now(), index = [waitList[4], waitList[2], waitList[0]];
+	if(waitList.length > 4){
+		if now - afkB.users[index[0].id].afkTime >= afkB.users[index[0].id].warns.warn1){
+			API.sendChat("@" + index[0].username + "AFK Time - " + afkb.getTime(now - afkB.users[index[0].id].afkTime) + " | Chat in 5 songs or I will remove you!");
+			
+			afkB.users[index[0].id].warns.warn1 = true;
+		};
+		if(now - afkB.users[index[1].id].afkTime >= afkB.afkLimit * 60000 && !afkB.users[index[1].id].warns.warn1){
+			API.sendChat("@" + index[1].username + " AFK Time - " + afkB.getTime(now - afkB.users[index[1].id].afkTime) + " | Chat in 2 songs or I will remove you!");
+			
+			afkB.users[index[2].id].warns.warn2 = true;
+		};
+		if(now - afkB.users[index[2].id].afkTime >= afkB.afkLimit * 60000 && afkB.users[index[2].id].warns.removed){
+			API.sendChat("@" + index[2].username + " You were " + Math.round((now - afkB.users[index[2].id].afkTime) / 60000) + " minutes past AFK limit (" + afkB.afkLimit + "m) | Chat every " + afkB.afkLimit + " minutes while in the waitlist.");
+			
+			API.moderateRemoveDJ(index[2].id);
+		};
+	};
+},
+user: function(obj){
+	this.id = obj.id;
+	this.afkTime = Date.now();
+	this.joinTime = Date.now();
+	this.warns = {
+		warn1: false,
+		warn2: false,
+		removed: false
+	};
+},
+eventWaitListUpdate: function(){
+	afkB.afkRemover();
+},
+eventJoin: function(obj){
+	bot.users[obj.id] = new afkB.user(obj);
+},
+eventLeave: function(obj){
+	delete afkB.users[obj.id];
+},
+eventChat: function(obj){
+	afkB.users[obj.fromID].afkTime = Date.now();
+}
+};
+
+API
+.on(API.WAIT_LIST_UPDATE, $.proxy(afkB.eventWaitListUpdate, this))
+.on(API.USER_JOIN, $.proxy(afkB.eventJoin, this))
+.on(API.USER_LEAVE, $.proxy(afkB.eventLeave, this))
+.on(API.CHAT, $.proxy(afkB.eventChat, this));
+
+for (var i in API.getUsers()){
+	afkB.users[API.getUsers()[i].id] = new afkB.user(API.getUsers()[i]);
+}
+
+API.chatLog("AFK Removal is Live!", true);
+
 //Startup
 
 var on = "Enabled ";
