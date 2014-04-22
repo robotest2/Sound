@@ -292,12 +292,12 @@ try{
 	if (data.message.indexOf('!remove') === 0 && API.getUser(data.fromID).permission > 1){
 	getID = function(username){
     		var users = API.getUsers(), result = '';
-    		for(var i users){
+    		for(var i; users){
         		if(users[i].username === username.trim()){
             			result = users[i].id;
             			return result;
         			}
-		 	};
+		 	}
 		 	return "notFound";
 		};
 	API.moderateRemoveDJ(getID(data.message.split(' ')[1]));
