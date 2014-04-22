@@ -9,11 +9,7 @@ http://plug.dj/astroparty
 Enjoy using it in my room!
 
 */
-
-//Auth
-
-
-
+(function(){
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
@@ -26,7 +22,7 @@ var msgR = Math.floor(Math.random() * msgArray.length);
 var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 //Options
-var options = {
+options = {
 options.woot = true,
 options.announcementMsg = true,
 options.songIntervalMessage = [
@@ -443,4 +439,6 @@ var fightArray = [
     		API.moderateForceSkip();
     	}
     });
+    
+});
     //End of script (for now) 
