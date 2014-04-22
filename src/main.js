@@ -23,7 +23,7 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 //Options
 options = {
-options.woot = true,
+options.botWoot = true
 options.announcementMsg = true,
 options.songIntervalMessage = [
 	{
@@ -43,7 +43,7 @@ options.startup = {
 
 API.chatLog("Options: ");
 
-if(options.woot = true){
+if(options.botWoot = true){
 	API.chatLog("Woot: " + options.woot);
 	$('#woot').click();
 }else{
