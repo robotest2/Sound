@@ -60,13 +60,13 @@ users: {},
 getTime: function(ms){
 	ms = Math.floor(ms / 60000);
 	var t = ms - Math.floor(ms / 60) * 60;
-	var n = (ms - t) / 60
+	var n = (ms - t) / 60;
 	var r = '';
 	r += n < 10 ? '0' : '';
 	r += n + 'h';
 	r += t < 10 ? '0' : '';
 	r += t;
-	return r
+	return r;
 },
 afkRemover: function(){
 	var waitList = API.getWaitList(),
@@ -76,18 +76,18 @@ afkRemover: function(){
 			API.sendChat("@" + index[0].username + "AFK Time - " + afkb.getTime(now - afkB.users[index[0].id].afkTime) + " | Chat in 5 songs or I will remove you!");
 			
 			afkB.users[index[0].id].warns.warn1 = true;
-		};
+		}
 		if(now - afkB.users[index[1].id].afkTime >= afkB.afkLimit * 60000 && !afkB.users[index[1].id].warns.warn1){
 			API.sendChat("@" + index[1].username + " AFK Time - " + afkB.getTime(now - afkB.users[index[1].id].afkTime) + " | Chat in 2 songs or I will remove you!");
 			
 			afkB.users[index[2].id].warns.warn2 = true;
-		};
+		}
 		if(now - afkB.users[index[2].id].afkTime >= afkB.afkLimit * 60000 && afkB.users[index[2].id].warns.removed){
 			API.sendChat("@" + index[2].username + " You were " + Math.round((now - afkB.users[index[2].id].afkTime) / 60000) + " minutes past AFK limit (" + afkB.afkLimit + "m) | Chat every " + afkB.afkLimit + " minutes while in the waitlist.");
 			
 			API.moderateRemoveDJ(index[2].id);
-		};
-	};
+		}
+	}
 },
 user: function(obj){
 	this.id = obj.id;
@@ -119,7 +119,7 @@ API
 .on(API.USER_LEAVE, $.proxy(afkB.eventLeave, this))
 .on(API.CHAT, $.proxy(afkB.eventChat, this));
 
-for (var i in API.getUsers()){
+for(var i in API.getUsers()){
 	afkB.users[API.getUsers()[i].id] = new afkB.user(API.getUsers()[i]);
 }
 
@@ -197,10 +197,9 @@ var fightArray = [
 //User
 
 //Any errors that occur, will be sent. catch @ bottom of script.
-try{
 	
-    API.on(API.CHAT, function(data){
-        if(data.message.indexOf('!help') === 0){
+  API.on(API.CHAT, function(data){
+    if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
            API.sendChat("/em [" + data.from + " My commands can be found here: http://goo.gl/PzvBL8]");
        
@@ -208,77 +207,77 @@ try{
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!fight') === 0){
-    		API.moderateDeleteChat(data.chatID);
-    		var fightUser = API.getUsers();
-    		var fightR = Math.floor(Math.random() * fightArray.length);
-    		var userFR = Math.floor(Math.random() * fightUser.length);
-    		API.sendChat("[" + data.from + "] @" + fightUser[userFR].username + fightArray[fightR]);
-    	}
+      if(data.message.indexOf('!fight') === 0){
+        API.moderateDeleteChat(data.chatID);
+        var fightUser = API.getUsers();
+        var fightR = Math.floor(Math.random() * fightArray.length);
+        var userFR = Math.floor(Math.random() * fightUser.length);
+        API.sendChat("[" + data.from + "] @" + fightUser[userFR].username + fightArray[fightR]);
+      }
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!staff') === 0){
-    		API.moderateDeleteChat(data.chatID);
-    		var online = API.getStaff();
-    		var onlineR = online.length;
-    		API.sendChat("/em [" + data.from + " Staff that's online: " + online[onlineR].username + "]");
-    	}
+      if(data.message.indexOf('!staff') === 0){
+        API.moderateDeleteChat(data.chatID);
+        var online = API.getStaff();
+        var onlineR = online.length;
+        API.sendChat("/em [" + data.from + " Staff that's online: " + online[onlineR].username + "]");
+      }
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!theme') === 0){
-    		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + " The theme is Electronic Dance Music. (EDM)]");
-    	}
+      if(data.message.indexOf('!theme') === 0){
+        API.moderateDeleteChat(data.chatID);
+        API.sendChat("/em [" + data.from + " The theme is Electronic Dance Music. (EDM)]");
+      }
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!emoji') === 0){
-    		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
-    	}
+      if(data.message.indexOf('!emoji') === 0){
+        API.moderateDeleteChat(data.chatID);
+        API.sendChat("/em [" + data.from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
+      }
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!cookie') === 0){
-    		API.moderateDeleteChat(data.chatID);
-    		var room = API.getUsers();
-    		var cookieR = Math.floor(Math.random() * cookieArray.length);
-    		var userR = Math.floor(Math.random() * room.length);
-    		var outcomeR = Math.floor(Math.random() * outcome.length);
-    		API.sendChat("[@" + room[userR].username + ", " + data.from + " gives you " + cookieArray[cookieR] + " cookie " + ", " + outcome[outcomeR] + "]");
-    	}
+      if(data.message.indexOf('!cookie') === 0){
+        API.moderateDeleteChat(data.chatID);
+        var room = API.getUsers();
+        var cookieR = Math.floor(Math.random() * cookieArray.length);
+        var userR = Math.floor(Math.random() * room.length);
+        var outcomeR = Math.floor(Math.random() * outcome.length);
+        API.sendChat("[@" + room[userR].username + ", " + data.from + " gives you " + cookieArray[cookieR] + " cookie " + ", " + outcome[outcomeR] + "]");
+      }
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!ba') === 0){
-    		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + " Brand Ambassaadors (BA's) are PlugDJ's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/]");
-    	}
+      if(data.message.indexOf('!ba') === 0){
+        API.moderateDeleteChat(data.chatID);
+        API.sendChat("/em [" + data.from + " Brand Ambassaadors (BA's) are PlugDJ's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/]");
+      }
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!link') === 0){
-    		if(API.getMedia().format == 1){
-    		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + " Link to current song: http://youtu.be/" + API.getMedia().cid + "]");
-    		}else{
-    			API.moderateDeleteChat(data.chatID);
-    			var id = API.getMedia().cid;
-    			SC.get('/tracks', { ids: id,}, function(tracks) {
-    				API.sendChat("/em [" + data.from + " Link to current song: " + tracks[0].permalink_url + "]");
-    			});
-    		}
-    	}
+      if(data.message.indexOf('!link') === 0){
+        if(API.getMedia().format == 1){
+          API.moderateDeleteChat(data.chatID);
+          API.sendChat("/em [" + data.from + " Link to current song: http://youtu.be/" + API.getMedia().cid + "]");
+        }else{
+          API.moderateDeleteChat(data.chatID);
+          var id = API.getMedia().cid;
+          SC.get('/tracks', { ids: id,}, function(tracks) {
+            API.sendChat("/em [" + data.from + " Link to current song: " + tracks[0].permalink_url + "]");
+          });
+        }
+      }
     });
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!ask') === 0){
-    		API.moderateDeleteChat(data.chatID);
-    		var askR = Math.floor(Math.random() * askArray.length);
-    		API.sendChat("/em [" + data.from + "] " + askArray[askR]);
-    	}
+      if(data.message.indexOf('!ask') === 0){
+        API.moderateDeleteChat(data.chatID);
+        var askR = Math.floor(Math.random() * askArray.length);
+        API.sendChat("/em [" + data.from + "] " + askArray[askR]);
+      }
     });
     //Put more here soon
     
@@ -289,22 +288,21 @@ try{
     //Bouncer
     
     API.on(API.CHAT, function(data){
-    	if(data.message.indexOf('!add') === 0 && API.getuser(data.fromID).permission > 1){
-    		API.moderateDeleteChat(data.chatID);
-    		function getUser(name){
-    		var users = API.getusers(), result = '';
-    		for(var i users) if (users[i].username == name){
-    			result = users[i].id;
-    			return result;
-    			}
-    	return "notFound";
-    	if(users[i].id = "notFound"){
-    		API.sendChat("/em [" + data.from + "] User not found.");
-    	}
-    	API.moderateAddDJ(users[i].id(data.message.split(' ')[1]));
-    		}
-    	}
-    });
+      if(data.message.indexOf('!add') === 0 && API.getuser(data.fromID).permission > 1){
+        API.moderateDeleteChat(data.chatID);
+          var users = API.getUsers(), result = '';
+        for(var i; users;){
+            if (users[i].username == name){
+            result = users[i].id;
+              return result;
+            }else{
+        return "notFound";
+            }
+          API.moderateAddDJ(users[i].id(data.message.split(' ')[1]));
+        }
+      }
+    };
+           });
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
@@ -318,7 +316,7 @@ try{
     	API.moderateDeleteChat(data.chatID);
     	API.sendChat("/em [" + data.from + " used mute]");
     	var mute = function(a){ if (a.from == "user.username" || a.fromID == "user.userID") API.moderateDeleteChat(a.chatID); }
-    	mute;
+    	mute(a);
     	}	
     });
     
