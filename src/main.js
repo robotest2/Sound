@@ -50,6 +50,7 @@ SoundBot.options.songIntervalMessage = [
 	];
 SoundBot.options.logUserJoin = true;
 SoundBot.options.version = "Beta 3";
+
 //AFK removal
 
 var afkB = {
@@ -286,6 +287,22 @@ try{
     //Coming soon
     
     //Bouncer
+    
+    API.on(API.CHAT, function(data){
+	if (data.message.indexOf('!remove') === 0 && API.getUser(data.fromID).permission > 1){
+	getID = function(username){
+    		var users = API.getUsers(), result = '';
+    		for(var i users){
+        		if(users[i].username === username.trim()){
+            			result = users[i].id;
+            			return result;
+        			}
+		 	}
+		 	return "notFound";
+		};
+	API.moderateRemoveDJ(getID(data.message.split(' ')[1]));
+	}
+});
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
