@@ -42,16 +42,12 @@ $.ajax({
 SoundBot.options.announcementMsg = true;
 SoundBot.options.songIntervalMessage = [
 	{
-	interval: 10,
+	interval: 1,
 	offset: 0,
 	msg: sendMsg
 	}
 	];
-SoundBot.options.logUserJoin = { //Figure this out
-
-function callback(user){
-  API.chatLog(user.username + " joined the room");
-}
+SoundBot.options.logUserJoin = true;
 //Startup
 
 var on = "Enabled ";
