@@ -61,9 +61,9 @@ getTime: function(ms){
 	var t = ms - Math.floor(ms / 60) * 60;
 	var n = (ms - t) / 60
 	var r = '';
-	r + = n < 10 ? '0' : '';
+	r + = n < 10?'0':'';
 	r + = n + 'h';
-	r + = t < 10 ? '0' : '';
+	r + = t < 10?'0':'';
 	r + = t;
 	return r
 },
