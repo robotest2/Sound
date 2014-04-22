@@ -24,16 +24,6 @@ var msgArray = [
 	"Please do not spam."];
 var msgR = Math.floor(Math.random() * msgArray.length);
 var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
-	
-
-//Auth
-
-if (location.pathname != '/astroparty'){
-	options.startup;
-	API.chatLog("Authentication Successful!");
-}else{
-	API.chatLog("You are not authenticated to use this script in the specified room.");
-}
 
 //Options
 options = {
@@ -89,6 +79,16 @@ if(options.afkRemove = true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
 }
 }
+
+//Auth
+
+if (location.pathname != '/astroparty'){
+	options.startup;
+	API.chatLog("Authentication Successful!");
+}else{
+	API.chatLog("You are not authenticated to use this script in the specified room.");
+}
+
 //Loader
 
 function loadOptions(){
