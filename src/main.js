@@ -50,42 +50,39 @@ var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
 startup = {
 
-options:woot = true{
-	API.chatLog("Woot: " + options.woot);
-	$('#woot').click();
-}
-else{
-API.chatLog("Woot: " + options.woot);	
-}
+if (options.woot = true){
+ API.chatLog("Woot: " + options.woot); 
+ $('#woot').click();
+ }else{
+ API.chatLog("Woot: " + options.woot);
+ }
 
-options:announcementMsg = true{
+if (options:announcementMsg = true){
 	API.chatLog("Announcements: " + options.announcementMsg);
 	options.songIntervalMessage;
 }else{
 	API.chatLog("Announcements: " + options.announcementMsg);
 }
 
-options:logUserJoin = true{
+if (options.logUserJoin = true){
 API.chatLog("Log User Join: " + options.logUserJoin);
 API.on(API.USER_JOIN, callback);
 function callback(user) {
   API.chatLog(user.username + " joined the room");
-
 	}
 }else{
 	API.chatLog("Log User Join: " + options.logUserJoin);
 }
 
-options:afkRemove = true{
+if (options.afkRemove = true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	afkB;
 }else{
 	API.chatLog("AFK Remove: " + options.afkRemove);
+	}
 }
 
-}
-
-//Startup
+//Startup Messages
 s;
 o;
 startup;
