@@ -26,7 +26,7 @@ var msgR = Math.floor(Math.random() * msgArray.length);
 var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 //Options
-options = {
+var options = {
 options.woot = true,
 options.announcementMsg = true,
 options.songIntervalMessage = [
