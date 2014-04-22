@@ -49,7 +49,7 @@ options.songIntervalMessage = [
 options.logUserJoin = true,
 options.afkRemove = true,
 options.version = "Beta 3.1",
-}
+};
 
 //Configure Options
 
