@@ -47,11 +47,12 @@ SoundBot.options.songIntervalMessage = [
 	msg: sendMsg
 	}
 	];
-SoundBot.options.allowCommands = true;
-SoundBot.options.logUserJoin = true; //Figure this out
+SoundBot.options.logUserJoin = { //Figure this out
 
-
-SoundBot.options.logUserJoin = true;
+API.on(API.USER_JOIN, callback);
+function callback(user) {
+  API.chatLog(user.username + " joined the room");
+}
 //Startup
 
 var on = "Enabled ";
