@@ -48,7 +48,7 @@ var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
 //Configure Options
 
-options.startup = {
+startup = {
 
 if(options.woot){
 	API.chatLog("Woot: " + options.woot);
@@ -87,7 +87,7 @@ if(options.afkRemove){
 //Startup
 s;
 o;
-options.startup;
+startup;
 on;
 l;
 v;
