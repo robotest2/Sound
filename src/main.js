@@ -50,21 +50,22 @@ var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
 startup = {
 
-if(options.woot){
+options:woot = true{
 	API.chatLog("Woot: " + options.woot);
 	$('#woot').click();
-}else{
+}
+else{
 API.chatLog("Woot: " + options.woot);	
 }
 
-if(options.announcementMsg){
+options:announcementMsg = true{
 	API.chatLog("Announcements: " + options.announcementMsg);
 	options.songIntervalMessage;
 }else{
 	API.chatLog("Announcements: " + options.announcementMsg);
 }
 
-if(options.logUserJoin){
+options:logUserJoin = true{
 API.chatLog("Log User Join: " + options.logUserJoin);
 API.on(API.USER_JOIN, callback);
 function callback(user) {
@@ -75,7 +76,7 @@ function callback(user) {
 	API.chatLog("Log User Join: " + options.logUserJoin);
 }
 
-if(options.afkRemove){
+options:afkRemove = true{
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	afkB;
 }else{
