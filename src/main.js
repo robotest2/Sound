@@ -289,20 +289,22 @@ try{
     //Bouncer
     
     API.on(API.CHAT, function(data){
-	if (data.message.indexOf('!remove') === 0 && API.getUser(data.fromID).permission > 1){
-	getID = function(username){
-    		var users = API.getUsers(), result = '';
-    		for(var i; users);{;
-        		if(users[i].username === username.trim()){
-            			result = users[i].id;
-            			return result;
-        			}
-		 	}
-		 	return "notFound";
-		};
-	API.moderateRemoveDJ(getID(data.message.split(' ')[1]));
-	}
-});
+    	if(data.message.indexOf('!add') === 0 && API.getuser(data.fromID).permission > 1){
+    		API.moderateDeleteChat(data.chatID);
+    		var users = API.getusers(), result = '';
+    		for(var i users){
+    			if(users[i].username === username.trim()){
+    				result = users[i].id;
+    				return result
+    			}
+    		}
+    	return "notFound";
+    	if(users[i].id = "notFound"){
+    		API.sendChat("/em [" + data.from + "] User not found.");
+    	}
+    	API.moderateAddDJ(users[i].id(data.message.split(' ')[1]));
+    	}
+    });
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
@@ -310,16 +312,6 @@ try{
     		API.sendChat("/em [" + data.from + "] Settings: Auth File: " + SoundBot.options.authSeperateFile + ", Announcement Message: " + SoundBot.options.announcementMsg + ", Interval Message: " + SoundBot.options.songIntervalMessage + ", Allow Commands: " + SoundBot.options.allowCommands + ", Log User Join: " + SoundBot.options.logUserJoin + ".");
     	}
     });
-    
-    API.on(API.CHAT, function lengthCheck(data) {
-    	if(data.message.indexOf('!check') === 0 && API.getUser(data.fromID).permmission > 1){
-    if (data.media.duration > 600) {
-        var currentSong = data.media.cid;
-        API.sendChat("@" + currentDJ + " your song is longer than 10 minutes. I will now skip it.");
-        API.moderateForceSkip();
-    	}
-    }
-});
     
     API.on(API.CHAT, function(data){
     if(data.message.indexOf('!mute') === 0 && API.getUser(data.fromID).permission > 1){
