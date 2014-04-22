@@ -292,7 +292,7 @@ var fightArray = [
         API.moderateDeleteChat(data.chatID);
         API.sendChat("/em [" + data.from + " used add]");
           var users = API.getUsers(), result = '';
-        for(var i; users){
+        for(var i; users;){
             if (users[i].username = name){
             result = users[i].id;
               return result;
