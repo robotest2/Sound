@@ -9,7 +9,7 @@ http://plug.dj/astroparty
 Enjoy using it in my room!
 
 */
-(function(){
+
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
@@ -440,5 +440,4 @@ var fightArray = [
     	}
     });
     
-});
     //End of script (for now) 
