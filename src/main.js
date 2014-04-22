@@ -387,12 +387,4 @@ var fightArray = [
     		API.moderateForceSkip();
     	}
     });
-}catch(err){
-	var d = new Date();
-	API.sendChat("/em [An error has occurred on " + d + " for " + err + "]");
-	API.chatLog("Error: " + d + " on " + err);
-}
-    
-    
-    
     //End of script (for now) 
