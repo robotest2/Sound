@@ -10,6 +10,10 @@ Enjoy using it in my room!
 
 */
 
+//Auth
+
+
+
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
@@ -22,35 +26,82 @@ var msgR = Math.floor(Math.random() * msgArray.length);
 var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 	
 
-//Settings
-SoundBot = {};
-SoundBot.options = {};
-SoundBot.options.authSeperateFile = true; /*[
-$.ajax({
-    url:'https://raw.githubusercontent.com/Pr0Code/Sound/master/Loader.js',
-    type:'HEAD',
-    error: function()
-    {
-        return false;
-	API.chatLog("Authentication file does not exist.");
-    },
-    success: function()
-    {
-        return true;
-	API.chatLog("File exists.");
-    }
-})];*/
-SoundBot.options.announcementMsg = true;
-SoundBot.options.songIntervalMessage = [
+//Auth
+
+if (location.pathname != '/astroparty'){
+	loadOptions;
+	API.chatLog("Authentication Successful!");
+}else{
+	API.chatLog("You are not authenticated to use this script in the specified room.");
+}
+
+//Options
+options = {
+options.woot = true;
+options.announcementMsg = true;
+options.songIntervalMessage = [
 	{
-	interval: 1,
+	interval: 10,
 	offset: 0,
 	msg: sendMsg
 	}
 	];
-SoundBot.options.logUserJoin = true;
-SoundBot.options.version = "Beta 3";
+options.logUserJoin = true;
+options.afkRemove = true;
+options.version = "Beta 3.1";
 
+}
+
+//Configure Options
+
+if(options.woot = true){
+	$('#woot').click();
+}
+
+if(options.announcementMsg = true){
+	API.chatLog("Announcements: true");
+	options.songIntervalMessage;
+}else{
+	API.chatLog("Announcements: false");
+}
+
+if(options.logUserJoin = true){
+API.chatLog("Log User Join: true")
+API.on(API.USER_JOIN, callback);
+function callback(user) {
+  API.chatLog(user.username + " joined the room");
+
+	}
+}else{
+	API.chatLog("Log User Join: false")
+}
+
+if(options.afkRemove = true){
+	API.chatLog("AFK Remove: true");
+	afkB;
+}else{
+	API.chatLog("AFK Remove: false");
+}
+
+//Loader
+
+function loadOptions(){
+	var l = JSON.parse(localStorage.getItem('options'));
+	if(l){
+		var b = Object.keys(options);
+		for (var i = 0; i < b.length; i++){
+			if(l[b[i]] !== undefined){
+				if(l[b[i]] !null && a[b[i]].isAray && options[b[i]] !== null && options[b[i]].isArray) options[b[i]] = l[b[i]];
+				else if(typeof options[b[i]] == 'object' && settings [b[i]] !null){
+					var z = Object.keys(settings[b[i]]);
+					for(var j = 0; j < z.length; j++){
+						if(l[b[i]][z[j]] !== undefined) options[b[i]][c[j]] = a[b[i]][c[j]];
+					}
+				}else options[b[i]] = l[b[i]];
+			}
+		}
+	}
+}
 //AFK removal
 
 var afkB = {
@@ -123,15 +174,13 @@ for(var i in API.getUsers()){
 	afkB.users[API.getUsers()[i].id] = new afkB.user(API.getUsers()[i]);
 }
 
-API.chatLog("AFK Removal is Live!", true);
-
 //Startup
 
 var on = "Enabled ";
 
 API.chatLog("Loading file...");
 setTimeout(function(){
-	API.chatLog(on + "version " + SoundBot.options.version);
+	API.chatLog(on + "version " + options.version);
 }, 1000);
 setTimeout(function(){
 API.sendChat("/em now live!");
@@ -307,7 +356,7 @@ var fightArray = [
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + "] Settings: Auth File: " + SoundBot.options.authSeperateFile + ", Announcement Message: " + SoundBot.options.announcementMsg + ", Interval Message: " + SoundBot.options.songIntervalMessage + ", Allow Commands: " + SoundBot.options.allowCommands + ", Log User Join: " + SoundBot.options.logUserJoin + ".");
+    		API.sendChat("/em [" + data.from + "] Settings: Auth File: " + options.authSeperateFile + ", Announcement Message: " + options.announcementMsg + ", Interval Message: " + options.songIntervalMessage + ", Allow Commands: " + options.allowCommands + ", Log User Join: " + options.logUserJoin + ".");
     	}
     });
     
