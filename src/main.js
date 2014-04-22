@@ -37,13 +37,18 @@ afkRemove: true,
 version: "Beta 3.1",
 };
 
+//Options Vars
+
+var s = API.chatLog("Starting Up...");
+var o = API.chatLog("Options: ");
+var on = API.chatLog("Enabled ");
+var l = API.chatLog("Loading file...");
+var v = setTimeout(function(){ API.chatLog(on + "version " + options.version); }, 1000);
+var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
+
 //Configure Options
 
 options.startup = {
-
-API.chatLog("Starting Up...");
-
-API.chatLog("Options: ");
 
 if(options.woot = true){
 	API.chatLog("Woot: " + options.woot);
@@ -77,17 +82,16 @@ if(options.afkRemove = true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
 }
 
-var on = "Enabled ";
-
-API.chatLog("Loading file...");
-setTimeout(function(){
-	API.chatLog(on + "version " + options.version);
-}, 1000);
-setTimeout(function(){
-API.sendChat("/em now live!");
-}, 2000);
-
 }
+
+//Startup
+s;
+o;
+options.startup;
+on;
+l;
+v;
+live;
 
 //Auth
 
