@@ -54,7 +54,7 @@ API.chatLog("Woot: " + options.woot);
 
 if(options.announcementMsg = true){
 	API.chatLog("Announcements: " + options.announcementMsg);
-	options.songIntervalMessage
+	options.songIntervalMessage;
 }else{
 	API.chatLog("Announcements: " + options.announcementMsg);
 }
