@@ -23,8 +23,8 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 //Options
 options = {
-
-announcementMsg = true,
+woot: true,
+announcementMsg: true,
 songIntervalMessage = [
 	{
 	interval: 10,
@@ -32,9 +32,9 @@ songIntervalMessage = [
 	msg: sendMsg
 	}
 	],
-logUserJoin = true,
-afkRemove = true,
-version = "Beta 3.1",
+logUserJoin: true,
+afkRemove: true,
+version: "Beta 3.1",
 };
 
 //Configure Options
@@ -45,8 +45,15 @@ API.chatLog("Starting Up...");
 
 API.chatLog("Options: ");
 
+if(options.woot = true){
+	API.chatLog("Woot: " + options.woot);
+	$('#woot').click();
+}else{
+API.chatLog("Woot: " + options.woot);	
+}
+
 if(options.announcementMsg = true){
-	API.chatLog("Announcements: true");
+	API.chatLog("Announcements: " + options.announcementMsg);
 	options.songIntervalMessage;
 }else{
 	API.chatLog("Announcements: " + options.announcementMsg);
@@ -230,10 +237,6 @@ var fightArray = [
 	" has water, never wakes up.",
 	" loves one-direction.",
 	" eats coconuts"];
-	
-//Woot
-
-$('#woot').click();
 	
 //Commands
 
