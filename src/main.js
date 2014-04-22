@@ -71,7 +71,7 @@ afkRemover: function(){
 	var waitList = API.getWaitList(),
 	now = Date.now(), index = [waitList[4], waitList[2], waitList[0]];
 	if(waitList.length > 4){
-		if now - afkB.users[index[0].id].afkTime >= afkB.users[index[0].id].warns.warn1){
+		if(now - afkB.users[index[0].id].afkTime >= afkB.users[index[0].id].warns.warn1){
 			API.sendChat("@" + index[0].username + "AFK Time - " + afkb.getTime(now - afkB.users[index[0].id].afkTime) + " | Chat in 5 songs or I will remove you!");
 			
 			afkB.users[index[0].id].warns.warn1 = true;
