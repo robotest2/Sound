@@ -41,6 +41,8 @@ version = "Beta 3.1",
 
 options.startup = {
 
+API.chatLog("Starting Up...");
+
 API.chatLog("Options: ");
 
 if(options.botWoot = true){
@@ -74,6 +76,17 @@ if(options.afkRemove = true){
 }else{
 	API.chatLog("AFK Remove: " + options.afkRemove);
 }
+
+var on = "Enabled ";
+
+API.chatLog("Loading file...");
+setTimeout(function(){
+	API.chatLog(on + "version " + options.version);
+}, 1000);
+setTimeout(function(){
+API.sendChat("/em now live!");
+}, 2000);
+
 }
 
 //Auth
@@ -85,25 +98,6 @@ if (location.pathname != '/astroparty'){
 	API.chatLog("You are not authenticated to use this script in the specified room.");
 }
 
-//Loader
-
-function loadOptions(){
-	var l = JSON.parse(localStorage.getItem('options'));
-	if(l){
-		var b = Object.keys(options);
-		for (var i = 0; i < b.length; i++){
-			if(l[b[i]] !== undefined){
-				if(l[b[i]] !null && a[b[i]].isAray && options[b[i]] !== null && options[b[i]].isArray) options[b[i]] = l[b[i]];
-				else if(typeof options[b[i]] == 'object' && settings [b[i]] !null){
-					var z = Object.keys(settings[b[i]]);
-					for(var j = 0; j < z.length; j++){
-						if(l[b[i]][z[j]] !== undefined) options[b[i]][c[j]] = a[b[i]][c[j]];
-					}
-				}else options[b[i]] = l[b[i]];
-			}
-		}
-	}
-}
 //AFK removal
 
 var afkB = {
