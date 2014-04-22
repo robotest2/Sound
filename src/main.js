@@ -49,7 +49,7 @@ SoundBot.options.songIntervalMessage = [
 	];
 SoundBot.options.logUserJoin = { //Figure this out
 
-function callback(user) {
+function callback(user){
   API.chatLog(user.username + " joined the room");
 }
 //Startup
