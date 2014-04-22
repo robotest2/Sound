@@ -49,7 +49,7 @@ SoundBot.options.songIntervalMessage = [
 	}
 	];
 SoundBot.options.logUserJoin = true;
-
+SoundBot.options.version = "Beta 3";
 //AFK removal
 
 var afkB = {
@@ -127,11 +127,10 @@ API.chatLog("AFK Removal is Live!", true);
 //Startup
 
 var on = "Enabled ";
-var version = "Beta 2.3";
 
 API.chatLog("Loading file...");
 setTimeout(function(){
-	API.chatLog(on + "version " + version);
+	API.chatLog(on + "version " + SoundBot.options.version);
 }, 1000);
 setTimeout(function(){
 API.sendChat("/em now live!");
