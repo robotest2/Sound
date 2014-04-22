@@ -31,7 +31,7 @@ songIntervalMessage: [
 	offset: 0,
 	msg: sendMsg
 	}
-	] 
+	],
 logUserJoin: true,
 afkRemove: true,
 version: "Beta 3.1",
