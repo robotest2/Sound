@@ -293,7 +293,7 @@ try{
     		API.moderateDeleteChat(data.chatID);
     		function getUser(name){
     		var users = API.getusers(), result = '';
-    		for(var i users) if (users[i].username == name) return users[i].id;{
+    		for(var i users) if (users[i].username == name){
     			result = users[i].id;
     			return result;
     			}
