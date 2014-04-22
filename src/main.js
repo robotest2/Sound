@@ -288,7 +288,7 @@ var fightArray = [
     //Bouncer
     
     API.on(API.CHAT, function(data){
-      if(data.message.indexOf('!add') === 0 && API.getuser(data.fromID).permission > 1){
+      if(data.message.indexOf('!add') === 0 && API.getUser(data.fromID).permission > 1){
         API.moderateDeleteChat(data.chatID);
           var users = API.getUsers(), result = '';
         for(var i; users;){
