@@ -37,19 +37,18 @@ if (location.pathname != '/astroparty'){
 
 //Options
 options = {
-options.woot = true;
-options.announcementMsg = true;
+options.woot = true,
+options.announcementMsg = true,
 options.songIntervalMessage = [
 	{
 	interval: 10,
 	offset: 0,
 	msg: sendMsg
 	}
-	];
-options.logUserJoin = true;
-options.afkRemove = true;
-options.version = "Beta 3.1";
-
+	],
+options.logUserJoin = true,
+options.afkRemove = true,
+options.version = "Beta 3.1",
 }
 
 //Configure Options
