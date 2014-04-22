@@ -23,18 +23,18 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 //Options
 options = {
-options.botWoot: =: true:
-options.announcementMsg = true,
-options.songIntervalMessage = [
+botWoot = true
+announcementMsg = true,
+songIntervalMessage = [
 	{
 	interval: 10,
 	offset: 0,
 	msg: sendMsg
 	}
 	],
-options.logUserJoin = true,
-options.afkRemove = true,
-options.version = "Beta 3.1",
+logUserJoin = true,
+afkRemove = true,
+version = "Beta 3.1",
 };
 
 //Configure Options
