@@ -290,9 +290,10 @@ var fightArray = [
     API.on(API.CHAT, function(data){
       if(data.message.indexOf('!add') === 0 && API.getUser(data.fromID).permission > 1){
         API.moderateDeleteChat(data.chatID);
+        API.sendChat("/em [" + data.from + " used add]");
           var users = API.getUsers(), result = '';
         for(var i; users;){
-            if (users[i].username == name){
+            if (users[i].username = name){
             result = users[i].id;
               return result;
             }else{
