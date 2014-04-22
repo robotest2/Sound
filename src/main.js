@@ -302,7 +302,6 @@ var fightArray = [
         }
       }
     });
-           });
     
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
