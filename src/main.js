@@ -291,7 +291,7 @@ var fightArray = [
       if(data.message.indexOf('!add') === 0 && API.getUser(data.fromID).permission > 1){
         API.moderateDeleteChat(data.chatID);
           var users = API.getUsers(), result = '';
-        for(var i users;){
+        for(var i; users;){
             if (users[i].username == name){
             result = users[i].id;
               return result;
