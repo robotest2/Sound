@@ -29,7 +29,7 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 //Auth
 
 if (location.pathname != '/astroparty'){
-	loadOptions;
+	options.startup;
 	API.chatLog("Authentication Successful!");
 }else{
 	API.chatLog("You are not authenticated to use this script in the specified room.");
@@ -53,35 +53,42 @@ options.version = "Beta 3.1",
 
 //Configure Options
 
+options.startup = {
+
+API.chatLog("Options: ");
+
 if(options.woot = true){
+	API.chatLog("Woot: " + options.woot);
 	$('#woot').click();
+}else{
+	API.chatLog("Woot: " + options.woot);
 }
 
 if(options.announcementMsg = true){
 	API.chatLog("Announcements: true");
 	options.songIntervalMessage;
 }else{
-	API.chatLog("Announcements: false");
+	API.chatLog("Announcements: " + options.announcementMsg);
 }
 
 if(options.logUserJoin = true){
-API.chatLog("Log User Join: true")
+API.chatLog("Log User Join: " + options.logUserJoin);
 API.on(API.USER_JOIN, callback);
 function callback(user) {
   API.chatLog(user.username + " joined the room");
 
 	}
 }else{
-	API.chatLog("Log User Join: false")
+	API.chatLog("Log User Join: " + options.logUserJoin);
 }
 
 if(options.afkRemove = true){
-	API.chatLog("AFK Remove: true");
+	API.chatLog("AFK Remove: " + options.afkRemove);
 	afkB;
 }else{
-	API.chatLog("AFK Remove: false");
+	API.chatLog("AFK Remove: " + options.afkRemove);
 }
-
+}
 //Loader
 
 function loadOptions(){
