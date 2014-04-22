@@ -301,7 +301,7 @@ var fightArray = [
           API.moderateAddDJ(users[i].id(data.message.split(' ')[1]));
         }
       }
-    };
+    });
            });
     
     API.on(API.CHAT, function(data){
