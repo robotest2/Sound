@@ -245,7 +245,8 @@ try{
     API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + "] " + data.message);
+    		var sayMsg = data.message.substr(5).trim();
+    		API.sendChat("/em [" + data.from + "] " + sayMsg);
     	}
     });
     
