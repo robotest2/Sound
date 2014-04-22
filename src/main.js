@@ -292,12 +292,10 @@ try{
     	if(data.message.indexOf('!add') === 0 && API.getuser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		var users = API.getusers(), result = '';
-    		for(var i users){
-    			if(users[i].username === username.trim()){
-    				result = users[i].id;
-    				return result
+    		for(var i users) if (users[i].username == name) return users[i].id;{
+    			result = users[i].id;
+    			return result;
     			}
-    		}
     	return "notFound";
     	if(users[i].id = "notFound"){
     		API.sendChat("/em [" + data.from + "] User not found.");
