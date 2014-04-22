@@ -294,7 +294,7 @@ var fightArray = [
           var users = API.getUsers(), result = '';
         for(var i; users;){
             if (users[i].username = name){
-            result = users[i].id;
+            result = users.id;
               return result;
             }else{
         return "notFound";
