@@ -23,7 +23,7 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 //Options
 options = {
-botWoot = true
+botWoot = true,
 announcementMsg = true,
 songIntervalMessage = [
 	{
