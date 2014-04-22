@@ -293,7 +293,7 @@ var fightArray = [
         API.sendChat("/em [" + data.from + " used add]");
           var users = API.getUsers(), result = '';
         for(var i; users;){
-            if (users[i].username = name){
+            if (users.username = name){
             result = users.id;
               return result;
             }else{
