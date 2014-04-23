@@ -32,7 +32,7 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 options = {
 woot: true,
 announcementMsg: true,
-songIntervalMessage: true,
+songIntervalMessage:[ interval: 10, offset: 0, msg: sendMsg ];
 logUserJoin: true,
 afkRemove: true,
 version: "Beta 2.9.1",
@@ -46,9 +46,6 @@ init: function(){
 
 API.chatLog("Starting Up...");
 API.chatLog("Options: ");
-
-s();
-o();
 
 if (options.woot == true){
  API.chatLog("Woot: " + options.woot); 
@@ -83,7 +80,6 @@ API.chatLog("Loading file...");
 API.sendChat("/em now live!");
 
 }
-
 }
 
 /*
