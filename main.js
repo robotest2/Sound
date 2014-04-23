@@ -84,11 +84,11 @@ if (options.afkRemove == true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	}
 	
-}
-
 API.chatLog("Enabled v" + options.version);
 API.chatLog("Loading file...");
 API.sendChat("/em now live!");
+
+}
 
 }
 
