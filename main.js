@@ -26,101 +26,18 @@ var msgArray = [
 	"The song limit for this room is 10 minutes.",
 	"Please do not spam."];
 var msgR = Math.floor(Math.random() * msgArray.length);
-var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
+var sendMsg = "/em [Announcement] " + msgArray[msgR];
 
 //Options
 options = {
 woot: true,
 announcementMsg: true,
-songIntervalMessage:[ interval: 10, offset: 0, msg: sendMsg ];
+songIntervalMessage: { interval: 10000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
 version: "Beta 2.9.1",
 };
 
-//Configure Options + Startup Loader thing
-
-startup = {
-
-init: function(){
-
-API.chatLog("Starting Up...");
-API.chatLog("Options: ");
-
-if (options.woot == true){
- API.chatLog("Woot: " + options.woot); 
- $('#woot').click();
- }else{
- API.chatLog("Woot: " + options.woot);
- }
-
-if (options.announcementMsg == true){
-	API.chatLog("Announcements: " + options.announcementMsg);
-	options.songIntervalMessage;
-}else{
-	API.chatLog("Announcements: " + options.announcementMsg);
-}
-
-if (options.logUserJoin == true){
-API.chatLog("Log User Join: " + options.logUserJoin);
-API.on(API.USER_JOIN, function(a) { console.log(a.username + " joined the room"); });
-}else{
-	API.chatLog("Log User Join: " + options.logUserJoin);
-}
-
-if (options.afkRemove == true){
-	API.chatLog("AFK Remove: " + options.afkRemove);
-	afkB.afkRemover();
-}else{
-	API.chatLog("AFK Remove: " + options.afkRemove);
-	}
-	
-API.chatLog("Enabled v" + options.version);
-API.chatLog("Loading file...");
-API.sendChat("/em now live!");
-
-}
-}
-
-/*
-  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
-      _____           _       _     ____              _   
-     / ____|         (_)     | |   |  _ \            | |  
-    | (___   ___ _ __ _ _ __ | |_  | |_) | ___   ___ | |_
-     \___ \ / __| '__| | '_ \| __| |  _ < / _ \ / _ \| __|
-     ____) | (__| |  | | |_) | |_  | |_) | (_) | (_) | |_ 
-    |_____/ \___|_|  |_| .__/ \__| |____/ \___/ \___/ \__|
-                       | |                                
-                       |_|                                
-
-  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
-
-dat ascii <3
-*/
-
-//Auth boot
-
-if (location.pathname != '/astroparty'){
-	API.chatLog("Authentication Successful!");
-	startup.init;
-}else{
-	API.chatLog("You are not authenticated to use this script in the requested room.", true);
-	}
-	
 //AFK removal
 
 var afkB = {
@@ -182,6 +99,94 @@ eventChat: function(obj){
 	afkB.users[obj.fromID].afkTime = Date.now();
 }
 };
+
+
+//Configure Options + Startup Loader thing
+
+startup = {
+
+init: function(){
+
+API.chatLog("Starting Up...");
+API.chatLog("Options: ");
+
+if (options.woot == true){
+ API.chatLog("Woot: " + options.woot); 
+ $('#woot').click();
+ }else{
+ API.chatLog("Woot: " + options.woot);
+ }
+
+if (options.announcementMsg == true){
+	API.chatLog("Announcements: " + options.announcementMsg);
+	setInterval(function() { 
+		msgR = Math.floor(Math.random() * msgArray.length); 
+		API.sendChat("/em [Announcement] " + msgArray[msgR]);
+		
+		}, options.songIntervalMessage.interval);
+}else{
+	API.chatLog("Announcements: " + options.announcementMsg);
+}
+
+if (options.logUserJoin == true){
+API.chatLog("Log User Join: " + options.logUserJoin);
+API.on(API.USER_JOIN, function(a) { console.log(a.username + " joined the room"); });
+}else{
+	API.chatLog("Log User Join: " + options.logUserJoin);
+}
+
+if (options.afkRemove == true){
+	API.chatLog("AFK Remove: " + options.afkRemove);
+	afkB.afkRemover();
+}else{
+	API.chatLog("AFK Remove: " + options.afkRemove);
+	}
+	
+API.chatLog("Enabled v" + options.version);
+API.chatLog("Loading file...");
+API.sendChat("/em now live!");
+
+}
+}
+
+/*
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+      _____           _       _     ____              _   
+     / ____|         (_)     | |   |  _ \            | |  
+    | (___   ___ _ __ _ _ __ | |_  | |_) | ___   ___ | |_
+     \___ \ / __| '__| | '_ \| __| |  _ < / _ \ / _ \| __|
+     ____) | (__| |  | | |_) | |_  | |_) | (_) | (_) | |_ 
+    |_____/ \___|_|  |_| .__/ \__| |____/ \___/ \___/ \__|
+                       | |                                
+                       |_|                                
+
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+
+dat ascii <3
+*/
+
+//Auth boot
+
+if (location.pathname != '/astroparty'){
+	API.chatLog("Authentication Successful!");
+	startup.init();
+}else{
+	API.chatLog("You are not authenticated to use this script in the requested room.", true);
+	}
 
 API
 .on(API.WAIT_LIST_UPDATE, $.proxy(afkB.eventWaitListUpdate, this))
