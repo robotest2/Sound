@@ -43,7 +43,7 @@ var s = setTimeout(function(){ API.chatLog("Starting Up..."); }, 500);
 var o = setTimeout(function(){ API.chatLog("Options: "); }, 1000);
 var on = setTimeout(function(){ API.chatLog("Enabled v" + options.version); }, 2000);
 var l = setTimeout(function(){ API.chatLog("Loading file..."); }, 2000);
-var live = setTimeout(function(){ setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
+var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
 //Configure Options + Startup Loader thing
 
