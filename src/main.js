@@ -37,17 +37,6 @@ afkRemove: true,
 version: "Beta 3.1",
 };
 
-//Authenticator
-
-var auth = {
-if (location.pathname != '/astroparty'){
-	options.startup;
-	API.chatLog("Authentication Successful!");
-}else{
-	API.chatLog("You are not authenticated to use this script in the specified room.");
-	}
-}
-
 //Options Vars
 
 var s = API.chatLog("Starting Up...");
@@ -93,8 +82,10 @@ if (options.afkRemove = true){
 	}
 }
 
-//Startup Messages
-function startup(){
+//Actual sstartup
+
+var z = {
+function(){
 auth();
 s();
 o();
@@ -104,6 +95,47 @@ l();
 v();
 live();
 }
+}
+
+
+/*
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+      _____           _       _     ____              _   
+     / ____|         (_)     | |   |  _ \            | |  
+    | (___   ___ _ __ _ _ __ | |_  | |_) | ___   ___ | |_
+     \___ \ / __| '__| | '_ \| __| |  _ < / _ \ / _ \| __|
+     ____) | (__| |  | | |_) | |_  | |_) | (_) | (_) | |_ 
+    |_____/ \___|_|  |_| .__/ \__| |____/ \___/ \___/ \__|
+                       | |                                
+                       |_|                                
+
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+
+dat ascii <3
+*/
+
+//Auth boot
+
+if (location.pathname != '/astroparty'){
+	z();
+	API.chatLog("Authentication Successful!");
+}else{
+	API.chatLog("You are not authenticated to use this script in the specified room.");
+	}
 
 //AFK removal
 
