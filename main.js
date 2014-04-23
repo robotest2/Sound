@@ -86,9 +86,9 @@ if (options.afkRemove == true){
 	
 }
 
-API.chatLog("Enabled v" + options.version);}
-API.chatLog("Loading file...");}
-API.sendChat("/em now live!");}
+API.chatLog("Enabled v" + options.version);
+API.chatLog("Loading file...");
+API.sendChat("/em now live!");
 
 }
 
