@@ -388,7 +388,7 @@ var fightArray = [
 	if (us) {
 		var usb = API.getUsers();
 		for(var i in usb) {
-		if(usb[i].username.toLowerCase() == a) {
+		if(usb[i].username.toLowerCase() == us) {
 			return usb[i].id;	
 			}
 		}
