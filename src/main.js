@@ -34,7 +34,7 @@ songIntervalMessage: [
 	],
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 2.7.8_Dev5",
+version: "Beta 2.7.9",
 };
 
 //Options Vars
@@ -122,7 +122,7 @@ if (location.pathname != '/astroparty'){
 }else{
 	API.chatLog("You are not authenticated to use this script in the requested room.");
 	}
-
+	
 //AFK removal
 
 var afkB = {
@@ -263,8 +263,16 @@ var fightArray = [
 	" has water, never wakes up.",
 	" loves one-direction.",
 	" eats coconuts"];
-	
-//Commands
+/*
+   _____                                          _     
+  / ____|                                        | |    
+ | |     ___  _ __ ___  _ __ ___   __ _ _ __   __| |___ 
+ | |    / _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` / __|
+ | |___| (_) | | | | | | | | | | | (_| | | | | (_| \__ \
+  \_____\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|___/
+                                                        
+                                                      
+*/
 
 //User
 	
