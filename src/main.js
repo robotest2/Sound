@@ -86,7 +86,7 @@ if (options.afkRemove = true){
 //Actual sstartup
 
 var z = {
-function startup(){
+init: function(){
 s();
 o();
 startup.init();
@@ -129,7 +129,7 @@ dat ascii <3
 //Auth boot
 
 if (location.pathname != '/astroparty'){
-	z();
+	z.init();
 	API.chatLog("Authentication Successful!");
 }else{
 	API.chatLog("You are not authenticated to use this script in the requested room.");
