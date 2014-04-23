@@ -50,8 +50,8 @@ startup = {
 
 init: function(){
 
-var s = function(){API.chatLog("Starting Up...");}
-var o = function(){API.chatLog("Options: ");}
+API.chatLog("Starting Up...");
+API.chatLog("Options: ");
 
 s();
 o();
@@ -86,13 +86,10 @@ if (options.afkRemove == true){
 	
 }, 1000);
 
-var on = function(){API.chatLog("Enabled v" + options.version);}
-var l =  function(){API.chatLog("Loading file...");}
-var live = function(){API.sendChat("/em now live!");}
+API.chatLog("Enabled v" + options.version);}
+API.chatLog("Loading file...");}
+API.sendChat("/em now live!");}
 
-on();
-l();
-live();
 }
 
 /*
