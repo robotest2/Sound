@@ -351,7 +351,7 @@ var fightArray = [
 	if(data.message.indexOf('!eta') === 0){
 	API.moderateDeleteChat(data.chatID);
 	var pos = API.getWaitListPosition(), str = 'ETA: ';
-	str+= pos == -1 ? 'N/A. You are not in the waitlist!' : getTime(pos * 1000 * 60 * (25/6) + API.getTimeRemaining() * 1000);
+	str+= pos == -1 ? 'N/A. You are not in the waitlist!' : API.getTime(pos * 1000 * 60 * (25/6) + API.getTimeRemaining() * 1000);
 	API.sendChat("/em [" + data.from + "] " + str);
 		}
 		
