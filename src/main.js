@@ -86,15 +86,16 @@ if (options.afkRemove = true){
 //Actual sstartup
 
 var z = {
-s;
-o;
+function startup(){
+s();
+o();
 startup.init();
-on;
-l;
-v;
-live;
+on();
+l();
+v();
+live();
 }
-
+}
 /*
   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
  | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
