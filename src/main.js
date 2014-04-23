@@ -43,7 +43,6 @@ var s = API.chatLog("Starting Up...");
 var o = API.chatLog("Options: ");
 var on = API.chatLog("Enabled v" + options.version);
 var l = API.chatLog("Loading file...");
-var v = setTimeout(function(){ API.chatLog(on + "version " + options.version); }, 1000);
 var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
 //Configure Options + Startup Loader thing
@@ -83,19 +82,7 @@ if (options.afkRemove = true){
 	}
 }
 }
-//Actual sstartup
 
-var z = {
-init: function(){
-s();
-o();
-startup.init();
-on();
-l();
-v();
-live();
-}
-}
 /*
   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
  | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -129,7 +116,14 @@ dat ascii <3
 //Auth boot
 
 if (location.pathname != '/astroparty'){
-	z.init();
+	init: function(){
+		s();
+		o();
+		startup.init();
+		on();
+		l();
+		live();
+	}
 	API.chatLog("Authentication Successful!");
 }else{
 	API.chatLog("You are not authenticated to use this script in the requested room.");
