@@ -34,7 +34,7 @@ songIntervalMessage: [
 	],
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 2.7.8_Dev2",
+version: "Beta 2.7.8_Dev5",
 };
 
 //Options Vars
@@ -363,28 +363,9 @@ var fightArray = [
     //Bouncer
     
     API.on(API.CHAT, function(data){
-      if(data.message.indexOf('!add') === 0 && API.getUser(data.fromID).permission > 1){
-        API.moderateDeleteChat(data.chatID);
-        API.sendChat("/em [" + data.from + " used add]");
-        init: function(){
-          var users = API.getUsers(), result = '';
-        for(var i users){
-            if (users[i].username = name){
-            result = users[i].id;
-              return result;
-            }else{
-        return "notFound";
-            }
-          API.moderateAddDJ(users[i].id(data.message.split(' ')[1]));
-        	}
-      	}
-      }
-    });
-    
-    API.on(API.CHAT, function(data){
     	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
-    		API.sendChat("/em [" + data.from + "] Settings: Auth File: " + options.authSeperateFile + ", Announcement Message: " + options.announcementMsg + ", Interval Message: " + options.songIntervalMessage + ", Allow Commands: " + options.allowCommands + ", Log User Join: " + options.logUserJoin + ".");
+    		API.sendChat("/em [" + data.from + "] Settings | Auto Woot: " + options.woot + ", Announcement Message: " + options.announcementMsg + ", Log user Join: " + options.logUserJoin + ", AFK Remove: " + options.afkRemove + ".");
     	}
     });
     
