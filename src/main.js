@@ -65,10 +65,7 @@ if (options.announcementMsg = true){
 
 if (options.logUserJoin = true){
 API.chatLog("Log User Join: " + options.logUserJoin);
-API.on(API.USER_JOIN, callback);
-function callback(user) {
-  API.chatLog(user.username + " joined the room");
-	}
+console.log(user.username + " joined the room");
 }else{
 	API.chatLog("Log User Join: " + options.logUserJoin);
 }
