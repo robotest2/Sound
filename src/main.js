@@ -49,6 +49,9 @@ var s = setTimeout(function(){
 var o = setTimeout(function(){ 
 	API.chatLog("Options: ");
 
+s();
+o();
+
 if (options.woot = true){
  API.chatLog("Woot: " + options.woot); 
  $('#woot').click();
@@ -83,6 +86,9 @@ var on = setTimeout(function(){ API.chatLog("Enabled v" + options.version); }, 2
 var l = setTimeout(function(){ API.chatLog("Loading file..."); }, 2000);
 var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
+on();
+l();
+live();
 }
 }
 
