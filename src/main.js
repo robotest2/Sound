@@ -390,10 +390,16 @@ var fightArray = [
 		for(var i in usb) {
 		if(usb[i].username.toLowerCase() == us) {
 			return usb[i].id;	
+			}else{
+				return "notFound"
 			}
 		}
 	}
-                API.moderateDeleteChat(usb[i].id.chatID);
+               if(usb[i].id == us){
+               	API.moderateDeleteChat(usb[i].id.chatID);
+               }else{
+               	API.sendChat("/em [" + data.from + " user not found]");
+               }
     }
     
     	if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
