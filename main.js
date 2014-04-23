@@ -84,7 +84,7 @@ if (options.afkRemove == true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	}
 	
-}, 1000);
+}
 
 API.chatLog("Enabled v" + options.version);}
 API.chatLog("Loading file...");}
