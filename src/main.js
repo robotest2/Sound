@@ -34,7 +34,7 @@ songIntervalMessage: [
 	],
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 2.7.9",
+version: "Beta 2.8",
 };
 
 //Configure Options + Startup Loader thing
@@ -373,12 +373,28 @@ var fightArray = [
     		API.sendChat("/em [" + data.from + "] Settings | Auto Woot: " + options.woot + ", Announcement Message: " + options.announcementMsg + ", Log user Join: " + options.logUserJoin + ", AFK Remove: " + options.afkRemove + ".");
     	}
     
+    
+    
     if(data.message.indexOf('!mute') === 0 && API.getUser(data.fromID).permission > 1){
     	API.moderateDeleteChat(data.chatID);
     	API.sendChat("/em [" + data.from + " used mute]");
-    	var mute = function(a){ if (a.from == "user.username" || a.fromID == "user.userID") API.moderateDeleteChat(a.chatID); }
-    	mute(a);
-    	}
+    	//Trim message to so it reads (!mute) @user.
+    	
+    	var getTag = data.message.subtr(6).trim();
+    	
+    	//Get id and pass it to mute
+    	
+    	var us = prompt(getTag).toLowerCase();
+	if (us) {
+		var usb = API.getUsers();
+		for(var i in usb) {
+		if(usb[i].username.toLowerCase() == a) {
+			return usb[i].id;	
+			}
+		}
+	}
+                API.moderateDeleteChat(usb[i].id.chatID);
+    }
     
     	if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
