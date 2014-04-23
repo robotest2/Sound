@@ -37,6 +37,17 @@ afkRemove: true,
 version: "Beta 3.1",
 };
 
+//Authenticator
+
+var auth = {
+if (location.pathname != '/astroparty'){
+	options.startup;
+	API.chatLog("Authentication Successful!");
+}else{
+	API.chatLog("You are not authenticated to use this script in the specified room.");
+	}
+}
+
 //Options Vars
 
 var s = API.chatLog("Starting Up...");
@@ -46,10 +57,10 @@ var l = API.chatLog("Loading file...");
 var v = setTimeout(function(){ API.chatLog(on + "version " + options.version); }, 1000);
 var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
-//Configure Options
+//Configure Options + Startup Loader thing
 
 startup = {
-
+	
 if (options.woot = true){
  API.chatLog("Woot: " + options.woot); 
  $('#woot').click();
@@ -83,21 +94,15 @@ if (options.afkRemove = true){
 }
 
 //Startup Messages
-s;
-o;
-startup;
-on;
-l;
-v;
-live;
-
-//Auth
-
-if (location.pathname != '/astroparty'){
-	options.startup;
-	API.chatLog("Authentication Successful!");
-}else{
-	API.chatLog("You are not authenticated to use this script in the specified room.");
+function startup(){
+auth();
+s();
+o();
+startup();
+on();
+l();
+v();
+live();
 }
 
 //AFK removal
@@ -325,12 +330,17 @@ var fightArray = [
         API.sendChat("/em [" + data.from + "] " + askArray[askR]);
       }
     });
+	
+	API.on(API.CHAT, function(data){
+	if(data.message.indexOf('!eta') === 0){
+	API.moderateDeleteChat(data.chatID);
+	var pos = API.getWaitListPosition(), str = 'ETA: ';
+	str+= pos == -1 ? 'N/A. You are not in the waitlist!' : getTime(pos * 1000 * 60 * (25/6) + API.getTimeRemaining() * 1000);
+	API.sendChat("/em [" + data.from + "] " + str);
+		}
+	});
     //Put more here soon
-    
-    //Rdj
-    
-    //Coming soon
-    
+	
     //Bouncer
     
     API.on(API.CHAT, function(data){
