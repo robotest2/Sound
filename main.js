@@ -35,7 +35,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 3_Dev1",
+version: "Beta 2.9.1",
 };
 
 //AFK removal
@@ -144,7 +144,6 @@ if (options.afkRemove == true){
 	
 API.chatLog("Enabled v" + options.version);
 API.chatLog("Loading file...");
-API.sendChat("/em now live!");
 
 }
 }
