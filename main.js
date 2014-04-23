@@ -8,6 +8,13 @@ http://plug.dj/astroparty
 
 Enjoy using it in my room!
 
+Credits (Yes I used reverse psycology to put in the credits first :) )
+
+Overall Master God Person Thing: AstroShock (Pr0Code)
+Amazing Helper Guy That Fixes Stuff For Me Because I'm A Noob (<--- lol, it true doe): WayzRG (ProdTv - from pastebin)
+
+
+
 */
 
 var msgArray = [
@@ -402,11 +409,16 @@ var fightArray = [
                }
     }
     
-    	if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
-    		API.moderateDeleteChat(data.chatID);
-    		var sayMsg = data.message.substr(5).trim();
-    		API.sendChat("/em [" + data.from + "] " + sayMsg);
-    	}
+        if(data.message.indexOf('!staff') !=-1){
+                var isonline = [];
+                API.moderateDeleteChat(data.chatID);
+                var online = API.getStaff();
+                for(var i in online) {
+                        isonline.push(online[i].username);
+                }
+                API.sendChat("/em [" + data.from + "] Staff that's online: [" + isonline.join(', ') + "]");
+                isonline = [];
+        }
     
     	if(data.message.indexOf('!lock') === 0 && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
