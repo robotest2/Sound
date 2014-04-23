@@ -35,71 +35,73 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 3_Dev5",
+version: "Beta 3_Dev6",
 };
 
-//AFK removal
 
+// UserData (Wayz)
+var userData = {};
+var usersinroom = API.getUsers();
+for(var i in usersinroom) {
+    userData[usersinroom[i].id] = {
+        username: usersinroom[i].username,
+        afktime: Date.now(),
+        warning: false,
+        voteskip: false,
+        mute: false,
+        msgafkactive: false,
+        msgafk: "I'm not here sorry"
+    };
+}
+
+API.on(API.USER_JOIN, function(user) {
+    userData[user.id] = {
+        username: user.username,
+        afktime: Date.now(),
+        warning: false,
+        voteskip: false,
+        mute: false,
+        msgafkactive: false,
+        msgafk: "I'm not here sorry"
+    };
+});
+
+API.on(API.USER_LEAVE, function(user) {
+	delete userData[user.id];
+});
+
+API.on(API.CHAT, function(data) {
+    userData[data.fromID].afktime = Date.now();
+    userData[data.fromID].warning = false;
+});
+
+//AFK removal (Wayz)
+var thirtyMinute = 180000;
 var afkB = {
 
-afkLimit: 1,
-users: {},
-getTime: function(ms){
-	ms = Math.floor(ms / 60000);
-	var t = ms - Math.floor(ms / 60) * 60;
-	var n = (ms - t) / 60;
-	var r = '';
-	r += n < 10 ? '0' : '';
-	r += n + 'h';
-	r += t < 10 ? '0' : '';
-	r += t;
-	return r;
-},
 afkRemover: function(){
-	var waitList = API.getWaitList(),
-	now = Date.now(), index = [waitList[4], waitList[2], waitList[0]];
-	if(waitList.length > 4){
-		if(now - afkB.users[index[0].id].afkTime >= afkB.users[index[0].id].warns.warn1){
-			API.sendChat("@" + index[0].username + "AFK Time - " + afkb.getTime(now - afkB.users[index[0].id].afkTime) + " | Chat in 5 songs or I will remove you!");
-			
-			afkB.users[index[0].id].warns.warn1 = true;
+	var userswl = API.getWaitList();
+	var now = Date.now();
+	for(var i in userswl){
+		var userafk = userData[userswl[i].id].afktime;
+		var usertimeafksolo = now - userafk;
+		var usertimeafk = Math.floor((now - userafk) / 60000) % 60;
+		if (usertimeafksolo > thirtyMinute && userData[userswl[i].id].warning === false) {
+			API.sendChat("@" + userswl[i].username + " Afk time: " + usertimeafk + " minutes. Chat in 4 minutes or I will remove you from the waitlist.");
+			userData[userswl[i].id].warning = true;
+			setTimeout(function() {
+				userswl = API.getWaitList();
+				for (var e in userswl) {
+					if (userData[userswl[e].id].warning === true) {
+						API.moderateRemoveDJ(userswl[e].id);
+						userData[userswl[e].id].warning = false;
+					}
+				}
+			}, 240000);
 		}
-		if(now - afkB.users[index[1].id].afkTime >= afkB.afkLimit * 60000 && !afkB.users[index[1].id].warns.warn1){
-			API.sendChat("@" + index[1].username + " AFK Time - " + afkB.getTime(now - afkB.users[index[1].id].afkTime) + " | Chat in 2 songs or I will remove you!");
-			
-			afkB.users[index[2].id].warns.warn2 = true;
-		}
-		if(now - afkB.users[index[2].id].afkTime >= afkB.afkLimit * 60000 && afkB.users[index[2].id].warns.removed){
-			API.sendChat("@" + index[2].username + " You were " + Math.round((now - afkB.users[index[2].id].afkTime) / 60000) + " minutes past AFK limit (" + afkB.afkLimit + "m) | Chat every " + afkB.afkLimit + " minutes while in the waitlist.");
-			
-			API.moderateRemoveDJ(index[2].id);
-		}
-	}
+        }
 },
-user: function(obj){
-	this.id = obj.id;
-	this.afkTime = Date.now();
-	this.joinTime = Date.now();
-	this.warns = {
-		warn1: false,
-		warn2: false,
-		removed: false
-	};
-},
-eventWaitListUpdate: function(){
-	afkB.afkRemover();
-},
-eventJoin: function(obj){
-	bot.users[obj.id] = new afkB.user(obj);
-},
-eventLeave: function(obj){
-	delete afkB.users[obj.id];
-},
-eventChat: function(obj){
-	afkB.users[obj.fromID].afkTime = Date.now();
-}
 };
-
 
 //Configure Options + Startup Loader thing
 
@@ -137,7 +139,7 @@ API.on(API.USER_JOIN, function(a) { console.log(a.username + " joined the room")
 
 if (options.afkRemove == true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
-	afkB.afkRemover();
+	setInterval(afkB.afkRemover, 300000);
 }else{
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	}
