@@ -128,7 +128,7 @@ if (location.pathname != '/astroparty'){
 	API.chatLog("Authentication Successful!");
 	startup.init;
 }else{
-	API.chatLog("You are not authenticated to use this script in the requested room.");
+	API.chatLog("You are not authenticated to use this script in the requested room.", true);
 	}
 	
 //AFK removal
