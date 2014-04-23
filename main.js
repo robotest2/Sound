@@ -35,7 +35,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 2.9.1",
+version: "Beta 3_Dev1",
 };
 
 //AFK removal
