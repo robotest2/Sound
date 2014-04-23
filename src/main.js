@@ -116,15 +116,23 @@ dat ascii <3
 //Auth boot
 
 if (location.pathname != '/astroparty'){
+	API.chatLog("Authentication Successful!");
 	init: function startup(){
+		setTimeout(function(){
 		s();
+		}, 500);
+		setTimeout(function(){
 		o();
+		}, 1000);
+		setTimeout(function(){
 		startup.init();
+		}, 1500);
+		setTimeout(function(){
 		on();
 		l();
 		live();
+		}, 2000);
 	}
-	API.chatLog("Authentication Successful!");
 }else{
 	API.chatLog("You are not authenticated to use this script in the requested room.");
 	}
