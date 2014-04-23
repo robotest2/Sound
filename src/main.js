@@ -34,7 +34,7 @@ songIntervalMessage: [
 	],
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 3.2.2_Dev1",
+version: "Beta 2.7.8_Dev1",
 };
 
 //Options Vars
