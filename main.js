@@ -313,14 +313,18 @@ var fightArray = [
         var userFR = Math.floor(Math.random() * fightUser.length);
         API.sendChat("[" + data.from + "] @" + fightUser[userFR].username + fightArray[fightR]);
       }
-    
-      if(data.message.indexOf('!staff') === 0){
-        API.moderateDeleteChat(data.chatID);
+      
+      if(data.message.indexOf('!staff') !=-1){ //credit: WayzRG
+        var isonline = []; 
+        API.moderateDeleteChat(data.chatID); 
         var online = API.getStaff();
-        var onlineR = online.length;
-        API.sendChat("/em [" + data.from + " Staff that's online: " + online[onlineR].username + "]");
-      }
-    
+        for(var i in online) {
+                isonline.push(online[i].username);
+        }
+        API.sendChat("/em [" + data.from + "] Staff that's online: [" + isonline.join(', ') + "]");
+        isonline = [];
+}
+
       if(data.message.indexOf('!theme') === 0){
         API.moderateDeleteChat(data.chatID);
         API.sendChat("/em [" + data.from + " The theme is Electronic Dance Music. (EDM)]");
@@ -409,15 +413,10 @@ var fightArray = [
                }
     }
     
-        if(data.message.indexOf('!staff') !=-1){
-                var isonline = [];
-                API.moderateDeleteChat(data.chatID);
-                var online = API.getStaff();
-                for(var i in online) {
-                        isonline.push(online[i].username);
-                }
-                API.sendChat("/em [" + data.from + "] Staff that's online: [" + isonline.join(', ') + "]");
-                isonline = [];
+        if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
+        	API.moderateDeleteChat(data.chatID);
+        	var sayMsg = data.message.substr(5).trim();
+        	API.sendChat("/em [" + data.from + "] " + sayMsg);
         }
     
     	if(data.message.indexOf('!lock') === 0 && API.getUser(data.fromID).permission > 1){
