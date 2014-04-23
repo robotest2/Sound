@@ -384,7 +384,7 @@ var fightArray = [
     	
     	//Get id and pass it to mute
     	
-    	var us = prompt(getTag).toLowerCase();
+    	var us = getTag.toLowerCase();
 	if (us) {
 		var usb = API.getUsers();
 		for(var i in usb) {
