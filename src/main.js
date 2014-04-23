@@ -34,7 +34,7 @@ songIntervalMessage: [
 	],
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 2.7.8_Dev1",
+version: "Beta 2.7.8_Dev2",
 };
 
 //Options Vars
@@ -133,7 +133,7 @@ if (location.pathname != '/astroparty'){
 	z();
 	API.chatLog("Authentication Successful!");
 }else{
-	API.chatLog("You are not authenticated to use this script in the specified room.");
+	API.chatLog("You are not authenticated to use this script in the requested room.");
 	}
 
 //AFK removal
