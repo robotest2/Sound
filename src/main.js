@@ -41,7 +41,7 @@ version: "Beta 3.1",
 
 var s = API.chatLog("Starting Up...");
 var o = API.chatLog("Options: ");
-var on = API.chatLog("Enabled ");
+var on = API.chatLog("Enabled v" + options.version);
 var l = API.chatLog("Loading file...");
 var v = setTimeout(function(){ API.chatLog(on + "version " + options.version); }, 1000);
 var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
