@@ -366,8 +366,9 @@ var fightArray = [
       if(data.message.indexOf('!add') === 0 && API.getUser(data.fromID).permission > 1){
         API.moderateDeleteChat(data.chatID);
         API.sendChat("/em [" + data.from + " used add]");
+        init: function(){
           var users = API.getUsers(), result = '';
-        for(var i; users;){
+        for(var i users){
             if (users[i].username = name){
             result = users[i].id;
               return result;
@@ -375,7 +376,8 @@ var fightArray = [
         return "notFound";
             }
           API.moderateAddDJ(users[i].id(data.message.split(' ')[1]));
-        }
+        	}
+      	}
       }
     });
     
