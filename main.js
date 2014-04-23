@@ -72,14 +72,14 @@ if (options.announcementMsg == true){
 
 if (options.logUserJoin == true){
 API.chatLog("Log User Join: " + options.logUserJoin);
-console.log(user.username + " joined the room");
+API.on(API.USER_JOIN, function(a) { console.log(a.username + " joined the room"); });
 }else{
 	API.chatLog("Log User Join: " + options.logUserJoin);
 }
 
 if (options.afkRemove == true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
-	afkB;
+	afkB.afkRemover();
 }else{
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	}
