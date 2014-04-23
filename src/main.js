@@ -380,7 +380,7 @@ var fightArray = [
     	API.sendChat("/em [" + data.from + " used mute]");
     	//Trim message to so it reads (!mute) @user.
     	
-    	var getTag = data.message.subtr(6).trim();
+    	var getTag = data.message.substr(6).trim();
     	
     	//Get id and pass it to mute
     	
