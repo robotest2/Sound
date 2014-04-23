@@ -51,14 +51,14 @@ var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 startup = {
 
 init: function(){
-if (typeof woot === true){
+if (options.woot = true){
  API.chatLog("Woot: " + options.woot); 
  $('#woot').click();
  }else{
  API.chatLog("Woot: " + options.woot);
  }
 
-if (options:announcementMsg = true){
+if (options.announcementMsg = true){
 	API.chatLog("Announcements: " + options.announcementMsg);
 	options.songIntervalMessage;
 }else{
