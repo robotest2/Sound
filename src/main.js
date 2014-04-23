@@ -49,7 +49,8 @@ var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 //Configure Options + Startup Loader thing
 
 startup = {
-	
+
+init: function(){
 if (typeof woot === true){
  API.chatLog("Woot: " + options.woot); 
  $('#woot').click();
@@ -81,19 +82,18 @@ if (options.afkRemove = true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	}
 }
-
+}
 //Actual sstartup
 
 var z = {
 function(){
-auth();
-s();
-o();
-startup();
-on();
-l();
-v();
-live();
+s;
+o;
+startup.init();
+on;
+l;
+v;
+live;
 }
 }
 
