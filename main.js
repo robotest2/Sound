@@ -41,7 +41,7 @@ songIntervalMessage: [
 	],
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 2.8",
+version: "Beta 2.9.1",
 };
 
 //Configure Options + Startup Loader thing
