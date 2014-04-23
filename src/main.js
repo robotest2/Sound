@@ -278,6 +278,7 @@ var fightArray = [
 	
   API.on(API.CHAT, function(data){
     
+    try{
     
     if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
@@ -426,6 +427,10 @@ var fightArray = [
     		API.moderateForceSkip();
     	}
     	
+    }catch(err){
+    	var d = new Date();
+    	API.sendChat("/em An error has occurred on " + d + " for " + err);
+    }
     	
     });
     
