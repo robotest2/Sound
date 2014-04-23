@@ -42,7 +42,7 @@ version: "Beta 2.9.2",
 
 var afkB = {
 
-afkLimit: 60,
+afkLimit: 1,
 users: {},
 getTime: function(ms){
 	ms = Math.floor(ms / 60000);
