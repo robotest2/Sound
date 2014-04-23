@@ -86,7 +86,6 @@ if (options.afkRemove = true){
 //Actual sstartup
 
 var z = {
-function(){
 s;
 o;
 startup.init();
@@ -94,7 +93,6 @@ on;
 l;
 v;
 live;
-}
 }
 
 /*
