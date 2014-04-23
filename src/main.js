@@ -50,7 +50,7 @@ var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
 startup = {
 	
-if (options.woot = true){
+if (true == options.woot){
  API.chatLog("Woot: " + options.woot); 
  $('#woot').click();
  }else{
