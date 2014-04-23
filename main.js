@@ -59,28 +59,28 @@ var o = setTimeout(function(){
 s();
 o();
 
-if (options.woot = true){
+if (options.woot == true){
  API.chatLog("Woot: " + options.woot); 
  $('#woot').click();
  }else{
  API.chatLog("Woot: " + options.woot);
  }
 
-if (options.announcementMsg = true){
+if (options.announcementMsg == true){
 	API.chatLog("Announcements: " + options.announcementMsg);
 	options.songIntervalMessage;
 }else{
 	API.chatLog("Announcements: " + options.announcementMsg);
 }
 
-if (options.logUserJoin = true){
+if (options.logUserJoin == true){
 API.chatLog("Log User Join: " + options.logUserJoin);
 console.log(user.username + " joined the room");
 }else{
 	API.chatLog("Log User Join: " + options.logUserJoin);
 }
 
-if (options.afkRemove = true){
+if (options.afkRemove == true){
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	afkB;
 }else{
