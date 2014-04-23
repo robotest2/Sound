@@ -195,6 +195,7 @@ for(var i in API.getUsers()){
 	afkB.users[API.getUsers()[i].id] = new afkB.user(API.getUsers()[i]);
 }
 
+
 //Startup
 
 var on = "Enabled ";
@@ -461,6 +462,6 @@ var fightArray = [
     		API.sendChat("/em [" + data.from + " used skip]");
     		API.moderateForceSkip();
     	}
-    });
+    	});
     
     //End of script (for now) 
