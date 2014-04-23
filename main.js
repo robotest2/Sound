@@ -32,7 +32,7 @@ var sendMsg = "/em [Announcement] " + msgArray[msgR];
 options = {
 woot: true,
 announcementMsg: true,
-songIntervalMessage: { interval: 10000, offset: 0, msg: sendMsg },
+songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
 version: "Beta 2.9.1",
