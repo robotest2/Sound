@@ -35,7 +35,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 2.9.2",
+version: "Beta 3_Dev5",
 };
 
 //AFK removal
@@ -112,7 +112,7 @@ API.chatLog("Options: ");
 
 if (options.woot == true){
  API.chatLog("Woot: " + options.woot); 
- $('#woot').click();
+ API.on(API.DJ_ADVANCE, function() { $('#woot').click(); });
  }else{
  API.chatLog("Woot: " + options.woot);
  }
