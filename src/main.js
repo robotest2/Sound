@@ -285,6 +285,13 @@ var fightArray = [
     });
     
     API.on(API.CHAT, function(data){
+    	if(data.message.indexOf('!god', '!master') === 0){
+    		API.moderateDeleteChat(data.chatID);
+    		API.sendChat("/em [" + data.from + "] Credits: This was created by AstroShock, but helped by WayzRG (ProdTv) for some stuff! :D Thanks!");
+    	}
+    });
+    
+    API.on(API.CHAT, function(data){
       if(data.message.indexOf('!fight') === 0){
         API.moderateDeleteChat(data.chatID);
         var fightUser = API.getUsers();
