@@ -116,7 +116,7 @@ dat ascii <3
 //Auth boot
 
 if (location.pathname != '/astroparty'){
-	init: function(){
+	init: function startup(){
 		s();
 		o();
 		startup.init();
