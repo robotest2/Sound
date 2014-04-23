@@ -32,13 +32,7 @@ var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 options = {
 woot: true,
 announcementMsg: true,
-songIntervalMessage: [
-	{
-	interval: 10,
-	offset: 0,
-	msg: sendMsg
-	}
-	],
+songIntervalMessage: true,
 logUserJoin: true,
 afkRemove: true,
 version: "Beta 2.9.1",
