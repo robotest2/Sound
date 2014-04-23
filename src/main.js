@@ -39,17 +39,18 @@ version: "Beta 2.7.8_Dev2",
 
 //Options Vars
 
-var s = API.chatLog("Starting Up...");
-var o = API.chatLog("Options: ");
-var on = API.chatLog("Enabled v" + options.version);
-var l = API.chatLog("Loading file...");
-var live = setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
+var s = setTimeout(function(){ API.chatLog("Starting Up..."); }, 500);
+var o = setTimeout(function(){ API.chatLog("Options: "); }, 1000);
+var on = setTimeout(function(){ API.chatLog("Enabled v" + options.version); }, 2000);
+var l = setTimeout(function(){ API.chatLog("Loading file..."); }, 2000);
+var live = setTimeout(function(){ setTimeout(function(){ API.sendChat("/em now live!"); }, 2000);
 
 //Configure Options + Startup Loader thing
 
 startup = {
 
 init: function(){
+
 if (options.woot = true){
  API.chatLog("Woot: " + options.woot); 
  $('#woot').click();
@@ -117,21 +118,7 @@ dat ascii <3
 
 if (location.pathname != '/astroparty'){
 	API.chatLog("Authentication Successful!");
-	init: function startup(){
-		setTimeout(function(){
-		s();
-		}, 500);
-		setTimeout(function(){
-		o();
-		}, 1000);
-		setTimeout(function(){
-		startup.init();
-		}, 1500);
-		setTimeout(function(){
-		on();
-		l();
-		live();
-		}, 2000);
+	startup.init;
 	}
 }else{
 	API.chatLog("You are not authenticated to use this script in the requested room.");
