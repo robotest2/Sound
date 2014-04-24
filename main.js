@@ -483,7 +483,7 @@ var fightArray = [
         	for (var i in users) {
         		if (users[i].username == user) {
         			userData[users[i].id].rdj = true;
-        			API.sendChat("/em [" + data.from + "] set " + user + " permission to resident DJ");
+        			API.sendChat("/em [" + data.from + "] set " + user + " permission to Resident DJ");
         		}
         	}
         	API.moderateSetRole(user, API.ROLE.RESIDENTDJ);
@@ -497,7 +497,7 @@ var fightArray = [
         	for (var i in users) {
         		if (users[i].username == user) {
         			userData[users[i].id].bouncer = true;
-        			API.sendChat("/em [" + data.from + "] set " + user + " permission to resident DJ");
+        			API.sendChat("/em [" + data.from + "] set " + user + " permission to bouncer");
         		}
         	}
         	API.moderateSetRole(user, API.ROLE.BOUNCER);
@@ -513,7 +513,7 @@ var fightArray = [
         	for (var i in users) {
         		if (users[i].username == user) {
         			userData[users[i].id].manager = true;
-        			API.sendChat("/em [" + data.from + "] set " + user + " permission to resident DJ");
+        			API.sendChat("/em [" + data.from + "] set " + user + " permission to manager");
         		}
         	}
         	API.moderateSetRole(user, API.ROLE.MANAGER);
@@ -529,7 +529,7 @@ var fightArray = [
         	for (var i in users) {
         		if (users[i].username == user) {
         			userData[users[i].id].cohost = true;
-        			API.sendChat("/em [" + data.from + "] set " + user + " permission to resident DJ");
+        			API.sendChat("/em [" + data.from + "] set " + user + " permission to cohost");
         		}
         	}
         	API.moderateSetRole(user, API.ROLE.COHOST);
