@@ -35,7 +35,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 3_Dev6",
+version: "Beta 3_Dev7",
 };
 
 
@@ -193,10 +193,6 @@ API
 .on(API.USER_JOIN, $.proxy(afkB.eventJoin, this))
 .on(API.USER_LEAVE, $.proxy(afkB.eventLeave, this))
 .on(API.CHAT, $.proxy(afkB.eventChat, this));
-
-for(var i in API.getUsers()){
-	afkB.users[API.getUsers()[i].id] = new afkB.user(API.getUsers()[i]);
-}
 
 
 //Startup
