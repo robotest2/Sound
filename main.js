@@ -473,11 +473,74 @@ var fightArray = [
     	}
     	
     	
+    	//Manager
+    	
+    	if(data.message.indexOf('!rdj') !=-1 && API.getUser(data.fromID).permission > 2){
+        	API.moderateDeleteChat(data.chatID);
+        	var msg = data.message.split("@");
+        	var user = msg[1];
+        	var users = API.getUsers();
+        	for (var i in users) {
+        		if (users[i].username == user) {
+        			userData[users[i].id].rdj = true;
+        			API.sendChat("/em [" + data.from + "] set " + user + " permission to resident DJ");
+        		}
+        	}
+        	API.moderateSetRole(user, API.ROLE.RESIDENTDJ);
+        }
+    	
+    	if(data.message.indexOf('!bouncer') !=-1 && API.getUser(data.fromID).permission > 2){
+        	API.moderateDeleteChat(data.chatID);
+        	var msg = data.message.split("@");
+        	var user = msg[1];
+        	var users = API.getUsers();
+        	for (var i in users) {
+        		if (users[i].username == user) {
+        			userData[users[i].id].bouncer = true;
+        			API.sendChat("/em [" + data.from + "] set " + user + " permission to resident DJ");
+        		}
+        	}
+        	API.moderateSetRole(user, API.ROLE.BOUNCER);
+        }
+    	
+    	//Co-Host Commands
+    	
+    	if(data.message.idnexOf('!manager') !=-1 && API.getUser(data.fromID).permission > 3){
+        	API.moderateDeleteChat(data.chatID);
+        	var msg = data.message.split("@");
+        	var user = msg[1];
+        	var users = API.getUsers();
+        	for (var i in users) {
+        		if (users[i].username == user) {
+        			userData[users[i].id].manager = true;
+        			API.sendChat("/em [" + data.from + "] set " + user + " permission to resident DJ");
+        		}
+        	}
+        	API.moderateSetRole(user, API.ROLE.MANAGER);
+        }
+        
+        //Host
+        
+        if(data.message.indexof('!cohost') !=-1 && API.getUser(data.fromID).permission > 4){
+        	API.moderateDeleteChat(data.chatID);
+        	var msg = data.message.split("@");
+        	var user = msg[1];
+        	var users = API.getUsers();
+        	for (var i in users) {
+        		if (users[i].username == user) {
+        			userData[users[i].id].cohost = true;
+        			API.sendChat("/em [" + data.from + "] set " + user + " permission to resident DJ");
+        		}
+        	}
+        	API.moderateSetRole(user, API.ROLE.COHOST);
+        }
+    
     });
 
 }catch(err){
     	var d = new Date();
     	API.sendChat("/em An error has occurred on " + d + " for " + err);
+
     }
     
     //End of script. No seriously, there's nothing below me
