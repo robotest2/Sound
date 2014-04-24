@@ -505,7 +505,7 @@ var fightArray = [
     	
     	//Co-Host Commands
     	
-    	if(data.message.idnexOf('!manager') !=-1 && API.getUser(data.fromID).permission > 3){
+    	if(data.message.indexOf('!manager') !=-1 && API.getUser(data.fromID).permission > 3){
         	API.moderateDeleteChat(data.chatID);
         	var msg = data.message.split("@");
         	var user = msg[1];
@@ -521,7 +521,7 @@ var fightArray = [
         
         //Host
         
-        if(data.message.indexof('!cohost') !=-1 && API.getUser(data.fromID).permission > 4){
+        if(data.message.indexOf('!cohost') !=-1 && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
         	var msg = data.message.split("@");
         	var user = msg[1];
