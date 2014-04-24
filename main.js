@@ -35,7 +35,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 3_Dev7",
+version: "Beta 3_Dev8",
 };
 
 
@@ -46,11 +46,7 @@ for(var i in usersinroom) {
     userData[usersinroom[i].id] = {
         username: usersinroom[i].username,
         afktime: Date.now(),
-        warning: false,
-        voteskip: false,
-        mute: false,
-        msgafkactive: false,
-        msgafk: "I'm not here sorry"
+        warning: false
     };
 }
 
@@ -58,11 +54,7 @@ API.on(API.USER_JOIN, function(user) {
     userData[user.id] = {
         username: user.username,
         afktime: Date.now(),
-        warning: false,
-        voteskip: false,
-        mute: false,
-        msgafkactive: false,
-        msgafk: "I'm not here sorry"
+        warning: false
     };
 });
 
