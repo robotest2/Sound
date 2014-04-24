@@ -35,7 +35,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 3_Dev9",
+version: "Beta 4_Dev1",
 };
 
 
@@ -372,9 +372,19 @@ var fightArray = [
         API.moderateDeleteChat(data.chatID);
 	}
 	// if user muted
-	API.on(API.CHAT, function(data) {
-    		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID)
-	});
+    	if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
+	if (data.message.indexOf("!unmute") !=-1 && API.getUser(data.fromID).permission > 1) {
+		var msg = data.message.split("@");
+		var user = msg[1];
+		var users = API.getUsers();
+		for (var i in users) {
+			if (users[i].username == user) {
+				userData[users[i].id].mute = false;
+				API.sendChat("/me [" + data.from + "] used unmute on: " + user);
+			}
+		}
+		API.moderateDeleteChat(data.chatID);
+	}
     
         if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
         	API.moderateDeleteChat(data.chatID);
