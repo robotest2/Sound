@@ -387,6 +387,7 @@ var fightArray = [
 	}
     
         if(data.message.indexOf('!kick') !=-1 && API.getUser(data.fromID).permission > 1){
+        	API.moderateDeleteChat(data.chatID);
         	var msg = data.message.split("@");
         	var user = msg[1];
         	var users = API.getUsers();
