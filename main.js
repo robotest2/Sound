@@ -175,7 +175,7 @@ dat ascii <3
 
 //Auth boot
 
-if (location.pathname != '/astroparty'){
+if (location.pathname != '/astroparty/'){
 	API.chatLog("Authentication Successful!");
 	startup.init();
 }else{
@@ -385,6 +385,23 @@ var fightArray = [
 		}
 		API.moderateDeleteChat(data.chatID);
 	}
+    
+        if(data.message.indexOf('!kick') !=-1 && API.getUser(data.fromID).permission > 1){
+        	var msg = data.message.split("@");
+        	var user = msg[1];
+        	var users = API.getUsers();
+        	for (var i in users) {
+        		if (users[i].username == user) {
+        			userData[users[i].id].kick = true;
+        			API.sendChat("/em [" + data.from + "] kicked " + user + " for 30 seconds");
+        		}
+        	}
+        	API.moderateBanUser(user, 0, API.BAN.HOUR);
+        	setTimeout(function(){
+        		API.moderateUnbanUser(user);
+        		API.sendChat("/em [" + data.from + "] Kicked user can now login")
+        	}, 30000);
+        }
     
         if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
         	API.moderateDeleteChat(data.chatID);
