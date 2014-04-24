@@ -128,7 +128,7 @@ if (options.announcementMsg == true){
 
 if (options.logUserJoin == true){
 API.chatLog("Log User Join: " + options.logUserJoin);
-API.on(API.USER_JOIN, function(a) { console.log(a.username + " joined the room"); });
+API.on(API.USER_JOIN, function(a) { API.chatLog(a.username + " joined the room"); });
 }else{
 	API.chatLog("Log User Join: " + options.logUserJoin);
 }
