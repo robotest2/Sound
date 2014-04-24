@@ -76,7 +76,7 @@ API.on(API.CHAT, function(data) {
 });
 
 //AFK removal (Wayz)
-var thirtyMinute = 180000;
+var thirtyMinute = 3600000;
 var afkB = {
 
 afkRemover: function(){
