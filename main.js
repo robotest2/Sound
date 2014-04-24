@@ -394,9 +394,9 @@ var fightArray = [
         	for (var i in users) {
         		if (users[i].username == user) {
         			API.sendChat("/em [" + data.from + "] kicked " + user + " for 30 seconds");
+        			API.moderateBanUser(user, 0, API.BAN.HOUR);
         		}
         	}
-        	API.moderateBanUser(user, 1, API.BAN.HOUR);
         	setTimeout(function(){
         		API.moderateUnbanUser(user);
         		API.sendChat("/em [" + data.from + "] Kicked user can now login");
@@ -411,9 +411,9 @@ var fightArray = [
         	for (var i in users) {
         		if (users[i].username == user) {
         			API.sendChat("/em [" + data.from + "] banned " + user);
+        			API.moderateBanUser(user, 0, API.BAN.HOUR);
         		}
         	}
-        	API.moderateBanUser(user, 1, API.BAN.HOUR);
         }
         if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
         	API.moderateDeleteChat(data.chatID);
