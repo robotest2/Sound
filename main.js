@@ -177,23 +177,12 @@ dat ascii <3
 
 //Auth boot
 
-function auth(){
-
 if (location.pathname != '/astroparty'){
-	return true;
-}else{
-	return false;
-}
-}
-
-if (location.pathname == true){ //if the room is true
 	API.chatLog("Authentication Successful!");
 	startup.init();
-}
-if (location.pathname == false){ //if the room is false
+}else{
 	API.chatLog("You are not authenticated to use this script in the requested room.", true);
 }
-
 
 API
 .on(API.WAIT_LIST_UPDATE, $.proxy(afkB.eventWaitListUpdate, this))
