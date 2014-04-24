@@ -476,7 +476,7 @@ var fightArray = [
     	if(data.message.indexOf('!rdj') !=-1 && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var msgrd = data.message.split("@");
-        	var userrd = msg[1];
+        	var userrd = msgrd[1];
         	var usersrd = API.getUsers();
         	for (var i in usersrd) {
         		if (usersrd[i].username == userrd) {
@@ -490,7 +490,7 @@ var fightArray = [
     	if(data.message.indexOf('!bouncer') !=-1 && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var msgbo = data.message.split("@");
-        	var userbo = msg[1];
+        	var userbo = msgbo[1];
         	var usersbo = API.getUsers();
         	for (var i in usersbo) {
         		if (usersbo[i].username == userbo) {
@@ -506,7 +506,7 @@ var fightArray = [
     	if(data.message.indexOf('!manager') !=-1 && API.getUser(data.fromID).permission > 3){
         	API.moderateDeleteChat(data.chatID);
         	var msgma = data.message.split("@");
-        	var userma = msg[1];
+        	var userma = msgma[1];
         	var usersma = API.getUsers();
         	for (var i in usersma) {
         		if (usersma[i].username == userma) {
@@ -522,7 +522,7 @@ var fightArray = [
         if(data.message.indexOf('!cohost') !=-1 && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
         	var msgch = data.message.split("@");
-        	var userch = msg[1];
+        	var userch = msgch[1];
         	var usersch = API.getUsers();
         	for (var i in usersch) {
         		if (usersch[i].username == userch) {
