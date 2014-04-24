@@ -35,7 +35,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 3_Dev8",
+version: "Beta 3_Dev9",
 };
 
 
@@ -46,7 +46,8 @@ for(var i in usersinroom) {
     userData[usersinroom[i].id] = {
         username: usersinroom[i].username,
         afktime: Date.now(),
-        warning: false
+        warning: false,
+        muted: false
     };
 }
 
@@ -54,7 +55,8 @@ API.on(API.USER_JOIN, function(user) {
     userData[user.id] = {
         username: user.username,
         afktime: Date.now(),
-        warning: false
+        warning: false,
+        muted: false
     };
 });
 
@@ -357,35 +359,22 @@ var fightArray = [
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Settings | Auto Woot: " + options.woot + ", Announcement Message: " + options.announcementMsg + ", Log user Join: " + options.logUserJoin + ", AFK Remove: " + options.afkRemove + ".");
     	}
-    
-    
-    
-    if(data.message.indexOf('!mute') === 0 && API.getUser(data.fromID).permission > 1){
-    	API.moderateDeleteChat(data.chatID);
-    	API.sendChat("/em [" + data.from + " used mute]");
-    	//Trim message to so it reads (!mute) @user.
-    	
-    	var getTag = data.message.substr(6).trim();
-    	
-    	//Get id and pass it to mute
-    	
-    	var us = getTag.toLowerCase();
-	if (us) {
-		var usb = API.getUsers();
-		for(var i in usb) {
-		if(usb[i].username.toLowerCase() == us) {
-			return usb[i].id;	
-			}else{
-				return "notFound"
+	if (data.message.indexOf("!mute") !=-1 && API.getUser(data.fromID).permission > 1) {
+		var msg = data.message.split("@");
+		var user = msg[1];
+		var users = API.getUsers();
+		for (var i in users) {
+			if (users[i].username == user) {
+				userData[users[i].id].mute = true;
+				API.sendChat("/me [" + data.from + "] used mute on: " + user);
 			}
 		}
+        API.moderateDeleteChat(data.chatID);
 	}
-               if(usb[i].id == us){
-               	API.moderateDeleteChat(usb[i].id.chatID);
-               }else{
-               	API.sendChat("/em [" + data.from + " user not found]");
-               }
-    }
+	// if user muted
+	API.on(API.CHAT, function(data) {
+    		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID)
+	});
     
         if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
         	API.moderateDeleteChat(data.chatID);
