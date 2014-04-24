@@ -320,7 +320,7 @@ var fightArray = [
         API.sendChat("[@" + room[userR].username + ", " + data.from + " gives you " + cookieArray[cookieR] + " cookie " + ", " + outcome[outcomeR] + "]");
       }
     
-      if(data.message('!ba') === 0){
+      if(data.message.indexOf('!ba') === 0){
         API.moderateDeleteChat(data.chatID);
         API.sendChat("/em [" + data.from + " Brand Ambassaadors (BA's) are PlugDJ's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/]");
       }
@@ -404,7 +404,7 @@ var fightArray = [
         	}, 30000);
         }
     
-        if(data.message('!ban') !=-1 && API.getUser(data.fromID).permission > 1){
+        if(data.message.indexOf('!ban') !=-1 && API.getUser(data.fromID).permission > 1){
         	API.moderateDeleteChat(data.chatID);
         	var msg = data.message.split("@");
         	var user = msg[1];
