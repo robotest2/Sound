@@ -386,35 +386,35 @@ var fightArray = [
 		API.moderateDeleteChat(data.chatID);
 	}
     
-        if(data.message.indexOf('!kick') !=-1 && API.getUser(data.fromID).permission > 1){
-        	API.moderateDeleteChat(data.chatID);
-        	var msg = data.message.split("@");
-        	var user = msg[1];
-        	var users = API.getUsers();
-        	for (var i in users) {
-        		if (users[i].username == user) {
-        			API.sendChat("/em [" + data.from + "] kicked " + user + " for 30 seconds");
-        			API.moderateBanUser(user, 0, API.BAN.HOUR);
-        		}
-        	}
-        	setTimeout(function(){
-        		API.moderateUnbanUser(user);
-        		API.sendChat("/em [" + data.from + "] Kicked user can now login");
-        	}, 30000);
-        }
-    
-        if(data.message.indexOf('!ban') !=-1 && API.getUser(data.fromID).permission > 1){
-        	API.moderateDeleteChat(data.chatID);
-        	var msg = data.message.split("@");
-        	var user = msg[1];
-        	var users = API.getUsers();
-        	for (var i in users) {
-        		if (users[i].username == user) {
-        			API.sendChat("/em [" + data.from + "] banned " + user);
-        			API.moderateBanUser(user, 0, API.BAN.HOUR);
-        		}
-        	}
-        }
+	if (data.message.indexOf("!kick")!=-1 && API.getUser(data.fromID).permission > 1 ) {
+		var messkick = data.message;
+		var splitkick = messkick.split("@");
+		var userskick = API.getUsers();
+		for(var i in userskick) {
+			if (userskick[i].username == splitkick[1]) {
+				var userkick = userskick[i].id;
+				API.sendChat("@" + splitkick[1] + " You will be kick in 10 seconds.")
+				setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR)}, 10000);
+				setTimeout(function(){API.moderateUnbanUser(userkick)}, 15000);
+				setTimeout(function(){API.moderateUnbanUser(userkick)}, 18000);
+			}
+		}
+		API.moderateDeleteChat(data.chatID);
+	}
+        
+	if (data.message.indexOf('!ban')!=-1 && API.getUser(data.fromID).permission > 1 ) {
+		var messb = data.message;
+		var userb = messb.substring(6);
+		var usersb = API.getUsers();
+		for(var b in usersb){
+			if (usersb[b].username == userb) {
+				API.moderateBanUser(usersb[b].id);
+				API.sendChat('/me [' + data.from + '] used ban on ' + userb);
+			}
+		}
+		API.moderateDeleteChat(data.chatID);
+	}
+	
         if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
         	API.moderateDeleteChat(data.chatID);
         	var sayMsg = data.message.substr(5).trim();
