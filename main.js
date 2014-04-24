@@ -175,7 +175,7 @@ dat ascii <3
 
 //Auth boot
 
-if (location.pathname != '/astroparty/'){
+if (location.pathname != '/astroparty'){
 	API.chatLog("Authentication Successful!");
 	startup.init();
 }else{
