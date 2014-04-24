@@ -17,6 +17,8 @@ Amazing Helper Manager Guy That Fixes Stuff and Manages For Me Because I'm A Noo
 
 */
 
+try{
+
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
@@ -269,8 +271,6 @@ var fightArray = [
 	
   API.on(API.CHAT, function(data){
     
-    try{
-    
     if(data.message.indexOf('!help') === 0){
            API.moderateDeleteChat(data.chatID);
            API.sendChat("/em [" + data.from + " My commands can be found here: http://goo.gl/PzvBL8]");
@@ -472,11 +472,12 @@ var fightArray = [
     		API.moderateForceSkip();
     	}
     	
-    }catch(err){
+    	
+    });
+
+}catch(err){
     	var d = new Date();
     	API.sendChat("/em An error has occurred on " + d + " for " + err);
     }
-    	
-    });
     
-    //End of script (for now) 
+    //End of script. No seriously, there's nothing below me
