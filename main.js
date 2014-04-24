@@ -16,8 +16,8 @@ Amazing Helper Manager Guy That Fixes Stuff and Manages For Me Because I'm A Noo
 
 
 */
-
-try{
+if(location.pathname == '/astroparty/') {
+	try{
 
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
@@ -37,7 +37,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 4.0.1",
+version: "Beta 4.0.2",
 };
 
 
@@ -537,10 +537,12 @@ var fightArray = [
     
     });
 
-}catch(err){
+	}catch(err){
     	var d = new Date();
     	API.sendChat("/em An error has occurred on " + d + " for " + err);
 
     }
+}
+else alert('This script work only in plug.dj astroparty !')
     
-    //End of script. No seriously, there's nothing below me
+//End of script. No seriously, there's nothing below me
