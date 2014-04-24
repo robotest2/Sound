@@ -475,62 +475,62 @@ var fightArray = [
     	
     	if(data.message.indexOf('!rdj') !=-1 && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
-        	var msg = data.message.split("@");
-        	var user = msg[1];
-        	var users = API.getUsers();
-        	for (var i in users) {
-        		if (users[i].username == user) {
-        			userData[users[i].id].rdj = true;
-        			API.sendChat("/em [" + data.from + "] set " + user + " permission to Resident DJ");
+        	var msgrd = data.message.split("@");
+        	var userrd = msg[1];
+        	var usersrd = API.getUsers();
+        	for (var i in usersrd) {
+        		if (usersrd[i].username == userrd) {
+        			userData[usersrd[i].id].rdj = true;
+        			API.sendChat("/em [" + data.from + "] set " + userrd + " permission to Resident DJ");
         		}
         	}
-        	API.moderateSetRole(user, API.ROLE.RESIDENTDJ);
+        	API.moderateSetRole(userrd, API.ROLE.RESIDENTDJ);
         }
     	
     	if(data.message.indexOf('!bouncer') !=-1 && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
-        	var msg = data.message.split("@");
-        	var user = msg[1];
-        	var users = API.getUsers();
-        	for (var i in users) {
-        		if (users[i].username == user) {
-        			userData[users[i].id].bouncer = true;
-        			API.sendChat("/em [" + data.from + "] set " + user + " permission to bouncer");
+        	var msgbo = data.message.split("@");
+        	var userbo = msg[1];
+        	var usersbo = API.getUsers();
+        	for (var i in usersbo) {
+        		if (usersbo[i].username == userbo) {
+        			userData[usersbo[i].id].bouncer = true;
+        			API.sendChat("/em [" + data.from + "] set " + userbo + " permission to bouncer");
         		}
         	}
-        	API.moderateSetRole(user, API.ROLE.BOUNCER);
+        	API.moderateSetRole(userbo, API.ROLE.BOUNCER);
         }
     	
     	//Co-Host Commands
     	
     	if(data.message.indexOf('!manager') !=-1 && API.getUser(data.fromID).permission > 3){
         	API.moderateDeleteChat(data.chatID);
-        	var msg = data.message.split("@");
-        	var user = msg[1];
-        	var users = API.getUsers();
-        	for (var i in users) {
-        		if (users[i].username == user) {
-        			userData[users[i].id].manager = true;
-        			API.sendChat("/em [" + data.from + "] set " + user + " permission to manager");
+        	var msgma = data.message.split("@");
+        	var userma = msg[1];
+        	var usersma = API.getUsers();
+        	for (var i in usersma) {
+        		if (usersma[i].username == userma) {
+        			userData[usersma[i].id].manager = true;
+        			API.sendChat("/em [" + data.from + "] set " + userma + " permission to manager");
         		}
         	}
-        	API.moderateSetRole(user, API.ROLE.MANAGER);
+        	API.moderateSetRole(userma, API.ROLE.MANAGER);
         }
         
         //Host
         
         if(data.message.indexOf('!cohost') !=-1 && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
-        	var msg = data.message.split("@");
-        	var user = msg[1];
-        	var users = API.getUsers();
-        	for (var i in users) {
-        		if (users[i].username == user) {
-        			userData[users[i].id].cohost = true;
-        			API.sendChat("/em [" + data.from + "] set " + user + " permission to cohost");
+        	var msgch = data.message.split("@");
+        	var userch = msg[1];
+        	var usersch = API.getUsers();
+        	for (var i in usersch) {
+        		if (usersch[i].username == userch) {
+        			userData[usersch[i].id].cohost = true;
+        			API.sendChat("/em [" + data.from + "] set " + userch + " permission to cohost");
         		}
         	}
-        	API.moderateSetRole(user, API.ROLE.COHOST);
+        	API.moderateSetRole(userch, API.ROLE.COHOST);
         }
     
     });
@@ -541,6 +541,6 @@ var fightArray = [
 
     }
 }
-else alert('This script work only in plug.dj astroparty !')
+else alert('This script work only in plug.dj/astroparty !')
     
 //End of script. No seriously, there's nothing below me
