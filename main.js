@@ -392,6 +392,16 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     //Put more here soon
 	
     //Bouncer
+        if(data.message === '!cycle' && API.getUser(data.fromID).permission > 1){
+        	API.moderateDeleteChat(data.chatID);
+        	API.sendChat("/em [" + data.from + " used cycle]");
+        	var toggle = $(".cycle-toggle");
+        	if(toggle.hasClass("disabled")) {
+        		toggle.click();
+        	}else{
+        		toggle.click();
+        	}
+        }
     
     	if(data.message === '!settings' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
@@ -570,7 +580,14 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         	}
         	API.moderateSetRole(userch, API.ROLE.COHOST);
         }
-    
+        
+        if(data.message === '!party' && API.getUser(data.fromID).permission > 4){
+        	API.moderateDeleteChat(data.chatID);
+        	API.sendChat("!clear");
+        	API.sendChat("/em AstroShock started a party!");
+        	API.moderateLockWaitList(true, true);
+        	API.moderateForceSkip();
+        }
     });
 
 	}catch(err){
