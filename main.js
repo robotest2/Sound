@@ -288,7 +288,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     }
     	
     	if(data.message === '!play'){
-    		API.moderateDeleteChat(data.fromID);
+    		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em " + data.from + " joined spin!");
     		sa.push(data.from);
     	}
