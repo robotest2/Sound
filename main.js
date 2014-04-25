@@ -289,10 +289,7 @@ var fightArray = [
     		sa.push(data.from);
     	}
     		if(data.message === '!start'){
-    			if(sa = 1){
-    				API.sendChat("/em " + data.from + " there isn't enough players!");
-    			}
-    			
+    			API.moderateDeleteChat(data.chatID);
     			if(sa > 2){
     			API.sendChat("/em " + data.from + " started spin!");
     			setTimeout(function(){
