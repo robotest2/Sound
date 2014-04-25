@@ -282,7 +282,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
            API.sendChat("/em [" + data.from + " My commands can be found here: http://goo.gl/PzvBL8]");
        
        }
-    /*
+    
     if(data.message === '!spin'){
     	API.moderateDeleteChat(data.chatID);
     	API.sendChat("/em " + data.from + " requested a game of spin! Type !play to join the game!");
@@ -315,7 +315,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
     			}, 4000);
     		}
-    */
+    
     	if(data.message == '!god'){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Credits: This was created by AstroShock, but helped by WayzRG (ProdTv) for some stuff! :D Thanks!");
