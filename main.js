@@ -598,6 +598,6 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 
     }
 }
-else API.chatLog('This script works only in plug.dj/astroparty !', true);
+else API.chatLog('This script works only in plug.dj/astroparty', true);
     
 //End of script. No seriously, there's nothing below me
