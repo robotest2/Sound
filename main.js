@@ -584,9 +584,11 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         if(data.message === '!party' && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
         	API.sendChat("!clear");
-        	API.sendChat("/em AstroShock started a party!");
         	API.moderateLockWaitList(true, true);
         	API.moderateForceSkip();
+        	setTimeout(function(){
+        	API.sendChat("/em AstroShock started a party!");
+        	}, 1000);
         }
     });
 
