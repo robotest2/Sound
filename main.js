@@ -408,7 +408,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Settings | Auto Woot: " + options.woot + ", Announcement Message: " + options.announcementMsg + ", Log user Join: " + options.logUserJoin + ", AFK Remove: " + options.afkRemove + ".");
     	}
-	if (data.message == "!mute" && API.getUser(data.fromID).permission > 1) {
+	if (data.message.indexOf("!mute") !=-1 && API.getUser(data.fromID).permission > 1) {
 		var msg = data.message.split("@");
 		var user = msg[1];
 		var users = API.getUsers();
@@ -421,8 +421,8 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         API.moderateDeleteChat(data.chatID);
 	}
 	// if user muted
-    	if (userData[data.fromID].mute == true) API.moderateDeleteChat(data.chatID);
-	if (data.message == "!unmute" && API.getUser(data.fromID).permission > 1) {
+    	if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
+	if (data.message.indexOf("!unmute") !=-1 && API.getUser(data.fromID).permission > 1) {
 		var msg = data.message.split("@");
 		var user = msg[1];
 		var users = API.getUsers();
