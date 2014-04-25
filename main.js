@@ -462,7 +462,7 @@ var fightArray = [
         	API.sendChat("/em [" + data.from + "] " + sayMsg);
         }
     
-    	if(data.message. === '!lock' && API.getUser(data.fromID).permission > 1){
+    	if(data.message === '!lock' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used lock]");
     		API.moderateLockWaitList(true);
