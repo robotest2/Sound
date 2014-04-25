@@ -266,6 +266,11 @@ var fightArray = [
                                                         
                                                       
 */
+//Spin Arrays
+
+var sa = []; //Initial !play array
+var se = []; //users that cannot lose
+
 
 //User
 	
@@ -280,7 +285,6 @@ var fightArray = [
     if(data.message === '!spin'){
     	API.moderateDeleteChat(data.chatID);
     	API.sendChat("/em " + data.from + " requested a game of spin! Type !play to join the game!");
-    	var sa = [];
     }
     	
     	if(data.message === '!play'){
@@ -305,7 +309,6 @@ var fightArray = [
     		if(data.message === '!pass'){
     			API.moderateDeleteChat(data.chatID);
     			API.sendChat("/em " + data.from + " passed the ball!");
-    			var se = [];
     			se.push(data.from);
     			sa.pop(data.from);
     			setTimeout(function(){
