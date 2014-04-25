@@ -26,7 +26,8 @@ var msgArray = [
 	"This script is protected with an authentication system!",
 	"More commands are on the way!",
 	"The song limit for this room is 10 minutes.",
-	"Please do not spam."];
+	"Please do not spam.",
+	"We are currently open for applications to be a bouncer. More info here: https://astroparty.typeform.com/to/fwvOjP"];
 var msgR = Math.floor(Math.random() * msgArray.length);
 var sendMsg = "/em [Announcement] " + msgArray[msgR];
 
