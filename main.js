@@ -482,7 +482,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     		API.moderateLockWaitList(false);
     	}
     
-    	if(data.message == '!lskip' && API.getUser(data.fromID).permission > 1){
+    	if(data.message == '!lockskip' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used lockskip]");
     		API.moderateLockWaitList(true);
