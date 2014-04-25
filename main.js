@@ -271,18 +271,59 @@ var fightArray = [
 	
   API.on(API.CHAT, function(data){
     
-    if(data.message.indexOf('!help') === 0){
+    if(data.message === '!help'){
            API.moderateDeleteChat(data.chatID);
            API.sendChat("/em [" + data.from + " My commands can be found here: http://goo.gl/PzvBL8]");
        
        }
     
-    	if(data.message.indexOf('!god', '!master') === 0){
+    if(data.message === '!spin'){
+    	API.moderateDeleteChat(data.chatID);
+    	API.sendChat("/em " + data.from + " requested a game of spin! Type !play to join the game!");
+    	var sa = [];
+    }
+    	
+    	if(data.message === '!play'){
+    		API.moderateDeleteChat(data.fromID);
+    		API.sendChat("/em " + data.from + " join spin!");
+    		sa.push(data.from);
+    	}
+    		if(data.message === '!start'){
+    			if(sa = 1){
+    				API.sendChat("/em " + data.from + " there isn't enough players!");
+    			}
+    			
+    			if(sa > 2){
+    			API.sendChat("/em " + data.from + " started spin!");
+    			setTimeout(function(){
+    				API.sendChat("/em Spinning the ball...");
+    			}, 1000);
+    			
+    			var sar = Math.floor(Math.random() * sa.length);
+    			
+    			setTimeout(function(){
+    				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
+    			}, 2000);
+    			
+    		if(data.message === '!pass'){
+    			API.moderateDeleteChat(data.chatID);
+    			API.sendChat("/em " + data.from + " passed the ball!");
+    			var se = [];
+    			se.push(data.from);
+    			sa.pop(data.from);
+    			setTimeout(function(){
+    				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
+    			}, 4000);
+    		}
+    			}
+    		}
+    
+    	if(data.message === '!god'){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Credits: This was created by AstroShock, but helped by WayzRG (ProdTv) for some stuff! :D Thanks!");
     	}
     
-      if(data.message.indexOf('!fight') === 0){
+      if(data.message === '!fight'){
         API.moderateDeleteChat(data.chatID);
         var fightUser = API.getUsers();
         var fightR = Math.floor(Math.random() * fightArray.length);
@@ -290,7 +331,7 @@ var fightArray = [
         API.sendChat("[" + data.from + "] @" + fightUser[userFR].username + fightArray[fightR]);
       }
       
-      if(data.message.indexOf('!staff') !=-1){ //credit: WayzRG
+      if(data.message === '!staff'){ //credit: WayzRG
         var isonline = []; 
         API.moderateDeleteChat(data.chatID); 
         var online = API.getStaff();
@@ -301,17 +342,17 @@ var fightArray = [
         isonline = [];
 }
 
-      if(data.message.indexOf('!theme') === 0){
+      if(data.message === '!theme'){
         API.moderateDeleteChat(data.chatID);
         API.sendChat("/em [" + data.from + " The theme is Electronic Dance Music. (EDM)]");
       }
     
-      if(data.message.indexOf('!emoji') === 0){
+      if(data.message === '!emoji'){
         API.moderateDeleteChat(data.chatID);
         API.sendChat("/em [" + data.from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
       }
     
-      if(data.message.indexOf('!cookie') === 0){
+      if(data.message === '!cookie'){
         API.moderateDeleteChat(data.chatID);
         var room = API.getUsers();
         var cookieR = Math.floor(Math.random() * cookieArray.length);
@@ -338,13 +379,13 @@ var fightArray = [
         }
       }
     
-      if(data.message.indexOf('!ask') === 0){
+      if(data.message === '!ask'){
         API.moderateDeleteChat(data.chatID);
         var askR = Math.floor(Math.random() * askArray.length);
         API.sendChat("/em [" + data.from + "] " + askArray[askR]);
       }
 	
-	if(data.message.indexOf('!eta') === 0){
+	if(data.message === '!eta'{
 	API.moderateDeleteChat(data.chatID);
 	var pos = API.getWaitListPosition(), str = 'ETA: ';
 	str+= pos == -1 ? 'N/A. You are not in the waitlist!' : now.getTime(pos * 1000 * 60 * (25/6) + API.getTimeRemaining() * 1000);
@@ -355,11 +396,11 @@ var fightArray = [
 	
     //Bouncer
     
-    	if(data.message.indexOf('!settings') === 0 && API.getUser(data.fromID).permission > 1){
+    	if(data.message === '!settings' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Settings | Auto Woot: " + options.woot + ", Announcement Message: " + options.announcementMsg + ", Log user Join: " + options.logUserJoin + ", AFK Remove: " + options.afkRemove + ".");
     	}
-	if (data.message.indexOf("!mute") !=-1 && API.getUser(data.fromID).permission > 1) {
+	if (data.message === "!mute" && API.getUser(data.fromID).permission > 1) {
 		var msg = data.message.split("@");
 		var user = msg[1];
 		var users = API.getUsers();
@@ -373,7 +414,7 @@ var fightArray = [
 	}
 	// if user muted
     	if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
-	if (data.message.indexOf("!unmute") !=-1 && API.getUser(data.fromID).permission > 1) {
+	if (data.message === "!unmute" && API.getUser(data.fromID).permission > 1) {
 		var msg = data.message.split("@");
 		var user = msg[1];
 		var users = API.getUsers();
@@ -386,7 +427,7 @@ var fightArray = [
 		API.moderateDeleteChat(data.chatID);
 	}
     
-	if (data.message.indexOf("!kick")!=-1 && API.getUser(data.fromID).permission > 1 ) {
+	if (data.message === "!kick" && API.getUser(data.fromID).permission > 1 ) {
 		var messkick = data.message;
 		var splitkick = messkick.split("@");
 		var userskick = API.getUsers();
@@ -402,7 +443,7 @@ var fightArray = [
 		API.moderateDeleteChat(data.chatID);
 	}
         
-	if (data.message.indexOf('!ban')!=-1 && API.getUser(data.fromID).permission > 1 ) {
+	if (data.message === '!ban' && API.getUser(data.fromID).permission > 1 ) {
 		var messb = data.message;
 		var userb = messb.substring(6);
 		var usersb = API.getUsers();
@@ -415,32 +456,32 @@ var fightArray = [
 		API.moderateDeleteChat(data.chatID);
 	}
 	
-        if(data.message.indexOf('!say') === 0 && API.getUser(data.fromID).permission > 1){
+        if(data.message === '!say' && API.getUser(data.fromID).permission > 1){
         	API.moderateDeleteChat(data.chatID);
         	var sayMsg = data.message.substr(5).trim();
         	API.sendChat("/em [" + data.from + "] " + sayMsg);
         }
     
-    	if(data.message.indexOf('!lock') === 0 && API.getUser(data.fromID).permission > 1){
+    	if(data.message. === '!lock' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used lock]");
     		API.moderateLockWaitList(true);
     	}
     
-    	if(data.message.indexOf('!unlock') === 0 && API.getUser(data.fromID).permission > 1){
+    	if(data.message === '!unlock' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used unlock]");
     		API.moderateLockWaitList(false);
     	}
     
-    	if(data.message.indexOf('!lskip') === 0 && API.getUser(data.fromID).permission > 1){
+    	if(data.message === '!lskip' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used lockskip]");
     		API.moderateLockWaitList(true);
     		API.moderateForceSkip();
     	}
     
-    	if(data.message.indexOf('!wlclear') === 0 && API.getUser(data.fromID).permission > 1){
+    	if(data.message === '!wlclear' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used wlclear]");
     		setTimeout(function(){
@@ -451,7 +492,7 @@ var fightArray = [
     		}, 2000);
     	}
     
-    	if(data.message.indexOf('!clear') === 0 && API.getUser(data.fromID).permission > 1){
+    	if(data.message === '!clear' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
 		var messages = $('#chat-messages').children();
 		for (var i = 0; i < messages.length; i++) {
@@ -464,7 +505,7 @@ var fightArray = [
 			API.sendChat("/em [" + data.from + " used clear]");
     		}
     
-    	if(data.message.indexOf('!skip') === 0 && API.getUser(data.fromID).permission > 1){
+    	if(data.message === '!skip' && API.getUser(data.fromID).permission > 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used skip]");
     		API.moderateForceSkip();
@@ -473,7 +514,7 @@ var fightArray = [
     	
     	//Manager
     	
-    	if(data.message.indexOf('!rdj') !=-1 && API.getUser(data.fromID).permission > 2){
+    	if(data.message === '!rdj' && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var msgrd = data.message.split("@");
         	var userrd = msgrd[1];
@@ -487,7 +528,7 @@ var fightArray = [
         	API.moderateSetRole(userrd, API.ROLE.RESIDENTDJ);
         }
     	
-    	if(data.message.indexOf('!bouncer') !=-1 && API.getUser(data.fromID).permission > 2){
+    	if(data.message === '!bouncer') && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var msgbo = data.message.split("@");
         	var userbo = msgbo[1];
@@ -503,7 +544,7 @@ var fightArray = [
     	
     	//Co-Host Commands
     	
-    	if(data.message.indexOf('!manager') !=-1 && API.getUser(data.fromID).permission > 3){
+    	if(data.message === '!manager' && API.getUser(data.fromID).permission > 3){
         	API.moderateDeleteChat(data.chatID);
         	var msgma = data.message.split("@");
         	var userma = msgma[1];
@@ -519,7 +560,7 @@ var fightArray = [
         
         //Host
         
-        if(data.message.indexOf('!cohost') !=-1 && API.getUser(data.fromID).permission > 4){
+        if(data.message === '!cohost' && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
         	var msgch = data.message.split("@");
         	var userch = msgch[1];
