@@ -541,6 +541,6 @@ var fightArray = [
 
     }
 }
-else alert('This script work only in plug.dj/astroparty !')
+else API.chatLog('This script works only in plug.dj/astroparty !', true);
     
 //End of script. No seriously, there's nothing below me
