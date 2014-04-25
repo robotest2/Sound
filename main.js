@@ -528,7 +528,7 @@ var fightArray = [
         	API.moderateSetRole(userrd, API.ROLE.RESIDENTDJ);
         }
     	
-    	if(data.message === '!bouncer') && API.getUser(data.fromID).permission > 2){
+    	if(data.message === '!bouncer' && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var msgbo = data.message.split("@");
         	var userbo = msgbo[1];
