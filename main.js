@@ -289,7 +289,7 @@ var se = []; //users that cannot lose
     	
     	if(data.message === '!play'){
     		API.moderateDeleteChat(data.fromID);
-    		API.sendChat("/em " + data.from + " join spin!");
+    		API.sendChat("/em " + data.from + " joined spin!");
     		sa.push(data.from);
     	}
     		if(data.message === '!start'){
