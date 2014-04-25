@@ -364,7 +364,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         API.sendChat("/em [" + data.from + " Brand Ambassaadors (BA's) are PlugDJ's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/]");
       }
     
-      if(data.message == '!link'{
+      if(data.message == '!link'){
         if(API.getMedia().format == 1){
           API.moderateDeleteChat(data.chatID);
           API.sendChat("/em [" + data.from + " Link to current song: http://youtu.be/" + API.getMedia().cid + "]");
