@@ -270,7 +270,7 @@ var fightArray = [
 
 var sa = []; //Initial !play array
 var se = []; //users that cannot lose
-
+var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joined the game
 
 //User
 	
@@ -299,8 +299,6 @@ var se = []; //users that cannot lose
     			setTimeout(function(){
     				API.sendChat("/em Spinning the ball...");
     			}, 1000);
-    			
-    			var sar = Math.floor(Math.random() * sa.length);
     			
     			setTimeout(function(){
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
