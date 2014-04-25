@@ -303,7 +303,8 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     			setTimeout(function(){
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
     			}, 2000);
-    			
+    			}
+    		}
     		if(data.message === '!pass'){
     			API.moderateDeleteChat(data.chatID);
     			API.sendChat("/em " + data.from + " passed the ball!");
@@ -312,8 +313,6 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     			setTimeout(function(){
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
     			}, 4000);
-    		}
-    			}
     		}
     
     	if(data.message === '!god'){
