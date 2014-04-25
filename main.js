@@ -435,7 +435,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 		API.moderateDeleteChat(data.chatID);
 	}
     
-	if (data.message == "!kick" && API.getUser(data.fromID).permission > 1 ) {
+	if (data.message.indexOf("!kick") !=-1 && API.getUser(data.fromID).permission > 1 ) {
 		var messkick = data.message;
 		var splitkick = messkick.split("@");
 		var userskick = API.getUsers();
@@ -451,7 +451,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 		API.moderateDeleteChat(data.chatID);
 	}
         
-	if (data.message == '!ban' && API.getUser(data.fromID).permission > 1 ) {
+	if (data.message.indexOf('!ban') !=-1 && API.getUser(data.fromID).permission > 1 ) {
 		var messb = data.message;
 		var userb = messb.split("@");
 		var usersb = API.getUsers();
