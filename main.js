@@ -453,7 +453,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         
 	if (data.message === '!ban' && API.getUser(data.fromID).permission > 1 ) {
 		var messb = data.message;
-		var userb = messb.substring(6);
+		var userb = messb.split("@");
 		var usersb = API.getUsers();
 		for(var b in usersb){
 			if (usersb[b].username == userb) {
@@ -518,69 +518,6 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     		API.sendChat("/em [" + data.from + " used skip]");
     		API.moderateForceSkip();
     	}
-    	
-    	
-    	//Manager
-    	
-    	if(data.message === '!rdj' && API.getUser(data.fromID).permission > 2){
-        	API.moderateDeleteChat(data.chatID);
-        	var msgrd = data.message.split("@");
-        	var userrd = msgrd[1];
-        	var usersrd = API.getUsers();
-        	for (var i in usersrd) {
-        		if (usersrd[i].username == userrd) {
-        			userData[usersrd[i].id].rdj = true;
-        			API.sendChat("/em [" + data.from + "] set " + userrd + " permission to Resident DJ");
-        		}
-        	}
-        	API.moderateSetRole(userrd, API.ROLE.RESIDENTDJ);
-        }
-    	
-    	if(data.message === '!bouncer' && API.getUser(data.fromID).permission > 2){
-        	API.moderateDeleteChat(data.chatID);
-        	var msgbo = data.message.split("@");
-        	var userbo = msgbo[1];
-        	var usersbo = API.getUsers();
-        	for (var i in usersbo) {
-        		if (usersbo[i].username == userbo) {
-        			userData[usersbo[i].id].bouncer = true;
-        			API.sendChat("/em [" + data.from + "] set " + userbo + " permission to bouncer");
-        		}
-        	}
-        	API.moderateSetRole(userbo, API.ROLE.BOUNCER);
-        }
-    	
-    	//Co-Host Commands
-    	
-    	if(data.message === '!manager' && API.getUser(data.fromID).permission > 3){
-        	API.moderateDeleteChat(data.chatID);
-        	var msgma = data.message.split("@");
-        	var userma = msgma[1];
-        	var usersma = API.getUsers();
-        	for (var i in usersma) {
-        		if (usersma[i].username == userma) {
-        			userData[usersma[i].id].manager = true;
-        			API.sendChat("/em [" + data.from + "] set " + userma + " permission to manager");
-        		}
-        	}
-        	API.moderateSetRole(userma, API.ROLE.MANAGER);
-        }
-        
-        //Host
-        
-        if(data.message === '!cohost' && API.getUser(data.fromID).permission > 4){
-        	API.moderateDeleteChat(data.chatID);
-        	var msgch = data.message.split("@");
-        	var userch = msgch[1];
-        	var usersch = API.getUsers();
-        	for (var i in usersch) {
-        		if (usersch[i].username == userch) {
-        			userData[usersch[i].id].cohost = true;
-        			API.sendChat("/em [" + data.from + "] set " + userch + " permission to cohost");
-        		}
-        	}
-        	API.moderateSetRole(userch, API.ROLE.COHOST);
-        }
         
         if(data.message === '!party' && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
