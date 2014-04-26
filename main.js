@@ -302,7 +302,9 @@ var fightArray = [
 var sa = []; //Initial !play array
 var se = []; //users that cannot lose
 var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joined the game
-
+var sTime = Date.now();
+var aTime = sTime + sa.length;
+var rTime = Math.floor(Math.random() * aTime + 1000);
 //User
 	
   API.on(API.CHAT, function(data){
@@ -321,7 +323,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     	if(data.message === '!play'){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em " + data.from + " joined spin!");
-    		sa.push(data.from);
+    		sa.push(data.from.username);
     	}
     		if(data.message === '!start'){
     			API.moderateDeleteChat(data.chatID);
@@ -332,8 +334,13 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     			}, 1000);
     			
     			setTimeout(function(){
-    				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
+    				API.sendChat("@" + sar + " you got the ball! Type !pass to pass it!");
     			}, 2000);
+    			
+    			setTimeout(function(){
+    				API.sendChat("Oh no! @" + sar + " got thier brains blown out!");
+    			}, rTime);
+    			
     			}else{
     				API.sendChat("/em Not enough players!");
     			}
@@ -341,11 +348,11 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     		if(data.message === '!pass'){
     			API.moderateDeleteChat(data.chatID);
     			API.sendChat("/em " + data.from + " passed the ball!");
-    			se.push(data.from);
-    			sa.pop(data.from);
+    			se.push(data.from.username);
+    			sa.pop(data.from.username);
     			setTimeout(function(){
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
-    			}, 4000);
+    			}, 2000);
     		}
     
     	if(data.message == '!god'){
