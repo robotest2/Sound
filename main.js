@@ -458,7 +458,6 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 		var usersb = API.getUsers();
 		for(var b in usersb){
 			if (usersb[b].username == userb) {
-				API.moderateBanUser(usersb[b].id);
 				API.sendChat('/me [' + data.from + '] used ban on ' + userb);
 			}
 		}
