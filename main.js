@@ -552,7 +552,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         if(data.message == '!rdj' &&  API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var messRdj = data.message;
-		var userRdj = messb.split("@");
+		var userRdj = messbRdj.split("@");
 		var usersRdj = API.getUsers();
 		for(var rd in usersRdj){
 			API.sendChat("/em [" + data.from + "] Set " + userRdj + "'s permission to Resident DJ");
@@ -563,7 +563,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         if(data.message == '!bouncer' && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var messbo = data.message;
-		var userbo = messb.split("@");
+		var userbo = messbo.split("@");
 		var usersbo = API.getUsers();
 		for(var bo in usersbo){
 			API.sendChat("/em [" + data.from + "] Set " + userbo + "'s permission to Bouncer");
@@ -576,7 +576,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         if(data.message == '!manager' && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
         	var messm = data.message;
-		var userm = messb.split("@");
+		var userm = messm.split("@");
 		var usersm = API.getUsers();
 		for(var m in usersm){
 			API.sendChat("/em [" + data.from + "] Set " + userm + "'s permission to Manager");
@@ -589,7 +589,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         if(data.message == '!cohost' && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
         	var messCh = data.message;
-		var userCh = messb.split("@");
+		var userCh = messCh.split("@");
 		var usersCh = API.getUsers();
 		for(var ch in usersCh){
 			API.sendChat("/em [" + data.from + "] Set " + userCh + "'s permission to Co-Host");
