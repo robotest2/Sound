@@ -437,11 +437,25 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
       }
 	
 	if(data.message == '!eta'){
-	API.moderateDeleteChat(data.chatID);
-	var pos = API.getWaitListPosition(), str = 'ETA: ';
-	str+= pos == -1 ? 'N/A. You are not in the waitlist!' : now.getTime(pos * 1000 * 60 * (25/6) + API.getTimeRemaining() * 1000);
-	API.sendChat("/em [" + data.from + "] " + str);
+		API.moderateDeleteChat(data.chatID);
+		var eNow = 6.30;
+		var eMsg = data.message.split("@");
+		var eUser = eMsg[1];
+		var eUsers = API.getUsers();
+		if(API.getWaitListPosition(eUser) == -1){
+			API.sendChat("/em [" + data.from + "] N/A. User is not the waitlist!");
+		}else{
+		for(var i in eUsers){
+			if(users[i].username == user){
+				var ePos = API.getWaitListPosition(user[i].id);
+				var eFinal = Math.floor(ePos - eNow);
+				API.sendChat("/em ETA for " + eUser + ": " + eFinal);
+				}else{
+					API.sendChat("/em [" + data.from + "] User not found.");
+				}
+			}
 		}
+	}
 		
     //Put more here soon
 	
