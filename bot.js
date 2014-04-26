@@ -80,7 +80,7 @@ version: "Beta 4.1_Pre2",
 
 if(options.historySkip == true){
 	API.on(API.DJ_ADVANCE, callback);
-
+	API.on(API.CHAT, callback);
 function callback(e) {
     if (e === null || options.historySkip === false) {
         return;
