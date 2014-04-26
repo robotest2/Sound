@@ -74,8 +74,36 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
+historySkip: true,
 version: "Beta 4.1_Pre2",
 };
+
+if(options.historySkip == true){
+	API.on(API.DJ_ADVANCE, callback);
+
+function callback(e) {
+    if (e === null || options.historySkip === false) {
+        return;
+    }
+    var t = e.media.author;
+    var n = e.media.title;
+    var r = API.getHistory();
+    var s = e.dj;
+    for (var i in r) {
+        if (r[i].media.author == t && r[i].media.title == n) {
+            API.moderateRoomProps(true, true);
+            setTimeout(function () {
+                API.moderateForceSkip();
+            }, 1300);
+            setTimeout(function () {
+                API.moderateRoomProps(false, true);
+            }, 2000);
+            API.sendChat("@" + s.username + "Song was already played, please next time check the history!");
+            break;
+        }
+    }
+}
+}
 
 
 // UserData (Wayz)
@@ -454,7 +482,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     //Put more here soon
 	
     //Bouncer
-        if(data.message == '!cycle' && API.getUser(data.fromID).permission > 1){
+        if(data.message == '!cycle' && API.getUser(data.fromID).permission >= 1){
         	API.moderateDeleteChat(data.chatID);
         	API.sendChat("/em [" + data.from + " used cycle]");
         	var toggle = $(".cycle-toggle");
@@ -465,7 +493,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         	}
         }
     
-    	if(data.message == '!settings' && API.getUser(data.fromID).permission > 1){
+    	if(data.message == '!settings' && API.getUser(data.fromID).permission >= 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + "] Settings | Auto Woot: " + options.woot + ", Announcement Message: " + options.announcementMsg + ", Log user Join: " + options.logUserJoin + ", AFK Remove: " + options.afkRemove + ".");
     	}
@@ -496,7 +524,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		API.moderateDeleteChat(data.chatID);
 	}
     
-	if (data.message.indexOf("!kick") !=-1 && API.getUser(data.fromID).permission > 1 ) {
+	if (data.message.indexOf("!kick") !=-1 && API.getUser(data.fromID).permission >= 1 ) {
 		var messkick = data.message;
 		var splitkick = messkick.split("@");
 		var userskick = API.getUsers();
@@ -512,7 +540,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		API.moderateDeleteChat(data.chatID);
 	}
         
-	if (data.message.indexOf('!ban') !=-1 && API.getUser(data.fromID).permission > 1 ) {
+	if (data.message.indexOf('!ban') !=-1 && API.getUser(data.fromID).permission >= 1 ) {
 		API.moderateDeleteChat(data.chatID);
 		API.sendChat('/em [' + data.from + ' used ban]');
                 var messb = data.message;
@@ -523,32 +551,32 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		}
 	}
 	
-        if(data.message.indexOf('!say') !=-1 && API.getUser(data.fromID).permission > 1){
+        if(data.message.indexOf('!say') !=-1 && API.getUser(data.fromID).permission >= 1){
         	API.moderateDeleteChat(data.chatID);
         	var sayMsg = data.message.substr(5).trim();
         	API.sendChat("/em [" + data.from + "] " + sayMsg);
         }
     
-    	if(data.message == '!lock' && API.getUser(data.fromID).permission > 1){
+    	if(data.message == '!lock' && API.getUser(data.fromID).permission >= 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used lock]");
     		API.moderateLockWaitList(true);
     	}
     
-    	if(data.message == '!unlock' && API.getUser(data.fromID).permission > 1){
+    	if(data.message == '!unlock' && API.getUser(data.fromID).permission >= 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used unlock]");
     		API.moderateLockWaitList(false);
     	}
     
-    	if(data.message == '!lockskip' && API.getUser(data.fromID).permission > 1){
+    	if(data.message == '!lockskip' && API.getUser(data.fromID).permission >= 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used lockskip]");
     		API.moderateLockWaitList(true);
     		API.moderateForceSkip();
     	}
     
-    	if(data.message == '!wlclear' && API.getUser(data.fromID).permission > 1){
+    	if(data.message == '!wlclear' && API.getUser(data.fromID).permission >= 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used wlclear]");
     		setTimeout(function(){
@@ -559,7 +587,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     		}, 2000);
     	}
     
-    	if(data.message == '!clear' && API.getUser(data.fromID).permission > 1){
+    	if(data.message == '!clear' && API.getUser(data.fromID).permission >= 1){
     		API.moderateDeleteChat(data.chatID);
 		var messages = $('#chat-messages').children();
 		for (var i = 0; i < messages.length; i++) {
@@ -572,7 +600,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 			API.sendChat("/em [" + data.from + " used clear]");
     		}
     
-    	if(data.message == '!skip' && API.getUser(data.fromID).permission > 1){
+    	if(data.message == '!skip' && API.getUser(data.fromID).permission >= 1){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em [" + data.from + " used skip]");
     		API.moderateForceSkip();
@@ -580,7 +608,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         
         //Manager +
         
-        if(data.message == '!rdj' &&  API.getUser(data.fromID).permission > 2){
+        if(data.message == '!rdj' &&  API.getUser(data.fromID).permission >= 2){
         	API.moderateDeleteChat(data.chatID);
         	var messRdj = data.message;
 		var userRdj = messbRdj.split("@");
@@ -591,7 +619,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		}
         }
         
-        if(data.message == '!bouncer' && API.getUser(data.fromID).permission > 2){
+        if(data.message == '!bouncer' && API.getUser(data.fromID).permission >= 2){
         	API.moderateDeleteChat(data.chatID);
         	var messbo = data.message;
 		var userbo = messbo.split("@");
@@ -604,7 +632,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         
         //Co-Host +
         
-        if(data.message == '!manager' && API.getUser(data.fromID).permission > 4){
+        if(data.message == '!manager' && API.getUser(data.fromID).permission >= 4){
         	API.moderateDeleteChat(data.chatID);
         	var messm = data.message;
 		var userm = messm.split("@");
@@ -617,7 +645,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         
         //Host
         
-        if(data.message == '!cohost' && API.getUser(data.fromID).permission > 4){
+        if(data.message == '!cohost' && API.getUser(data.fromID).permission >= 4){
         	API.moderateDeleteChat(data.chatID);
         	var messCh = data.message;
 		var userCh = messCh.split("@");
@@ -628,7 +656,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		}
         }
         
-        if(data.message == '!party' && API.getUser(data.fromID).permission > 4){
+        if(data.message == '!party' && API.getUser(data.fromID).permission >= 4){
         	API.moderateDeleteChat(data.chatID);
         	API.sendChat("!clear");
         	API.moderateLockWaitList(true, true);
