@@ -560,7 +560,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 		}
         }
         
-        if(data.message == '!bouncer' && API.getUser(data.fromID).permission > 2){
+        if(data.message === '!bouncer' && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var messbo = data.message;
 		var userbo = messbo.split("@");
