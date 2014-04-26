@@ -1,11 +1,56 @@
-Room Admin Script
-=====
+Plug.dj - Room Admin Script
+======
 This is meant to help administer the room, and let all users and staff have commands.
 
 http://plug.dj/astroparty
 
+Commands
+-----
+A full list can be found [here](https://googledrive.com/host/0B72VPqCAljwESjhjejMtNlNBRkE/)
+
+Here is a list of commands (they are current, unless i get too lazy to update :p)
+
+| User Commands |
+
+```
+!help,
+!fight,
+!staff,
+!theme,
+!emoji,
+!cookie,
+!ba,
+!link,
+!ask,
+```
+
+| Bouncer Commands |
+
+```
+!cycle,
+!kick,
+!mute,
+!unmute,
+!ban,
+!settings,
+!lock,
+!unlock,
+!lskip,
+!wlclear,
+!clear,
+!skip,
+```
+
+| Manager Commands |
+
+```
+
+Coming Soon!
+
+```
+
 Other Stuff
-==
+-----
 If there is an error within the command, the bot will recognize, and say in chat: what time it ocurred, and the error. Really only useful for me and admins.
 
 Also, the loader gets the current room your in.
@@ -14,7 +59,7 @@ Cheers,
 AstroShock
 
 License
-===
+-----
 
 Copyright (c) 2014, Jack Labbe (AstroShock, Pr0Code)
 All rights reserved.
