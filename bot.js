@@ -448,7 +448,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		for(var i in eUsers){ // if they are...
 			if(users[i].username == user){
 				var ePos = API.getWaitListPosition(user[i].id);
-				var eFinal = ePos * eNow;
+				var eFinal = Math.floor(ePos * eNow);
 				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
 				}else{
 					API.sendChat("/em [" + data.from + "] User not found."); //if the user is not in the room
