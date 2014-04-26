@@ -472,7 +472,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 		for(var i in userskick) {
 			if (userskick[i].username == splitkick[1]) {
 				var userkick = userskick[i].id;
-				API.sendChat("@" + splitkick[1] + " You will be kick in 10 seconds.")
+				API.sendChat("[" + data.from + "] @" + splitkick[1] + " You will be kick in 10 seconds.")
 				setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR)}, 10000);
 				setTimeout(function(){API.moderateUnbanUser(userkick)}, 15000);
 				setTimeout(function(){API.moderateUnbanUser(userkick)}, 18000);
@@ -487,11 +487,9 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 		var userb = messb.split("@");
 		var usersb = API.getUsers();
 		for(var b in usersb){
-			if (usersb[b].username == userb) {
-				API.sendChat('/me [' + data.from + '] used ban on ' + userb);
-			}
+			API.sendChat('[' + data.from + ' used ban]');
+			API.moderateBanUser(usersb[b].id);
 		}
-              API.moderateBanUser(usersb[b].id);
 	}
 	
         if(data.message == '!say' && API.getUser(data.fromID).permission > 1){
