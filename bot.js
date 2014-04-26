@@ -98,7 +98,7 @@ function callback(e) {
             setTimeout(function () {
                 API.moderateRoomProps(false, true);
             }, 2000);
-            API.sendChat("@" + s.username + "Song was already played, please next time check the history!");
+            API.sendChat("@" + s.username + "Song was already played, next time check the history!");
             break;
         }
     }
