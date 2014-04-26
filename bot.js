@@ -455,6 +455,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 				}
 			}
 		}
+	}
 		
     //Put more here soon
 	
@@ -642,7 +643,6 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         	API.sendChat("/em AstroShock started a party!");
         	}, 1000);
         }
-    }
   });
 
 	}catch(err){
