@@ -74,37 +74,8 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-historySkip: true,
 version: "Beta 4.1_Pre2",
 };
-
-if(options.historySkip == true){
-	API.on(API.DJ_ADVANCE, callback);
-	API.on(API.CHAT, callback);
-function callback(e) {
-    if (e === null || options.historySkip === false) {
-        return;
-    }
-    var t = e.media.author;
-    var n = e.media.title;
-    var r = API.getHistory();
-    var s = e.dj;
-    for (var i in r) {
-        if (r[i].media.author == t && r[i].media.title == n) {
-            API.moderateRoomProps(true, true);
-            setTimeout(function () {
-                API.moderateForceSkip();
-            }, 1300);
-            setTimeout(function () {
-                API.moderateRoomProps(false, true);
-            }, 2000);
-            API.sendChat("@" + s.username + "Song was already played, next time check the history!");
-            break;
-        }
-    }
-}
-}
-
 
 // UserData (Wayz)
 var userData = {};
