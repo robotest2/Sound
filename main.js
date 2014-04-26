@@ -547,6 +547,56 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     		API.moderateForceSkip();
     	}
         
+        //Manager +
+        
+        if(data.message == '!rdj' &&  API.getUser(data.fromID).permission > 2){
+        	API.moderateDeleteChat(data.chatID);
+        	var messRdj = data.message;
+		var userRdj = messb.split("@");
+		var usersRdj = API.getUsers();
+		for(var rd in usersRdj){
+			API.sendChat("/em [" + data.from + "] Set " + userRdj + "'s permission to Resident DJ");
+			API.moderateSetRole(usersRdj[rd].id, API.ROLE.RESIDENTDJ);
+		}
+        }
+        
+        if(data.message == '!bouncer' && API.getUser(data.fromID).permission > 2){
+        	API.moderateDeleteChat(data.chatID);
+        	var messbo = data.message;
+		var userbo = messb.split("@");
+		var usersbo = API.getUsers();
+		for(var bo in usersbo){
+			API.sendChat("/em [" + data.from + "] Set " + userbo + "'s permission to Bouncer");
+			API.moderateSetRole(usersbo[bo].id, API.ROLE.BOUNCER);
+		}
+        }
+        
+        //Co-Host +
+        
+        if(data.message == '!manager' && API.getUser(data.fromID).permission > 4){
+        	API.moderateDeleteChat(data.chatID);
+        	var messm = data.message;
+		var userm = messb.split("@");
+		var usersm = API.getUsers();
+		for(var m in usersm){
+			API.sendChat("/em [" + data.from + "] Set " + userm + "'s permission to Manager");
+			API.moderateSetRole(usersm[m].id, API.ROLE.MANAGER);
+		}
+        }
+        
+        //Host
+        
+        if(data.message == '!cohost' && API.getUser(data.fromID).permission > 4){
+        	API.moderateDeleteChat(data.chatID);
+        	var messCh = data.message;
+		var userCh = messb.split("@");
+		var usersCh = API.getUsers();
+		for(var ch in usersCh){
+			API.sendChat("/em [" + data.from + "] Set " + userCh + "'s permission to Co-Host");
+			API.moderateSetRole(usersCh[ch].id, API.ROLE.COHOST);
+		}
+        }
+        
         if(data.message == '!party' && API.getUser(data.fromID).permission > 4){
         	API.moderateDeleteChat(data.chatID);
         	API.sendChat("!clear");
