@@ -10,7 +10,7 @@ Enjoy using it in my room!
 
 Credits (Yes I used reverse psycology to put in the credits first :) )
 
-Overall Master God Person Thing: AstroShock (Pr0Code)
+That guy: AstroShock (Pr0Code)
 Amazing Helper Manager Guy That Fixes Stuff and Manages For Me Because I'm A Noob (<--- lol, it true doe): WayzRG (ProdTv - from pastebin)
 
 
