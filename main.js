@@ -224,12 +224,12 @@ API
 
 //Startup
 
-var on = "Enabled ";
+var on = "Now Running ";
 setTimeout(function(){
 	API.chatLog(on + "version " + options.version);
 }, 1000);
 setTimeout(function(){
-API.sendChat("/em now live!");
+API.sendChat("/em Now running v" + options.version + "!");
 }, 2000);
 
 //Arrays here
