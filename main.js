@@ -74,7 +74,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
-version: "Beta 4.1_Pre1",
+version: "Beta 4.1_Pre2",
 };
 
 
@@ -324,13 +324,16 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     if(data.message === '!spin'){
     	API.moderateDeleteChat(data.chatID);
     	API.sendChat("/em " + data.from + " requested a game of spin! Type !play to join the game!");
-    	sa.push(data.fromID)
+    	for(var i in sar){
+    		sa.push(data.fromID);
+    	}
     }
-    	
     	if(data.message === '!play'){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em " + data.from + " joined spin!");
-    		sa.push(data.fromID);
+    		for(var i in sar){
+    			sa.push(data.fromID);
+    		}
     	}
     		if(data.message === '!start'){
     			API.moderateDeleteChat(data.chatID);
@@ -340,14 +343,18 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     				API.sendChat("/em Spinning the ball...");
     			}, 1000);
     			
+    			for(var i in sar){
+    			
     			setTimeout(function(){
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
     			}, 2000);
     			
     			setTimeout(function(){
     				API.sendChat("Oh no! @" + sar.username + " got thier brains blown out!");
+    				sa = [];
+    				se = [];
     			}, rTime);
-    			
+    			}
     			}else{
     				API.sendChat("/em Not enough players!");
     			}
@@ -355,8 +362,12 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     		if(data.message === '!pass'){
     			API.moderateDeleteChat(data.chatID);
     			API.sendChat("/em " + data.from + " passed the ball!");
-    			se.push(data.fromID);
-    			sa.pop(data.fromID);
+    			for(var i in sar){
+    				sa.pop(data.fromID);
+    			}
+    			for(var i in se){
+    				se.push(data.fromID);
+    			}
     			setTimeout(function(){
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
     			}, 2000);
