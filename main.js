@@ -483,11 +483,11 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
         
 	if (data.message.indexOf('!ban') !=-1 && API.getUser(data.fromID).permission > 1 ) {
 		API.moderateDeleteChat(data.chatID);
-              var messb = data.message;
+		API.sendChat('/em [' + data.from + ' used ban]');
+                var messb = data.message;
 		var userb = messb.split("@");
 		var usersb = API.getUsers();
 		for(var b in usersb){
-			API.sendChat('[' + data.from + ' used ban]');
 			API.moderateBanUser(usersb[b].id);
 		}
 	}
