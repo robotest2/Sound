@@ -563,9 +563,9 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         	var messRdj = data.message;
 		var userRdj = messbRdj.split("@");
 		var usersRdj = API.getUsers();
-		for(var rd in usersRdj){
+		for(var i in usersRdj){
 			API.sendChat("/em [" + data.from + "] Set " + userRdj + "'s permission to Resident DJ");
-			API.moderateSetRole(usersRdj[rd].id, API.ROLE.RESIDENTDJ);
+			API.moderateSetRole(usersRdj[i].id, API.ROLE.RESIDENTDJ);
 		}
         }
         
@@ -574,9 +574,9 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         	var messbo = data.message;
 		var userbo = messbo.split("@");
 		var usersbo = API.getUsers();
-		for(var bo in usersbo){
+		for(var i in usersbo){
 			API.sendChat("/em [" + data.from + "] Set " + userbo + "'s permission to Bouncer");
-			API.moderateSetRole(usersbo[bo].id, API.ROLE.BOUNCER);
+			API.moderateSetRole(usersbo[i].id, API.ROLE.BOUNCER);
 		}
         }
         
@@ -587,9 +587,9 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         	var messm = data.message;
 		var userm = messm.split("@");
 		var usersm = API.getUsers();
-		for(var m in usersm){
+		for(var i in usersm){
 			API.sendChat("/em [" + data.from + "] Set " + userm + "'s permission to Manager");
-			API.moderateSetRole(usersm[m].id, API.ROLE.MANAGER);
+			API.moderateSetRole(usersm[i].id, API.ROLE.MANAGER);
 		}
         }
         
@@ -600,9 +600,9 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         	var messCh = data.message;
 		var userCh = messCh.split("@");
 		var usersCh = API.getUsers();
-		for(var ch in usersCh){
+		for(var i in usersCh){
 			API.sendChat("/em [" + data.from + "] Set " + userCh + "'s permission to Co-Host");
-			API.moderateSetRole(usersCh[ch].id, API.ROLE.COHOST);
+			API.moderateSetRole(usersCh[i].id, API.ROLE.COHOST);
 		}
         }
         
