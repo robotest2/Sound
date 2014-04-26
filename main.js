@@ -14,6 +14,8 @@ That guy: AstroShock (Pr0Code)
 Amazing Helper Manager Guy That Fixes Stuff and Manages For Me Because I'm A Noob (<--- lol, it true doe): WayzRG (ProdTv - from pastebin)
 
 
+Please refer to the documentation below or to the license file. Any questions can be messaged to me here.
+
 
 LICENSE:
 
