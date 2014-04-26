@@ -442,10 +442,6 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		var eMsg = data.message.split("@");
 		var eUser = eMsg[1];
 		var eUsers = API.getUsers();
-		if(eUser === null){
-			eUser = data.from;
-		}else{
-			eMsg[1];
 		}
 		if(API.getWaitListPosition(eUser) == -1){ //Tests if user is in wl
 			API.sendChat("/em [" + data.from + "] N/A. User is not the waitlist!");
