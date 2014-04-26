@@ -567,7 +567,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 		var usersbo = API.getUsers();
 		for(var bo in usersbo){
 			API.sendChat("/em [" + data.from + "] Set " + userbo + "'s permission to Bouncer");
-			API.moderateSetRole(usersbo[bo].id, API.ROLE.BOUNCER);
+			API.moderateSetRole(usersbo[bo].username, API.ROLE.BOUNCER);
 		}
         }
         
