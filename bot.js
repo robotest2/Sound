@@ -514,7 +514,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		for(var i in userskick) {
 			if (userskick[i].username == splitkick[1]) {
 				var userkick = userskick[i].id;
-				API.sendChat("[" + data.from + "] @" + splitkick[1] + " You will be kick in 10 seconds.")
+				API.sendChat("[" + data.from + "] @" + splitkick[1] + " You will be kicked in 10 seconds.")
 				setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR)}, 10000);
 				setTimeout(function(){API.moderateUnbanUser(userkick)}, 15000);
 				setTimeout(function(){API.moderateUnbanUser(userkick)}, 18000);
