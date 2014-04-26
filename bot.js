@@ -443,7 +443,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		var eUser = eMsg[1];
 		var eUsers = API.getUsers();
 		for(var i in eUsers){ // if they are...
-			if(users[i].username == user){
+			if(eUsers[i].username == eUser){
 				var ePos = API.getWaitListPosition(eUser[i].id);
 				var eFinal = ePos * eNow;
 				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
