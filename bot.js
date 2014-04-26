@@ -230,12 +230,12 @@ API
 
 //Startup
 
-var on = "Now Running ";
+var on = "Current ";
 setTimeout(function(){
 	API.chatLog(on + "version " + options.version);
 }, 1000);
 setTimeout(function(){
-API.sendChat("/em Now running v" + options.version + "!");
+API.sendChat("/em Now running!");
 }, 2000);
 
 //Arrays here
