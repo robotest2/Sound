@@ -501,7 +501,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		}
 	}
 	
-        if(data.message == '!say' && API.getUser(data.fromID).permission > 1){
+        if(data.message.indexOf('!say') !=-1 && API.getUser(data.fromID).permission > 1){
         	API.moderateDeleteChat(data.chatID);
         	var sayMsg = data.message.substr(5).trim();
         	API.sendChat("/em [" + data.from + "] " + sayMsg);
