@@ -452,7 +452,8 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 	}
         
 	if (data.message.indexOf('!ban') !=-1 && API.getUser(data.fromID).permission > 1 ) {
-		var messb = data.message;
+		API.moderateDeleteChat(data.chatID);
+              var messb = data.message;
 		var userb = messb.split("@");
 		var usersb = API.getUsers();
 		for(var b in usersb){
@@ -461,7 +462,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 				API.sendChat('/me [' + data.from + '] used ban on ' + userb);
 			}
 		}
-		API.moderateDeleteChat(data.chatID);
+              API.moderateBanUser(usersb[b].id);
 	}
 	
         if(data.message == '!say' && API.getUser(data.fromID).permission > 1){
