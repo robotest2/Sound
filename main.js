@@ -337,7 +337,6 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     	}
     		if(data.message === '!start'){
     			API.moderateDeleteChat(data.chatID);
-    			if(sa.length > 2){
     			API.sendChat("/em " + data.from + " started spin!");
     			setTimeout(function(){
     				API.sendChat("/em Spinning the ball...");
@@ -354,9 +353,6 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     				sa = [];
     				se = [];
     			}, rTime);
-    			}
-    			}else{
-    				API.sendChat("/em Not enough players!");
     			}
     		}
     		if(data.message === '!pass'){
