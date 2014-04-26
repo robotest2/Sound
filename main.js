@@ -13,9 +13,8 @@ Credits (Yes I used reverse psycology to put in the credits first :) )
 That guy: AstroShock (Pr0Code)
 Amazing Helper Manager Guy That Fixes Stuff and Manages For Me Because I'm A Noob (<--- lol, it true doe): WayzRG (ProdTv - from pastebin)
 
-
-
 */
+
 if(location.pathname == '/astroparty/') {
 	try{
 
