@@ -318,12 +318,13 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     if(data.message === '!spin'){
     	API.moderateDeleteChat(data.chatID);
     	API.sendChat("/em " + data.from + " requested a game of spin! Type !play to join the game!");
+    	sa.push(data.fromID)
     }
     	
     	if(data.message === '!play'){
     		API.moderateDeleteChat(data.chatID);
     		API.sendChat("/em " + data.from + " joined spin!");
-    		sa.push(data.from.username);
+    		sa.push(data.fromID);
     	}
     		if(data.message === '!start'){
     			API.moderateDeleteChat(data.chatID);
@@ -334,11 +335,11 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     			}, 1000);
     			
     			setTimeout(function(){
-    				API.sendChat("@" + sar + " you got the ball! Type !pass to pass it!");
+    				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
     			}, 2000);
     			
     			setTimeout(function(){
-    				API.sendChat("Oh no! @" + sar + " got thier brains blown out!");
+    				API.sendChat("Oh no! @" + sar.username + " got thier brains blown out!");
     			}, rTime);
     			
     			}else{
@@ -348,8 +349,8 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
     		if(data.message === '!pass'){
     			API.moderateDeleteChat(data.chatID);
     			API.sendChat("/em " + data.from + " passed the ball!");
-    			se.push(data.from.username);
-    			sa.pop(data.from.username);
+    			se.push(data.fromID);
+    			sa.pop(data.fromID);
     			setTimeout(function(){
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
     			}, 2000);
