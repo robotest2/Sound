@@ -560,14 +560,14 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
 		}
         }
         
-        if(data.message === '!bouncer' && API.getUser(data.fromID).permission > 2){
+        if(data.message == '!bouncer' && API.getUser(data.fromID).permission > 2){
         	API.moderateDeleteChat(data.chatID);
         	var messbo = data.message;
 		var userbo = messbo.split("@");
 		var usersbo = API.getUsers();
 		for(var bo in usersbo){
 			API.sendChat("/em [" + data.from + "] Set " + userbo + "'s permission to Bouncer");
-			API.moderateSetRole(usersbo[bo].username, API.ROLE.BOUNCER);
+			API.moderateSetRole(usersbo[bo].id, API.ROLE.BOUNCER);
 		}
         }
         
