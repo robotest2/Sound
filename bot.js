@@ -447,7 +447,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		}else{
 		for(var i in eUsers){ // if they are...
 			if(users[i].username == user){
-				var ePos = API.getWaitListPosition(user[i].id);
+				var ePos = API.getWaitListPosition(eUser[i].id);
 				var eFinal = ePos * eNow;
 				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
 				}else{
