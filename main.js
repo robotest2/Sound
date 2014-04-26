@@ -325,7 +325,7 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     	}
     		if(data.message === '!start'){
     			API.moderateDeleteChat(data.chatID);
-    			if(sa > 2){
+    			if(sa.length > 2){
     			API.sendChat("/em " + data.from + " started spin!");
     			setTimeout(function(){
     				API.sendChat("/em Spinning the ball...");
@@ -334,6 +334,8 @@ var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joine
     			setTimeout(function(){
     				API.sendChat("@" + sar.username + " you got the ball! Type !pass to pass it!");
     			}, 2000);
+    			}else{
+    				API.sendChat("/em Not enough players!");
     			}
     		}
     		if(data.message === '!pass'){
