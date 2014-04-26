@@ -456,7 +456,6 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 				}
 			}
 		}
-	}
 		
     //Put more here soon
 	
