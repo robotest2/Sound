@@ -442,16 +442,21 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		var eMsg = data.message.split("@");
 		var eUser = eMsg[1];
 		var eUsers = API.getUsers();
-		if(API.getWaitListPosition(eUser) == -1){
+		if(eUser === null){
+			eUser = data.from;
+		}else{
+			eMsg[1];
+		}
+		if(API.getWaitListPosition(eUser) == -1){ //Tests if user is in wl
 			API.sendChat("/em [" + data.from + "] N/A. User is not the waitlist!");
 		}else{
-		for(var i in eUsers){
+		for(var i in eUsers){ // if they are...
 			if(users[i].username == user){
 				var ePos = API.getWaitListPosition(user[i].id);
-				var eFinal = Math.floor(ePos - eNow);
-				API.sendChat("/em ETA for " + eUser + ": " + eFinal);
+				var eFinal = ePos * eNow;
+				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
 				}else{
-					API.sendChat("/em [" + data.from + "] User not found.");
+					API.sendChat("/em [" + data.from + "] User not found."); //if the user is not in the room
 				}
 			}
 		}
