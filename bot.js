@@ -441,9 +441,6 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		var eMsg = data.message.split("@");
 		var eUser = eMsg[1];
 		var eUsers = API.getUsers();
-		if(API.getWaitListPosition(data.from) == -1){
-			API.sendChat("/em " + data.from + ", you are not in the waitlist!");
-		}else{
 		for(var i in eUsers){
 			if(eUsers[i].username == eUser){
 				var ePos = API.getWaitListPosition(eUser[i]);
@@ -452,7 +449,6 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 				}
 			}
 		}
-	}
 		
     //Put more here soon
 	
