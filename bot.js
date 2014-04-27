@@ -453,6 +453,8 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 				var etaTime = Math.floor(etaPos * avgTime);
 				API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaTime);
 				}
+			}else{
+				API.sendChat("/em [" + data.from + "] User not found!");
 			}
 		}
 	}
