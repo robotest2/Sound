@@ -447,6 +447,8 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 				var eFinal = Math.floor(ePos * 5);
 				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
 				}
+			}else{
+				API.sendChat("/em [" + data.from + "] User not found!");
 			}
 		}
 		
