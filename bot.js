@@ -435,19 +435,19 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         API.sendChat("/em [" + data.from + "] " + askArray[askR]);
       }
 	
-	if(data.message == '!eta'){
+	if(data.message.indexOf('!eta') !=-1){
 		API.moderateDeleteChat(data.chatID);
-		var eNow = 5;
-		var eMsg = data.message.split("@");
-		var eUser = eMsg[1];
-		var eUsers = API.getUsers();
-		for(var i in eUsers){
-			if(eUsers[i].username == eUser){
-				var ePos = API.getWaitListPosition(eUser[i]);
-				var eFinal = Math.floor(ePos * 5);
-				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
-				}else{
-					API.sendChat("/em [" + data.from + "] User not found!");
+		var etaMsg = data.message.split("@");
+		var etaUser = etaMsg[1];
+		var allUsers = API.getUsers();
+		for (var i in allUsers){
+			if (allUsers[i].username == etaUser){
+				var etaPos = API.getWaitListPosition(etaUser);
+				var avgTime = 300;
+				var etaTime = etaPos * avgTime;
+				API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaTime);
+			}else{
+				API.sendChat("/em [" + data.from + "] User not found!");
 			}
 		}
 	}
