@@ -257,7 +257,7 @@ var blacklistA = [ //keywords for blacklist
 if(options.blackList == true){
 	var current = API.getMedia();
 	var currentDj = API.getDJ();
-	if(current == blacklistA){
+	if(current === blacklistA){
 		API.sendChat("@" + currentDj.username + " That song is blacklisted!");
 		API.moderateForceSkip();
 	}
