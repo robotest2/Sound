@@ -1,12 +1,12 @@
 Plug.dj - Room Admin Script
 ======
-This is meant to help administer the room, and let all users and staff have commands.
+This is meant to help administer the room, and let all users and staff have commands. If you want to use this, fork it and credit me and put the license in somewhere. The license file can be found [here](https://github.com/Pr0Code/Sound/master/blob/LICENSE)
 
 http://plug.dj/astroparty
 
 Commands
 -----
-A full list can be found [here](https://googledrive.com/host/0B72VPqCAljwESjhjejMtNlNBRkE/)
+A full list can be found [there](https://googledrive.com/host/0B72VPqCAljwESjhjejMtNlNBRkE/)
 
 Here is a list of commands (they are current, unless i get too lazy to update :p)
 
