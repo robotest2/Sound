@@ -446,11 +446,11 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 				var ePos = API.getWaitListPosition(eUser[i]);
 				var eFinal = Math.floor(ePos * 5);
 				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
-				}
-			}else{
-				API.sendChat("/em [" + data.from + "] User not found!");
+				}else{
+					API.sendChat("/em [" + data.from + "] User not found!");
 			}
 		}
+	}
 		
     //Put more here soon
 	
