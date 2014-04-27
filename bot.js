@@ -74,6 +74,7 @@ announcementMsg: true,
 songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
+blackList: true,
 version: "Beta 4.1_Pre2",
 };
 
@@ -175,7 +176,12 @@ if (options.afkRemove == true){
 }else{
 	API.chatLog("AFK Remove: " + options.afkRemove);
 	}
-	
+
+if(options.blackList == true){
+	API.chatLog("BlackList: " + options.blackList);
+}else{
+	API.chatLog("BlackList: " + options.blackList);
+}	
 API.chatLog("Loading file...");
 
 }
@@ -238,6 +244,27 @@ API.sendChat("/em Now running!");
 }, 2000);
 
 //Arrays here
+
+var blacklistA = [ //keywords for blacklist
+	"Hitler",
+	"Gangnam Style",
+	"#SELFIE",
+	"Minecraft",
+	"Friday Rebecca Black",
+	"Saturday Rebecca Black",
+	"LMFAO"];
+
+if(options.blackList == true){
+	var current = API.getMedia();
+	var currentDj = API.getDJ();
+	if(current == blacklistA){
+		API.sendChat("@" + currentDj.username + " That song is blacklisted!");
+		API.moderateForceSkip();
+	}
+}else{
+	API.sendChat("/em This song is blacklisted, but since blackList is set to" + options.blackList + ", I will do nothing!");
+}
+
 
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
