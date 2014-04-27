@@ -437,15 +437,15 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 	
 	if(data.message == '!eta'){
 		API.moderateDeleteChat(data.chatID);
-		var eNow = 6.30;
+		var eNow = API.getMedia().length;
 		var eMsg = data.message.split("@");
 		var eUser = eMsg[1];
 		var eUsers = API.getUsers();
 		for(var i in eUsers){ // if they are...
 			if(eUsers[i].username == eUser){
-				var ePos = API.getWaitListPosition(eUser[i].id);
-			//	var eFinal = Math.floor(ePos * eNow);
-				API.sendChat("/em ETA for " + eUser + ": " + ePos + " minutes");
+				var ePos = API.getWaitListPosition(eUser[i]);
+				var eFinal = Math.floor(ePos * eNow);
+				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
 			}
 		}
 	}
