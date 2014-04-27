@@ -626,17 +626,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 			API.moderateSetRole(usersCh[i].id, API.ROLE.COHOST);
 		}
         }
-        
-        if(data.message == '!party' && API.getUser(data.fromID).permission >= 4){
-        	API.moderateDeleteChat(data.chatID);
-        	API.sendChat("!clear");
-        	API.moderateLockWaitList(true, true);
-        	API.moderateForceSkip();
-        	setTimeout(function(){
-        	API.sendChat("/em AstroShock started a party!");
-        	}, 1000);
-        }
-  });
+  }); // end of commands
 
 	}catch(err){
     	var d = new Date();
