@@ -443,9 +443,16 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		for (var i in allUsers){
 			if (allUsers[i].username == etaUser){
 				var etaPos = API.getWaitListPosition(etaUser);
-				var avgTime = 318000;
-				var etaTime = etaPos + 1 * avgTime;
+				if (etaPos == 0){
+					var etaOne = API.getTimeRemaining();
+					var etaOneFinal = etaPos * etaOne;
+					API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaOneFinal);
+				}
+				if (etaPos == >= 1){
+				var avgTime = 318000; //5m 30s avg time
+				var etaTime = etaPos * avgTime;
 				API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaTime);
+				}
 			}
 		}
 	}
