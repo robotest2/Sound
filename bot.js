@@ -448,7 +448,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 					var etaOneFinal = etaPos * etaOne;
 					API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaOneFinal);
 				}
-				if (etaPos == >= 1){
+				if (etaPos == > 0){
 				var avgTime = 318000; //5m 30s avg time
 				var etaTime = etaPos * avgTime;
 				API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaTime);
