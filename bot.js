@@ -443,7 +443,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		for (var i in allUsers){
 			if (allUsers[i].username == etaUser){
 				var etaPos = API.getWaitListPosition(etaUser);
-				if (etaPos == 0){
+				if (etaPos === 0){
 					var etaOne = API.getTimeRemaining();
 					var etaOneFinal = etaPos * etaOne;
 					API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaOneFinal);
