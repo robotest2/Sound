@@ -437,7 +437,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 	
 	if(data.message == '!eta'){
 		API.moderateDeleteChat(data.chatID);
-		var eNow = API.getMedia().length;
+		var eNow = 5;
 		var eMsg = data.message.split("@");
 		var eUser = eMsg[1];
 		var eUsers = API.getUsers();
@@ -447,7 +447,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		for(var i in eUsers){
 			if(eUsers[i].username == eUser){
 				var ePos = API.getWaitListPosition(eUser[i]);
-				var eFinal = Math.floor(ePos * eNow);
+				var eFinal = Math.floor(ePos * 5);
 				API.sendChat("/em ETA for " + eUser + ": " + eFinal + " minutes");
 				}
 			}
