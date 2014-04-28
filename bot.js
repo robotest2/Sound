@@ -466,7 +466,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 				var c = API.getUser(b[i].id).wlIndex + 1;
 				var d = 5;
 				if(c == 1) {
-					var e = Math.floor(API.getTimeRemaining() / 60);
+					var e = $("#now-playing-time").children('span').text();
 					API.sendChat("/em [" + data.from + "] ETA for " + y + " is " + e + " minutes.");
 				}
 				else if(c > 1) {
