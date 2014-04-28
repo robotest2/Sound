@@ -75,6 +75,7 @@ songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
 blackList: true,
+overLimit: true,
 version: "Beta 4.1_Pre5",
 };
 
@@ -185,6 +186,16 @@ if(options.blackList == true){
 API.chatLog("Loading file...");
 
 }
+}
+
+if(options.overLimit == true){
+	var l = API.getTimeRemaining();
+	if(l == >= 10){
+		API.sendChat("/em Song is over the limit!");
+		API.moderateForceSkip();
+	}else{
+		API.sendChat("/em This song is over the limit, but since overLimit is set to " + options.overLimit + ", I will do nothing!");
+	}
 }
 
 /*
