@@ -137,54 +137,7 @@ afkRemover: function(){
 },
 };
 
-//Configure Options + Startup Loader thing
-
-startup = {
-
-init: function(){
-
-API.chatLog("Starting Up...");
-API.chatLog("Options: ");
-
-if (options.woot == true){
- API.chatLog("Woot: " + options.woot); 
- API.on(API.DJ_ADVANCE, function() { $('#woot').click(); });
- }else{
- API.chatLog("Woot: " + options.woot);
- }
-
-if (options.announcementMsg == true){
-	API.chatLog("Announcements: " + options.announcementMsg);
-	setInterval(function() { 
-		msgR = Math.floor(Math.random() * msgArray.length); 
-		API.sendChat("/em [Announcement] " + msgArray[msgR]);
-		
-		}, options.songIntervalMessage.interval);
-}else{
-	API.chatLog("Announcements: " + options.announcementMsg);
-}
-
-if (options.logUserJoin == true){
-API.chatLog("Log User Join: " + options.logUserJoin);
-API.on(API.USER_JOIN, function(a) { API.chatLog(a.username + " joined the room"); });
-}else{
-	API.chatLog("Log User Join: " + options.logUserJoin);
-}
-
-if (options.afkRemove == true){
-	API.chatLog("AFK Remove: " + options.afkRemove);
-	setInterval(afkB.afkRemover, 300000);
-}else{
-	API.chatLog("AFK Remove: " + options.afkRemove);
-	}
-
-if(options.blackList == true){
-	API.chatLog("BlackList: " + options.blackList);
-}else{
-	API.chatLog("BlackList: " + options.blackList);
-}	
-API.chatLog("Loading file...");
-
+// API LISTENER
 API.on(API.DJ_ADVANCE, function(){
 	var l = API.getTimeRemaining();
 	
@@ -197,7 +150,55 @@ API.on(API.DJ_ADVANCE, function(){
 
 });
 
-}
+//Configure Options + Startup Loader thing
+
+startup = {
+
+init: function(){
+
+	API.chatLog("Starting Up...");
+	API.chatLog("Options: ");
+
+	if (options.woot == true){
+ 	API.chatLog("Woot: " + options.woot); 
+ 	API.on(API.DJ_ADVANCE, function() { $('#woot').click(); });
+ 	}else{
+ 		API.chatLog("Woot: " + options.woot);
+ 	}
+
+	if (options.announcementMsg == true){
+	API.chatLog("Announcements: " + options.announcementMsg);
+	setInterval(function() { 
+		msgR = Math.floor(Math.random() * msgArray.length); 
+		API.sendChat("/em [Announcement] " + msgArray[msgR]);
+		
+	}, options.songIntervalMessage.interval);
+	}else{
+		API.chatLog("Announcements: " + options.announcementMsg);
+	}
+	
+	if (options.logUserJoin == true){
+	API.chatLog("Log User Join: " + options.logUserJoin);
+	API.on(API.USER_JOIN, function(a) { API.chatLog(a.username + " joined the room"); });
+	}else{
+		API.chatLog("Log User Join: " + options.logUserJoin);
+	}
+
+	if (options.afkRemove == true){
+		API.chatLog("AFK Remove: " + options.afkRemove);
+		setInterval(afkB.afkRemover, 300000);
+	}else{
+		API.chatLog("AFK Remove: " + options.afkRemove);
+		}
+
+	if(options.blackList == true){
+		API.chatLog("BlackList: " + options.blackList);
+	}else{
+		API.chatLog("BlackList: " + options.blackList);
+	}	
+	API.chatLog("Loading file...");
+
+	}
 }
 /*
   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
