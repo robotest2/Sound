@@ -185,10 +185,6 @@ if(options.blackList == true){
 }	
 API.chatLog("Loading file...");
 
-}
-}
-
-
 API.on(API.DJ_ADVANCE, function(){
 	var l = API.getTimeRemaining();
 	
@@ -200,6 +196,9 @@ API.on(API.DJ_ADVANCE, function(){
 	}
 
 });
+
+}
+}
 /*
   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
  | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
