@@ -75,7 +75,7 @@ songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
 blackList: true,
-version: "Beta 4.1_Pre3",
+version: "Beta 4.1_Pre5",
 };
 
 // UserData (Wayz)
