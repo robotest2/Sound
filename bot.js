@@ -190,17 +190,21 @@ API.chatLog("Loading file...");
 
 var l = API.getTimeRemaining();
 
-if(options.overLimit == true){
-	if(l > 600000){
-		API.sendChat("/em Song is over the limit!");
-		API.moderateForceSkip();
+API.on(API.DJ_ADVANCE, callback);
+function callback(){
+	
+	if(options.overLimit == true){
+		if(l > 600000){
+			API.sendChat("/em Song is over the limit!");
+			API.moderateForceSkip();
+		}
+	}else{
+		if(l > 600000){
+			API.sendChat("/em This song is over the limit, but since overLimit is set to " + options.overLimit + ", I will do nothing!");
+		}
 	}
-}else{
-	if(l > 600000){
-		API.sendChat("/em This song is over the limit, but since overLimit is set to " + options.overLimit + ", I will do nothing!");
-	}
-}
 
+}
 /*
   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
  | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
