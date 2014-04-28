@@ -464,22 +464,22 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 	
 	if(data.message.indexOf('!eta') !=-1){
 		API.moderateDeleteChat(data.chatID);
-		var etaMsg = data.message.split("@");
-		var etaUser = etaMsg[1];
-		var allUsers = API.getUsers();
-		for (var i in allUsers){
-			if (allUsers[i].username == etaUser){
-				var etaPos = API.getWaitlistPosition(allUsers[i].id);
-				if (etaPos === 0){
-					var etaOne = API.getTimeRemaining();
-					var etaOneFinal = Math.floor(etaPos * etaOne);
-					API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaOneFinal);
+		var a = data.message.split("@");
+		var y = a[1];
+		var b = API.getUsers();
+		for (var i in b) {
+			if(b[i].username == y) {
+				var c = API.getUser(b[i].id).wlIndex + 1;
+				var d = 5;
+				if(c == 1) {
+					var e = Math.floor(API.getTimeRemaining() / 60);
+					API.sendChat("/em [" + data.from + "] ETA for " + y + " is " + e + " minutes.");
 				}
-				if(etaPos >= 1){
-				var avgTime = 318000; //5m 30s avg time
-				var etaTime = Math.floor(etaPos * avgTime);
-				API.sendChat("/em [" + data.from + "] ETA for " + etaUser + " is " + etaTime);
+				else if(c > 1) {
+					var f = Math.floor(c*d);
+					API.sendChat("/em [" + data.from + "] ETA for " + y + " is " + f + " minutes.");
 				}
+				else API.sendChat("/em [" + data.from + "] ETA for " + y + " is N/A minutes.");
 			}
 		}
 	}
