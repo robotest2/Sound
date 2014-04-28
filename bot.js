@@ -192,10 +192,10 @@ API.chatLog("Loading file...");
 API.on(API.DJ_ADVANCE, function(){
 	var l = API.getTimeRemaining();
 	
-	if(options.overLimit && l > 600000){
+	if(options.overLimit && l > 600){
 		API.sendChat("/em Song is over the limit!");
 		API.moderateForceSkip();
-	}else if(!options.overLimit && l > 600000){
+	}else if(!options.overLimit && l > 600){
 		API.sendChat("/em This song is over the limit, but since overLimit is set to " + options.overLimit + ", I will do nothing!");
 	}
 
