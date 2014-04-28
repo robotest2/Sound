@@ -188,12 +188,15 @@ API.chatLog("Loading file...");
 }
 }
 
+var l = API.getTimeRemaining();
+
 if(options.overLimit == true){
-	var l = API.getTimeRemaining();
 	if(l > 600000){
 		API.sendChat("/em Song is over the limit!");
 		API.moderateForceSkip();
-	}else{
+	}
+}else{
+	if(l > 600000){
 		API.sendChat("/em This song is over the limit, but since overLimit is set to " + options.overLimit + ", I will do nothing!");
 	}
 }
