@@ -190,7 +190,7 @@ API.chatLog("Loading file...");
 
 if(options.overLimit == true){
 	var l = API.getTimeRemaining();
-	if(l == >= 10){
+	if(l >= 10){
 		API.sendChat("/em Song is over the limit!");
 		API.moderateForceSkip();
 	}else{
