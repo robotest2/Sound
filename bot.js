@@ -520,13 +520,17 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		var msg = data.message.split("@");
 		var user = msg[1];
 		var users = API.getUsers();
+		if(userData[data.fromID].mute === true){
+			API.sendChat("/em [" + data.from + "] Tried unmuting themselves, but they're muted!");
+		}else{
 		for (var i in users) {
 			if (users[i].username == user) {
 				userData[users[i].id].mute = false;
 				API.sendChat("/me [" + data.from + "] used unmute on: " + user);
+				}
 			}
+			API.moderateDeleteChat(data.chatID);
 		}
-		API.moderateDeleteChat(data.chatID);
 	}
     
 	if (data.message.indexOf("!kick") !=-1 && API.getUser(data.fromID).permission >= 1 ) {
