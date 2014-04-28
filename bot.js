@@ -226,12 +226,6 @@ if (location.pathname != '/astroparty'){
 	API.chatLog("You are not authenticated to use this script in the requested room.", true);
 }
 
-API
-.on(API.WAIT_LIST_UPDATE, $.proxy(afkB.eventWaitListUpdate, this))
-.on(API.USER_JOIN, $.proxy(afkB.eventJoin, this))
-.on(API.USER_LEAVE, $.proxy(afkB.eventLeave, this))
-.on(API.CHAT, $.proxy(afkB.eventChat, this));
-
 
 //Startup
 
