@@ -190,7 +190,7 @@ API.chatLog("Loading file...");
 
 var l = API.getTimeRemaining();
 
-API.on(API.DJ_ADVANCE, function{
+API.on(API.DJ_ADVANCE, function(){
 	
 	if(options.overLimit == true){
 		if(l > 600000){
