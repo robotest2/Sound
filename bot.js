@@ -314,42 +314,47 @@ var fightArray = [
 	" loves one-direction.",
 	" eats coconuts"];
 
-function userc(str, user) { //commands (WAYZ IS GOD)
-var users = API.getUsers();
+function userc(str, from, id, opt) { // Commands (WAYZ IS GOD)
+	var users = API.getUsers();
 	switch(str) {
 		case '!ban':
-			API.moderateDeleteChat(data.chatID);
 		for (var i in users) {
-				API.sendChat("/em Test successful!");
-				if (users[i].username == user){
-					 API.moderateBanUser(users[i].id);
-			}else{
-				API.sendChat("/em [" + data.from + "] User not found.");
+				if (users[i].username == opt) {
+					API.moderateDeleteChat(id);
+					API.sendChat("/em [" + from + "] used ban on " + opt);
+					API.moderateBanUser(users[i].id);
+				}
 			}
-		}
 		break;
-		
 		case '!say':
-			if(API.getUser(data.fromID).permission > 2){
-				var a = data.message.substr(5).trim();
-				var b = a[1];
-				API.sendChat("/em [" + data.from + "] " + b);
-			}
+			API.moderateDeleteChat(id);
+			API.sendChat('/em [' + from + '] ' + opt);
 			break;
-
+		default: API.sendChat('The command doesn\'t exist !');
 
 	}
 }
 
 API.on(API.CHAT, function(data) {
-if (data.message.indexOf('!') !=-1 && data.message.indexOf('@') !=-1) {
-var index = data.message.indexOf('!');
-var endex = data.message.indexOf('@') - 1;
-var msg = data.message.substr(index, endex).trim();
-var indexu = data.message.indexOf('@') +1;
-var  u = data.message.substr(indexu).trim();
-userc(msg, u); // Now you call the switch with the command and the user separate
-}
+	if (data.message.substr(0,1) == '!') {
+		if(data.message.indexOf('@') !=-1) {
+			var index = data.message.indexOf('!');
+			var endex = data.message.indexOf('@') -1;
+			var msg = data.message.substr(index, endex).trim();
+			var indexu = data.message.indexOf('@') +1;
+			var u = data.message.substr(indexu).trim();
+			userc(msg, data.from, u);
+		}
+		else {
+			if(data.message.indexOf('!say') !=-1) {
+				var msg = data.message.substr(5);
+				userc('!say', data.from, data.chatID, msg);
+			}
+			else {
+				userc(data.message, data.from, data.chatID);	
+			}
+		}
+	}
 });
 
 
