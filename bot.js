@@ -314,20 +314,20 @@ var fightArray = [
 	" loves one-direction.",
 	" eats coconuts"];
 
-function userc(str, from, id, opt) { // Commands (WAYZ IS GOD)
+function userc(str, from, chatID, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
 		case '!ban':
 		for (var i in users) {
 				if (users[i].username == opt) {
-					API.moderateDeleteChat(id);
+					API.moderateDeleteChat(chatID);
 					API.sendChat("/em [" + from + "] used ban on " + opt);
 					API.moderateBanUser(users[i].id);
 				}
 			}
 		break;
 		case '!say':
-			API.moderateDeleteChat(id);
+			API.moderateDeleteChat(chatID);
 			API.sendChat('/em [' + from + '] ' + opt);
 			break;
 		default: API.sendChat('The command doesn\'t exist !');
