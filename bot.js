@@ -50,10 +50,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 //					SoundBot's Life Starts Here						\\
-
+/*
 if(location.pathname == '/astroparty/') {
 	try{
-
+*/
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
