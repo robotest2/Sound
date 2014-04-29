@@ -315,6 +315,7 @@ var fightArray = [
 	" eats coconuts"];
 
 function userc(str, user) { //commands (WAYZ IS GOD)
+var users = API.getUsers();
 	switch(str) {
 		case '!ban':
 		for (var i in users) {
