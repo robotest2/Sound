@@ -321,7 +321,7 @@ var users = API.getUsers();
 		for (var i in users) {
 				API.sendChat("/em Test successful!");
 				if (users[i].username == user) API.moderateBanUser(users[i].id);
-			});
+			}
 		break;
 
 
