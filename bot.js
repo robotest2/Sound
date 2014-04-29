@@ -314,7 +314,7 @@ var fightArray = [
 	" loves one-direction.",
 	" eats coconuts"];
 
-function userc(str, from, id, opt) { // Commands (WAYZ IS GOD)
+function userc(str, from, id, opt, data) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
 		case '!help':
@@ -333,6 +333,7 @@ function userc(str, from, id, opt) { // Commands (WAYZ IS GOD)
 			break;
 		case '!mute':
 			if(API.getUser(data.fromID).permission > 2){
+				API.moderateDeleteChat(data.chatID);
 				var msg = data.message.split("@");
 				var user = msg[1];
 				var users = API.getUsers();
