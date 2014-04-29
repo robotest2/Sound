@@ -313,7 +313,60 @@ var fightArray = [
 	" has water, never wakes up.",
 	" loves one-direction.",
 	" eats coconuts"];
-	
+
+function userc(str, user) { //commands (WAYZ IS GOD)
+	switch(str) {
+		case '!ban':
+		for (var i in users) {
+				API.sendChat("/em Test successful!");
+				//if (users[i].username == user) API.moderateBanUser(users[i].id);
+			}
+		break;
+
+
+	}
+}
+
+API.on(API.CHAT, function(data) {
+if (data.message.indexOf('!') !=-1 && data.message.indexOf('@') !=-1) {
+var index = data.message.indexOf('!');
+var endex = data.message.indexOf('@') - 1;
+var msg = data.message.substr(index, endex).trim();
+var indexu = data.message.indexOf('@') +1;
+var  u = data.message.substr(indexu).trim();
+userc(msg, u); // Now you call the switch with the command and the user separate
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
    _____                                          _     
   / ____|                                        | |    
@@ -325,7 +378,7 @@ var fightArray = [
                                                       
 */
 //Spin Arrays
-
+/*
 var sa = []; //Initial !play array
 var se = []; //users that cannot lose
 var sar = Math.floor(Math.random() * sa.length); //Gets a random user that joined the game
@@ -675,3 +728,4 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 else API.chatLog('This script works only in plug.dj/astroparty', true);
     
 //End of script. No seriously, there's nothing below me
+*/
