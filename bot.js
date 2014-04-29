@@ -669,10 +669,15 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
         	API.moderateDeleteChat(data.chatID);
         	var messCh = data.message;
 		var userCh = messCh.split("@");
+		var m = userCh[1];
 		var usersCh = API.getUsers();
 		for(var i in usersCh){
-			API.sendChat("/em [" + data.from + "] Set " + userCh + "'s permission to Co-Host");
-			API.moderateSetRole(usersCh[i].id, API.ROLE.COHOST);
+			if (usersCh == m){
+			API.sendChat("/em [" + data.from + "] Set " + m + "'s permission to Co-Host");
+			API.moderateSetRole(m[i].id, API.ROLE.COHOST);
+			}else{
+				API.sendChat("/em [" + data.from + "] User not found");
+			}
 		}
         }
   }); // end of commands
