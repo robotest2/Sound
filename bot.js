@@ -337,7 +337,7 @@ var  u = data.message.substr(indexu).trim();
 userc(msg, u); // Now you call the switch with the command and the user separate
 }
 }
-});
+}});
 
 
 
