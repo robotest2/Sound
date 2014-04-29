@@ -314,21 +314,71 @@ var fightArray = [
 	" loves one-direction.",
 	" eats coconuts"];
 
-function userc(str, from, chatID, opt) { // Commands (WAYZ IS GOD)
+function userc(str, from, id, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
+		case '!help':
+			if(API.getUser(data.fromID).permission > -1){
+				API.moderateDeleteChat(data.chatID);
+				API.sendChat("/em [" + data.from + "] Help commands: http://goo.gl/PzvBL8");
+			}
+			break;
+			
+		case '!skip':
+			if(API.getUser(data.fromID).permission > 2){
+				API.moderateDeleteChat(data.chatID);
+				API.sendChat("/em [" + data.from + " used skip]");
+				API.moderateForceSkip();
+			}
+			break;
+		case '!mute':
+			if(API.getUser(data.fromID).permission > 2){
+				var msg = data.message.split("@");
+				var user = msg[1];
+				var users = API.getUsers();
+				for (var i in users) {
+					if (users[i].username == user) {
+						userData[users[i].id].mute = true;
+						API.sendChat("/me [" + data.from + "] used mute on: " + user);
+					}
+				}
+			}
+			break;
+			
+		case '!unmute':
+			if(API.getUser(data.fromID).permission > 2){
+				if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
+				var msg = data.message.split("@");
+				var user = msg[1];
+				var users = API.getUsers();
+				if(userData[data.fromID].mute === true){
+					API.sendChat("/em [" + data.from + "] Tried unmuting themselves, but they're muted!");
+				}else{
+				for (var i in users) {
+					if (users[i].username == user) {
+						userData[users[i].id].mute = false;
+						API.sendChat("/me [" + data.from + "] used unmute on: " + user);
+						}
+					}
+					API.moderateDeleteChat(data.chatID);
+				}
+			}
+			break;
+			
 		case '!ban':
 		for (var i in users) {
 				if (users[i].username == opt) {
-					API.moderateDeleteChat(chatID);
+					API.moderateDeleteChat(id);
 					API.sendChat("/em [" + from + "] used ban on " + opt);
 					API.moderateBanUser(users[i].id);
 				}
 			}
 		break;
 		case '!say':
-			API.moderateDeleteChat(chatID);
-			API.sendChat('/em [' + from + '] ' + opt);
+			if(API.getUser(data.fromID).permission > 2){
+				API.moderateDeleteChat(id);
+				API.sendChat('/em [' + from + '] ' + opt);
+			}
 			break;
 		default: API.sendChat('The command doesn\'t exist !');
 
