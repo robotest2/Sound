@@ -320,7 +320,7 @@ var users = API.getUsers();
 		case '!ban':
 		for (var i in users) {
 				API.sendChat("/em Test successful!");
-				//if (users[i].username == user) API.moderateBanUser(users[i].id);
+				if (users[i].username == user) API.moderateBanUser(users[i].id);
 			}
 		break;
 
