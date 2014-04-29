@@ -328,8 +328,10 @@ var users = API.getUsers();
 		break;
 		
 		case '!say':
-			for (var i in users) {
-				API.sendChat("/em [" + data.from + "] My commands are here: LINK");
+			if(API.getUser(data.from).permission > 2){
+				var a = data.message.substr(5).trim();
+				var b = a[1];
+				API.sendChat("/em [" + data.from + "] " + b);
 			}
 			break;
 
