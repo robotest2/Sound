@@ -321,10 +321,12 @@ var users = API.getUsers();
 			API.moderateDeleteChat(data.chatID);
 		for (var i in users) {
 				API.sendChat("/em Test successful!");
-				if (users[i].username == user) API.moderateBanUser(users[i].id);
+				if (users[i].username == user){
+					 API.moderateBanUser(users[i].id);
 			}else{
 				API.sendChat("/em [" + data.from + "] User not found.");
 			}
+		}
 		break;
 		
 		case '!say':
