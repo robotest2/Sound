@@ -323,6 +323,12 @@ var users = API.getUsers();
 				if (users[i].username == user) API.moderateBanUser(users[i].id);
 			}
 		break;
+		
+		case '!say':
+			for (var i in users) {
+				API.sendChat("/em [" + data.from + "] My commands are here: LINK");
+			}
+			break;
 
 
 	}
