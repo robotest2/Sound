@@ -314,7 +314,7 @@ var fightArray = [
 	" loves one-direction.",
 	" eats coconuts"];
 
-function userc(str, from, id, opt, data) { // Commands (WAYZ IS GOD)
+function userc(str, from, id, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
 		case '!help':
