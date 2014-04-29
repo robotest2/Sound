@@ -321,7 +321,7 @@ var users = API.getUsers();
 		for (var i in users) {
 				API.sendChat("/em Test successful!");
 				if (users[i].username == user) API.moderateBanUser(users[i].id);
-			}
+			});
 		break;
 
 
@@ -337,7 +337,7 @@ var indexu = data.message.indexOf('@') +1;
 var  u = data.message.substr(indexu).trim();
 userc(msg, u); // Now you call the switch with the command and the user separate
 }
-});
+}});
 
 
 
