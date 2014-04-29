@@ -50,10 +50,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 //					SoundBot's Life Starts Here						\\
-/*
+
 if(location.pathname == '/astroparty/') {
 	try{
-*/
+
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
@@ -789,7 +789,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 		}
         }
   }); // end of commands
-
+*/
 	}catch(err){
     	var d = new Date();
     	API.sendChat("/em An error has occurred on " + d + " for " + err);
@@ -799,4 +799,4 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 else API.chatLog('This script works only in plug.dj/astroparty', true);
     
 //End of script. No seriously, there's nothing below me
-*/
+
