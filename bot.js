@@ -330,7 +330,7 @@ var users = API.getUsers();
 		break;
 		
 		case '!say':
-			if(API.getUser(data.from).permission > 2){
+			if(API.getUser(data.fromID).permission > 2){
 				var a = data.message.substr(5).trim();
 				var b = a[1];
 				API.sendChat("/em [" + data.from + "] " + b);
