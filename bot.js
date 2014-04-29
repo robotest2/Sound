@@ -331,6 +331,7 @@ function userc(str, from, id, opt, data) { // Commands (WAYZ IS GOD)
 				API.moderateForceSkip();
 			}
 			break;
+			
 		case '!mute':
 			if(API.getUser(data.fromID).permission > 2){
 				API.moderateDeleteChat(data.chatID);
