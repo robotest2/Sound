@@ -350,7 +350,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!eta':
 		API.moderateDeleteChat(chatid);
-		var a = opt("@");
+		var a = opt;
 		var y = a[1];
 		var b = API.getUsers();
 		for (var i in b) {
@@ -366,6 +366,8 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					API.sendChat("/em [" + from + "] ETA for " + y + " is " + f + " minutes.");
 				}
 				else API.sendChat("/em [" + from + "] ETA for " + y + " is N/A minutes.");
+			}else{
+				API.sendChat("/em [" + from + "] User not found!");
 			}
 		}
 		break;
