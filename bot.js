@@ -434,8 +434,10 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat('/em [' + from + '] ' + opt);
 			}
 			break;
-		default: API.sendChat('The command doesn\'t exist !');
-
+		default: setTimeout(function(){
+			API.moderateDeleteChat(chatid);
+			API.sendChat('/em [' + from + '] That command doesn\'t exist !');
+		}, 1);
 	}
 }
 
