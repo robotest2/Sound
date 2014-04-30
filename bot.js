@@ -84,6 +84,18 @@ overLimit: true,
 version: "Beta 4.1_Pre5",
 };
 
+//hooks
+
+var hook = {
+	$.getScript("https://raw.github.com/Pr0Code/Sound/master/bot.js");
+}
+
+var unhook = {
+	$.getScript('https://raw.github.com/Pr0Code/Sound/master/bot.js').unload(function(){
+		API.sendChat("/em Unhooking...");
+	});
+}
+
 // UserData (Wayz)
 var userData = {};
 var usersinroom = API.getUsers();
@@ -442,6 +454,18 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat('/em [' + from + '] ' + opt);
 			}
 			break;
+			
+		case '!reload':
+			if(API.getUser(fromid).permission > 2){
+				API.moderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + "] Reloading...");
+				unhook;
+				setTimeout(function(){
+					hook;
+				}, 1000);
+			}
+			break;
+			
 		default: setTimeout(function(){
 			API.moderateDeleteChat(chatid);
 			API.sendChat('/em [' + from + '] That command doesn\'t exist !');
