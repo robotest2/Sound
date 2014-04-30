@@ -349,8 +349,8 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				break;
 			
 		case '!eta':
-		API.moderateDeleteChat(data.chatID);
-		var a = data.message.split("@");
+		API.moderateDeleteChat(chatid);
+		var a = opt("@");
 		var y = a[1];
 		var b = API.getUsers();
 		for (var i in b) {
@@ -359,13 +359,13 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				var d = 5;
 				if(c == 1) {
 					var e = $("#now-playing-time").children('span').text();
-					API.sendChat("/em [" + data.from + "] ETA for " + y + " is " + e + " minutes.");
+					API.sendChat("/em [" + from + "] ETA for " + y + " is " + e + " minutes.");
 				}
 				else if(c > 1) {
 					var f = Math.floor(c*d);
-					API.sendChat("/em [" + data.from + "] ETA for " + y + " is " + f + " minutes.");
+					API.sendChat("/em [" + from + "] ETA for " + y + " is " + f + " minutes.");
 				}
-				else API.sendChat("/em [" + data.from + "] ETA for " + y + " is N/A minutes.");
+				else API.sendChat("/em [" + from + "] ETA for " + y + " is N/A minutes.");
 			}
 		}
 		break;
