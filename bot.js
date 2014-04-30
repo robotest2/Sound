@@ -369,9 +369,9 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			if(API.getUser(fromid).permission > 2){
 				API.moderateDeleteChat(chatid);
 				for (var i in users) {
-					if (users[i].username == user) {
+					if (users[i].username == opt) {
 						userData[users[i].id].mute = true;
-						API.sendChat("/me [" + from + "] used mute on: " + user);
+						API.sendChat("/me [" + from + "] used mute on: " + opt);
 					}
 				}
 			}
@@ -384,9 +384,9 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					API.sendChat("/em [" + from + "] Tried unmuting themselves, but they're muted!");
 				}else{
 				for (var i in users) {
-					if (users[i].username == user) {
+					if (users[i].username == opt) {
 						userData[users[i].id].mute = false;
-						API.sendChat("/me [" + from + "] used unmute on: " + user);
+						API.sendChat("/me [" + from + "] used unmute on: " + opt);
 						}
 					}
 					API.moderateDeleteChat(chatid);
