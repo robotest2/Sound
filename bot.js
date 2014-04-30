@@ -359,7 +359,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}else{
                         var id = API.getMedia().cid;
                         SC.get('/tracks', { ids: id,}, function(tracks) {
-                                API.sendChat("/em [" + data.from + "] Link to current song: " + tracks[0].permalink_url);
+                                API.sendChat("/em [" + from + "] Link to current song: " + tracks[0].permalink_url);
                         	});
 			}
 			break;
