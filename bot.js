@@ -23,7 +23,7 @@ Copyright (c) 2014, Jack Labbe (AstroShock, Pr0Code)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+modification, are NOT permitted. If I (Jack Labbe) give permission, you may modify this code provided that the following conditions are met:
 
 * Redistributions of source code must retain the above copyright notice, this
   list of conditions and the following disclaimer.
