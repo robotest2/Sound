@@ -345,12 +345,11 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!ba':
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] Brand Ambassadors (BA's) are plug.dj's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
-				
 				break;
 			
 		case '!eta':
 		API.moderateDeleteChat(chatid);
-		var a = opt;
+		var a = str.substr(5).trim();
 		var y = a[1];
 		var b = API.getUsers();
 		for (var i in b) {
