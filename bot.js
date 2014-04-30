@@ -352,6 +352,18 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat("/em [" + from + "] Help commands: http://goo.gl/PzvBL8");
 			break;
 			
+		case '!link':
+			API.moderateDeleteChat(chatid);
+			if(API.getMedia().format == 1){
+				API.sendChat("/em [" + from + "] Link to current song: " + API.getMedia().cid);
+			}else{
+                        var id = API.getMedia().cid;
+                        SC.get('/tracks', { ids: id,}, function(tracks) {
+                                API.sendChat("/em [" + data.from + "] Link to current song: " + tracks[0].permalink_url);
+                        	});
+			}
+			break;
+			
 		case '!spin':
 			API.moderateDeleteChat(chatid);
 			API.sendChat("/em [" + from + "] Requested a game of spin! Type !join to join the game!");
