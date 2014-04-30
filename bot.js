@@ -84,18 +84,6 @@ overLimit: true,
 version: "Beta 4.1_Pre5",
 };
 
-//hooks
-
-var hook = {
-	$.getScript("https://raw.github.com/Pr0Code/Sound/master/bot.js");
-}
-
-var unhook = {
-	$.getScript('https://raw.github.com/Pr0Code/Sound/master/bot.js').unload(function(){
-		API.sendChat("/em Unhooking...");
-	});
-}
-
 // UserData (Wayz)
 var userData = {};
 var usersinroom = API.getUsers();
@@ -343,6 +331,11 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat("/em [" + from + "] Help commands: http://goo.gl/PzvBL8");
 			break;
 			
+		case '!emoji':
+			API.moderateDeleteChat(chatid);
+			API.sendChat("/em [" + data.from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
+			break;
+			
 		case '!ask':
 				API.moderateDeleteChat(chatid);
 				var askR = Math.floor(Math.random() * askArray.length);
@@ -354,6 +347,28 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat("/em [" + from + "] Brand Ambassadors (BA's) are plug.dj's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
 				
 				break;
+			
+		case '!eta':
+		API.moderateDeleteChat(data.chatID);
+		var a = data.message.split("@");
+		var y = a[1];
+		var b = API.getUsers();
+		for (var i in b) {
+			if(b[i].username == y) {
+				var c = API.getUser(b[i].id).wlIndex + 1;
+				var d = 5;
+				if(c == 1) {
+					var e = $("#now-playing-time").children('span').text();
+					API.sendChat("/em [" + data.from + "] ETA for " + y + " is " + e + " minutes.");
+				}
+				else if(c > 1) {
+					var f = Math.floor(c*d);
+					API.sendChat("/em [" + data.from + "] ETA for " + y + " is " + f + " minutes.");
+				}
+				else API.sendChat("/em [" + data.from + "] ETA for " + y + " is N/A minutes.");
+			}
+		}
+		break;
 			
 		case '!clear':
 			if(API.getUser(fromid).permission > 2){
@@ -458,11 +473,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!reload':
 			if(API.getUser(fromid).permission > 2){
 				API.moderateDeleteChat(chatid);
-				API.sendChat("/em [" + from + "] Reloading...");
-				unhook;
-				setTimeout(function(){
-					hook;
-				}, 1000);
+				API.sendChat("/em [" + from + "] This command isn't setup!");
 			}
 			break;
 			
