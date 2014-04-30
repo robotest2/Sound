@@ -355,7 +355,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!link':
 			API.moderateDeleteChat(chatid);
 			if(API.getMedia().format == 1){
-				API.sendChat("/em [" + from + "] Link to current song: " + API.getMedia().cid);
+				API.sendChat("/em [" + from + "] Link to current song: http://youtu.be/" + API.getMedia().cid);
 			}else{
                         var id = API.getMedia().cid;
                         SC.get('/tracks', { ids: id,}, function(tracks) {
