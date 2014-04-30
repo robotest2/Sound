@@ -11,7 +11,7 @@ Enjoy using it in my room!
 Credits (Yes I used reverse psycology to put in the credits first :) )
 
 That guy: AstroShock (Pr0Code)
-Amazing Helper Manager Guy That Fixes Stuff and Manages For Me Because I'm A Noob (<--- lol, it true doe): WayzRG (ProdTv - from pastebin)
+Amazing Helper Manager Guy That Fixes Stuff and Manages For Me Because I'm A Noob (<--- lol, it true doe): WayzRG (Prod[RG, TV, other])
 
 
 Please refer to the documentation below or to the license file. Any questions can be messaged to me here.
