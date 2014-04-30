@@ -393,15 +393,15 @@ API.on(API.CHAT, function(data) {
 			var msg = data.message.substr(index, endex).trim();
 			var indexu = data.message.indexOf('@') +1;
 			var u = data.message.substr(indexu).trim();
-			userc(msg, data.from, data.chatID, data.fromID, u);
+			userc(msg, data.from, data.fromID, data.chatID, u);
 		}
 		else {
 			if(data.message.indexOf('!say') !=-1) {
 				var msg = data.message.substr(5);
-				userc('!say', data.from, data.chatID, data.fromID, msg);
+				userc('!say', data.from, data.fromID, data.chatID, msg);
 			}
 			else {
-				userc(data.message, data.from, data.chatID, data.fromID);	
+				userc(data.message, data.from, data.fromID, data.chatID);	
 			}
 		}
 	}
