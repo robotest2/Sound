@@ -336,13 +336,42 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}
 			break;
 			
+		case '!lock':
+			if(API.getUser(fromid).permission > 2){
+				API.moderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + " used lock]");
+				API.moderateLockWaitList(true, false);
+			}
+			break;
+			
+		case '!unlock':
+			if(API.getUser(fromid).permission > 2){
+				APImoderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + " used unlock]");
+				API.moderateLockWaitList(false);
+			}
+			break;
+			
+		case '!cycle':
+			if(API.getUser(fromid).permission > 2){
+				API.moderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + " used cycle]");
+				var toggle = $(".cycle-toggle");
+        			if(toggle.hasClass("disabled")) {
+        				toggle.click();
+        			}else{
+        				toggle.click();
+        			}
+			}
+			break;
+			
 		case '!mute':
 			if(API.getUser(fromid).permission > 2){
 				API.moderateDeleteChat(chatid);
 				for (var i in users) {
-					if (users[i].username == opt) {
+					if (users[i].username == user) {
 						userData[users[i].id].mute = true;
-						API.sendChat("/me [" + from + "] used mute on: " + opt);
+						API.sendChat("/me [" + from + "] used mute on: " + user);
 					}
 				}
 			}
@@ -355,9 +384,9 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					API.sendChat("/em [" + from + "] Tried unmuting themselves, but they're muted!");
 				}else{
 				for (var i in users) {
-					if (users[i].username == opt) {
+					if (users[i].username == user) {
 						userData[users[i].id].mute = false;
-						API.sendChat("/me [" + from + "] used unmute on: " + opt);
+						API.sendChat("/me [" + from + "] used unmute on: " + user);
 						}
 					}
 					API.moderateDeleteChat(chatid);
