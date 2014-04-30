@@ -430,9 +430,12 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					API.moderateDeleteChat(chatid);
 					API.sendChat("/em [" + from + "] used ban on " + opt);
 					API.moderateBanUser(users[i].id);
+				}else{
+					API.sendChat("/em [" + from + "] User not found.");
 				}
 			}
 		break;
+		
 		case '!say':
 			if(API.getUser(fromid).permission > 2){
 				API.moderateDeleteChat(chatid);
