@@ -330,7 +330,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!clear':
 			if(API.getUser(fromid).permission > 2){
-				API.moderateDeleteChat(data.chatID);
+				API.moderateDeleteChat(chatid);
 				var messages = $('#chat-messages').children();
 				for (var i = 0; i < messages.length; i++) {
 					for (var j = 0; j < messages[i].classList.length; j++) {
@@ -339,7 +339,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 							}
 						}
 					}	
-					API.sendChat("/em [" + data.from + " used clear]");
+					API.sendChat("/em [" + from + " used clear]");
     				}
     				break;
 			
