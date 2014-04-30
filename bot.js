@@ -333,7 +333,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!emoji':
 			API.moderateDeleteChat(chatid);
-			API.sendChat("/em [" + data.from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
+			API.sendChat("/em [" + from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
 			break;
 			
 		case '!ask':
@@ -363,10 +363,10 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				else if(c > 1) {
 					var f = Math.floor(c*d);
 					API.sendChat("/em [" + from + "] ETA for " + y + " is " + f + " minutes.");
+				
+				}else{
+				 API.sendChat("/em [" + from + "] ETA for " + y + " is N/A minutes.");
 				}
-				else API.sendChat("/em [" + from + "] ETA for " + y + " is N/A minutes.");
-			}else{
-				API.sendChat("/em [" + from + "] User not found!");
 			}
 		}
 		break;
