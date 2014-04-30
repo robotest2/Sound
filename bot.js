@@ -323,12 +323,97 @@ var fightArray = [
 	" loves one-direction.",
 	" eats coconuts"];
 
+var spinGame = {
+	spin: false,
+};
+
+var spinJoin = [];
+var spinWhite = [];
+var spinOutcome = [
+	" got thier brains blasted out!",
+	" dropped the ball!",
+	" lost spin!",
+	" got hit in the face with the ball!",
+	" fell ontop of the ball!",
+	" got shot up into the air and hit the ground!",
+	" died."];
+var spinTime = [ // game time ranges from 1min to 5 mins
+	60,
+	120,
+	180,
+	240,
+	300];
+
 function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
 		case '!help':
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] Help commands: http://goo.gl/PzvBL8");
+			break;
+			
+		case '!spin':
+			API.moderateDeleteChat(chatid);
+			API.sendChat("/em [" + from + "] Requested a game of spin! Type !join to join the game!");
+			if(spinGame.spin == false){
+				spinGame.spin = true;
+			}else{
+				API.sendChat("/em [" + from + "] Game is already running!");
+			}
+			spinJoin.push(from);
+			break;
+			
+		case '!join':
+			API.moderateDeleteChat(chatid);
+			if(spinGame == true){
+				API.sendChat("/em [" + from + "] Joined spin!");
+				spinJoin.push(from);
+			}else{
+				API.sendChat("/em [" + from + "] Spin isn't running!");
+			}
+			break;
+			
+		case '!start':
+			API.moderateDeleteChat(chatid);
+			if(spinGame == true){
+				API.sendChat("/em [" + from + "] Started the game!");
+				var a = spinJoin;
+				var b = Math.floor(Math.random() * a.length);
+				var z = setInterval(function(){
+					API.sendChat("@" + b + ", you got the ball! Type !pass to pass it!");
+				}, 5000);
+				var y = Math.floor(Math.random() * spinTime.length);
+				setTimeout(function(){ //ends game
+					clearInterval(z);
+					if(spinJoin.length == 0){
+						API.sendChat("/em Spin has ended! All users are safe! :D");
+						spinWhite = []; //clears array
+						spinJoin = []; //clears ayyay
+					}
+					if(spinJoin.length > 1){
+						var c = Math.floor(Math.random() * a.length);
+						var d = Math.floor(Math.random() * spinOutcome.length);
+						API.sendChat("@" + c.username + spinOutcome[d] + " :frowning:");
+						spinGame.spin = false;
+						spinWhite = []; //clears array
+						spinJoin = []; //clears array
+					}
+				}, y);
+				z(); //Starts !pass
+			}else{
+				API.sendChat("/em [" + from + "] Spin isn't running!");
+			}
+			break;
+			
+		case '!pass':
+			API.moderateDeleteChat(chatid);
+			if(spinGame == true){
+				API.sendChat("/em [" + from + "] Passed the ball!");
+				spinJoin.pop(from);
+				spinWhite.push(from);
+			}else{
+				API.sendChat("/em [" + from + "] Spin isn't running!");
+			}
 			break;
 			
 		case '!emoji':
