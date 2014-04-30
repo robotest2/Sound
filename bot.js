@@ -318,55 +318,49 @@ var fightArray = [
 	" loves one-direction.",
 	" eats coconuts"];
 
-function userc(str, from, id, opt) { // Commands (WAYZ IS GOD)
+function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
 		case '!help':
-			if(API.getUser(data.fromID).permission > -1){
-				API.moderateDeleteChat(data.chatID);
-				API.sendChat("/em [" + data.from + "] Help commands: http://goo.gl/PzvBL8");
+			if(API.getUser(fromid).permission > -1){
+				API.moderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + "] Help commands: http://goo.gl/PzvBL8");
 			}
 			break;
 			
 		case '!skip':
-			if(API.getUser(data.fromID).permission > 2){
-				API.moderateDeleteChat(data.chatID);
-				API.sendChat("/em [" + data.from + " used skip]");
+			if(API.getUser(fromid).permission > 2){
+				API.moderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + " used skip]");
 				API.moderateForceSkip();
 			}
 			break;
 			
 		case '!mute':
-			if(API.getUser(data.fromID).permission > 2){
-				API.moderateDeleteChat(data.chatID);
-				var msg = data.message.split("@");
-				var user = msg[1];
-				var users = API.getUsers();
+			if(API.getUser(fromid).permission > 2){
+				API.moderateDeleteChat(chatid);
 				for (var i in users) {
 					if (users[i].username == user) {
 						userData[users[i].id].mute = true;
-						API.sendChat("/me [" + data.from + "] used mute on: " + user);
+						API.sendChat("/me [" + from + "] used mute on: " + user);
 					}
 				}
 			}
 			break;
 			
 		case '!unmute':
-			if(API.getUser(data.fromID).permission > 2){
-				if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
-				var msg = data.message.split("@");
-				var user = msg[1];
-				var users = API.getUsers();
-				if(userData[data.fromID].mute === true){
-					API.sendChat("/em [" + data.from + "] Tried unmuting themselves, but they're muted!");
+			if(API.getUser(fromid).permission > 2){
+				if (userData[fromid].mute === true) API.moderateDeleteChat(data.chatID);
+				if(userData[fromid].mute === true){
+					API.sendChat("/em [" + from + "] Tried unmuting themselves, but they're muted!");
 				}else{
 				for (var i in users) {
 					if (users[i].username == user) {
 						userData[users[i].id].mute = false;
-						API.sendChat("/me [" + data.from + "] used unmute on: " + user);
+						API.sendChat("/me [" + from + "] used unmute on: " + user);
 						}
 					}
-					API.moderateDeleteChat(data.chatID);
+					API.moderateDeleteChat(chatid);
 				}
 			}
 			break;
@@ -374,15 +368,15 @@ function userc(str, from, id, opt) { // Commands (WAYZ IS GOD)
 		case '!ban':
 		for (var i in users) {
 				if (users[i].username == opt) {
-					API.moderateDeleteChat(id);
+					API.moderateDeleteChat(chatid);
 					API.sendChat("/em [" + from + "] used ban on " + opt);
 					API.moderateBanUser(users[i].id);
 				}
 			}
 		break;
 		case '!say':
-			if(API.getUser(data.fromID).permission > 2){
-				API.moderateDeleteChat(id);
+			if(API.getUser(fromid).permission > 2){
+				API.moderateDeleteChat(chatid);
 				API.sendChat('/em [' + from + '] ' + opt);
 			}
 			break;
@@ -399,15 +393,15 @@ API.on(API.CHAT, function(data) {
 			var msg = data.message.substr(index, endex).trim();
 			var indexu = data.message.indexOf('@') +1;
 			var u = data.message.substr(indexu).trim();
-			userc(msg, data.from, u);
+			userc(msg, data.from, data.chatID, data.fromID, u);
 		}
 		else {
 			if(data.message.indexOf('!say') !=-1) {
 				var msg = data.message.substr(5);
-				userc('!say', data.from, data.chatID, msg);
+				userc('!say', data.from, data.chatID, data.fromID, msg);
 			}
 			else {
-				userc(data.message, data.from, data.chatID);	
+				userc(data.message, data.from, data.chatID, data.fromID);	
 			}
 		}
 	}
