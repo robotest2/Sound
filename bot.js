@@ -379,7 +379,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!unmute':
 			if(API.getUser(fromid).permission > 2){
-				if (userData[fromid].mute === true) API.moderateDeleteChat(data.chatID);
+				if (userData[fromid].mute === true) API.moderateDeleteChat(chatid);
 				if(userData[fromid].mute === true){
 					API.sendChat("/em [" + from + "] Tried unmuting themselves, but they're muted!");
 				}else{
@@ -434,6 +434,7 @@ API.on(API.CHAT, function(data) {
 			}
 		}
 	}
+	if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
 });
 
 
