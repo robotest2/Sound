@@ -322,11 +322,21 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
 		case '!help':
-			if(API.getUser(fromid).permission > -1){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] Help commands: http://goo.gl/PzvBL8");
-			}
 			break;
+			
+		case '!ask':
+				API.moderateDeleteChat(chatid);
+				var askR = Math.floor(Math.random() * askArray.length);
+				API.sendChat("/em [" + from + "] " + askArray[askR]);
+			break;
+			
+		case '!ba':
+				API.moderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + "] Brand Ambassadors (BA's) are plug.dj's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
+				
+				break;
 			
 		case '!clear':
 			if(API.getUser(fromid).permission > 2){
@@ -451,35 +461,6 @@ API.on(API.CHAT, function(data) {
 	}
 	if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
    _____                                          _     
