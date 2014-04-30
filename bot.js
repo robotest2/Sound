@@ -328,6 +328,21 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}
 			break;
 			
+		case '!clear':
+			if(API.getUser(fromid).permission > 2){
+				API.moderateDeleteChat(data.chatID);
+				var messages = $('#chat-messages').children();
+				for (var i = 0; i < messages.length; i++) {
+					for (var j = 0; j < messages[i].classList.length; j++) {
+						if (messages[i].classList[j].indexOf('cid-') == 0) {
+							API.moderateDeleteChat(messages[i].classList[j].substr(4));
+							}
+						}
+					}	
+					API.sendChat("/em [" + data.from + " used clear]");
+    				}
+    				break;
+			
 		case '!skip':
 			if(API.getUser(fromid).permission > 2){
 				API.moderateDeleteChat(chatid);
