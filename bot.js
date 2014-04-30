@@ -416,6 +416,18 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}
 			break;
 			
+		case '!spinstop':
+			API.moderateDeleteChat(chatid);
+			if(spinGame.spin == true){
+				clearInterval(z);
+				spinJoin = [];
+				spinWhite = [];
+				API.sendChat("/em [" + from + "] Stopped spin!");
+			}else{
+				API.sendChat("/em [" + from + "] Spin isn't running!");
+			}
+			break;
+			
 		case '!emoji':
 			API.moderateDeleteChat(chatid);
 			API.sendChat("/em [" + from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
