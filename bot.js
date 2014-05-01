@@ -487,6 +487,9 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!toggle':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission > 2){
+				if(opt === null){
+					API.sendChat("/em [" + from + "] Current toggles: (Type !toggle [toggle]), woot, announcement, logjoin, afkremove, blacklist");
+				}
 				if(opt == "woot"){
 					API.sendChat("/em [" + from + "] Toggled AutoWoot!");
 					if(options.woot == true){
