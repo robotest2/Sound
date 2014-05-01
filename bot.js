@@ -488,7 +488,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission > 2){
 				switch(opt){
-				if(opt == "woot"){
+				(opt == "woot"){
 					API.sendChat("/em [" + from + "] Toggled AutoWoot!");
 					if(options.woot == true){
 						options.woot = false;
