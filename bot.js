@@ -429,14 +429,18 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!spinstop':
-			API.moderateDeleteChat(chatid);
-			if(spinGame.spin == true){
-				clearInterval(z);
-				spinJoin = [];
-				spinWhite = [];
-				API.sendChat("/em [" + from + "] Stopped spin!");
+			if(API.getUser(fromid).permission > 2){
+				API.moderateDeleteChat(chatid);
+				if(spinGame.spin == true){
+					clearInterval(z);
+					spinJoin = [];
+					spinWhite = [];
+					API.sendChat("/em [" + from + "] Stopped spin!");
+				}else{
+					API.sendChat("/em [" + from + "] Spin isn't running!");
+				}
 			}else{
-				API.sendChat("/em [" + from + "] Spin isn't running!");
+				API.sendChat("/em [" + from + "] No permission!");
 			}
 			break;
 			
@@ -479,6 +483,54 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}
 		}
 		break;
+			
+		case '!toggle':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission > 2){
+				if(opt == "woot"){
+					API.sendChat("/em [" + from + "] Toggled AutoWoot!");
+					if(options.woot == true){
+						options.woot = false;
+					}else{
+						options.woot = true;
+					}
+				}
+				if(opt == "announcement"){
+					API.sendChat("/em [" + from + "] Toggled Announcements!");
+					if(options.songIntervalMessage == true){
+						options.songIntervalMessage = false;
+					}else{
+						options.songIntervalMessage = true;
+					}
+				}
+				if(opt == "logjoin"){
+					API.sendChat("/em [" + from + "] Toggled logUserJoin!");
+					if(options.logUserJoin == true){
+						options.logUserJoin = false;
+					}else{
+						options.logUserJoin = true;
+					}
+				}
+				if(opt == "afkremove"){
+					API.sendChat("/em [" + from + "] Toggled AFKRemove!");
+					if(options.afkRemove == true){
+						options.afkRemove = false;
+					}else{
+						options.afkRemove = true;
+					}
+				}
+				if(opt == "blacklist"){
+					API.sendChat("/em [" + from + "] Toggled Blacklist!");
+					if(options.blackList == true){
+						options.blackList = false;
+					}else{
+						options.blackList = true;
+					}
+				}
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
 			
 		case '!clear':
 			if(API.getUser(fromid).permission > 2){
