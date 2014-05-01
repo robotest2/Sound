@@ -349,7 +349,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 	switch(str) {
 		case '!help':
 				API.moderateDeleteChat(chatid);
-				API.sendChat("/em [" + from + "] Help commands: http://goo.gl/PzvBL8");
+				API.sendChat("/em [" + from + "] Help commands: http://goo.gl/wfpGqc");
 			break;
 			
 		case '!link':
