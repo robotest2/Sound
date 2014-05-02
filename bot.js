@@ -252,6 +252,7 @@ API.sendChat("/em Now running!");
 }, 2000);
 
 //Save all options
+/*
 var saved = {}
 saved.optionsW = options.woot;
 saved.optionsA = options.announcementMsg;
@@ -260,11 +261,11 @@ saved.optionsC = options.logUserJoin;
 saved.optionsD = options.afkRemove;
 saved.optionsE = options.blackList;
 saved.userdata = userData;
-
+*/
 //Save for Command
 
 var saveCmd = {
-function: (JSON){
+function(JSON){
 	if(options.saveSettings == true){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
