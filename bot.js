@@ -270,13 +270,9 @@ save: function(JSON){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
 			if(save === null){
-				function(){
-					localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata));
-				}
+				function(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
 			}else{
-				function(){
-					localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata));
-				}
+				function(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
 			}
 		}catch(e){
 			var saveErrorNow = Date.now();
