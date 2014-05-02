@@ -367,7 +367,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!spin':
 			API.moderateDeleteChat(chatid);
 			API.sendChat("/em [" + from + "] Requested a game of spin! Type !join to join the game!");
-			if(spinGame.spin == false){
+			if(spinGame.spin === false){
 				spinGame.spin = true;
 			}else{
 				API.sendChat("/em [" + from + "] Game is already running!");
@@ -377,7 +377,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!join':
 			API.moderateDeleteChat(chatid);
-			if(spinGame == true){
+			if(spinGame === true){
 				API.sendChat("/em [" + from + "] Joined spin!");
 				spinJoin.push(from);
 			}else{
@@ -387,7 +387,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!start':
 			API.moderateDeleteChat(chatid);
-			if(spinGame == true){
+			if(spinGame === true){
 				API.sendChat("/em [" + from + "] Started the game!");
 				var a = spinJoin;
 				var b = Math.floor(Math.random() * a.length);
@@ -400,7 +400,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					if(spinJoin.length == 0){
 						API.sendChat("/em Spin has ended! All users are safe! :D");
 						spinWhite = []; //clears array
-						spinJoin = []; //clears ayyay
+						spinJoin = []; //clears array
 					}
 					if(spinJoin.length > 1){
 						var c = Math.floor(Math.random() * a.length);
@@ -419,7 +419,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!pass':
 			API.moderateDeleteChat(chatid);
-			if(spinGame == true){
+			if(spinGame === true){
 				API.sendChat("/em [" + from + "] Passed the ball!");
 				spinJoin.pop(from);
 				spinWhite.push(from);
@@ -431,10 +431,11 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!spinstop':
 			if(API.getUser(fromid).permission > 2){
 				API.moderateDeleteChat(chatid);
-				if(spinGame.spin == true){
+				if(spinGame.spin === true){
 					clearInterval(z);
 					spinJoin = [];
 					spinWhite = [];
+					spinGame.spin = false;
 					API.sendChat("/em [" + from + "] Stopped spin!");
 				}else{
 					API.sendChat("/em [" + from + "] Spin isn't running!");
