@@ -276,7 +276,7 @@ saveData: function(JSON){
 			}
 		}catch(e){
 			var saveErrorNow = Date.now();
-			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " saving will not continue");
+			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + e.lineNumber);
 		}
 	}else{
 		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
@@ -295,7 +295,7 @@ saveData: function(JSON){
 			}
 		}catch(e){
 			var saveErrorNow = Date.now();
-			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " saving will not continue");
+			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + e.lineNumber);
 		}
 	}else{
 		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
@@ -1111,7 +1111,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 */
 	}catch(err){
     	var d = new Date();
-    	API.sendChat("/em An error has occurred on " + d + " for " + err);
+    	API.sendChat("/em An error has occurred on " + d + " for " + err + err.lineNumber);
 
     }
 }
