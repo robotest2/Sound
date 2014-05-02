@@ -264,8 +264,8 @@ saved.userdata = userData;
 
 //Save for Command
 
-var saveCmd = {
-function(JSON){
+saveCmd = {
+save: function(JSON){
 	if(options.saveSettings == true){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
@@ -723,7 +723,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] Saving...");
 				setTimeout(function(){
-					saveCmd();
+					saveCmd.save();
 				}, 500);
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
