@@ -265,7 +265,7 @@ saved.userdata = userData;
 //Save for Command
 
 saveCmd = {
-saveData: function(JSON){
+saveData: function(){
 	if(options.saveSettings == true){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
@@ -276,7 +276,7 @@ saveData: function(JSON){
 			}
 		}catch(e){
 			var saveErrorNow = Date.now();
-			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + e.lineNumber);
+			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " on line " + e.lineNumber);
 		}
 	}else{
 		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
@@ -295,7 +295,7 @@ saveData: function(JSON){
 			}
 		}catch(e){
 			var saveErrorNow = Date.now();
-			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + e.lineNumber);
+			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " on line " + e.lineNumber);
 		}
 	}else{
 		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
@@ -1107,7 +1107,7 @@ var rTime = Math.floor(Math.random() * aTime + 1000);
 */
 	}catch(err){
     	var d = new Date();
-    	API.sendChat("/em An error has occurred on " + d + " for " + err + err.lineNumber);
+    	API.sendChat("/em An error has occurred on " + d + " for " + err + " on line " + err.lineNumber);
 
     }
 }
