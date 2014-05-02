@@ -301,10 +301,6 @@ saveData: function(JSON){
 		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
 	}
 
-//SAVE ON STARTUP
-
-saveData.save;
-
 //Arrays here
 
 var blacklistA = [ //keywords for blacklist
