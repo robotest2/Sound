@@ -265,14 +265,14 @@ saved.userdata = userData;
 //Save for Command
 
 saveCmd = {
-save: function(JSON){
+saveData: function(JSON){
 	if(options.saveSettings == true){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
 			if(save === null){
-				function(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
+				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
 			}else{
-				function(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
+				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
 			}
 		}catch(e){
 			var saveErrorNow = Date.now();
@@ -719,7 +719,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] Saving...");
 				setTimeout(function(){
-					saveCmd.save();
+					saveCmd.saveData();
 				}, 500);
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
