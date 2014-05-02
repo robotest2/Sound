@@ -264,7 +264,7 @@ saved.userdata = userData;
 //Save for Command
 
 var saveCmd = {
-
+function(JSON){
 	if(options.saveSettings == true){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
@@ -285,7 +285,7 @@ var saveCmd = {
 		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
 	}
 }
-
+}
 //Startup Save
 
 if(options.saveSettings == true){
