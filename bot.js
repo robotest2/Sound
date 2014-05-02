@@ -264,7 +264,7 @@ saved.userdata = userData;
 //Save for Command
 
 var saveCmd = {
-function(JSON){
+function: (JSON){
 	if(options.saveSettings == true){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
