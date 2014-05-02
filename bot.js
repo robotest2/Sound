@@ -285,7 +285,6 @@ saveData: function(JSON){
 }
 //Startup Save
 
-saveData: function(JSON){
 	if(options.saveSettings == true){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
@@ -301,7 +300,6 @@ saveData: function(JSON){
 	}else{
 		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
 	}
-}
 
 //SAVE ON STARTUP
 
