@@ -285,25 +285,28 @@ saveData: function(JSON){
 }
 //Startup Save
 
-if(options.saveSettings == true){
-	try{
-		save = JSON.parse(localStorage.getItem("BotSave"));
-		if(save === null){
-			function(){
-				localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata));
+saveData: function(JSON){
+	if(options.saveSettings == true){
+		try{
+			save = JSON.parse(localStorage.getItem("BotSave"));
+			if(save === null){
+				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
+			}else{
+				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
 			}
-		}else{
-			function(){
-				localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata));
-			}
+		}catch(e){
+			var saveErrorNow = Date.now();
+			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " saving will not continue");
 		}
-	}catch(e){
-		var saveErrorNow = Date.now();
-		API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " saving will not continue");
+	}else{
+		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
 	}
-}else{
-	return null;
 }
+
+//SAVE ON STARTUP
+
+saveData.save;
+
 //Arrays here
 
 var blacklistA = [ //keywords for blacklist
