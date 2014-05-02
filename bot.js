@@ -80,7 +80,7 @@ songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
 blackList: true,
-overLimit: true,
+saveSettings: true,
 version: "Beta 4.1_Pre5",
 };
 
@@ -188,7 +188,12 @@ init: function(){
 		API.chatLog("BlackList: " + options.blackList);
 	}else{
 		API.chatLog("BlackList: " + options.blackList);
-	}	
+	}
+	if(options.saveSettings == true){
+		API.chatLog("Save: " + options.saveSettings);
+	}else{
+		API.chatLog("Save: " + options.saveSettings);
+	}
 	}, 1000);
 	API.chatLog("Executing Script...");
 
@@ -246,6 +251,62 @@ setTimeout(function(){
 API.sendChat("/em Now running!");
 }, 2000);
 
+//Save all options
+var saved = {}
+saved.optionsW = options.woot;
+saved.optionsA = options.announcementMsg;
+saved.optionsB = options.songIntervalMessage;
+saved.optionsC = options.logUserJoin;
+saved.optionsD = options.afkRemove;
+saved.optionsE = options.blackList;
+saved.userdata = userData;
+
+//Save for Command
+
+var saveCmd = {
+
+	if(options.saveSettings == true){
+		try{
+			save = JSON.parse(localStorage.getItem("BotSave"));
+			if(save === null){
+				function(){
+					localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata));
+				}
+			}else{
+				function(){
+					localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata));
+				}
+			}
+		}catch(e){
+			var saveErrorNow = Date.now();
+			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " saving will not continue");
+		}
+	}else{
+		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
+	}
+}
+
+//Startup Save
+
+if(options.saveSettings == true){
+	try{
+		save = JSON.parse(localStorage.getItem("BotSave"));
+		if(save === null){
+			function(){
+				localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata));
+			}
+		}else{
+			function(){
+				localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata));
+			}
+		}
+	}catch(e){
+		var saveErrorNow = Date.now();
+		API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " saving will not continue");
+	}
+}else{
+	return null;
+}
 //Arrays here
 
 var blacklistA = [ //keywords for blacklist
@@ -343,6 +404,19 @@ var spinTime = [ // game time ranges from 1min to 5 mins
 	180,
 	240,
 	300];
+
+/*
+Here is a list of permissions.
+
+USER: 0
+RESIDENT DJ: 1
+BOUNCER: 2
+MANAGER: 3
+CO-HOST: 4
+HOST: 5
+AMBASSADOR: 8
+ADMIN: 10
+*/
 
 function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
@@ -640,6 +714,18 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			if(API.getUser(fromid).permission > 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] This command isn't setup!");
+			}
+			break;
+			
+		case '!save':
+			if(API.getUser(fromid).permission > 3){
+				API.moderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + "] Saving...");
+				setTimeout(function(){
+					saveCmd();
+				}, 500);
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
 			}
 			break;
 			
