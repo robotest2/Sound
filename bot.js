@@ -497,7 +497,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!spinstop':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				if(spinGame.spin === true){
 					clearInterval(z);
@@ -555,7 +555,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!toggle':
 			API.moderateDeleteChat(chatid);
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				if(opt === null){
 					API.sendChat("/em [" + from + "] Current toggles: (Type !toggle [toggle]), woot, announcement, logjoin, afkremove, blacklist");
 				}
@@ -605,7 +605,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!clear':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				var messages = $('#chat-messages').children();
 				for (var i = 0; i < messages.length; i++) {
@@ -620,7 +620,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
     				break;
 			
 		case '!skip':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used skip]");
 				API.moderateForceSkip();
@@ -628,7 +628,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!lock':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used lock]");
 				API.moderateLockWaitList(true, false);
@@ -636,7 +636,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!unlock':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used unlock]");
 				API.moderateLockWaitList(false);
@@ -644,7 +644,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!cycle':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used cycle]");
 				var toggle = $(".cycle-toggle");
@@ -657,7 +657,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!mute':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				for (var i in users) {
 					if (users[i].username == opt) {
@@ -669,7 +669,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!unmute':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				if (userData[fromid].mute === true) API.moderateDeleteChat(chatid);
 				if(userData[fromid].mute === true){
 					API.sendChat("/em [" + from + "] Tried unmuting themselves, but they're muted!");
@@ -686,7 +686,8 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!ban':
-		for (var i in users) {
+		if(API.getUser(fromid).permission >=2){
+              for (var i in users) {
 				if (users[i].username == opt) {
 					API.moderateDeleteChat(chatid);
 					API.sendChat("/em [" + from + "] used ban on " + opt);
@@ -695,24 +696,25 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					API.sendChat("/em [" + from + "] User not found.");
 				}
 			}
+              }
 		break;
 		
 		case '!say':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat('/em [' + from + '] ' + opt);
 			}
 			break;
 			
 		case '!reload':
-			if(API.getUser(fromid).permission > 2){
+			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] This command isn't setup!");
 			}
 			break;
 			
 		case '!save':
-			if(API.getUser(fromid).permission > 3){
+			if(API.getUser(fromid).permission >= 3){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] Saving...");
 				setTimeout(function(){
@@ -725,7 +727,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		default: setTimeout(function(){
 			API.moderateDeleteChat(chatid);
-			API.sendChat('/em [' + from + '] That command doesn\'t exist !');
+			API.sendChat('/em [' + from + '] That command doesn\'t exist!');
 		}, 1);
 	}
 }
