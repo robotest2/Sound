@@ -729,6 +729,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used unlock]");
+				API.moderateLockWaitList(false);
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
 			}
