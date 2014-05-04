@@ -596,7 +596,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				var moveRoom = API.getUsers();
 				for(var i in moveRoom){
 					if(moveRoom[i].username == moveA){
-						if(str.substr(6) >= 3 = 24){
+						if(str.substr(6) = 3 < 24){
 							var movePos = API.getWaitListPosition(moveRoom[i].username);
 							var moveAbove = str.substr(6) > 3 < 26;
 							var moveNum = str.substr(moveAbove).trim();
