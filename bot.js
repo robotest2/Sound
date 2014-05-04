@@ -721,7 +721,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat("/em [" + from + " toggled lock]");
 				var toggleLock = $(".lock-toggle");
 				if(toggleLock.hasClass("disabled")){
-					API.moderateLockWaitList(true, false);
+					toggleLock.click();
 				}else{
 					API.moderateLockWaitList(false);
 				}
