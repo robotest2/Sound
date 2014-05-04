@@ -80,6 +80,7 @@ songIntervalMessage: { interval: 600000, offset: 0, msg: sendMsg },
 logUserJoin: true,
 afkRemove: true,
 blackList: true,
+begGuard: true,
 saveSettings: true,
 version: "Beta 4.1_Pre5",
 };
@@ -188,6 +189,11 @@ init: function(){
 		API.chatLog("BlackList: " + options.blackList);
 	}else{
 		API.chatLog("BlackList: " + options.blackList);
+	}
+	if(options.begGuard == true){
+		API.chatLog("BegGuard: " + options.begGuard);
+	}else{
+		API.chatLog("BegGuard: " + options.begGuard);
 	}
 	if(options.saveSettings == true){
 		API.chatLog("Save: " + options.saveSettings);
@@ -300,6 +306,32 @@ saveData: function(){
 	}else{
 		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
 	}
+
+//BegGuard
+API.on(API.CHAT, callback);
+var begArray = [
+	"fan",
+	"fan4fan",
+	"fan 4 fan",
+	"fanme",
+	"fan me",
+	"pls fan",
+	"fan pls",
+	"FAN ME PLZ"
+	"fanfanfan",
+	"fanfan"];
+if(options.begGuard == true){
+	function callback(data){
+		for(var i = 0; i < begArray.length; i++){
+			if(data.message == begArray[i] >= 0){
+				API.moderateDeleteChat(data.chatid);
+				API.sendChat("@" + data.from + " Please don't ask for fans!");
+			}
+		}
+	}
+}else{
+	API.sendChat("/em A user just begged, but since BegGuard is set to " + options.begGuard + ", I will do nothing!");
+}
 
 //Arrays here
 
