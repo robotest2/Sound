@@ -619,7 +619,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!remove':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				var rUser = str.substr(6).trim();
+				var rUser = str.substr(8).trim();
 				var rA = rUser[1];
 				var rRoom = API.getUsers();
 				for(var i in rRoom){
