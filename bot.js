@@ -270,9 +270,9 @@ saveData: function(){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
 			if(save === null){
-				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
+				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved))};
 			}else{
-				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
+				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved))};
 			}
 		}catch(e){
 			var saveErrorNow = Date.now();
@@ -289,9 +289,9 @@ saveData: function(){
 		try{
 			save = JSON.parse(localStorage.getItem("BotSave"));
 			if(save === null){
-				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
+				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved))};
 			}else{
-				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved.optionsW + saved.optionsA + saved.optionsB + saved.optionsC + saved.optionsD + saved.optionsE + saved.userdata))};
+				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved))};
 			}
 		}catch(e){
 			var saveErrorNow = Date.now();
