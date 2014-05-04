@@ -669,7 +669,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!settings':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				API.sendChat("/em [" + from + "] Current Settings | Autowoot: " + options.autowoot + " | Announcements: " + options.announcementMsg + " | Announcement Interval: " + options.songIntervalMessage + " | Log Join: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + ".");
+				API.sendChat("/em [" + from + "] Current Settings | Autowoot: " + options.woot + " | Announcements: " + options.announcementMsg + " | Announcement Interval: " + options.songIntervalMessage + " | Log Join: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + ".");
 			}
 			break;
 			
