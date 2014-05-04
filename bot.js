@@ -645,53 +645,25 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!toggle':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				if(opt === null){
-					API.sendChat("/em [" + from + "] Current toggles: (Type !toggle [toggle]), woot, announcement, logjoin, afkremove, blacklist");
-				}
-				if(opt == "woot"){
-					API.sendChat("/em [" + from + "] Toggled AutoWoot!");
-					if(options.woot == true){
-						options.woot = false;
-					}else{
-						options.woot = true;
-					}
-				}
-				if(opt == "announcement"){
-					API.sendChat("/em [" + from + "] Toggled Announcements!");
-					if(options.songIntervalMessage == true){
-						options.songIntervalMessage = false;
-					}else{
-						options.songIntervalMessage = true;
-					}
-				}
-				if(opt == "logjoin"){
-					API.sendChat("/em [" + from + "] Toggled logUserJoin!");
-					if(options.logUserJoin == true){
-						options.logUserJoin = false;
-					}else{
-						options.logUserJoin = true;
-					}
-				}
-				if(opt == "afkremove"){
-					API.sendChat("/em [" + from + "] Toggled AFKRemove!");
-					if(options.afkRemove == true){
-						options.afkRemove = false;
-					}else{
-						options.afkRemove = true;
-					}
-				}
-				if(opt == "blacklist"){
-					API.sendChat("/em [" + from + "] Toggled Blacklist!");
-					if(options.blackList == true){
-						options.blackList = false;
-					}else{
-						options.blackList = true;
-					}
-				}
-			}else{
-				API.sendChat("/em [" + from + "] No permission!");
-			}
-			break;
+				var tM = str.substr(8).trim();
+                            var tMsg = tM[1];
+                            var tWoot = "woot";
+                            var tAnoun = "announcement";
+                            var tAfk = "afkremove";
+                            var tBlack = "blacklist";
+                            var tSave = "save";
+                             if(tMsg === null){
+                                         API.sendChat("/em [" + from + "] Available toggles: woot, announcement, afkremove, blacklist.");
+                             }
+                             if(tMsg == tWoot){
+                                         API.sendChat("/em [" + from + "] Toggled Autowoot!");
+                                         if(options.woot == true){
+                                                                  options.woot = false;
+                                         }else{
+                                                                  options.woot = true;
+                                         }
+                              }
+                              break; //Finish here later
 			
 		case '!clear':
 			if(API.getUser(fromid).permission >= 2){
