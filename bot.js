@@ -578,7 +578,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				for(var i in addUsers){
 					if(addUsers[i].username == addA){
 						API.sendChat("/em [" + from + " used add]");
-						API.moderateAddDJ(addA);
+						API.moderateAddDJ(addUsers[i].id);
 					}else{
 						API.sendChat("/em [" + from + "] User not found!");
 					}
@@ -601,8 +601,8 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 							var moveAbove = str.substr(6) > 3 < 26;
 							var moveNum = str.substr(moveAbove).trim();
 							if(movePos === -1){
-								API.moderateAddDJ(moveRoom[i].username);
-								API.moderateMoveDJ(moveRoom[i].username, moveNum);
+								API.moderateAddDJ(moveRoom[i].id);
+								API.moderateMoveDJ(moveRoom[i].id, moveNum);
 							}else{
 								API.moderateMoveDJ(moveRoom[i].id, moveNum);
 							}
@@ -625,7 +625,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				for(var i in rRoom){
 					if(rRoom[i].username == rA){
 						API.sendChat("/em [" + from + " used remove]");
-						API.moderateRemoveUser(rRoom[i].username);
+						API.moderateRemoveDJ(rRoom[i].id);
 					}else{
 						API.sendChat("/em [" + from + "] User not found!");
 					}
