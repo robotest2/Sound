@@ -718,13 +718,17 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!lock':
 			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
-				API.sendChat("/em [" + from + " toggled lock]");
-				var toggleLock = $(".lock-toggle");
-				if(toggleLock.hasClass("disabled")){
-					API.moderateLockWaitList(true, false);
-				}else{
-					API.moderateLockWaitList(false);
-				}
+				API.sendChat("/em [" + from + " used lock]");
+				API.moderateLockWaitList(true, false);
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
+			
+		case '!unlock':
+			if(API.getUser(fromid).permission >= 2){
+				API.moderateDeleteChat(chatid);
+				API.sendChat("/em [" + from + " used unlock]");
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
 			}
