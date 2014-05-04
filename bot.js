@@ -317,7 +317,7 @@ var begArray = [
 	"fan me",
 	"pls fan",
 	"fan pls",
-	"FAN ME PLZ"
+	"FAN ME PLZ",
 	"fanfanfan",
 	"fanfan"];
 if(options.begGuard == true){
