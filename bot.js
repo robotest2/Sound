@@ -723,7 +723,8 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				if(toggleLock.hasClass("disabled")){
 					toggleLock.click();
 				}else{
-					API.moderateLockWaitList(false);
+					toggleLock.click();
+					toggleLock.click();
 				}
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
