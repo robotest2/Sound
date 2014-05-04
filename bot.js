@@ -722,7 +722,8 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				var toggleLock = $(".lock-toggle");
 				if(toggleLock.hasClass("disabled")){
 					toggleLock.click();
-				}else{
+				}
+				if(toggleLock.hasClass("enabled")){
 					toggleLock.click();
 				}
 			}else{
