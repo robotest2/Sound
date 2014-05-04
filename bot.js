@@ -327,7 +327,7 @@ if(options.begGuard == true){
 				API.sendChat("@" + data.from + " Please don't ask for fans!");
 			}
 		}
-	}
+	});
 }else{
 	API.sendChat("/em A user just begged, but since BegGuard is set to " + options.begGuard + ", I will do nothing!");
 }
