@@ -645,22 +645,37 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!toggle':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				var tM = str.substr(8).trim();
+				 var tM = str.substr(8).trim();
                             var tMsg = tM[1];
                             var tWoot = "woot";
                             var tAnoun = "announcement";
+                            var tLog = "log";
                             var tAfk = "afkremove";
                             var tBlack = "blacklist";
                             var tSave = "save";
                              if(tMsg === null){
-                                         API.sendChat("/em [" + from + "] Available toggles: woot, announcement, afkremove, blacklist.");
+                                         API.sendChat("/em [" + from + "] Available toggles: woot, announcement, log, afkremove, blacklist.");
                              }
                              if(tMsg == tWoot){
                                          API.sendChat("/em [" + from + "] Toggled Autowoot!");
                                          if(options.woot == true){
-                                                                  options.woot = false;
+                                                 options.woot = false;
                                          }else{
-                                                                  options.woot = true;
+                                                 options.woot = true;
+                                         }
+                              }
+                              if(tMsg == tAnoun){
+                                          if(options.announcementMsg == true){
+                                                         options.announcementMsg = false;
+                                          }else{
+                                                         options.announcementMsg = true;
+                                          }
+                              }
+                              if(tMsg == tLog){
+                                         if(options.logUserJoin == true){
+                                                        options.logUserJoin = false;
+                                         }else{
+                                                        options.logUserJoin = true;
                                          }
                               }
                               break; //Finish here later
