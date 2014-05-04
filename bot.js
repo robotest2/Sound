@@ -320,8 +320,7 @@ var begArray = [
 	"fanfanfan",
 	"fanfan"];
 if(options.begGuard == true){
-	API.on(API.CHAT, callback
-	function callback(data){
+	API.on(API.CHAT, function(data){
 		for(var i = 0; i < begArray.length; i++){
 			if(data.message == begArray[i] >= 0){
 				API.moderateDeleteChat(data.chatid);
@@ -331,7 +330,7 @@ if(options.begGuard == true){
 	}
 }else{
 	API.sendChat("/em A user just begged, but since BegGuard is set to " + options.begGuard + ", I will do nothing!");
-});
+}
 
 //Arrays here
 
