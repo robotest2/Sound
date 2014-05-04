@@ -432,6 +432,22 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}
 			break;
 			
+		case '!staff':
+			var isonline = []; 
+			API.moderateDeleteChat(chatID); 
+			var online = API.getStaff();
+			for(var i in online) {
+				isonline.push(online[i].username);
+			}
+			API.sendChat("/em [" + data.from + "] Staff that's online: [" + isonline.join(', ') + "]");
+			isonline = [];
+			break;
+			
+		case '!ad':
+			API.moderateDeleteChat(chatid);
+			API.sendChat("/em [" + from + "] Getting annoying ads? Get ADBlock here: https://adblockplus.org");
+			break;
+			
 		case '!spin':
 			API.moderateDeleteChat(chatid);
 			API.sendChat("/em [" + from + "] Requested a game of spin! Type !join to join the game!");
@@ -552,6 +568,79 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}
 		}
 		break;
+			
+		case '!add':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				var addUser = str.substr(5).trim();
+				var addA = addUser[1];
+				var addUsers = API.getUsers();
+				for(var i in addUsers){
+					if(addUsers[i].username == addA){
+						API.sendChat("/em [" + from + " used add]");
+						API.moderateAddDJ(addA);
+					}else{
+						API.sendChat("/em [" + from + "] User not found!");
+					}
+				}
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
+		/*	
+		case '!move':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				var moveUser = str.substr(6).trim();
+				var moveA = moveUser[1];
+				var moveRoom = API.getUsers();
+				for(var i in moveRoom){
+					if(moveRoom[i].username == moveA){
+						if(str.substr(6) > 3 < 24){
+							var movePos = API.getWaitListPosition(moveRoom[i].username);
+							var moveAbove = str.substr(6) > 3 < 26;
+							var moveNum = str.substr(moveAbove).trim();
+							if(movePos === -1){
+								API.moderateAddDJ(moveRoom[i].username);
+								API.moderateMoveDJ(moveRoom[i].username, moveNum);
+							}else{
+								API.moderateMoveDJ(moveRoom[i].id, moveNum);
+							}
+						}
+					}else{
+						API.sendChat("/em [" + from + "] User not found!");
+					}
+				}
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
+			*/
+		case '!remove':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				var rUser = str.substr(6).trim();
+				var rA = rUser[1];
+				var rRoom = API.getUsers();
+				for(var i in rRoom){
+					if(rRoom[i].username == rA){
+						API.sendChat("/em [" + from + " used remove]");
+						API.moderateRemoveUser(rRoom[i].username);
+					}else{
+						API.sendChat("/em [" + from + "] User not found!");
+					}
+				}
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
+			
+		case '!settings':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				API.sendChat("/em [" + from + "] Current Settings | Autowoot: " + options.autowoot + " | Announcements: " + options.announcementMsg + " | Announcement Interval: " + options.songIntervalMessage + " | Log Join: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + ".");
+			}
+			break;
 			
 		case '!toggle':
 			API.moderateDeleteChat(chatid);
@@ -686,7 +775,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!ban':
-		if(API.getUser(fromid).permission >=2){
+		if(API.getUser(fromid).permission >= 2){
               for (var i in users) {
 				if (users[i].username == opt) {
 					API.moderateDeleteChat(chatid);
