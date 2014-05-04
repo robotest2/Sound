@@ -587,7 +587,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat("/em [" + from + "] No permission!");
 			}
 			break;
-		/*	
+			
 		case '!move':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
@@ -596,7 +596,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				var moveRoom = API.getUsers();
 				for(var i in moveRoom){
 					if(moveRoom[i].username == moveA){
-						if(str.substr(6) > 3 < 24){
+						if(str.substr(6) >= 3 = 24){
 							var movePos = API.getWaitListPosition(moveRoom[i].username);
 							var moveAbove = str.substr(6) > 3 < 26;
 							var moveNum = str.substr(moveAbove).trim();
@@ -615,7 +615,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat("/em [" + from + "] No permission!");
 			}
 			break;
-			*/
+			
 		case '!remove':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
@@ -645,40 +645,52 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!toggle':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				 var tM = str.substr(8).trim();
-                            var tMsg = tM[1];
-                            var tWoot = "woot";
-                            var tAnoun = "announcement";
-                            var tLog = "log";
-                            var tAfk = "afkremove";
-                            var tBlack = "blacklist";
-                            var tSave = "save";
-                             if(tMsg === null){
-                                         API.sendChat("/em [" + from + "] Available toggles: woot, announcement, log, afkremove, blacklist.");
-                             }
-                             if(tMsg == tWoot){
-                                         API.sendChat("/em [" + from + "] Toggled Autowoot!");
-                                         if(options.woot == true){
-                                                 options.woot = false;
-                                         }else{
-                                                 options.woot = true;
-                                         }
-                              }
-                              if(tMsg == tAnoun){
-                                          if(options.announcementMsg == true){
-                                                         options.announcementMsg = false;
-                                          }else{
-                                                         options.announcementMsg = true;
-                                          }
-                              }
-                              if(tMsg == tLog){
-                                         if(options.logUserJoin == true){
-                                                        options.logUserJoin = false;
-                                         }else{
-                                                        options.logUserJoin = true;
-                                         }
-                              }
-                              break; //Finish here later
+				var tMessage = str.substr(8).trim();
+				var tMsg = tMessage[1];
+				if(tMsg == "woot"){
+					API.sendChat("/em [" + from + "] Toggled woot!");
+					if(options.woot == true){
+						options.woot = false;
+					}else{
+						options.woot = true;
+					}
+				}
+				if(tMsg == "announcements"){
+					API.sendChat("/em [" + from + "] Toggled announcements!");
+					if(options.announcementMsg == true){
+						options.announcementMsg = false;
+					}else{
+						options.announcementMsg = true;
+					}
+				}
+				if(tMsg == "logjoin"){
+					API.sendChat("/em [" + from + "] Toggled logUserJoin!");
+					if(options.logUserJoin == true){
+						options.logUserJoin = false;
+					}else{
+						options.logUserJoin = true;
+					}
+				}
+				if(tMsg == "afkremove"){
+					API.sendChat("/em [" + from + "] Toggled AFKRemove!");
+					if(options.afkRemove == true){
+						options.afkRemove = false;
+					}else{
+						options.afkRemove = true;
+					}
+				}
+				if(tMsg == "blacklist"){
+					API.sendChat("/em [" + from + "] Toggled the blacklist!");
+					if(options.blackList == true){
+						options.blackList = false;
+					}else{
+						options.blackList = true;
+					}
+				}
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
 			
 		case '!clear':
 			if(API.getUser(fromid).permission >= 2){
