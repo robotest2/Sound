@@ -465,7 +465,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!staff':
 			var isonline = []; 
-			API.moderateDeleteChat(chatID); 
+			API.moderateDeleteChat(chatid); 
 			var online = API.getStaff();
 			for(var i in online) {
 				isonline.push(online[i].username);
