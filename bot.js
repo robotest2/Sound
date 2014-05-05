@@ -848,6 +848,25 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}
 			break;
 			
+			case '!rdj':
+				if(API.getUser(fromid).permission >= 2){
+					API.moderateDeleteChat(chatid);
+					var rmess = str.substr(5).trim();
+					var rMsg = rmess[1];
+					var crowd = API.getUsers();
+					for(var i in crowd){
+						if(crowd[i].username == rMsg){
+							API.sendChat("/em [" + from + "] Set " + crowd[i].username + " as a Resident DJ!");
+							API.moderateSetRole(crowd[i].id, API.ROLE.RESIDENTDJ);
+						}else{
+							API.sendChat("/em [" + from + "] User not found!");
+						}
+					}
+				}else{
+					API.sendChat("/em [" + from + "] No permission!");
+				}
+				break;
+			
 		default: setTimeout(function(){
 			API.moderateDeleteChat(chatid);
 			API.sendChat('/em [' + from + '] That command doesn\'t exist!');
