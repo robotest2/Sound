@@ -855,8 +855,6 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 						if(crowd[i].username == opt){
 							API.sendChat("/em [" + from + "] Set " + crowd[i].username + " as a Resident DJ!");
 							API.moderateSetRole(crowd[i].id, API.ROLE.RESIDENTDJ);
-						}else{
-							API.sendChat("/em [" + from + "] User not found!");
 						}
 					}
 				}else{
