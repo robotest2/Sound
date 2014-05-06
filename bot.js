@@ -874,7 +874,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!rdj':
 			if(API.getUser(fromid).permission >= 2){
 				var rUserM = str.substr(6).trim();
-				var mtag = ruserM[1];
+				var mtag = rUserM[1];
 				var crowd = API.getUsers();
 				for(var i in crowd){
 					if(crowd[i].username == mtag){
