@@ -860,11 +860,11 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 						setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR)}, 10000);
 						setTimeout(function(){API.moderateUnbanUser(userkick)}, 15000);
 						setTimeout(function(){API.moderateUnbanUser(userkick)}, 18000);
+					}else{
+						if(userskick[i].username === undefined){
+							API.sendChat("/em [" + from + "] User not found!");
+						}
 					}
-					if(userskick[i].username === undefined){
-						API.sendChat("/em [" + from + "] User not found!");
-					}
-					
 				}
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
