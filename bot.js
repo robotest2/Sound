@@ -850,7 +850,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!kick':
 			if(API.getUser(fromid).permission >=2 ){
-				var messkick = str.substr(7).trim();
+				var messkick = str.substr(6).trim();
 				var splitkick = messkick[1];
 				var userskick = API.getUsers();
 				for(var i in userskick) {
