@@ -873,11 +873,15 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!rdj':
 			if(API.getUser(fromid).permission >= 2){
+				var rUserM = str.substr(6).trim();
+				var mtag = ruserM[1];
 				var crowd = API.getUsers();
 				for(var i in crowd){
-					if(crowd[i].username == opt){
+					if(crowd[i].username == mtag){
 						API.sendChat("/em [" + from + "] Set " + crowd[i].username + " as a Resident DJ!");
-						API.moderateSetRole(opt.id, API.ROLE.RESIDENTDJ);
+						API.moderateSetRole(crowd[i].id, API.ROLE.RESIDENTDJ);
+					}else{
+						API.sendChat("/em [" + from + "] User not found!");
 					}
 				}
 			}else{
