@@ -864,7 +864,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		default: setTimeout(function(){
 			API.moderateDeleteChat(chatid);
-			API.sendChat('/em [' + from + '] That command doesn\'t exist!');
+			API.sendChat('/em [' + from + '] That command doesn\'t exist! Type !help for a list of commands.');
 		}, 1);
 	}
 }
