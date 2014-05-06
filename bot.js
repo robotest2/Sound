@@ -866,21 +866,24 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					}
 					
 				}
-				break;
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
 			
-			case '!rdj':
-				if(API.getUser(fromid).permission >= 2){
-					var crowd = API.getUsers();
-					for(var i in crowd){
-						if(crowd[i].username == opt){
-							API.sendChat("/em [" + from + "] Set " + crowd[i].username + " as a Resident DJ!");
-							API.moderateSetRole(opt.id, API.ROLE.RESIDENTDJ);
-						}
+		case '!rdj':
+			if(API.getUser(fromid).permission >= 2){
+				var crowd = API.getUsers();
+				for(var i in crowd){
+					if(crowd[i].username == opt){
+						API.sendChat("/em [" + from + "] Set " + crowd[i].username + " as a Resident DJ!");
+						API.moderateSetRole(opt.id, API.ROLE.RESIDENTDJ);
 					}
-				}else{
-					API.sendChat("/em [" + from + "] No permission!");
 				}
-				break;
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
 			
 		default: setTimeout(function(){
 			API.moderateDeleteChat(chatid);
