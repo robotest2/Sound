@@ -848,6 +848,26 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			}
 			break;
 			
+		case '!kick':
+			if(API.getUser(fromid).permission >=2 ){
+				var messkick = str.substr(7).trim();
+				var splitkick = messkick[1];
+				var userskick = API.getUsers();
+				for(var i in userskick) {
+					if (userskick[i].username == splitkick[1]) {
+						var userkick = userskick[i].id;
+						API.sendChat("[" + from + "] @" + splitkick[1] + " You will be kicked in 10 seconds.")
+						setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR)}, 10000);
+						setTimeout(function(){API.moderateUnbanUser(userkick)}, 15000);
+						setTimeout(function(){API.moderateUnbanUser(userkick)}, 18000);
+					}
+					if(userskick[i].username === undefined){
+						API.sendChat("/em [" + from + "] User not found!");
+					}
+					
+				}
+				break;
+			
 			case '!rdj':
 				if(API.getUser(fromid).permission >= 2){
 					var crowd = API.getUsers();
