@@ -470,7 +470,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			for(var i in online) {
 				isonline.push(online[i].username);
 			}
-			API.sendChat("/em [" + data.from + "] Staff that's online: [" + isonline.join(', ') + "]");
+			API.sendChat("/em [" + from + "] Staff that's online: [" + isonline.join(', ') + "]");
 			isonline = [];
 			break;
 			
