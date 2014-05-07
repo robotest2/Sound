@@ -300,7 +300,7 @@ if(options.intelligent == true){
 		}
 	}
 }else{
-	API.sendChat("I was tagged, but since intelligent is set to " + optins.intelligent + ", I will do nothing!");
+	API.sendChat("I was tagged, but since intelligent is set to " + options.intelligent + ", I will do nothing!");
 }
 
 
