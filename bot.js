@@ -284,7 +284,7 @@ var me = API.getSelf().username;
 var tagme = data.message.indexOf("@SoundBot");
 if(tagme === me){
 var tagtrim = tagme.substr(10).trim();
-if(tagTrim == /*hi, hey, hello, etc. */){
+if(tagTrim == 'hi'){
 var hireply = Math.floor(Math.random() * greet.length);
 API.sendChat("@" + data.from + greet[hireply]);
 }
