@@ -409,7 +409,8 @@ var fightArray = [
 	" loves one-direction.",
 	" eats coconuts"];
 
-var spinGame = {
+var spinGame = {};
+spinGame = {
 	spin: false,
 };
 
