@@ -81,8 +81,9 @@ logUserJoin: true,
 afkRemove: true,
 blackList: true,
 begGuard: true,
+intelligent: true,
 saveSettings: true,
-version: "Beta 4.1_Pre5",
+version: "Beta 4.1_Pre12",
 };
 
 // UserData (Wayz)
@@ -256,6 +257,45 @@ setTimeout(function(){
 setTimeout(function(){
 API.sendChat("/em Now running!");
 }, 2000);
+
+//intelligent **EARLY VERSION**
+
+var greet = [
+"Hey dude!",
+"What's up m8?",
+"Hi",
+"Hello",
+"Greetings!"];
+
+var how = [
+"I'm good, thanks!",
+"Good, how about you?",
+"I feel hyper today...",
+"Why do you ask?",
+"Please, do not bother me. I am busy calculating math problems",
+"Feeling like I can go to the internet!",
+"Not so good.",
+"Not great."];
+
+if(options.intelligent == true){
+function readChat(data){
+
+var me = API.getSelf().username;
+var tagme = data.message.indexOf("@SoundBot");
+if(tagme === me){
+var tagtrim = tagme.substr(10).trim();
+if(tagTrim == /*hi, hey, hello, etc. */){
+var hireply = Math.floor(Math.random() * greet.length);
+API.sendChat("@" + data.from + greet[hireply]);
+}
+if(tagTrim == /*How are you, etc.*/){
+var howreply = Math.floor(Math.random() * how.length);
+API.sendChat("@" + data.from + how[howreply]);
+}
+}
+}
+}
+
 
 //Save all options
 
