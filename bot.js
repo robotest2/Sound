@@ -277,23 +277,30 @@ var how = [
 "Not so good.",
 "Not great."];
 
-if(options.intelligent == true){
-function readChat(data){
+API.on(API.CHAT, readChat);
 
-var me = API.getSelf().username;
-var tagme = data.message.indexOf("@SoundBot");
-if(tagme === me){
-var tagtrim = tagme.substr(10).trim();
-if(tagTrim == 'hi'){
-var hireply = Math.floor(Math.random() * greet.length);
-API.sendChat("@" + data.from + greet[hireply]);
-}
-if(tagTrim == /*How are you, etc.*/){
-var howreply = Math.floor(Math.random() * how.length);
-API.sendChat("@" + data.from + how[howreply]);
-}
-}
-}
+if(options.intelligent == true){
+	function readChat(data){
+
+		var me = API.getSelf().username;
+		var tagme = data.message.indexOf("@" + me);
+		var tagusers = API.getUsers();
+		if(tagme === tagusers){
+			for(var i in tagusers){
+				var tagtrim = tagme.substr(10).trim();
+				if(tagTrim === 'hi'){
+					var hireply = Math.floor(Math.random() * greet.length);
+					API.sendChat("@" + data.from + greet[hireply]);
+				}
+				if(tagTrim == /*How are you, etc.*/){
+					var howreply = Math.floor(Math.random() * how.length);
+					API.sendChat("@" + data.from + how[howreply]);
+				}
+			}
+		}
+	}
+}else{
+	API.sendChat("I was tagged, but since intelligent is set to " + optins.intelligent + ", I will do nothing!");
 }
 
 
