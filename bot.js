@@ -56,11 +56,6 @@ if(location.pathname == '/astroparty/') {
 
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
-	"My commands are being re-written, so not all commands work!",
-	"My commands are being re-written, so not all commands work!",
-	"My commands are being re-written, so not all commands work!",
-	"My commands are being re-written, so not all commands work!",
-	"My commands are being re-written, so not all commands work!",
 	"Make sure to help out new users!",
 	"Need help? Type !help for a list of commands",
 	"This script is protected with an authentication system!",
