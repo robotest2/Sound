@@ -81,7 +81,6 @@ logUserJoin: true,
 afkRemove: true,
 blackList: true,
 begGuard: true,
-intelligent: true,
 saveSettings: true,
 version: "Beta 4.1_Pre12",
 };
@@ -257,48 +256,6 @@ setTimeout(function(){
 setTimeout(function(){
 API.sendChat("/em Now running!");
 }, 2000);
-
-//intelligent **EARLY VERSION**
-API.on(API.CHAT, function readChat(data){
-var greet = [
-"Hey dude!",
-"What's up m8?",
-"Hi",
-"Hello",
-"Greetings!"];
-
-var how = [
-"I'm good, thanks!",
-"Good, how about you?",
-"I feel hyper today...",
-"Why do you ask?",
-"Please, do not bother me. I am busy calculating math problems",
-"Feeling like I can go to the internet!",
-"Not so good.",
-"Not great."];
-
-if(options.intelligent == true){
-
-		var me = API.getSelf().username;
-		var tagme = data.message.indexOf("@" + me);
-		var tagusers = API.getUsers();
-		if(tagme === tagusers){
-			for(var i in tagusers){
-				var tagtrim = tagme.substr(10).trim();
-				if(tagTrim === 'hi'){
-					var hireply = Math.floor(Math.random() * greet.length);
-					API.sendChat("@" + data.from + greet[hireply]);
-				}
-				if(tagTrim == 'hows it goin'){
-					var howreply = Math.floor(Math.random() * how.length);
-					API.sendChat("@" + data.from + how[howreply]);
-				}
-			}
-		}
-	}else{
-		API.sendChat("/em I was tagged, but since intelligent is set to " + options.intelligent + ", I will do nothing!");
-	}
-});
 
 //Save all options
 
