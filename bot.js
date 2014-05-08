@@ -292,7 +292,7 @@ if(options.intelligent == true){
 					var hireply = Math.floor(Math.random() * greet.length);
 					API.sendChat("@" + data.from + greet[hireply]);
 				}
-				if(tagTrim == /*How are you, etc.*/){
+				if(tagTrim == 'hows it goin'){
 					var howreply = Math.floor(Math.random() * how.length);
 					API.sendChat("@" + data.from + how[howreply]);
 				}
