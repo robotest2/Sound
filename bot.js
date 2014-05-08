@@ -466,8 +466,6 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				if(fusers[i].username == fmsg){
 					var FR = Math.floor(Math.random() * fightArray.length);
 					API.sendChat("@" + fusers[i].username + ", " + from + " says: " + fightArray[FR]);
-				}else{
-					API.sendChat("/em [" + from + "] User not found!");
 				}
 			}
 			break;
@@ -482,8 +480,6 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					var ca = Math.floor(Math.random() * cookieArray.length);
 					var co = Math.floor(Math.random() * outcome.length);
 					API.sendChat("@" + cusr[i].username + ", " + from + " gives you " + cookieArray[ca] + "! " + outcome[co]);
-				}else{
-					API.sendChat("/em [" + from + "] User not found!");
 				}
 			}
 			break;
@@ -603,15 +599,15 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			break;
 			
 		case '!ask':
-				API.moderateDeleteChat(chatid);
-				var askR = Math.floor(Math.random() * askArray.length);
-				API.sendChat("/em [" + from + "] " + askArray[askR]);
+			API.moderateDeleteChat(chatid);
+			var askR = Math.floor(Math.random() * askArray.length);
+			API.sendChat("/em [" + from + "] " + askArray[askR]);
 			break;
 			
 		case '!ba':
-				API.moderateDeleteChat(chatid);
-				API.sendChat("/em [" + from + "] Brand Ambassadors (BA's) are plug.dj's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
-				break;
+			API.moderateDeleteChat(chatid);
+			API.sendChat("/em [" + from + "] Brand Ambassadors (BA's) are plug.dj's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
+			break;
 			
 		case '!eta':
 		API.moderateDeleteChat(chatid);
@@ -647,8 +643,6 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					if(addUsers[i].username == addA){
 						API.sendChat("/em [" + from + " used add]");
 						API.moderateAddDJ(addUsers[i].id);
-					}else{
-						API.sendChat("/em [" + from + "] User not found!");
 					}
 				}
 			}else{
@@ -675,8 +669,6 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 								API.moderateMoveDJ(moveRoom[i].id, moveNum);
 							}
 						}
-					}else{
-						API.sendChat("/em [" + from + "] User not found!");
 					}
 				}
 			}else{
@@ -694,8 +686,6 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 					if(rRoom[i].username == rA){
 						API.sendChat("/em [" + from + " used remove]");
 						API.moderateRemoveDJ(rRoom[i].id);
-					}else{
-						API.sendChat("/em [" + from + "] User not found!");
 					}
 				}
 			}else{
@@ -890,6 +880,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				API.sendChat("/em [" + from + "] Saving...");
 				setTimeout(function(){
 					saveCmd.saveData();
+					API.sendChat("/em Saved!");
 				}, 500);
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
