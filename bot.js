@@ -259,7 +259,7 @@ API.sendChat("/em Now running!");
 }, 2000);
 
 //intelligent **EARLY VERSION**
-
+API.on(API.CHAT, function readChat(data){
 var greet = [
 "Hey dude!",
 "What's up m8?",
@@ -277,10 +277,7 @@ var how = [
 "Not so good.",
 "Not great."];
 
-API.on(API.CHAT, readChat);
-
 if(options.intelligent == true){
-	function readChat(data){
 
 		var me = API.getSelf().username;
 		var tagme = data.message.indexOf("@" + me);
@@ -298,11 +295,10 @@ if(options.intelligent == true){
 				}
 			}
 		}
+	}else{
+		API.sendChat("/em I was tagged, but since intelligent is set to " + options.intelligent + ", I will do nothing!");
 	}
-}else{
-	API.sendChat("I was tagged, but since intelligent is set to " + options.intelligent + ", I will do nothing!");
-}
-
+});
 
 //Save all options
 
@@ -1328,3 +1324,6 @@ else API.chatLog('This script works only in plug.dj/astroparty', true);
     
 //End of script. No seriously, there's nothing below me
 
+//except this
+
+API.on(API.addEventListener, readChat);
