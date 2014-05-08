@@ -77,7 +77,7 @@ afkRemove: true,
 blackList: true,
 begGuard: true,
 saveSettings: true,
-version: "Beta 4.1_Pre12",
+version: "Beta 5",
 };
 
 // UserData (Wayz)
