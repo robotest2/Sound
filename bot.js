@@ -848,16 +848,14 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!ban':
 		if(API.getUser(fromid).permission >= 2){
-              for (var i in users) {
+			for (var i in users) {
 				if (users[i].username == opt) {
 					API.moderateDeleteChat(chatid);
 					API.sendChat("/em [" + from + "] used ban on " + opt);
 					API.moderateBanUser(users[i].id);
-				}else{
-					API.sendChat("/em [" + from + "] User not found.");
 				}
 			}
-              }
+		}
 		break;
 		
 		case '!say':
