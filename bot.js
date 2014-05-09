@@ -228,17 +228,6 @@ if(location.pathname == '/astroparty/'){
 	API.chatLog("You are not authenticated to use this script in the requested room", true);
 }
 
-
-//Startup
-
-var on = "Current ";
-setTimeout(function(){
-	API.chatLog(on + "version " + options.version);
-}, 1000);
-setTimeout(function(){
-API.sendChat("/em Now running!");
-}, 2000);
-
 //Save all options
 
 var saved = {}
