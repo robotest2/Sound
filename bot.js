@@ -200,35 +200,6 @@ init: function(){
 
 	}
 }
-/*
-  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
-      _____           _       _     ____              _   
-     / ____|         (_)     | |   |  _ \            | |  
-    | (___   ___ _ __ _ _ __ | |_  | |_) | ___   ___ | |_
-     \___ \ / __| '__| | '_ \| __| |  _ < / _ \ / _ \| __|
-     ____) | (__| |  | | |_) | |_  | |_) | (_) | (_) | |_ 
-    |_____/ \___|_|  |_| .__/ \__| |____/ \___/ \___/ \__|
-                       | |                                
-                       |_|                                
-
-  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
- |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
-
-dat ascii <3
-*/
 
 //Auth boot
 
@@ -286,21 +257,7 @@ saveData: function(){
 }
 //Startup Save
 
-	if(options.saveSettings == true){
-		try{
-			save = JSON.parse(localStorage.getItem("BotSave"));
-			if(save === null){
-				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved))};
-			}else{
-				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved))};
-			}
-		}catch(e){
-			var saveErrorNow = Date.now();
-			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " on line " + e.lineNumber);
-		}
-	}else{
-		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
-	}
+saveCmd.saveData();
 
 //BegGuard
 var begArray = [
