@@ -919,13 +919,13 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			
 		case '!kick':
 			if(API.getUser(fromid).permission >=2 ){
-				var messkick = str.substr(6).trim();
+				var messkick = str.substr(6).split('@');
 				var splitkick = messkick[1];
 				var userskick = API.getUsers();
 				for(var i in userskick) {
 					if (userskick[i].username == splitkick){
 						var userkick = userskick[i].id;
-						API.sendChat("[" + from + "] @" + splitkick[1] + " You will be kicked in 10 seconds.")
+						API.sendChat("[" + from + "] @" + userskick[i].username + " You will be kicked in 10 seconds.")
 						setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR)}, 10000);
 						setTimeout(function(){API.moderateUnbanUser(userkick)}, 15000);
 						setTimeout(function(){API.moderateUnbanUser(userkick)}, 18000);
