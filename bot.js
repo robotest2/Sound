@@ -986,9 +986,6 @@ API.on(API.CHAT, function(data) {
 				var tmsg = data.message.substr(8);
 				userc('!toggle', data.from, data.fromID, data.chatID);
 			}
-			else {
-				userc(data.message, data.from, data.fromID, data.chatID);
-			}
 		}
 	}
 	if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
@@ -997,10 +994,8 @@ API.on(API.CHAT, function(data) {
 	}catch(err){
     	var d = new Date();
     	API.sendChat("/em An error has occurred on " + d + " for " + err + " on line " + err.lineNumber);
-
-    }
 }
-else{
+}else{
 	alert('This script works only in http://plug.dj/astroparty');
 }
     
