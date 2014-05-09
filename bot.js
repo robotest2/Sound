@@ -590,6 +590,24 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		}
 		break;
 			
+		case '!test':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				if(options.save == true){
+					var lsgi = localStorage.getItem("BotSave");
+					if(lsgi === true){
+						API.sendChat("/em [" + from + "] Save file is up and running!");
+					}else{
+						API.sendChat("/em [" + from + "] Uh oh! I couldn't find the save file! Try refreshing me, that might work!");
+					}
+				}else{
+					API.sendChat("/em [" + from + "] Uh oh! Save is set to " + options.save + "!");
+				}
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
+			
 		case '!add':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
