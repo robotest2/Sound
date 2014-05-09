@@ -201,15 +201,31 @@ init: function(){
 	}
 }
 
-//Auth boot
+//Boot up script
 
-if (location.pathname != '/astroparty'){
+if(location.pathname == '/astroparty/'){
 	API.chatLog("Authentication Successful!");
+	setTimeout(function(){
+		if(localStorage.getItem("BotSave") === null){
+			API.chatLog("Save file is null!");
+			saveCmd.saveData();
+		}else{
+			saveCmd.saveData();
+		}
+	}, 100);
 	setTimeout(function(){
 	startup.init();
 	}, 500);
+	var on = "Current ";
+	setTimeout(function(){
+		API.chatLog(on + "version " + options.version);
+	}, 1000);
+	setTimeout(function(){
+		API.sendChat("/em Now running!");
+	}, 2000);
+
 }else{
-	API.chatLog("You are not authenticated to use this script in the requested room.", true);
+	API.chatLog("You are not authenticated to use this script in the requested room", true);
 }
 
 
@@ -913,6 +929,9 @@ API.on(API.CHAT, function(data) {
 
     }
 }
-else API.chatLog('This script works only in plug.dj/astroparty', true);
+else{
+	alert('This script works only in http://plug.dj/astroparty');
+}
     
 //End of script. No seriously, there's nothing below me
+//except this lol
