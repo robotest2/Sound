@@ -417,7 +417,6 @@ options = {
 
 */
 
-var toggle = {};
 toggle = {
 	woot: "woot",
 	announcements: "announcements",
