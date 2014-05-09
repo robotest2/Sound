@@ -400,10 +400,114 @@ HOST: 5
 AMBASSADOR: 8
 ADMIN: 10
 */
+/*
+
+options = {
+	woot: true,
+	announcementMsg: true,
+	songIntervalMessage: { interval: 300000, offset: 0, msg: sendMsg },
+	logUserJoin: true,
+	afkRemove: true,
+	blackList: true,
+	begGuard: true,
+	saveSettings: true,
+	version: "Beta 5",
+};
+
+
+*/
+
+var toggle = {};
+toggle = {
+	woot: "woot",
+	announcements: "announcements",
+	logjoin: "logjoin",
+	afkremove: "afkremove",
+	blacklist: "blacklist",
+	begGuard: "begguard",
+	save: "save",
+};
 
 function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
+		
+		case '!toggle':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 3){
+				var t = str.substr(8).trim();
+				var tm = t[1];
+				if(tm === undefined){
+					API.sendChat("/em [" + from + "] Current toggles: " + toggle.woot + ", " + toggle.logjoin + ", " + toggle.afkremove + ", " + toggle.blacklist + ", " + toggle.begguard + ", " + toggle.save + ".");
+				}else{
+					if(tm === toggle.woot){
+						API.sendChat("/em [" + from + "] Toggled autowoot!");
+						if(options.woot == true){
+							options.woot = false;
+						}else{
+							options.woot = true;
+						}
+					}else{
+						if(tm === toggle.announcements){
+							API.sendChat("/em [" + from + "] Toggled announcements!");
+							if(options.woot == true){
+								options.woot = false;
+							}else{
+								options.woot = true;
+							}
+						}else{
+							if(tm === toggle.logjoin){
+								API.sendChat("/em [" + from + "] Toggled logUserJoin!");
+								if(options.logUserJoin == true){
+									options.logUserJoin = false;
+								}else{
+									options.logUserJoin = true;
+								}
+							}else{
+								if(tm === toggle.afkremove){
+									API.sendChat("/em [" + from + "] Toggled AFKRemove!");
+									if(options.afkRemove == true){
+										options.afkRemove = false;
+									}else{
+										options.afkRemove = true;
+									}
+								}else{
+									if(tm === toggle.blacklist){
+										API.sendChat("/em [" + from + "] Toggled blacklist!");
+										if(options.blackList == true){
+											options.blackList = false;
+										}else{
+											options.blackList = true;
+										}
+									}else{
+										if(tm === toggle.begGuard){
+											API.sendChat("/em [" + from + "] Toggled BegGuard!");
+											if(options.begGuard == true){
+												options.begGuard = false;
+											}else{
+												options.begGuard = true;
+											}
+										}else{
+											if(tm === toggle.save){
+												API.sendChat("/em [" + from + "] Toggled save!");
+												if(options.saveSettings == true){
+													options.saveSettings = false;
+												}else{
+													options.saveSettings = true;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}else{
+				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
+		
 		case '!help':
 			API.moderateDeleteChat(chatid);
 			API.sendChat("/em [" + from + "] Help commands: http://goo.gl/wfpGqc");
@@ -672,67 +776,6 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
 				API.sendChat("/em [" + from + "] Current Settings | Autowoot: " + options.woot + " | Announcements: " + options.announcementMsg + " | Announcement Interval: " + options.songIntervalMessage + " | Log Join: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + ".");
-			}
-			break;
-			
-		case '!toggle':
-			API.moderateDeleteChat(chatid);
-			if(API.getUser(fromid).permission >= 2){
-				var tMessage = str.substr(8).trim();
-				var tMsg = tMessage[1];
-				if(tMsg === undefined){
-					API.sendChat("/em [" + from + "] Current toggles: woot, announcements, logjoin, afkremove, blacklist, save");
-				}
-				if(tMsg == "woot"){
-					API.sendChat("/em [" + from + "] Toggled woot!");
-					if(options.woot == true){
-						options.woot = false;
-					}else{
-						options.woot = true;
-					}
-				}
-				if(tMsg == "announcements"){
-					API.sendChat("/em [" + from + "] Toggled announcements!");
-					if(options.announcementMsg == true){
-						options.announcementMsg = false;
-					}else{
-						options.announcementMsg = true;
-					}
-				}
-				if(tMsg == "logjoin"){
-					API.sendChat("/em [" + from + "] Toggled logUserJoin!");
-					if(options.logUserJoin == true){
-						options.logUserJoin = false;
-					}else{
-						options.logUserJoin = true;
-					}
-				}
-				if(tMsg == "afkremove"){
-					API.sendChat("/em [" + from + "] Toggled AFKRemove!");
-					if(options.afkRemove == true){
-						options.afkRemove = false;
-					}else{
-						options.afkRemove = true;
-					}
-				}
-				if(tMsg == "blacklist"){
-					API.sendChat("/em [" + from + "] Toggled the blacklist!");
-					if(options.blackList == true){
-						options.blackList = false;
-					}else{
-						options.blackList = true;
-					}
-				}
-				if(tMsg == "save"){
-					API.sendChat("/em [" + from + "] Toggled save!");
-					if(options.saveSettings === true){
-						options.saveSettings = false;
-					}else{
-						options.saveSettings = true;
-					}
-				}
-			}else{
-				API.sendChat("/em [" + from + "] No permission!");
 			}
 			break;
 			
