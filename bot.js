@@ -437,7 +437,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 				var t = str.substr(8).trim();
 				var tm = t[1];
 				if(tm === undefined){
-					API.sendChat("/em [" + from + "] Current toggles: " + toggle.woot + ", " + toggle.logjoin + ", " + toggle.afkremove + ", " + toggle.blacklist + ", " + toggle.begguard + ", " + toggle.save + ".");
+					API.sendChat("/em [" + from + "] Current toggles: woot, announcements, logjoin, afkremove, blacklist, begguard, save");
 				}else{
 					if(tm === toggle.woot){
 						API.sendChat("/em [" + from + "] Toggled autowoot!");
