@@ -439,7 +439,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 3){
 				var t = str.substr(8).trim();
-				var tm = t[1];
+				var tm = opt;
 				if(tm === undefined){
 					API.sendChat("/em [" + from + "] Current toggles: woot, announcements, logjoin, afkremove, blacklist, begguard, save");
 				}else{
@@ -981,6 +981,13 @@ API.on(API.CHAT, function(data) {
 			}
 			else {
 				userc(data.message, data.from, data.fromID, data.chatID);	
+			}
+			if(data.message.indexOf('!toggle') !=-1){
+				var tmsg = data.message.substr(8);
+				userc('!toggle', data.from, data.fromID, data.chatID);
+			}
+			else {
+				userc(data.message, data.from, data.fromID, data.chatID);
 			}
 		}
 	}
