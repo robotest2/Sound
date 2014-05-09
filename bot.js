@@ -720,6 +720,14 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 						options.blackList = true;
 					}
 				}
+				if(tMsg == "save"){
+					API.sendChat("/em [" + from + "] Toggled save!");
+					if(options.saveSettings === true){
+						options.saveSettings = false;
+					}else{
+						options.saveSettings = true;
+					}
+				}
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
 			}
