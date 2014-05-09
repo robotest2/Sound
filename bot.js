@@ -289,6 +289,10 @@ if(options.begGuard == true){
 	API.sendChat("/em A user just begged, but since BegGuard is set to " + options.begGuard + ", I will do nothing!");
 }
 
+//initial
+
+$('#woot').click();
+
 //Arrays here
 
 var blacklistA = [ //keywords for blacklist
