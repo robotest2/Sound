@@ -680,6 +680,9 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 			if(API.getUser(fromid).permission >= 2){
 				var tMessage = str.substr(8).trim();
 				var tMsg = tMessage[1];
+				if(tmsg === undefined){
+					API.sendChat("/em [" + from + "] Current toggles: woot, announcements, logjoin, afkremove, blacklist, save");
+				}
 				if(tMsg == "woot"){
 					API.sendChat("/em [" + from + "] Toggled woot!");
 					if(options.woot == true){
