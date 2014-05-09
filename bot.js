@@ -69,15 +69,15 @@ var sendMsg = "/em [Announcement] " + msgArray[msgR];
 
 //Options
 options = {
-woot: true,
-announcementMsg: true,
-songIntervalMessage: { interval: 300000, offset: 0, msg: sendMsg },
-logUserJoin: true,
-afkRemove: true,
-blackList: true,
-begGuard: true,
-saveSettings: true,
-version: "Beta 5",
+	woot: true,
+	announcementMsg: true,
+	songIntervalMessage: { interval: 300000, offset: 0, msg: sendMsg },
+	logUserJoin: true,
+	afkRemove: true,
+	blackList: true,
+	begGuard: true,
+	saveSettings: true,
+	version: "Beta 5",
 };
 
 // UserData (Wayz)
@@ -593,7 +593,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		case '!test':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				if(options.save == true){
+				if(options.saveSettings === true){
 					var lsgi = localStorage.getItem("BotSave");
 					if(lsgi === true){
 						API.sendChat("/em [" + from + "] Save file is up and running!");
@@ -601,7 +601,7 @@ function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 						API.sendChat("/em [" + from + "] Uh oh! I couldn't find the save file! Try refreshing me, that might work!");
 					}
 				}else{
-					API.sendChat("/em [" + from + "] Uh oh! Save is set to " + options.save + "!");
+					API.sendChat("/em [" + from + "] Uh oh! Save is set to " + options.saveSettings + "!");
 				}
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
