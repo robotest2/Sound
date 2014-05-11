@@ -888,10 +888,12 @@ function saveSettings(){
     	var d = new Date();
     	API.sendChat("/em An error has occurred on " + d + " for " + err + " on line " + err.lineNumber);
 }
+//inside of auth, so noone can get around
+
+startup();
+
 }else{
 	alert('This script works only in http://plug.dj/astroparty');
 }
-
-startup();
 //End of script. No seriously, there's nothing below me
 //except this lol
