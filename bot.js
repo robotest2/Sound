@@ -77,7 +77,7 @@ options = {
 	blackList: true,
 	begGuard: true,
 	saveSettings: true,
-	version: "Beta 5",
+	version: "Beta 6",
 };
 
 // UserData (Wayz)
@@ -148,7 +148,7 @@ function startup(){
 }
 
 function loadOptions(){
-	API.chatLog("Options | Woot: " + options.woot + " | Announcement Msg: " + options.announcementMsg + " | LogUserJoin: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | BegGuard: " + options.begGuard + " Save: " + options.saveSettings);
+	API.chatLog("Options | Woot: " + options.woot + " | Announcement Msg: " + options.announcementMsg + " | LogUserJoin: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | BegGuard: " + options.begGuard + " | Save: " + options.saveSettings);
 	saveSettings();
 }
 
