@@ -879,8 +879,8 @@ API.on(API.CHAT, function(data) {
 }
 
 var saveAll = {
-	options.all,
-	userData.all,
+	options,
+	userData,
 }
 
 function saveSettings(){
