@@ -142,6 +142,7 @@ afkRemover: function(){
 function startup(){
 	loadOptions();
 	loadCmds();
+	enableAfk();
 	saveSettings();
 }
 
@@ -150,37 +151,27 @@ function loadOptions(){
 	saveSettings();
 }
 
-if (options.afkRemove == true){
-	API.chatLog("AFK Remove: " + options.afkRemove);
-	setInterval(afkB.afkRemover, 300000);
-}else{
-	API.chatLog("AFK Remove: " + options.afkRemove);
+function enableAfk(){
+	if(options.afkRemove){
+		setInterval(afkB.afkRemover, 300000);
+	}
+	if(options.afkRemove === false){
+		options.afkRemove = false;
+	}
 }
 
-//BegGuard
-var begArray = [
-	"fan",
-	"fan4fan",
-	"fan 4 fan",
-	"fanme",
-	"fan me",
-	"pls fan",
-	"fan pls",
-	"FAN ME PLZ",
-	"fanfanfan",
-	"fanfan"];
-if(options.begGuard == true){
-	API.on(API.CHAT, function(data){
-		for(var i = 0; i < begArray.length; i++){
-			if(data.message == begArray[i] >= 0){
-				API.moderateDeleteChat(data.chatid);
-				API.sendChat("@" + data.from + " Please don't ask for fans!");
-			}
-		}
-	});
-}else{
-	API.sendChat("/em A user just begged, but since BegGuard is set to " + options.begGuard + ", I will do nothing!");
+//bg
+
+API.on(API.CHAT, callback);
+function callback(a){
+	var msg = $('#chat-messages').children();
+	var txt = msg.find('.txt');
+	if(txt === 'fan'){
+		API.moderateDeleteChat(a.chatid);
+		API.sendChat('@' + a.from + ' please don\'t ask for fans!');
+	}
 }
+
 
 //initial
 
@@ -888,8 +879,8 @@ API.on(API.CHAT, function(data) {
 }
 
 var saveAll = {
-	options;
-	userData();
+	options.all,
+	userData.all,
 }
 
 function saveSettings(){
