@@ -144,7 +144,7 @@ function startup(){
 	loadCmds();
 	enableAfk();
 	saveSettings();
-	API.sendChat("/em now running!")
+	API.sendChat("/em now running!");
 }
 
 function loadOptions(){
