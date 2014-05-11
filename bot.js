@@ -796,7 +796,7 @@ function loadCmds(){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + "] Saving...");
 				setTimeout(function(){
-					saveCmd.saveData();
+					saveSettings();
 					API.sendChat("/em Saved!");
 				}, 500);
 			}else{
