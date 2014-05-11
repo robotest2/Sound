@@ -888,7 +888,7 @@ API.on(API.CHAT, function(data) {
 }
 
 var saveAll = {
-	options();
+	options;
 	userData();
 }
 
