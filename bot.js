@@ -878,13 +878,9 @@ API.on(API.CHAT, function(data) {
 	});
 }
 
-var saveAll = {
-	options,
-	userData,
-}
-
 function saveSettings(){
-	localStorage.setItem('SoundBotSave',JSON.stringify(saveAll));
+	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
+	localStorage.setItem('SoundBotUserData', JSON.stringify(userData));
 }
 
 	}catch(err){
