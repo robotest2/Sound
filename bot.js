@@ -138,131 +138,24 @@ afkRemover: function(){
 },
 };
 
-//Configure Options + Startup Loader thing
 
-startup = {
-
-init: function(){
-
-	API.chatLog("Loading...");
-	setTimeout(function(){
-	API.chatLog("Current Options: ");
-
-	if (options.woot == true){
- 	API.chatLog("Woot: " + options.woot); 
- 	API.on(API.DJ_ADVANCE, function() { $('#woot').click(); });
- 	}else{
- 		API.chatLog("Woot: " + options.woot);
- 	}
-
-	if (options.announcementMsg == true){
-	API.chatLog("Announcements: " + options.announcementMsg);
-	setInterval(function() { 
-		msgR = Math.floor(Math.random() * msgArray.length); 
-		API.sendChat("/em [Announcement] " + msgArray[msgR]);
-		
-	}, options.songIntervalMessage.interval);
-	}else{
-		API.chatLog("Announcements: " + options.announcementMsg);
-	}
-	
-	if (options.logUserJoin == true){
-	API.chatLog("Log User Join: " + options.logUserJoin);
-	API.on(API.USER_JOIN, function(a) { API.chatLog(a.username + " joined the room"); });
-	}else{
-		API.chatLog("Log User Join: " + options.logUserJoin);
-	}
-
-	if (options.afkRemove == true){
-		API.chatLog("AFK Remove: " + options.afkRemove);
-		setInterval(afkB.afkRemover, 300000);
-	}else{
-		API.chatLog("AFK Remove: " + options.afkRemove);
-		}
-
-	if(options.blackList == true){
-		API.chatLog("BlackList: " + options.blackList);
-	}else{
-		API.chatLog("BlackList: " + options.blackList);
-	}
-	if(options.begGuard == true){
-		API.chatLog("BegGuard: " + options.begGuard);
-	}else{
-		API.chatLog("BegGuard: " + options.begGuard);
-	}
-	if(options.saveSettings == true){
-		API.chatLog("Save: " + options.saveSettings);
-	}else{
-		API.chatLog("Save: " + options.saveSettings);
-	}
-	}, 1000);
-	API.chatLog("Executing Script...");
-
-	}
+function startup(){
+	loadOptions();
+	loadCmds();
+	saveSettings();
 }
 
-//Boot up script
+function loadOptions(){
+	API.chatLog("Options | Woot: " + options.woot + " | Announcement Msg: " + options.announcementMsg + " | LogUserJoin: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | BegGuard: " + options.begGuard + " Save: " + options.saveSettings);
+	saveSettings();
+}
 
-if(location.pathname == '/astroparty/'){
-	API.chatLog("Authentication Successful!");
-	setTimeout(function(){
-		if(localStorage.getItem("BotSave") === null){
-			API.chatLog("Save file is null!");
-			saveCmd.saveData();
-		}else{
-			saveCmd.saveData();
-		}
-	}, 100);
-	setTimeout(function(){
-	startup.init();
-	}, 500);
-	var on = "Current ";
-	setTimeout(function(){
-		API.chatLog(on + "version " + options.version);
-	}, 1000);
-	setTimeout(function(){
-		API.sendChat("/em Now running!");
-	}, 2000);
-
+if (options.afkRemove == true){
+	API.chatLog("AFK Remove: " + options.afkRemove);
+	setInterval(afkB.afkRemover, 300000);
 }else{
-	API.chatLog("You are not authenticated to use this script in the requested room", true);
+	API.chatLog("AFK Remove: " + options.afkRemove);
 }
-
-//Save all options
-
-var saved = {}
-saved.optionsW = options.woot;
-saved.optionsA = options.announcementMsg;
-saved.optionsB = options.songIntervalMessage;
-saved.optionsC = options.logUserJoin;
-saved.optionsD = options.afkRemove;
-saved.optionsE = options.blackList;
-saved.userdata = userData;
-
-//Save for Command
-
-saveCmd = {
-saveData: function(){
-	if(options.saveSettings == true){
-		try{
-			save = JSON.parse(localStorage.getItem("BotSave"));
-			if(save === null){
-				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved))};
-			}else{
-				function save(){ localStorage.setItem("BotSave", JSON.stringify(saved))};
-			}
-		}catch(e){
-			var saveErrorNow = Date.now();
-			API.sendChat("/em A save error has occurred on " + saveErrorNow + " for " + e + " on line " + e.lineNumber);
-		}
-	}else{
-		API.sendChat(" [" + from + "] saveSettings is set to " + options.saveSettings);
-	}
-}
-}
-//Startup Save
-
-saveCmd.saveData();
 
 //BegGuard
 var begArray = [
@@ -431,9 +324,11 @@ toggle = {
 	save: "save",
 };
 
-function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
-	var users = API.getUsers();
-	switch(str) {
+function loadCmds(){
+
+	function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
+		var users = API.getUsers();
+		switch(str) {
 		
 		case '!toggle':
 			API.moderateDeleteChat(chatid);
@@ -985,11 +880,21 @@ API.on(API.CHAT, function(data) {
 			if(data.message.indexOf('!toggle') !=-1){
 				var tmsg = data.message.substr(8);
 				userc('!toggle', data.from, data.fromID, data.chatID);
+				}
 			}
 		}
-	}
-	if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
-});
+		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
+	});
+}
+
+var saveAll = {
+	options();
+	userData();
+}
+
+function saveSettings(){
+	localStorage.setItem('SoundBotSave',JSON.stringify(saveAll));
+}
 
 	}catch(err){
     	var d = new Date();
@@ -998,6 +903,7 @@ API.on(API.CHAT, function(data) {
 }else{
 	alert('This script works only in http://plug.dj/astroparty');
 }
-    
+
+startup();
 //End of script. No seriously, there's nothing below me
 //except this lol
