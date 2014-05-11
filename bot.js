@@ -592,13 +592,14 @@ function loadCmds(){
 		case '!add':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				var addUser = str.substr(5).trim();
-				var addA = addUser[1];
-				var addUsers = API.getUsers();
-				for(var i in addUsers){
-					if(addUsers[i].username == addA){
-						API.sendChat("/em [" + from + " used add]");
-						API.moderateAddDJ(addUsers[i].id);
+				var aa = API.getUsers();
+				for(var i in aa){
+					if(aa[i].username == opt){
+						API.sendChat("/em [" + from + "] Used add on: " + aa[i].username);
+						API.moderateAddDJ(aa[i].id);
+					}
+					if(aa[i].username == null){
+						API.sendChat("/em [" + from + "] User not found!");
 					}
 				}
 			}else{
@@ -608,24 +609,32 @@ function loadCmds(){
 			
 		case '!move':
 			API.moderateDeleteChat(chatid);
-			var all = API.getUsers();
-			for(var i in all){
-				if(all[i].username == opt){
-					API.moderateMoveDj(all[i].id, str.split())
-				}
+			if(API.getuser(fromid).permission >= 2){
+				var all = API.getUsers();
+				var getPos = str.split(1, 2, 3, 4, 5, 6, 7, 8, 9);
+				for(var i in all){
+					if(all[i].username == opt){
+						API.sendChat("/em [" + from + "] Used move on: " + all[i].username);
+						API.moderateMoveDj(all[i].id, getPos)
+					}
+					if(all[i].username === null){
+					API.sendChat("/em [" + from + "] User not found!");
+					}
+				}	
 			}
 			break;
 			
 		case '!remove':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				var rUser = str.substr(8).trim();
-				var rA = rUser[1];
-				var rRoom = API.getUsers();
-				for(var i in rRoom){
-					if(rRoom[i].username == rA){
-						API.sendChat("/em [" + from + " used remove]");
-						API.moderateRemoveDJ(rRoom[i].id);
+				var rAll = API.getUsers();
+				for(var i in rAll){
+					if(rAll[i].username == opt){
+						API.sendChat("/em [" + from + "] used remove on " + rAll[i].username);
+						API.moderateRemoveDJ(rAll[i].id);
+					}
+					if(rAll[i].username == null){
+						API.sendChat("/em [" + from + "] User not found!");
 					}
 				}
 			}else{
