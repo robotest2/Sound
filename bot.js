@@ -608,27 +608,11 @@ function loadCmds(){
 			
 		case '!move':
 			API.moderateDeleteChat(chatid);
-			if(API.getUser(fromid).permission >= 2){
-				var moveUser = str.substr(6).trim();
-				var moveA = moveUser[1];
-				var moveRoom = API.getUsers();
-				for(var i in moveRoom){
-					if(moveRoom[i].username == moveA){
-						if(str.substr(6) = 3 < 24){
-							var movePos = API.getWaitListPosition(moveRoom[i].username);
-							var moveAbove = str.substr(6) > 3 < 26;
-							var moveNum = str.substr(moveAbove).trim();
-							if(movePos === -1){
-								API.moderateAddDJ(moveRoom[i].id);
-								API.moderateMoveDJ(moveRoom[i].id, moveNum);
-							}else{
-								API.moderateMoveDJ(moveRoom[i].id, moveNum);
-							}
-						}
-					}
+			var all = API.getUsers();
+			for(var i in all){
+				if(all[i].username == opt){
+					API.moderateMoveDj(all[i].id, str.split())
 				}
-			}else{
-				API.sendChat("/em [" + from + "] No permission!");
 			}
 			break;
 			
