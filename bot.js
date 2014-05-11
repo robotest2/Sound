@@ -161,19 +161,6 @@ function enableAfk(){
 	}
 }
 
-//bg
-
-API.on(API.CHAT, callback);
-function callback(a){
-	var msg = $('#chat-messages').children();
-	var txt = msg.find('.txt');
-	if(txt === 'fan'){
-		API.moderateDeleteChat(a.chatid);
-		API.sendChat('@' + a.from + ' please don\'t ask for fans!');
-	}
-}
-
-
 //initial
 
 $('#woot').click();
