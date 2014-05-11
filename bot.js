@@ -611,7 +611,7 @@ function loadCmds(){
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
 				var all = API.getUsers();
-				var getPos = str.split(1, 2, 3, 4, 5, 6, 7, 8, 9);
+				var getPos = str.split(1 2 3 4 5 6 7 8 9);
 				for(var i in all){
 					if(all[i].username == opt){
 						API.sendChat("/em [" + from + "] Used move on: " + all[i].username);
