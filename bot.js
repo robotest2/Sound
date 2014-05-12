@@ -177,14 +177,17 @@ var blacklistA = [ //keywords for blacklist
 	"LMFAO"];
 
 if(options.blackList == true){
-	var current = API.getMedia();
-	var currentDj = API.getDJ();
-	if(current === blacklistA){
-		API.sendChat("@" + currentDj.username + " That song is blacklisted!");
+	var media = $('#now-playing-media').children('span').text();
+	if(media == "#SELFIE", "Hitler", "Gangnam Style", "Minecraft", "Friday Rebecca Black", "Saturday Rebecca Black", "LMFAO"){
+		var bla = API.getDJ();
+		var blaa = [bla];
+		API.sendChat("@" + bla.username + " That song is blacklisted. Please pick a different song.");
 		API.moderateForceSkip();
+		API.moderateAddDJ(blaa.id);
+		API.moderateMoveDJ(blaa.id, 1);
 	}
 }else{
-	API.sendChat("/em This song is blacklisted, but since blackList is set to" + options.blackList + ", I will do nothing!");
+	options.blackList = false;
 }
 
 
