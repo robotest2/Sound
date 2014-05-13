@@ -640,6 +640,7 @@ function loadCmds(){
 							}
 						}else{
 							console.log('queue not needed!');
+							API.moderateAddDJ(aa[i].id);
 						}
 
 					}
