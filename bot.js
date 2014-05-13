@@ -77,6 +77,7 @@ options = {
 	blackList: true,
 	begGuard: true,
 	saveSettings: true,
+	queue: true,
 	version: "Beta 6",
 };
 
@@ -160,7 +161,21 @@ function enableAfk(){
 		options.afkRemove = false;
 	}
 }
-
+/* CODE FOR QUEUE TEMPLATE
+function queue(){
+	var a = API.getWaitList().length;
+	if(a === 50){
+		API.sendChat('User is added to the queue!');
+		var queueList = [];
+		API.moderateLockWaitList(true, false);
+		if(a <= 49){
+			API.moderateAddDJ(id of user);
+		}
+	}else{
+		console.log('queue not needed!');
+	}
+}
+*/
 //initial
 
 $('#woot').click();
@@ -172,26 +187,31 @@ API.on(API.DJ_ADVANCE, function(){
 		var media = $('#now-playing-media').children('span').text();
 		if(media == "#SELFIE", "Hitler", "Gangnam Style", "Minecraft", "Friday Rebecca Black", "Saturday Rebecca Black", "LMFAO"){
 			var bla = API.getDJ();
-			var blaa = bla;
-			API.sendChat("@" + bla.username + " That song is blacklisted. Please pick a different song.");
+			var blaid = [bla.id];
+			var blausr = [bla.username]
+			API.sendChat("@" + blausr + " That song is blacklisted. Please pick a different song.");
 			API.moderateForceSkip();
-			API.moderateAddDJ(blaa.id);
-			API.moderateMoveDJ(blaa.id, 1);
-			var pool = API.getWaitListPosition(blaa.id);
+			API.moderateAddDJ(blaid);
+			API.moderateMoveDJ(blaid, 1);
+			var pool = API.getWaitListPosition(blaid);
 			var wlpos = Math.floor(pool + 1);
-			if(wlpos == 1){
-				API.sendChat('@' + blaa.username + ' got added back to position 1!');
-			}else{
-				API.sendChat('@' + blaa.username + ' didn\'t get added back to pos. 1!');
-			}
+			API.sendChat('Adding skipped user back to the waitlist!');
 		}else{
 			console.log('Song is good!');
 		}
-	}else{
-		options.blackList = false;
+		var a = API.getWaitList().length;
+		if(a === 50){
+			API.sendChat('User is added to the queue!');
+			var queueList = [];
+			API.moderateLockWaitList(true, false);
+		}else{
+		console.log('Queue not needed!');
+		}
+		if(a <= 49){
+			API.moderateAddDJ(blaid);
+		}
 	}
 });
-
 
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
@@ -601,7 +621,27 @@ function loadCmds(){
 				for(var i in aa){
 					if(aa[i].username == opt){
 						API.sendChat("/em [" + from + "] Used add on: " + aa[i].username);
-						API.moderateAddDJ(aa[i].id);
+						var a = API.getWaitList().length;
+						if(a === 50){
+							API.sendChat('User is added to the queue!');
+							var queueList = [];
+							API.moderateLockWaitList(true, false);
+							if(a <= 49){
+								API.moderateAddDJ(aa[i].id);
+								var b = API.getWaitListPosition(aa[i].id);
+								if(b === 50){
+									queueList = [];
+									console.log('Queue add is successfull!');
+								}else{
+									API.sendChat('/em Uh oh! There was an issue when adding a Queue\'d user. Here\'s a list of the users.');
+									API.sendChat('/em ' + queueList)
+								}
+								
+							}
+						}else{
+							console.log('queue not needed!');
+						}
+
 					}
 					if(aa[i].username == null){
 						API.sendChat("/em [" + from + "] User not found!");
