@@ -166,7 +166,7 @@ function enableAfk(){
 $('#woot').click();
 
 //Arrays here
-
+/*
 API.on(API.DJ_ADVANCE, function(){
 	if(options.blackList == true){
 		var media = $('#now-playing-media').children('span').text();
@@ -196,7 +196,7 @@ API.on(API.DJ_ADVANCE, function(){
 		options.blackList = false;
 	}
 });
-
+*/
 
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
