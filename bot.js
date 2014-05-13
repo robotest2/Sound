@@ -166,7 +166,7 @@ function enableAfk(){
 $('#woot').click();
 
 //Arrays here
-/*
+
 API.on(API.DJ_ADVANCE, function(){
 	if(options.blackList == true){
 		var media = $('#now-playing-media').children('span').text();
@@ -191,12 +191,13 @@ API.on(API.DJ_ADVANCE, function(){
 					API.sendChat("/em Uh oh! @" + blaa.username + " didn't get added! Admin, pls help.");
 				}
 			}
+			blaa = [];
 		}
 	}else{
 		options.blackList = false;
 	}
 });
-*/
+
 
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
