@@ -154,7 +154,7 @@ function loadOptions(){
 	if(options.woot === true){
 		API.on(API.DJ_ADVANCE, function(){
 			$('#woot').click();
-		}
+		});
 	}else{
 		console.log('.');
 	}
