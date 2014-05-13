@@ -827,7 +827,17 @@ function loadCmds(){
 		case '!reload':
 			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
-				API.sendChat("/em [" + from + "] This command isn't setup!");
+				API.sendChat('/em [' + from + '] Reloading...');
+				var foo = 'bar';
+				var cleanup = function () {
+    					delete window.foo;
+    					delete window.cleanup;
+				};
+				cleanup();
+				setTimeout(function(){
+					$.getScript('https://raw.github.com/Pr0Code/Sound/master/bot.js');
+					API.sendChat("/em Reloaded!");
+				}, 1000);
 			}
 			break;
 			
