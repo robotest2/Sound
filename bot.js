@@ -846,8 +846,7 @@ function loadCmds(){
 			
 		case '!kick':
 			if(API.getUser(fromid).permission >=2 ){
-				var messkick = str.substr(6).split('@');
-				var splitkick = messkick[1];
+				var splitkick = opt;
 				var userskick = API.getUsers();
 				for(var i in userskick) {
 					if (userskick[i].username == splitkick){
