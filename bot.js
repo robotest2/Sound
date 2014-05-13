@@ -151,11 +151,18 @@ function startup(){
 
 function loadOptions(){
 	API.chatLog("Options | Woot: " + options.woot + " | Announcement Msg: " + options.announcementMsg + " | LogUserJoin: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | BegGuard: " + options.begGuard + " | Save: " + options.saveSettings);
+	if(options.woot === true){
+		API.on(API.DJ_ADVANCE, function(){
+			$('#woot').click();
+		}
+	}else{
+		console.log('.');
+	}
 	saveSettings();
 }
 
 function enableAfk(){
-	if(options.afkRemove){
+	if(options.afkRemove === true){
 		setInterval(afkB.afkRemover, 300000);
 	}
 	if(options.afkRemove === false){
@@ -821,23 +828,6 @@ function loadCmds(){
 			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat('/em [' + from + '] ' + opt);
-			}
-			break;
-			
-		case '!reload':
-			if(API.getUser(fromid).permission >= 2){
-				API.moderateDeleteChat(chatid);
-				API.sendChat('/em [' + from + '] Reloading...');
-				var foo = 'bar';
-				var cleanup = function () {
-    					delete window.foo;
-    					delete window.cleanup;
-				};
-				cleanup();
-				setTimeout(function(){
-					$.getScript('https://raw.github.com/Pr0Code/Sound/master/bot.js');
-					API.sendChat("/em Reloaded!");
-				}, 1000);
 			}
 			break;
 			
