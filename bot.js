@@ -23,7 +23,7 @@ Copyright (c) 2014, Jack Labbe (AstroShock, Pr0Code)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
-modification, are NOT permitted. If I (Jack Labbe) give permission, you may modify this code provided that the following conditions are met:
+modification, are NOT permitted. If I (Pr0Code) give permission, you may modify this code provided that the following conditions are met:
 
 * Redistributions of source code must retain the above copyright notice, this
   list of conditions and the following disclaimer.
@@ -144,6 +144,7 @@ function startup(){
 	loadOptions();
 	loadCmds();
 	enableAfk();
+	enableMsg();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -159,6 +160,18 @@ function enableAfk(){
 	}
 	if(options.afkRemove === false){
 		options.afkRemove = false;
+	}
+}
+
+function enableMsg(){
+	if (options.announcementMsg == true){
+		setInterval(function() { 
+			msgR = Math.floor(Math.random() * msgArray.length); 
+			API.sendChat("/em [Announcement] " + msgArray[msgR]);
+
+		}, options.songIntervalMessage.interval);
+	}else{
+		console.log('enableMsg off');
 	}
 }
 /* CODE FOR QUEUE TEMPLATE
@@ -656,15 +669,15 @@ function loadCmds(){
 		case '!move':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				var all = API.getUsers();
+				var allUsr = API.getUsers();
 				var getPoss = str.split(1, 2, 3, 4, 5, 6, 7, 8, 9);
 				var getPos = getPoss[1];
-				for(var i in all){
-					if(all[i].username == opt){
-						API.sendChat("/em [" + from + "] Used move on: " + all[i].username);
-						API.moderateMoveDj(all[i].id, getPos)
+				for(var i in allUsr){
+					if(allUsr[i].username == opt){
+						API.sendChat("/em [" + from + "] Used move on: " + allUsr[i].username);
+						API.moderateMoveDj(allUsr[i].id, getPos)
 					}
-					if(all[i].username === null){
+					if(allUsr[i].username === null){
 					API.sendChat("/em [" + from + "] User not found!");
 					}
 				}	
