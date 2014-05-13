@@ -172,7 +172,7 @@ API.on(API.DJ_ADVANCE, function(){
 		var media = $('#now-playing-media').children('span').text();
 		if(media == "#SELFIE", "Hitler", "Gangnam Style", "Minecraft", "Friday Rebecca Black", "Saturday Rebecca Black", "LMFAO"){
 			var bla = API.getDJ();
-			var blaa = [bla];
+			var blaa = bla;
 			API.sendChat("@" + bla.username + " That song is blacklisted. Please pick a different song.");
 			API.moderateForceSkip();
 			API.moderateAddDJ(blaa.id);
@@ -180,18 +180,12 @@ API.on(API.DJ_ADVANCE, function(){
 			var pool = API.getWaitListPosition(blaa.id);
 			var wlpos = Math.floor(pool + 1);
 			if(wlpos == 1){
-				API.sendChat("/em Added " + blaa.username + " back to position 1!");
+				API.sendChat('@' + blaa.username + ' got added back to position 1!');
 			}else{
-				API.sendChat('/em Uh oh! @' + blaa.username +' didn\'t get added to the waitlist! Trying again.');
-				API.moderateAddDJ(blaa.id);
-				API.moderateMoveDJ(blaa.id, 1);
-				if(wlpos == 1){
-					API.sendChat("/em There we go! I put the user in the correct spot!");
-				}else{
-					API.sendChat("/em Uh oh! @" + blaa.username + " didn't get added! Admin, pls help.");
-				}
+				API.sendChat('@' + blaa.username + ' didn\'t get added back to pos. 1!');
 			}
-			blaa = [];
+		}else{
+			console.log('Song is good!');
 		}
 	}else{
 		options.blackList = false;
