@@ -218,16 +218,20 @@ function blacklist(data){
 		if(title.indexOf(blacklist[i]) === true){
 			var cdj = API.getDJ();
 			API.sendChat('@' + cdj.username + ' that song is blacklisted!');
-			var cdjid = [cdj.id];
-			var cdjusr = [cdj.username];
+			var cdjid = [];
+			var cdjusr = [];
+			cdjid.push(cdj.id);
+			cdjusr.push(cdj.username);
 			API.moderateForeSkip();
 			var a = API.getWaitList().length;
 			if(a === 50){
 				API.sendChat('User is added to the queue!');
 				var queueList = [];
+				queueList.push(cdj.id);
 				API.moderateLockWaitList(true, false);
 				if(a <= 49){
-					API.moderateAddDJ(id of user);
+					API.moderateAddDJ(cdjid);
+					queueList.pop(cdj.id);
 				}
 			}else{
 				console.log('queue not needed!');
