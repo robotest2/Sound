@@ -145,6 +145,7 @@ function startup(){
 	loadCmds();
 	enableAfk();
 	enableMsg();
+	blacklist();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -200,39 +201,58 @@ function queue(){
 
 $('#woot').click();
 
-//Arrays here
-/*
-API.on(API.DJ_ADVANCE, function(){
-	if(options.blackList == true){
-		var media = $('#now-playing-media').children('span').text();
-		if(media == "#SELFIE", "Hitler", "Gangnam Style", "Minecraft", "Friday Rebecca Black", "Saturday Rebecca Black", "LMFAO"){
-			var bla = API.getDJ();
-			var blaid = [bla.id];
-			var blausr = [bla.username]
-			API.sendChat("@" + blausr + " That song is blacklisted. Please pick a different song.");
-			API.moderateForceSkip();
-			API.moderateAddDJ(blaid);
-			API.moderateMoveDJ(blaid, 1);
-			var pool = API.getWaitListPosition(blaid);
-			var wlpos = Math.floor(pool + 1);
-			API.sendChat('Adding skipped user back to the waitlist!');
+var blacklist = [
+	"Mediks - By A Thread (Ft. Georgina Upton) (Official Video)",
+	"#SELFIE",
+	"Trololol Song",
+	"Hitler",
+	"Gangnam Style",
+	];
+
+function blacklist(data){
+	if(data === null){
+		console.log('null')
+	}
+	var title = data.media.title;
+	for(var i = 0; i < blacklist.length; i++){
+		if(title.indexOf(blacklist[i]) === true){
+			var cdj = API.getDJ();
+			API.sendChat('@' + cdj.username + ' that song is blacklisted!');
+			var cdjid = [cdj.id];
+			var cdjusr = [cdj.username];
+			API.moderateForeSkip();
+			var a = API.getWaitList().length;
+			if(a === 50){
+				API.sendChat('User is added to the queue!');
+				var queueList = [];
+				API.moderateLockWaitList(true, false);
+				if(a <= 49){
+					API.moderateAddDJ(id of user);
+				}
+			}else{
+				console.log('queue not needed!');
+			}
+			API.moderateAddDJ(cdjid);
+			API.moderateMoveDJ(cdjid, 1);
+			var ldj = API.getWaitListPosition(cdjid);
+			if(ldj == 0){
+				API.sendChat('@' + cdjusr + ' you have been added to position one to play!');
+			}else{
+				API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying again...');
+				API.moderateAddDJ(cdjid);
+				API.moderateMoveDJ(cdjid, 1);
+				if(ldj == 0){
+					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
+				}else{
+					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Admin, pls help!');
+				}
+			}
 		}else{
-			console.log('Song is good!');
-		}
-		var a = API.getWaitList().length;
-		if(a === 50){
-			API.sendChat('User is added to the queue!');
-			var queueList = [];
-			API.moderateLockWaitList(true, false);
-		}else{
-		console.log('Queue not needed!');
-		}
-		if(a <= 49){
-			API.moderateAddDJ(blaid);
+			return;
 		}
 	}
-});
-*/
+}
+
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
 	"If you mated a bull dog and a shitsu, would it be called a bullsh*t?",
