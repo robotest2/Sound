@@ -432,7 +432,7 @@ function loadCmds(){
 		
 		case '!help':
 			API.moderateDeleteChat(chatid);
-			API.sendChat("/em [" + from + "] Help commands: http://goo.gl/wfpGqc");
+			API.sendChat("/em [" + from + "] Help commands: http://goo.gl/jopl9J");
 			break;
 			
 		case '!theme':
