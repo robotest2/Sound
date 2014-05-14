@@ -688,11 +688,11 @@ function loadCmds(){
 			if(API.getUser(fromid).permission >= 2){
 				API.sendChat('/em [' + from + '] used lockcycle');
 				var lock = $('.toggle-lock');
-				var toggle = $('.toggle-cycle');
-				if(toggle.hasClass('disabled')){
-					toggle.click();
+				var ltoggle = $('.toggle-cycle');
+				if(ltoggle.hasClass('disabled')){
+					ltoggle.click();
 				}else{
-					toggle.click();
+					ltoggle.click();
 				}
 				if(lock.hasClass('disabled')){
 					API.moderateLockWaitList(true, false);
@@ -834,17 +834,12 @@ function loadCmds(){
 			if(API.getUser(fromid).permission >= 2){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used lock]");
-				API.moderateLockWaitList(true, false);
-			}else{
-				API.sendChat("/em [" + from + "] No permission!");
-			}
-			break;
-			
-		case '!unlock':
-			if(API.getUser(fromid).permission >= 2){
-				API.moderateDeleteChat(chatid);
-				API.sendChat("/em [" + from + " used unlock]");
-				API.moderateLockWaitList(false);
+				var llock = $('.lock-toggle');
+				if(llock.hasClass('disabled')){
+					API.moderateLockWaitList(true, false);
+				}else{
+					API.moderateLockWaitList(false);
+				}
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
 			}
