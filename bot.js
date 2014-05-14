@@ -248,6 +248,8 @@ function blacklist(){
 					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Admin, pls help!');
 				}
 			}
+			cdjid.pop();
+			cdjusr.pop();
 		}else{
 			return;
 		}
