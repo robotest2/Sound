@@ -67,7 +67,7 @@ var msgArray = [
 var msgR = Math.floor(Math.random() * msgArray.length);
 var sendMsg = "/em [Announcement] " + msgArray[msgR];
 
-//Options
+//Options 
 options = {
 	woot: true,
 	announcementMsg: true,
@@ -240,12 +240,33 @@ function blacklist(){
 				API.sendChat('@' + cdjusr + ' you have been added to position one to play!');
 			}else{
 				API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying again...');
-				API.moderateAddDJ(cdjid);
-				API.moderateMoveDJ(cdjid, 1);
 				if(ldj == 0){
 					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
 				}else{
-					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Admin, pls help!');
+					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
+					API.moderateAddDJ(cdjid);
+					API.moderateMoveDJ(cdjid, 1);
+				}
+				if(ldj == 0){
+					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
+				}else{
+					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
+					API.moderateAddDJ(cdjid);
+					API.moderateMoveDJ(cdjid, 1);
+
+				}
+				if(ldj == 0){
+					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
+				}else{
+					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
+					API.moderateAddDJ(cdjid);
+					API.moderateMoveDJ(cdjid, 1);
+
+				}
+				if(ldj == 0){
+					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
+				}else{
+					API.sendChat('Okay, I\'ve tried enough to get the user back in the spot. I need an admin to help me!');
 				}
 			}
 			cdjid.pop();
@@ -729,6 +750,16 @@ function loadCmds(){
 				}
 			}else{
 				API.sendChat("/em [" + from + "] No permission!");
+			}
+			break;
+			
+		case '!vr':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 3){
+				var vr = API.getRoomScore();
+				API.sendChat('/em [' + from + '] Vote Ratio: Positive: ' + vr.positive + ' Negative: ' + vr.negative + ' Grabs: ' + vr.curate + '!');
+			}else{
+				API.sendChat('/em [' + from + '] No permission!');
 			}
 			break;
 			
