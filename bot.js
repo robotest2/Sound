@@ -209,11 +209,11 @@ var blacklist = [
 	"Gangnam Style",
 	];
 
-function blacklist(data){
+function blacklist(){
 	if(data === null){
 		console.log('null')
 	}
-	var title = data.media.title;
+	var title = API.getMedia().title;
 	for(var i = 0; i < blacklist.length; i++){
 		if(title.indexOf(blacklist[i]) === true){
 			var cdj = API.getDJ();
