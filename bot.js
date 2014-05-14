@@ -210,9 +210,6 @@ var blacklist = [
 	];
 
 function blacklist(){
-	if(data === null){
-		console.log('null')
-	}
 	var title = API.getMedia().title;
 	for(var i = 0; i < blacklist.length; i++){
 		if(title.indexOf(blacklist[i]) === true){
