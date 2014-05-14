@@ -689,7 +689,7 @@ function loadCmds(){
 				API.sendChat('/em [' + from + '] used lockcycle');
 				var lock = $('.toggle-lock');
 				var ltoggle = $('.toggle-cycle');
-				if(ltoggle.hasClass('disabled')){
+				if(ltoggle.hasClass('enabled')){
 					ltoggle.click();
 				}else{
 					ltoggle.click();
@@ -835,7 +835,7 @@ function loadCmds(){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used lock]");
 				var llock = $('.lock-toggle');
-				if(llock.hasClass('disabled')){
+				if(llock.hasClass('enabled')){
 					API.moderateLockWaitList(true, false);
 				}else{
 					API.moderateLockWaitList(false);
