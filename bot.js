@@ -279,9 +279,13 @@ function blacklist(){
 
 //run blacklist whenever dj advances
 
-API.on(API.DJ_ADVANCE, eventDjAdvance);
-function eventDjAdvance(){
-	blacklist();
+API.on(API.DJ_ADVANCE, callback);
+function callback(obj){
+	if(obj === null){
+		return;
+	}else{
+		blacklist();
+	}
 }
 
 var askArray = [
