@@ -219,7 +219,7 @@ function blacklist(){
 			var cdjusr = [];
 			cdjid.push(cdj.id);
 			cdjusr.push(cdj.username);
-			API.moderateForeSkip();
+			API.moderateForceSkip();
 			var a = API.getWaitList().length;
 			if(a === 50){
 				API.sendChat('User is added to the queue!');
