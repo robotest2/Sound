@@ -683,6 +683,27 @@ function loadCmds(){
 			}
 			break;
 			
+		case '!lockcycle':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				API.sendChat('/em [' + from + '] used lockcycle');
+				var lock = $('.toggle-lock');
+				var toggle = $('.toggle-cycle');
+				if(toggle.hasClass('disabled')){
+					toggle.click();
+				}else{
+					toggle.click();
+				}
+				if(lock.hasClass('disabled')){
+					API.moderateLockWaitList(true, false);
+				}else{
+					API.moderateLockWaitList(false);
+				}
+			}else{
+				API.sendChat('/em [' + from + '] No permission!');
+			}
+			break;
+			
 		case '!add':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
