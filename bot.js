@@ -1088,13 +1088,11 @@ API.on(API.CHAT, function(data) {
 	}
 });
 
+}
+
 function saveSettings(){
 	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
 	localStorage.setItem('SoundBotUserData', JSON.stringify(userData));
-}
-//inside of auth, so noone can get around :p
-
-startup();
 }
 
 }catch(err){
