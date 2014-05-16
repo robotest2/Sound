@@ -387,6 +387,30 @@ options = {
 
 
 */
+if(options.begGuard === true){
+API.on(API.CHAT, function(data){
+		if(data.message.indexOf('.') !=-1){
+			API.moderateDeleteChat(data.chatID);
+		}
+		if(data.message.indexOf('fan') !=-1){
+			API.moderatedeleteChat(data.chatID);
+			API.sendChat('@' + data.from + ' please do not ask for fans!');
+		}
+		if(data.message.indexOf('fan_me') !=-1){
+			API.moderatedeleteChat(data.chatID);
+			API.sendChat('@' + data.from + ' please do not ask for fans!');
+		}
+		if(data.message.indexOf('FUCK' || 'fuck' || 'shit' || 'SHIT' || 'asshole' || 'ASSHOLE' || 'dick' || 'DICK' || 'bitch' || 'BITCH' || 'cunt' || 'CUNT') !=-1){
+			API.moderateDeleteChat(data.chatID);
+			API.sendChat('@' + data.from + ' please do not swear!');
+		}
+		if(data.message.indexOf(',') !=-1){
+			API.moderateDeleteChat(data.chatID);
+		}
+	});
+}else{
+	return;
+}
 
 function loadCmds(){
 
@@ -943,11 +967,11 @@ function loadCmds(){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used cycle]");
 				var toggle = $(".cycle-toggle");
-        if(toggle.hasClass("disabled")) {
-                toggle.click();
-        }else{
-                toggle.click();
-        }
+        			if(toggle.hasClass("disabled")) {
+                			toggle.click();
+        			}else{
+                			toggle.click();
+        			}
 			}
 			break;
 			
@@ -1094,6 +1118,8 @@ function saveSettings(){
 	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
 	localStorage.setItem('SoundBotUserData', JSON.stringify(userData));
 }
+
+startup();
 
 }catch(err){
 	API.sendChat('/em An error has occurred! It is ' + err + ' on line: ' + err.linenumber);
