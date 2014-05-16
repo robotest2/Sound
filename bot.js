@@ -52,7 +52,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //					SoundBot's Life Starts Here						\\
 
 if(location.pathname == '/astroparty/') {
-	try{
 
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
@@ -173,7 +172,7 @@ function enableAfk(){
 }
 
 function enableMsg(){
-	if (options.announcementMsg == true){
+	if (options.announcementMsg === true){
 		setInterval(function() { 
 			msgR = Math.floor(Math.random() * msgArray.length); 
 			API.sendChat("/em [Announcement] " + msgArray[msgR]);
@@ -237,28 +236,20 @@ function blacklist(){
 			API.moderateAddDJ(cdjid);
 			API.moderateMoveDJ(cdjid, 1);
 			var ldj = API.getWaitListPosition(cdjid);
-			if(ldj == 0){
+			if(ldj === 0){
 				API.sendChat('@' + cdjusr + ' you have been added to position one to play!');
 			}else{
 				API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying again...');
 				API.moderateAddDJ(cdjid);
 				API.moderateMoveDJ(cdjid, 1);
-				if(ldj == 0){
+				if(ldj === 0){
 					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
 				}else{
 					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
 					API.moderateAddDJ(cdjid);
 					API.moderateMoveDJ(cdjid, 1);
 				}
-				if(ldj == 0){
-					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
-				}else{
-					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
-					API.moderateAddDJ(cdjid);
-					API.moderateMoveDJ(cdjid, 1);
-
-				}
-				if(ldj == 0){
+				if(ldj === 0){
 					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
 				}else{
 					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
@@ -266,7 +257,15 @@ function blacklist(){
 					API.moderateMoveDJ(cdjid, 1);
 
 				}
-				if(ldj == 0){
+				if(ldj === 0){
+					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
+				}else{
+					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
+					API.moderateAddDJ(cdjid);
+					API.moderateMoveDJ(cdjid, 1);
+
+				}
+				if(ldj === 0){
 					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
 				}else{
 					API.sendChat('Okay, I\'ve tried enough to get the user back in the spot. I need an admin to help me!');
@@ -450,7 +449,7 @@ function loadCmds(){
                         var id = API.getMedia().cid;
                         SC.get('/tracks', { ids: id,}, function(tracks) {
                                 API.sendChat("/em [" + from + "] Link to current song: " + tracks[0].permalink_url);
-                        	});
+                        });
 			}
 			break;
 			
@@ -503,7 +502,7 @@ function loadCmds(){
 				var y = Math.floor(Math.random() * spinTime.length);
 				setTimeout(function(){ //ends game
 					clearInterval(z);
-					if(spinJoin.length == 0){
+					if(spinJoin.length === 0){
 						API.sendChat("/em Spin has ended! All users are safe! :D");
 						spinWhite = []; //clears array
 						spinJoin = []; //clears array
@@ -569,7 +568,8 @@ function loadCmds(){
 			
 		case '!eta':
 		API.moderateDeleteChat(chatid);
-		var y = opt;
+		var x = str.split('@');
+		var y = x[1];
 		var b = API.getUsers();
 		for (var i in b) {
 			if(b[i].username == y) {
@@ -703,7 +703,7 @@ function loadCmds(){
 							options.queue = true;
 						}
 					}
-					if(opt == null || undefined){
+					if(opt === null || undefined){
 						API.sendChat('/em [' + from + '] Available parameters: woot, announcement, logjoin, afk, blacklist, begguard, save, queue');
 					}
 				}else{
@@ -759,7 +759,7 @@ function loadCmds(){
 						API.sendChat('/em [' + from + '] Set the announcement time to 10 minutes!');
 						options.songIntervalMessage.interval = 600000;
 					}
-					if(i == null || undefined){
+					if(i === null || undefined){
 						API.sendChat('/em [' + from + '] Valid parameters are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Where each number is a minute higher than the previous.');
 					}
 				}
@@ -827,7 +827,7 @@ function loadCmds(){
 									console.log('Queue add is successfull!');
 								}else{
 									API.sendChat('/em Uh oh! There was an issue when adding a Queue\'d user. Here\'s a list of the users.');
-									API.sendChat('/em ' + queueList)
+									API.sendChat('/em ' + queueList);
 								}
 								
 							}
@@ -837,7 +837,7 @@ function loadCmds(){
 						}
 
 					}
-					if(aa[i].username == null){
+					if(aa[i].username === null){
 						API.sendChat("/em [" + from + "] User not found!");
 					}
 				}
@@ -855,7 +855,7 @@ function loadCmds(){
 				for(var i in allUsr){
 					if(allUsr[i].username == opt){
 						API.sendChat("/em [" + from + "] Used move on: " + allUsr[i].username);
-						API.moderateMoveDj(allUsr[i].id, getPos)
+						API.moderateMoveDj(allUsr[i].id, getPos);
 					}
 					if(allUsr[i].username === null){
 					API.sendChat("/em [" + from + "] User not found!");
@@ -873,7 +873,7 @@ function loadCmds(){
 						API.sendChat("/em [" + from + "] used remove on " + rAll[i].username);
 						API.moderateRemoveDJ(rAll[i].id);
 					}
-					if(rAll[i].username == null){
+					if(rAll[i].username === null){
 						API.sendChat("/em [" + from + "] User not found!");
 					}
 				}
@@ -905,14 +905,14 @@ function loadCmds(){
 				var messages = $('#chat-messages').children();
 				for (var i = 0; i < messages.length; i++) {
 					for (var j = 0; j < messages[i].classList.length; j++) {
-						if (messages[i].classList[j].indexOf('cid-') == 0) {
+						if (messages[i].classList[j].indexOf('cid-') === 0) {
 							API.moderateDeleteChat(messages[i].classList[j].substr(4));
 							}
 						}
 					}	
 					API.sendChat("/em [" + from + " used clear]");
-    				}
-    				break;
+      }
+        break;
 			
 		case '!skip':
 			if(API.getUser(fromid).permission >= 2){
@@ -953,11 +953,11 @@ function loadCmds(){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used cycle]");
 				var toggle = $(".cycle-toggle");
-        			if(toggle.hasClass("disabled")) {
-        				toggle.click();
-        			}else{
-        				toggle.click();
-        			}
+        if(toggle.hasClass("disabled")) {
+                toggle.click();
+        }else{
+                toggle.click();
+        }
 			}
 			break;
 			
@@ -1031,8 +1031,8 @@ function loadCmds(){
 						var userkick = userskick[i].id;
 						API.sendChat("[" + from + "] @" + userskick[i].username + " You will be kicked in 10 seconds.")
 						setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR)}, 10000);
-						setTimeout(function(){API.moderateUnbanUser(userkick)}, 15000);
-						setTimeout(function(){API.moderateUnbanUser(userkick)}, 18000);
+						setTimeout(function(){API.moderateUnbanUser(userkick);}, 15000);
+						setTimeout(function(){API.moderateUnbanUser(userkick);}, 18000);
 					}else{
 						if(userskick[i].username === undefined){
 							API.sendChat("/em [" + from + "] User not found!");
@@ -1080,15 +1080,15 @@ API.on(API.CHAT, function(data) {
 		}
 		else {
 			if(data.message.indexOf('!say') !=-1) {
-				var msg = data.message.substr(5);
-				userc('!say', data.from, data.fromID, data.chatID, msg);
+				var smsg = data.message.substr(5);
+				userc('!say', data.from, data.fromID, data.chatID, smsg);
 			}
 			else {
 				userc(data.message, data.from, data.fromID, data.chatID);
 			}
 			if(data.message.indexOf('!toggle') !=-1){
-				var msg = data.message.substr(8);
-				userc('!toggle', data.from, data.fromID, data.chatID, msg);
+				var tmsg = data.message.substr(8);
+				userc('!toggle', data.from, data.fromID, data.chatID, tmsg);
 			}
 			else {
 				userc(data.message, data.from, data.fromID, data.chatID);
@@ -1102,15 +1102,10 @@ function saveSettings(){
 	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
 	localStorage.setItem('SoundBotUserData', JSON.stringify(userData));
 }
-
-	}catch(err){
-    	var d = new Date();
-    	API.sendChat("/em An error has occurred on " + d + " for " + err + " on line " + err.lineNumber);
-}
-//inside of auth, so noone can get around
+//inside of auth, so noone can get around :p
 
 startup();
-
+}
 }else{
 	alert('This script works only in http://plug.dj/astroparty');
 }
