@@ -52,7 +52,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //					SoundBot's Life Starts Here						\\
 
 if(location.pathname == '/astroparty/') {
-
+	try{
 var msgArray = [
 	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
@@ -387,16 +387,6 @@ options = {
 
 
 */
-
-toggle = {
-	woot: "woot",
-	announcements: "announcements",
-	logjoin: "logjoin",
-	afkremove: "afkremove",
-	blacklist: "blacklist",
-	begGuard: "begguard",
-	save: "save",
-};
 
 function loadCmds(){
 
@@ -1106,6 +1096,15 @@ function saveSettings(){
 
 startup();
 }
+
+}catch(err){
+	API.sendChat('/em An error has occurred! It is ' + err + ' on line: ' + err.linenumber)
+}finally{
+	location.reload();
+}
+
+startup();
+
 }else{
 	alert('This script works only in http://plug.dj/astroparty');
 }
