@@ -671,7 +671,7 @@ function loadCmds(){
 				var b = API.getHistory();
 				var c = API.getMedia().title;
 				for(var i in b){
-					if(b === c){
+					if(b[i] === c){
 						API.sendChat('@' + API.getDJ().username + ' that song is on the DJ history! PLease pick another song!');
 						var d = API.getDJ().id;
 						var f = API.getDJ().username;
