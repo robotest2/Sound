@@ -370,7 +370,7 @@ CO-HOST: 4
 HOST: 5
 AMBASSADOR: 8
 ADMIN: 10
-*/
+
 
 if(options.chatGuard === true){
 API.on(API.CHAT, function(data){
@@ -385,10 +385,10 @@ API.on(API.CHAT, function(data){
 			API.moderatedeleteChat(data.chatID);
 			API.sendChat('@' + data.from + ' please do not ask for fans!');
 		}
-		/*if(data.message.indexOf('FUCK' || 'fuck' || 'shit' || 'SHIT' || 'asshole' || 'ASSHOLE' || 'dick' || 'DICK' || 'bitch' || 'BITCH' || 'cunt' || 'CUNT') !=-1){
+		if(data.message.indexOf('FUCK' || 'fuck' || 'shit' || 'SHIT' || 'asshole' || 'ASSHOLE' || 'dick' || 'DICK' || 'bitch' || 'BITCH' || 'cunt' || 'CUNT') !=-1){
 			API.moderateDeleteChat(data.chatID);
 			API.sendChat('@' + data.from + ' please do not swear!');
-		}*/
+		}
 		if(data.message.indexOf(',') !=-1){
 			API.moderateDeleteChat(data.chatID);
 		}
@@ -396,7 +396,7 @@ API.on(API.CHAT, function(data){
 }else{
 	API.sendChat('Warning! ChatGuard is not true! Any blacklist messages will NOT be deleted!');
 }
-
+*/
 function loadCmds(){
 
 	function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
