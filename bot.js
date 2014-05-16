@@ -74,7 +74,7 @@ options = {
 	logUserJoin: true,
 	afkRemove: true,
 	blackList: true,
-	begGuard: true,
+	chatGuard: true,
 	saveSettings: true,
 	queue: true,
 	setCustom: true,
@@ -151,7 +151,7 @@ function startup(){
 }
 
 function loadOptions(){
-	API.chatLog("Options | Woot: " + options.woot + " | Announcement Msg: " + options.announcementMsg + " | LogUserJoin: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | BegGuard: " + options.begGuard + " | Save: " + options.saveSettings);
+	API.chatLog("Options | Woot: " + options.woot + " | Announcement Msg: " + options.announcementMsg + " | LogUserJoin: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | ChatGuard: " + options.chatGuard + " | Save: " + options.saveSettings);
 	if(options.woot === true){
 		API.on(API.DJ_ADVANCE, function(){
 			$('#woot').click();
@@ -371,23 +371,8 @@ HOST: 5
 AMBASSADOR: 8
 ADMIN: 10
 */
-/*
 
-options = {
-	woot: true,
-	announcementMsg: true,
-	songIntervalMessage: { interval: 300000, offset: 0, msg: sendMsg },
-	logUserJoin: true,
-	afkRemove: true,
-	blackList: true,
-	begGuard: true,
-	saveSettings: true,
-	version: "Beta 5",
-};
-
-
-*/
-if(options.begGuard === true){
+if(options.chatGuard === true){
 API.on(API.CHAT, function(data){
 		if(data.message.indexOf('.') !=-1){
 			API.moderateDeleteChat(data.chatID);
@@ -409,7 +394,7 @@ API.on(API.CHAT, function(data){
 		}
 	});
 }else{
-	return;
+	API.sendChat('Warning! ChatGuard is')
 }
 
 function loadCmds(){
@@ -696,11 +681,11 @@ function loadCmds(){
 							options.blackList = true;
 						}
 					}
-					if(opt == 'begGuard'){
-						if(options.begGuard === true){
-							options.begGuard = false;
+					if(opt == 'chatGuard'){
+						if(options.chatGuard === true){
+							options.chatGuard = false;
 						}else{
-							options.begGuard = true;
+							options.chatGuard = true;
 						}
 					}
 					if(opt == 'save'){
@@ -718,7 +703,7 @@ function loadCmds(){
 						}
 					}
 					if(opt === null || undefined){
-						API.sendChat('/em [' + from + '] Available parameters: woot, announcement, logjoin, afk, blacklist, begguard, save, queue');
+						API.sendChat('/em [' + from + '] Available parameters: woot, announcement, logjoin, afk, blacklist, chatguard, save, queue');
 					}
 				}else{
 					API.sendChat('/em [' + from + '] No permission!');
