@@ -78,6 +78,7 @@ options = {
 	begGuard: true,
 	saveSettings: true,
 	queue: true,
+	setCustom: true,
 	version: "Beta 6",
 };
 
@@ -403,83 +404,7 @@ function loadCmds(){
 	function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 		var users = API.getUsers();
 		switch(str) {
-		
-		case '!toggle':
-			API.moderateDeleteChat(chatid);
-			if(API.getUser(fromid).permission >= 3){
-				var t = str.substr(8).trim();
-				var tm = t[1];
-				if(tm === undefined){
-					API.sendChat("/em [" + from + "] Current toggles: woot, announcements, logjoin, afkremove, blacklist, begguard, save");
-				}else{
-					if(tm === toggle.woot){
-						API.sendChat("/em [" + from + "] Toggled autowoot!");
-						if(options.woot == true){
-							options.woot = false;
-						}else{
-							options.woot = true;
-						}
-					}else{
-						if(tm === toggle.announcements){
-							API.sendChat("/em [" + from + "] Toggled announcements!");
-							if(options.woot == true){
-								options.woot = false;
-							}else{
-								options.woot = true;
-							}
-						}else{
-							if(tm === toggle.logjoin){
-								API.sendChat("/em [" + from + "] Toggled logUserJoin!");
-								if(options.logUserJoin == true){
-									options.logUserJoin = false;
-								}else{
-									options.logUserJoin = true;
-								}
-							}else{
-								if(tm === toggle.afkremove){
-									API.sendChat("/em [" + from + "] Toggled AFKRemove!");
-									if(options.afkRemove == true){
-										options.afkRemove = false;
-									}else{
-										options.afkRemove = true;
-									}
-								}else{
-									if(tm === toggle.blacklist){
-										API.sendChat("/em [" + from + "] Toggled blacklist!");
-										if(options.blackList == true){
-											options.blackList = false;
-										}else{
-											options.blackList = true;
-										}
-									}else{
-										if(tm === toggle.begGuard){
-											API.sendChat("/em [" + from + "] Toggled BegGuard!");
-											if(options.begGuard == true){
-												options.begGuard = false;
-											}else{
-												options.begGuard = true;
-											}
-										}else{
-											if(tm === toggle.save){
-												API.sendChat("/em [" + from + "] Toggled save!");
-												if(options.saveSettings == true){
-													options.saveSettings = false;
-												}else{
-													options.saveSettings = true;
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}else{
-				API.sendChat("/em [" + from + "] No permission!");
-			}
-			break;
-		
+
 		case '!help':
 			API.moderateDeleteChat(chatid);
 			API.sendChat("/em [" + from + "] Help commands: http://goo.gl/jopl9J");
@@ -712,6 +637,63 @@ function loadCmds(){
 					}
 					if(b === null || undefined){
 						API.sendChat('/em [' + from + '] Song is not in history!');
+					}
+				}
+			}else{
+				API.sendChat('/em [' + from + '] No permission!');
+			}
+			break;
+			
+/* -------- */		case '!announcement':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 3){
+				var atime = str.split('time');
+				var thetime = atime.substr(5).trim();
+				var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+				for(var n = 0; n < numbers.length; n++){
+					var i = thetime;
+					if(i == '1'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 1 minute!');
+						options.songIntervalMessage.interval = 60000;
+					}
+					if(i == '2'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 2 minutes!');
+						options.songIntervalMessage.interval = 120000;
+					}
+					if(i == '3'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 3 minutes!');
+						options.songIntervalMessage.interval = 180000;
+					}
+					if(i == '4'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 4 minutes!');
+						options.songIntervalMessage.interval = 240000;
+					}
+					if(i == '5'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 5 minutes!');
+						options.songIntervalMessage.interval = 300000;
+					}
+					if(i == '6'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 6 minutes!');
+						options.songIntervalMessage.interval = 360000;
+					}
+					if(i == '7'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 7 minutes!');
+						options.songIntervalMessage.interval = 420000;
+					}
+					if(i == '8'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 8 minutes!');
+						options.songIntervalMessage.interval = 480000;
+					}
+					if(i == '9'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 9 minutes!');
+						options.songIntervalMessage.interval = 540000;
+					}
+					if(i == '10'){
+						API.sendChat('/em [' + from + '] Set the announcement time to 10 minutes!');
+						options.songIntervalMessage.interval = 600000;
+					}
+					if(i == null || undefined){
+						API.sendChat('/em [' + from + '] Valid parameters are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Where each number is a minute higher than the previous.');
 					}
 				}
 			}else{
