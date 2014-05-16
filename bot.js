@@ -394,7 +394,7 @@ API.on(API.CHAT, function(data){
 		}
 	});
 }else{
-	API.sendChat('Warning! ChatGuard is')
+	API.sendChat('Warning! ChatGuard is not true! Any blacklist messages will NOT be deleted!');
 }
 
 function loadCmds(){
