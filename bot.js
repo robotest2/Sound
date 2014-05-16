@@ -79,7 +79,7 @@ options = {
 	saveSettings: true,
 	queue: true,
 	setCustom: true,
-	version: "Beta 6",
+	version: "Beta 6.1",
 };
 
 // UserData (Wayz)
@@ -644,7 +644,74 @@ function loadCmds(){
 			}
 			break;
 			
-/* -------- */		case '!announcement':
+			case '!toggle':
+				API.moderateDeleteChat(chatid);
+				if(API.getUser(fromid).permission >= 2){
+					if(opt == 'woot'){
+						if(options.woot === true){
+							options.woot = false;
+						}else{
+							options.woot = true;
+						}
+					}
+					if(opt == 'announcement'){
+						if(options.announcementMsg === true){
+							options.announcementMsg = false;
+						}else{
+							options.announcementMsg = true;
+						}
+					}
+					if(opt == 'logjoin'){
+						if(options.logUserJoin === true){
+							options.logUserJoin = false;
+						}else{
+							options.logUserJoin = true;
+						}
+					}
+					if(opt == 'afk'){
+						if(options.afkRemove === true){
+							options.afkRemove = false;
+						}else{
+							options.afkRemove = true;
+						}
+					}
+					if(opt == 'blacklist'){
+						if(options.blackList === true){
+							options.blackList = false;
+						}else{
+							options.blackList = true;
+						}
+					}
+					if(opt == 'begGuard'){
+						if(options.begGuard === true){
+							options.begGuard = false;
+						}else{
+							options.begGuard = true;
+						}
+					}
+					if(opt == 'save'){
+						if(options.saveSettings === true){
+							options.saveSettings = false;
+						}else{
+							options.saveSettings = true;
+						}
+					}
+					if(opt == 'queue'){
+						if(options.queue === true){
+							options.queue = false;
+						}else{
+							options.queue = true;
+						}
+					}
+					if(opt == null || undefined){
+						API.sendChat('/em [' + from + '] Available parameters: woot, announcement, logjoin, afk, blacklist, begguard, save, queue');
+					}
+				}else{
+					API.sendChat('/em [' + from + '] No permission!');
+				}
+				break;
+				
+			case '!announcement':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 3){
 				var atime = str.split('time');
@@ -1017,12 +1084,14 @@ API.on(API.CHAT, function(data) {
 				userc('!say', data.from, data.fromID, data.chatID, msg);
 			}
 			else {
-				userc(data.message, data.from, data.fromID, data.chatID);	
+				userc(data.message, data.from, data.fromID, data.chatID);
 			}
 			if(data.message.indexOf('!toggle') !=-1){
-				var tmsg = data.message.substr(8);
-				userc('!toggle', data.from, data.fromID, data.chatID);
-				}
+				var msg = data.message.substr(8);
+				userc('!toggle', data.from, data.fromID, data.chatID, msg);
+			}
+			else {
+				userc(data.message, data.from, data.fromID, data.chatID);
 			}
 		}
 		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
