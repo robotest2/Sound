@@ -681,7 +681,7 @@ function loadCmds(){
 						h.push(f);
 						API.modeateForceSkip();
 						var j = API.getWaitList().length;
-						if(j === <= 49){
+						if(j <= 49){
 							API.moderateLockWaitList(true, false);
 							API.moderateAddDJ(g);
 							API.moderateMoveDJ(g, 1);
