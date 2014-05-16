@@ -240,6 +240,8 @@ function blacklist(){
 				API.sendChat('@' + cdjusr + ' you have been added to position one to play!');
 			}else{
 				API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying again...');
+				API.moderateAddDJ(cdjid);
+				API.moderateMoveDJ(cdjid, 1);
 				if(ldj == 0){
 					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
 				}else{
@@ -642,8 +644,7 @@ function loadCmds(){
 			
 		case '!eta':
 		API.moderateDeleteChat(chatid);
-		var a = str.substr(5).trim();
-		var y = a[1];
+		var y = opt;
 		var b = API.getUsers();
 		for (var i in b) {
 			if(b[i].username == y) {
@@ -663,6 +664,60 @@ function loadCmds(){
 			}
 		}
 		break;
+		
+		case '!check':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				var b = API.getHistory();
+				var c = API.getMedia().title;
+				for(var i in b){
+					if(b === c){
+						API.sendChat('@' + API.getDJ().username + ' that song is on the DJ history! PLease pick another song!');
+						var d = API.getDJ().id;
+						var f = API.getDJ().username;
+						var g =  [];
+						var h = [];
+						g.push(d);
+						h.push(f);
+						API.modeateForceSkip();
+						var j = API.getWaitList().length;
+						if(j === <= 49){
+							API.moderateLockWaitList(true, false);
+							API.moderateAddDJ(g);
+							API.moderateMoveDJ(g, 1);
+							var k = API.getWaitListPosition(g);
+							if(k === 0){
+								API.sendChat('@' + h + ' you have been added to the waitlist!');
+							}else{
+								API.sendChat('/em Uh oh! ' + h + ' didn\'t get thier spot back! Trying again...');
+								API.moderateAddDJ(g);
+								API.moderateMoveDJ(g, 1);
+								if(k === 0){
+									API.sendChat('/em There we go! I fixed it.');
+								}else{
+									API.sendChat('/em Uh oh! ' + h + ' didn\'t get thier spot back! Can I have some help?');
+								}
+							}
+							
+						}
+						if(j === 50){
+							API.moderateLockWaitList(true, false);
+							var queue = [];
+							queue.push(g);
+							if(j <= 49){
+								API.moderateAddDJ(g);
+								API.moderateMoveDJ(g, 1);
+							}
+						}
+					}
+					if(b === null || undefined){
+						return;
+					}
+				}
+			}else{
+				API.sendChat('/em [' + from + '] No permission!');
+			}
+			break;
 			
 		case '!test':
 			API.moderateDeleteChat(chatid);
