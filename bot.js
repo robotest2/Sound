@@ -631,6 +631,7 @@ function loadCmds(){
 							if(j <= 49){
 								API.moderateAddDJ(g);
 								API.moderateMoveDJ(g, 1);
+								queue.pop();
 							}
 						}
 					}
