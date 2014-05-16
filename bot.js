@@ -711,7 +711,7 @@ function loadCmds(){
 						}
 					}
 					if(b === null || undefined){
-						return;
+						API.sendChat('/em [' + from + '] Song is not in history!');
 					}
 				}
 			}else{
