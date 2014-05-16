@@ -1096,9 +1096,7 @@ function saveSettings(){
 }
 
 }catch(err){
-	API.sendChat('/em An error has occurred! It is ' + err + ' on line: ' + err.linenumber)
-}finally{
-	location.reload();
+	API.sendChat('/em An error has occurred! It is ' + err + ' on line: ' + err.linenumber);
 }
 
 startup();
