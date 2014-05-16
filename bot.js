@@ -370,10 +370,10 @@ CO-HOST: 4
 HOST: 5
 AMBASSADOR: 8
 ADMIN: 10
-
+*/
 
 if(options.chatGuard === true){
-API.on(API.CHAT, function(data){
+	API.on(API.CHAT, function(data){
 		if(data.message.indexOf('.') !=-1){
 			API.moderateDeleteChat(data.chatID);
 		}
@@ -396,7 +396,7 @@ API.on(API.CHAT, function(data){
 }else{
 	API.sendChat('Warning! ChatGuard is not true! Any blacklist messages will NOT be deleted!');
 }
-*/
+
 function loadCmds(){
 
 	function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
@@ -1103,8 +1103,6 @@ function saveSettings(){
 	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
 	localStorage.setItem('SoundBotUserData', JSON.stringify(userData));
 }
-
-startup();
 
 }catch(err){
 	API.sendChat('/em An error has occurred! It is ' + err + ' on line: ' + err.linenumber);
