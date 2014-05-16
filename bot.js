@@ -997,7 +997,7 @@ function loadCmds(){
 					API.sendChat("/em [" + from + "] used ban on " + opt);
 					API.moderateBanUser(users[i].id);
 				}
-			}
+			} //1k lines bby o ye
 		}
 		break;
 		
@@ -1029,7 +1029,7 @@ function loadCmds(){
 					if (userskick[i].username == splitkick){
 						var userkick = userskick[i].id;
 						API.sendChat("[" + from + "] @" + userskick[i].username + " You will be kicked in 10 seconds.")
-						setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR)}, 10000);
+						setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR);}, 10000);
 						setTimeout(function(){API.moderateUnbanUser(userkick);}, 15000);
 						setTimeout(function(){API.moderateUnbanUser(userkick);}, 18000);
 					}else{
