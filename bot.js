@@ -1095,8 +1095,8 @@ API.on(API.CHAT, function(data) {
 			}
 		}
 		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
-	});
-}
+	}
+});
 
 function saveSettings(){
 	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
