@@ -145,7 +145,7 @@ function startup(){
 	loadCmds();
 	enableAfk();
 	enableMsg();
-	blacklist();
+	runBlackList();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -280,10 +280,11 @@ function blacklist(){
 }
 
 //run blacklist whenever dj advances
-
-API.on(API.DJ_ADVANCE, function(){
-	blacklist();
-});
+function runBlackList(){
+	API.on(API.DJ_ADVANCE, function(){
+		blacklist();
+	});
+}
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
 	"If you mated a bull dog and a shitsu, would it be called a bullsh*t?",
