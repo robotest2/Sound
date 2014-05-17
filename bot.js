@@ -1081,6 +1081,24 @@ function loadCmds(){
 			}
 			break;
 			
+		case '!reg':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 3){
+				var rcrowd = API.getUsers();
+				for(var i in rcrowd){
+					if(rcrowd[i].username === opt){
+						API.sendChat('/em [' + from + '] Removed ' + rcrowd[i].username + ' from the staff!');
+						API.moderateSetRole(rcrowd[i].id, API.ROLE.NONE);
+					}
+					if(rcrowd[i].username === null || undefined){
+						API.sendChat('/em [' + from + '] User not found!');
+					}
+				}
+			}else{
+				API.sendChat('/em [' + from + '] No permission!');
+			}
+			break;
+			
 		default: setTimeout(function(){
 			API.moderateDeleteChat(chatid);
 			API.sendChat('/em [' + from + '] That command doesn\'t exist! Type !help for a list of commands.');
