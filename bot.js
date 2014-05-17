@@ -147,7 +147,7 @@ function startup(){
 	enableAfk();
 	enableMsg();
 	runBlackList();
-	runLottery();
+	//runLottery();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -184,7 +184,7 @@ function enableMsg(){
 		console.log('enableMsg off');
 	}
 }
-
+/*
 function runLottery(){
 	var lottoRoom = API.getUsers();
 	var lottoRoomArray = [];
@@ -214,7 +214,7 @@ function runLottery(){
 		console.log('lotto is not true');
 	}
 }
-
+*/
 /* CODE FOR QUEUE TEMPLATE
 function queue(){
 	var a = API.getWaitList().length;
