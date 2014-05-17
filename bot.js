@@ -75,7 +75,7 @@ options = {
 	afkRemove: true,
 	blackList: true,
 	chatGuard: null,
-	lottery: { status: true, time: 3600000 },
+	lottery: { status: true, time: 1000 }, //3600000
 	saveSettings: true,
 	version: "Beta 6.1",
 };
