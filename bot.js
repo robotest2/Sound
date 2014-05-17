@@ -74,7 +74,7 @@ options = {
 	logUserJoin: true,
 	afkRemove: true,
 	blackList: true,
-	chatGuard: true,
+	chatGuard: null,
 	saveSettings: true,
 	queue: true,
 	setCustom: true,
