@@ -1090,9 +1090,6 @@ function loadCmds(){
 						API.sendChat('/em [' + from + '] Removed ' + rcrowd[i].username + ' from the staff!');
 						API.moderateSetRole(rcrowd[i].id, API.ROLE.NONE);
 					}
-					if(rcrowd[i].username === null || undefined){
-						API.sendChat('/em [' + from + '] User not found!');
-					}
 				}
 			}else{
 				API.sendChat('/em [' + from + '] No permission!');
