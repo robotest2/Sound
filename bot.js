@@ -1048,8 +1048,7 @@ function loadCmds(){
 		case '!rdj':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				var rUserM = str.substr(6).trim();
-				var mtag = rUserM[1];
+				var mtag = opt;
 				var crowd = API.getUsers();
 				for(var i in crowd){
 					if(crowd[i].username === mtag){
