@@ -1048,12 +1048,11 @@ function loadCmds(){
 		case '!rdj':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				var mtag = opt;
 				var crowd = API.getUsers();
 				for(var i in crowd){
-					if(crowd[i].username === mtag){
-						API.sendChat("/em [" + from + "] Set " + mtag.username + " as a Resident DJ!");
-						API.moderateSetRole(mtag.id, API.ROLE.RESIDENTDJ);
+					if(crowd[i].username === opt){
+						API.sendChat("/em [" + from + "] Set " + opt.username + " as a Resident DJ!");
+						API.moderateSetRole(opt.id, API.ROLE.RESIDENTDJ);
 					}
 				}
 			}else{
