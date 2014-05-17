@@ -98,7 +98,6 @@ API.on(API.USER_JOIN, function(user) {
         afktime: Date.now(),
         warning: false,
         lotto: true,
-        lottoRoomArray.push(userData[user.username]),
         muted: false
     };
 });
@@ -189,6 +188,7 @@ function enableMsg(){
 function runLottery(){
 	var lottoRoom = API.getUsers();
 	var lottoRoomArray = [];
+	lottoRoomArray.push(userData[user.username]),
 	var randomUsr = Math.floor(Math.random() * lottoRoomArray.length);
 	if(options.lottery === true){
 		for(var i in lottoRoom){
