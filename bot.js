@@ -602,13 +602,12 @@ function loadCmds(){
 		case '!party':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission === 5){
-				$('.name.panel').children('.edit').click();
-				setTimeout(function(){
-					$('#input-room-name').val('LIVE: PARTY! - #AstroParty');
-				}, 100);
-				setTimeout(function(){
-					$('#input-room-name').focus().val('LIVE: PARTY! - #AstroParty');
-				}, 110);
+				$.ajax({
+					type: 'POST',
+					url: 'http://plug.dj/_/gateway/moderate.update_name_1',
+					contentType: 'application/json',
+					data: '{"service":"moderate.update_name_1","body":["LIVE: PARTY! - #AstroParty"]}'
+				});
 				API.sendChat('/em ' + from + ' started a party!');
 				var plock = $('.toggle-lock');
 				if(plock.hasClass('disabled')){
@@ -617,10 +616,6 @@ function loadCmds(){
 				}else{
 					API.moderateLockWaitList(true, true);
 				}
-				setTimeout(function(){
-					API.sendChat('/em ' + from + ' started a party!');
-					API.moderateForceSkip();
-				}, 1000);
 			}else{
 				API.sendChat('/em [' + from + '] That command is only for the host!');
 			}
