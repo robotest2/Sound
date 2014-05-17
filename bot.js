@@ -564,10 +564,36 @@ function loadCmds(){
 			API.sendChat("/em [" + from + "] Brand Ambassadors (BA's) are plug.dj's global moderators. More info here: http://blog.plug.dj/brand-ambassadors/");
 			break;
 			
+		case '!party':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission === 5){
+				$('.name.panel').children('.edit').click();
+				setTimeout(function(){
+					$('#input-room-name').val('LIVE: PARTY! - #AstroParty');
+				}, 100);
+				setTimeout(function(){
+					$('#input-room-name').focus().val('LIVE: PARTY! - #AstroParty');
+				}, 110);
+				API.sendChat('/em ' + from + ' started a party!');
+				var plock = $('.toggle-lock');
+				if(plock.hasClass('disabled')){
+					API.moderateLockWaitList(false);
+					API.moderateLockWaitList(true, true);
+				}else{
+					API.moderateLockWaitList(true, true);
+				}
+				setTimeout(function(){
+					API.sendChat('/em ' + from + ' started a party!');
+					API.moderateForceSkip();
+				}, 1000);
+			}else{
+				API.sendChat('/em [' + from + '] That command is only for the host!');
+			}
+			break;
+			
 		case '!eta':
 		API.moderateDeleteChat(chatid);
-		var x = str.split('@');
-		var y = x[1];
+		var y = opt;
 		var b = API.getUsers();
 		for (var i in b) {
 			if(b[i].username == y) {
@@ -575,14 +601,14 @@ function loadCmds(){
 				var d = 5;
 				if(c == 1) {
 					var e = $("#now-playing-time").children('span').text();
-					API.sendChat("/em [" + from + "] ETA for " + y + " is " + e + " minutes.");
+					API.sendChat("/em [" + from + "] ETA for " + b[i].username + " is " + e + " minutes.");
 				}
 				else if(c > 1) {
 					var f = Math.floor(c*d);
-					API.sendChat("/em [" + from + "] ETA for " + y + " is " + f + " minutes.");
+					API.sendChat("/em [" + from + "] ETA for " + b[i].username + " is " + f + " minutes.");
 				
 				}else{
-				 API.sendChat("/em [" + from + "] ETA for " + y + " is N/A minutes.");
+				 API.sendChat("/em [" + from + "] ETA for " + b[i].username + " is N/A minutes.");
 				}
 			}
 		}
