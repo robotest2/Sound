@@ -76,8 +76,6 @@ options = {
 	blackList: true,
 	chatGuard: null,
 	saveSettings: true,
-	queue: true,
-	setCustom: true,
 	version: "Beta 6.1",
 };
 
@@ -695,13 +693,6 @@ function loadCmds(){
 							options.saveSettings = false;
 						}else{
 							options.saveSettings = true;
-						}
-					}
-					if(opt == 'queue'){
-						if(options.queue === true){
-							options.queue = false;
-						}else{
-							options.queue = true;
 						}
 					}
 					if(opt === null || undefined){
