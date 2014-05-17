@@ -74,7 +74,7 @@ options = {
 	logUserJoin: true,
 	afkRemove: true,
 	blackList: true,
-	chatGuard: null,
+	chatGuard: true,
 	saveSettings: true,
 	queue: true,
 	setCustom: true,
@@ -372,31 +372,31 @@ HOST: 5
 AMBASSADOR: 8
 ADMIN: 10
 */
-/*
+
 if(options.chatGuard === true){
 	API.on(API.CHAT, function(data){
-		if(data.message.indexOf('.') !=-1){
+		if(data.message == '.'){
 			API.moderateDeleteChat(data.chatID);
 		}
-		if(data.message.indexOf('fan') !=-1){
+		if(data.message == 'fan'){
 			API.moderatedeleteChat(data.chatID);
 			API.sendChat('@' + data.from + ' please do not ask for fans!');
 		}
-		if(data.message.indexOf('fan_me') !=-1){
+		if(data.message == 'fan_me'){
 			API.moderatedeleteChat(data.chatID);
 			API.sendChat('@' + data.from + ' please do not ask for fans!');
 		}
-		if(data.message.indexOf('FUCK' || 'fuck' || 'shit' || 'SHIT' || 'asshole' || 'ASSHOLE' || 'dick' || 'DICK' || 'bitch' || 'BITCH' || 'cunt' || 'CUNT') !=-1){
+		if(data.message == 'FUCK' || 'fuck' || 'shit' || 'SHIT' || 'asshole' || 'ASSHOLE' || 'dick' || 'DICK' || 'bitch' || 'BITCH' || 'cunt' || 'CUNT'){
 			API.moderateDeleteChat(data.chatID);
 			API.sendChat('@' + data.from + ' please do not swear!');
 		}
-		if(data.message.indexOf(',') !=-1){
+		if(data.message == ','){
 			API.moderateDeleteChat(data.chatID);
 		}
 	});
 }else{
 	API.sendChat('Warning! ChatGuard is not true! Any blacklist messages will NOT be deleted!');
-}*/
+}
 
 function loadCmds(){
 
