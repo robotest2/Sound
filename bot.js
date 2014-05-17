@@ -75,6 +75,7 @@ options = {
 	afkRemove: true,
 	blackList: true,
 	chatGuard: null,
+	lottery: { status: true, time: 3600000 },
 	saveSettings: true,
 	version: "Beta 6.1",
 };
@@ -96,12 +97,15 @@ API.on(API.USER_JOIN, function(user) {
         username: user.username,
         afktime: Date.now(),
         warning: false,
+        lotto: true,
+        lottoRoomArray.push(userData[user.username]);
         muted: false
     };
 });
 
 API.on(API.USER_LEAVE, function(user) {
 	delete userData[user.id];
+	lottoRoomArray.pop(userData[user.username]);
 });
 
 API.on(API.CHAT, function(data) {
@@ -144,6 +148,7 @@ function startup(){
 	enableAfk();
 	enableMsg();
 	runBlackList();
+	runLottery();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -180,6 +185,36 @@ function enableMsg(){
 		console.log('enableMsg off');
 	}
 }
+
+function runLottery(){
+	var lottoRoom = API.getUsers();
+	var lottoRoomArray = [];
+	var randomUsr = Math.floor(Math.random() * lottoRoomArray.length);
+	if(options.lottery === true){
+		for(var i in lottoRoom){
+			if(lottoRoom[i].username === lottoRoomArray[randomUsr]){
+				setInterval(function(){
+					if(userData[user.id].warning === false){
+						API.sendChat('/em [Lottery] You won the lottery! I will now boost you to position 1!');
+						setTimeout(function(){
+							API.sendChat('[Lottery Boost]');
+							var lottopos = API.getWaitListPosition(lottoRoom[i].id);
+							if(lottopos === null || undefined || -1){
+								API.moderateAddDJ(lottoRoom[i].id);
+								API.moderateMoveDJ(lottoRoom[i].id, 4);
+							}else{
+								API.moderateMoveDJ(lottoRoom[i].id, 4);
+							}
+						}, 1000);
+					}
+				}, options.lottery.time);
+			}
+		}
+	}else{
+		console.log('lotto is not true');
+	}
+}
+
 /* CODE FOR QUEUE TEMPLATE
 function queue(){
 	var a = API.getWaitList().length;
