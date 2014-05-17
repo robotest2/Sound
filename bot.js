@@ -1060,6 +1060,36 @@ function loadCmds(){
 			}
 			break;
 			
+		case '!bouncer':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 3){
+				var bcrowd = API.getUsers();
+				for(var i in bcrowd){
+					if(bcrowd[i].username === opt){
+						API.sendChat('/em [' + from + '] Set ' + bcrowd[i].username + ' as a bouncer!');
+						API.moderateSetRole(bcrowd[i].id, API.ROLE.BOUNCER);
+					}
+				}
+			}else{
+				API.sendChat('/em [' + from +'] No permission!');
+			}
+			break;
+			
+		case '!manager':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 4){
+				var mcrowd = API.getUsers();
+				for(var i in mcrowd){
+					if(mcrowd[i].username === opt){
+						API.sendChat('/em [' + from + ' Set ' + mcrowd[i].username + ' as a manager!');
+						API.moderateSetRole(mcrowd[i].id, API.ROLE.MANAGER);
+					}
+				}
+			}else{
+				API.sendChat('/em [' + from +'] No permission!');
+			}
+			break;
+			
 		default: setTimeout(function(){
 			API.moderateDeleteChat(chatid);
 			API.sendChat('/em [' + from + '] That command doesn\'t exist! Type !help for a list of commands.');
