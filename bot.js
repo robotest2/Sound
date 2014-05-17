@@ -1087,19 +1087,12 @@ API.on(API.CHAT, function(data) {
 			else {
 				userc(data.message, data.from, data.fromID, data.chatID);
 			}
-			if(data.message.indexOf('!toggle') !=-1){
-				var tmsg = data.message.substr(8);
-				userc('!toggle', data.from, data.fromID, data.chatID, tmsg);
-			}
-			else {
-				userc(data.message, data.from, data.fromID, data.chatID);
-			}
 		}
 		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
 	}
 });
 
-}
+} //end function loadCmds();
 
 function saveSettings(){
 	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
