@@ -74,7 +74,7 @@ options = {
 	logUserJoin: true,
 	afkRemove: true,
 	blackList: true,
-	chatGuard: true,
+	chatGuard: null,
 	saveSettings: true,
 	queue: true,
 	setCustom: true,
@@ -372,7 +372,7 @@ HOST: 5
 AMBASSADOR: 8
 ADMIN: 10
 */
-
+/*
 if(options.chatGuard === true){
 	API.on(API.CHAT, function(data){
 		if(data.message.indexOf('.') !=-1){
@@ -396,7 +396,7 @@ if(options.chatGuard === true){
 	});
 }else{
 	API.sendChat('Warning! ChatGuard is not true! Any blacklist messages will NOT be deleted!');
-}
+}*/
 
 function loadCmds(){
 
