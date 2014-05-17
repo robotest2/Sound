@@ -98,7 +98,7 @@ API.on(API.USER_JOIN, function(user) {
         afktime: Date.now(),
         warning: false,
         lotto: true,
-        lottoRoomArray.push(userData[user.username]);
+        lottoRoomArray.push(userData[user.username]),
         muted: false
     };
 });
