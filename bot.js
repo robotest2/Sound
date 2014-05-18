@@ -968,7 +968,7 @@ function loadCmds(){
 				API.moderateDeleteChat(chatid);
 				for (var i in users) {
 					if (users[i].username == opt) {
-						userData[users[i].id].mute = true;
+						userData[users[i].id].muted = true;
 						API.sendChat("/me [" + from + "] used mute on: " + opt);
 					}
 				}
@@ -977,13 +977,13 @@ function loadCmds(){
 			
 		case '!unmute':
 			if(API.getUser(fromid).permission >= 2){
-				if (userData[fromid].mute === true) API.moderateDeleteChat(chatid);
-				if(userData[fromid].mute === true){
+				if (userData[fromid].muted === true) API.moderateDeleteChat(chatid);
+				if(userData[fromid].muted === true){
 					API.sendChat("/em [" + from + "] Tried unmuting themselves, but they're muted!");
 				}else{
 				for (var i in users) {
 					if (users[i].username == opt) {
-						userData[users[i].id].mute = false;
+						userData[users[i].id].muted = false;
 						API.sendChat("/me [" + from + "] used unmute on: " + opt);
 						}
 					}
@@ -1132,7 +1132,7 @@ API.on(API.CHAT, function(data) {
 				userc(data.message, data.from, data.fromID, data.chatID);
 			}
 		}
-		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
+		if (userData[data.fromID].muted === true) API.moderateDeleteChat(data.chatID);
 	}
 });
 
