@@ -75,7 +75,6 @@ options = {
 	afkRemove: true,
 	blackList: true,
 	chatGuard: null,
-	lottery: { status: true, time: 1000 }, //3600000
 	saveSettings: true,
 	version: "Beta 7.3.5",
 };
@@ -97,7 +96,6 @@ API.on(API.USER_JOIN, function(user) {
         username: user.username,
         afktime: Date.now(),
         warning: false,
-        lotto: true,
         mute: false
     };
 });
@@ -146,7 +144,6 @@ function startup(){
 	enableAfk();
 	enableMsg();
 	runBlackList();
-	//runLottery();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -365,20 +362,20 @@ if(options.chatGuard === true){
 		if(data.message == '.'){
 			API.moderateDeleteChat(data.chatID);
 		}
-		if(data.message == 'fan'){
+		if(data.message.toLowerCase('fan')){
 			API.moderatedeleteChat(data.chatID);
 			API.sendChat('@' + data.from + ' please do not ask for fans!');
 		}
-		if(data.message == 'fan_me'){
-			API.moderatedeleteChat(data.chatID);
-			API.sendChat('@' + data.from + ' please do not ask for fans!');
-		}
-		if(data.message == 'FUCK' || 'fuck' || 'shit' || 'SHIT' || 'asshole' || 'ASSHOLE' || 'dick' || 'DICK' || 'bitch' || 'BITCH' || 'cunt' || 'CUNT'){
+		if(data.message.toLowerCase('fuck' || 'shit' || 'asshole' || 'dick' || 'bitch' || 'cunt')){
 			API.moderateDeleteChat(data.chatID);
 			API.sendChat('@' + data.from + ' please do not swear!');
 		}
 		if(data.message == ','){
 			API.moderateDeleteChat(data.chatID);
+		}
+		if(data.message.toLowerCase('skip')){
+			API.moderateDeleteChat(chatid);
+			API.sendChat('@' + data.from + ' please do not ask for skips!');
 		}
 	});
 }else{
@@ -458,15 +455,16 @@ function loadCmds(){
 			
 		case '!spin':
 			API.moderateDeleteChat(chatid);
-			API.sendChat("/em [" + from + "] Requested a game of spin! Type !join to join the game!");
+		/*	API.sendChat("/em [" + from + "] Requested a game of spin! Type !join to join the game!");
 			if(spinGame.spin === false){
 				spinGame.spin = true;
 			}else{
 				API.sendChat("/em [" + from + "] Game is already running!");
 			}
 			spinJoin.push(from);
+		*/	API.sendChat('/em [' + from + '] Spin is down for maitenence!');
 			break;
-			
+		/*	
 		case '!join':
 			API.moderateDeleteChat(chatid);
 			if(spinGame === true){
@@ -536,7 +534,7 @@ function loadCmds(){
 				API.sendChat("/em [" + from + "] No permission!");
 			}
 			break;
-			
+			*/
 		case '!emoji':
 			API.moderateDeleteChat(chatid);
 			API.sendChat("/em [" + from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
@@ -570,6 +568,22 @@ function loadCmds(){
 				}else{
 					API.moderateLockWaitList(true, true);
 				}
+			}else{
+				API.sendChat('/em [' + from + '] That command is only for the host!');
+			}
+			break;
+			
+		case '!endparty':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission === 5){
+				$.ajax({
+					type: 'POST',
+					url: 'http://plug.dj/_/gateway/moderate.update_name_1',
+					contentType: 'application/json',
+					data: '{"service":"moderate.update_name_1","body":["Pizza - #AstroParty"]}'
+				});
+				API.sendChat('/em ' + from + ' stopped a party!');
+				API.moderateLockWaitList(false);
 			}else{
 				API.sendChat('/em [' + from + '] That command is only for the host!');
 			}
