@@ -76,7 +76,7 @@ options = {
 	blackList: true,
 	chatGuard: null,
 	saveSettings: true,
-	version: "Beta 7.3.7",
+	version: "Beta 7.3.8",
 };
 
 // UserData (Wayz)
@@ -382,6 +382,10 @@ if(options.chatGuard === true){
 	API.sendChat('Warning! ChatGuard is not true! Any blacklist messages will NOT be deleted!');
 }
 
+party = {
+	on: false
+}
+
 function loadCmds(){
 
 	function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
@@ -554,19 +558,23 @@ function loadCmds(){
 		case '!party':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission === 5){
-				$.ajax({
-					type: 'POST',
-					url: 'http://plug.dj/_/gateway/moderate.update_name_1',
-					contentType: 'application/json',
-					data: '{"service":"moderate.update_name_1","body":["LIVE: PARTY! - #AstroParty"]}'
-				});
-				API.sendChat('/em ' + from + ' started a party!');
-				var plock = $('.toggle-lock');
-				if(plock.hasClass('disabled')){
-					API.moderateLockWaitList(false);
+				if(!party.on){
+					$.ajax({
+						type: 'POST',
+						url: 'http://plug.dj/_/gateway/moderate.update_name_1',
+						contentType: 'application/json',
+						data: '{"service":"moderate.update_name_1","body":["LIVE: PARTY! - #AstroParty"]}'
+					});
+					API.sendChat('/em ' + from + ' started a party!');
+					var plock = $('.toggle-lock');
+					if(plock.hasClass('disabled')){
+						API.moderateLockWaitList(false);
+						API.moderateLockWaitList(true, true);
+					}else{
 					API.moderateLockWaitList(true, true);
+					}
 				}else{
-					API.moderateLockWaitList(true, true);
+					API.sendChat('/em [' + from + '] In my records, a party is already live!');
 				}
 			}else{
 				API.sendChat('/em [' + from + '] That command is only for the host!');
@@ -576,16 +584,29 @@ function loadCmds(){
 		case '!endparty':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission === 5){
-				$.ajax({
-					type: 'POST',
-					url: 'http://plug.dj/_/gateway/moderate.update_name_1',
-					contentType: 'application/json',
-					data: '{"service":"moderate.update_name_1","body":["Pizza - #AstroParty"]}'
-				});
-				API.sendChat('/em ' + from + ' stopped a party!');
-				API.moderateLockWaitList(false);
+				if(party.on){
+					$.ajax({
+						type: 'POST',
+						url: 'http://plug.dj/_/gateway/moderate.update_name_1',
+						contentType: 'application/json',
+						data: '{"service":"moderate.update_name_1","body":["Pizza - #AstroParty"]}'
+					});
+					API.sendChat('/em ' + from + ' stopped a party!');
+					API.moderateLockWaitList(false);
+				}else{
+					API.sendChat('/em [' + from + '] In my records, no parties are running!');
+				}
 			}else{
 				API.sendChat('/em [' + from + '] That command is only for the host!');
+			}
+			break;
+			
+		case '!request':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 1){
+				API.sendChat('/em [' + from + '] Parties are not available to be requested at the moment. They will be in the future though! :D');
+			}else{
+				API.sendChat('/em [' + from + '] No permission!');
 			}
 			break;
 			
