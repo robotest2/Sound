@@ -559,6 +559,7 @@ function loadCmds(){
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission === 5){
 				if(!party.on){
+					party.on = true;
 					$.ajax({
 						type: 'POST',
 						url: 'http://plug.dj/_/gateway/moderate.update_name_1',
@@ -585,6 +586,7 @@ function loadCmds(){
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission === 5){
 				if(party.on){
+					party.on = false;
 					$.ajax({
 						type: 'POST',
 						url: 'http://plug.dj/_/gateway/moderate.update_name_1',
