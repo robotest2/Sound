@@ -76,7 +76,7 @@ options = {
 	blackList: true,
 	chatGuard: null,
 	saveSettings: true,
-	version: "Beta 7.3.8",
+	version: "Beta 7.3.9",
 };
 
 // UserData (Wayz)
