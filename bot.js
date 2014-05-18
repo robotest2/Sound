@@ -77,7 +77,7 @@ options = {
 	chatGuard: null,
 	lottery: { status: true, time: 1000 }, //3600000
 	saveSettings: true,
-	version: "Beta 7.3.4",
+	version: "Beta 7.3.5",
 };
 
 // UserData (Wayz)
@@ -88,7 +88,7 @@ for(var i in usersinroom) {
         username: usersinroom[i].username,
         afktime: Date.now(),
         warning: false,
-        muted: false
+        mute: false
     };
 }
 
@@ -98,7 +98,7 @@ API.on(API.USER_JOIN, function(user) {
         afktime: Date.now(),
         warning: false,
         lotto: true,
-        muted: false
+        mute: false
     };
 });
 
@@ -968,7 +968,7 @@ function loadCmds(){
 				API.moderateDeleteChat(chatid);
 				for (var i in users) {
 					if (users[i].username == opt) {
-						userData[users[i].id].muted = true;
+						userData[users[i].id].mute = true;
 						API.sendChat("/me [" + from + "] used mute on: " + opt);
 					}
 				}
@@ -977,13 +977,13 @@ function loadCmds(){
 			
 		case '!unmute':
 			if(API.getUser(fromid).permission >= 2){
-				if (userData[fromid].muted === true) API.moderateDeleteChat(chatid);
-				if(userData[fromid].muted === true){
+				if(userData[fromid].mute === true) API.moderateDeleteChat(chatid);
+				if(userData[fromid].mute === true){
 					API.sendChat("/em [" + from + "] Tried unmuting themselves, but they're muted!");
 				}else{
 				for (var i in users) {
 					if (users[i].username == opt) {
-						userData[users[i].id].muted = false;
+						userData[users[i].id].mute = false;
 						API.sendChat("/me [" + from + "] used unmute on: " + opt);
 						}
 					}
@@ -1132,7 +1132,7 @@ API.on(API.CHAT, function(data) {
 				userc(data.message, data.from, data.fromID, data.chatID);
 			}
 		}
-		if (userData[data.fromID].muted === true) API.moderateDeleteChat(data.chatID);
+		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
 	}
 });
 
