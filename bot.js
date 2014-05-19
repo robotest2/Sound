@@ -77,7 +77,7 @@ options = {
 	timeGuard: true,
 	chatGuard: true,
 	saveSettings: true,
-	version: "Beta 7.4.5",
+	version: "Beta 7.4.6",
 };
 
 // UserData (Wayz)
@@ -343,7 +343,7 @@ if(options.chatGuard === true){
 			API.moderateDeleteChat(data.chatID);
 		}
 		if(data.message.toLowerCase('fan')){
-			API.moderatedeleteChat(data.chatID);
+			API.moderateDeleteChat(data.chatID);
 			API.sendChat('@' + data.from + ' please do not ask for fans!');
 		}
 		if(data.message.toLowerCase('fuck' || 'shit' || 'asshole' || 'dick' || 'bitch' || 'cunt')){
