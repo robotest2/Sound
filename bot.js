@@ -78,7 +78,7 @@ options = {
 	chatGuard: null,
 	histSkip: true,
 	saveSettings: true,
-	version: "Beta 7.5.5",
+	version: "Beta 7.5.6",
 };
 
 // UserData (Wayz)
@@ -965,7 +965,7 @@ function loadCmds(){
 		case '!settings':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				API.sendChat("/em [" + from + "] Current Settings | Autowoot: " + options.woot + " | Announcements: " + options.announcementMsg + " | Announcement Interval: " + options.songIntervalMessage + " | Log Join: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | TimeGuard: " + options.timeGuard + ' | ChatGuard: ' + options.chatGuard + ' | Party: ' + party.on + '.');
+				API.sendChat("/em [" + from + "] Current Settings | Autowoot: " + options.woot + " | Announcements: " + options.announcementMsg + " | Announcement Interval: " + options.songIntervalMessage.interval + " | Log Join: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | TimeGuard: " + options.timeGuard + ' | ChatGuard: ' + options.chatGuard + ' | Party: ' + party.on + '.');
 			}
 			break;
 			
