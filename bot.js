@@ -76,7 +76,7 @@ options = {
 	blackList: true,
 	chatGuard: null,
 	saveSettings: true,
-	version: "Beta 7.3.9",
+	version: "Beta 7.4",
 };
 
 // UserData (Wayz)
@@ -191,74 +191,35 @@ var blacklist = [
 	"Trololol Song",
 	"Hitler",
 	"Gangnam Style",
+	"Longarms Dubstep Remix",
+	"Friday Rebecca Black",
+	"Saturday Rebecca Black",
+	"Hello Kitty"
 	];
 
 function blacklist(){
-	var title = API.getMedia().title;
 	for(var i = 0; i < blacklist.length; i++){
-		if(title.indexOf(blacklist[i]) === true){
+		if(API.getMedia().title === blacklist[i]){
+			API.sendChat('@' + API.getDJ().username + 'That song is blacklisted!');
 			var cdj = API.getDJ();
-			API.sendChat('@' + cdj.username + ' that song is blacklisted!');
-			var cdjid = [];
-			var cdjusr = [];
-			cdjid.push(cdj.id);
-			cdjusr.push(cdj.username);
+			var dj = [];
+			dj.push(cdj);
 			API.moderateForceSkip();
-			var a = API.getWaitList().length;
-			if(a === 50){
-				API.sendChat('User is added to the queue!');
-				var queueList = [];
-				queueList.push(cdj.id);
-				API.moderateLockWaitList(true, false);
-				if(a <= 49){
-					API.moderateAddDJ(cdjid);
-					queueList.pop(cdj.id);
-				}
+			API.moderateAddDJ(dj.id);
+			API.moderateMoveDJ(dj.id, 1);
+			var djPos = API.getWaitListPosition(dj.id);
+			if(djPos === 0){
+				return;
 			}else{
-				console.log('queue not needed!');
-			}
-			API.moderateAddDJ(cdjid);
-			API.moderateMoveDJ(cdjid, 1);
-			var ldj = API.getWaitListPosition(cdjid);
-			if(ldj === 0){
-				API.sendChat('@' + cdjusr + ' you have been added to position one to play!');
-			}else{
-				API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying again...');
-				API.moderateAddDJ(cdjid);
-				API.moderateMoveDJ(cdjid, 1);
-				if(ldj === 0){
-					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
+				API.sendChat('/em Uh oh! ' + dj.username + ' didn\'t get thier spot back! Trying again...');
+				API.moderateAddDJ(dj.id);
+				API.moderateMoveDJ(dj.id, 1);
+				if(djPos === 0){
+					API.sendChat('/em I fixed the issue!');
 				}else{
-					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
-					API.moderateAddDJ(cdjid);
-					API.moderateMoveDJ(cdjid, 1);
-				}
-				if(ldj === 0){
-					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
-				}else{
-					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
-					API.moderateAddDJ(cdjid);
-					API.moderateMoveDJ(cdjid, 1);
-
-				}
-				if(ldj === 0){
-					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
-				}else{
-					API.sendChat('/em Uh oh! ' + cdjusr + ' didn\'t get thier spot back! Trying once again...');
-					API.moderateAddDJ(cdjid);
-					API.moderateMoveDJ(cdjid, 1);
-
-				}
-				if(ldj === 0){
-					API.sendChat('/em There we go! ' + cdjusr + ' got thier spot back.');
-				}else{
-					API.sendChat('Okay, I\'ve tried enough to get the user back in the spot. I need an admin to help me!');
+					API.sendChat('/em Uh oh! ' + dj.username + ' didn\'t get thier spot back! Can I have some help?');
 				}
 			}
-			cdjid.pop();
-			cdjusr.pop();
-		}else{
-			return;
 		}
 	}
 }
@@ -269,6 +230,7 @@ function runBlackList(){
 		blacklist();
 	});
 }
+
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
 	"If you mated a bull dog and a shitsu, would it be called a bullsh*t?",
