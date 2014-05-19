@@ -146,6 +146,7 @@ function startup(){
 	enableMsg();
 	timeGuard();
 	runGuards();
+	status();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -248,6 +249,10 @@ function runGuards(){
 		timeGuard();
 	});
 }
+
+var statusTime = Date.now();
+var statusTimeArray = [];
+statusTimeArray.push(statusTime);
 
 var askArray = [
 	"Why is an alarm clock going 'off' when it actually turns on?",
@@ -617,6 +622,27 @@ function loadCmds(){
 		}
 		break;
 		
+		case '!status':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				var g = Date.now();
+				var v = statusTimeArray - g;
+				var d = new Date();
+    				var n = d.getTimezoneOffset();
+    				if(n === 240){ var zed = 'Eastern Standard Time'; }
+    				var pingD = new Date;
+				$.ajax({ type: "POST",
+    					url: "http://plug.dj/astroparty/",
+    					data: {....},
+    					cache: false,
+    					success: function(output){ 
+        					ping = new Date - pingD;
+    					}
+				});
+				API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + zed + ' ~ Ping: ' + ping + '.');
+				
+			}
+		
 		case '!check':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
@@ -916,7 +942,7 @@ function loadCmds(){
 		case '!settings':
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 2){
-				API.sendChat("/em [" + from + "] Current Settings | Autowoot: " + options.woot + " | Announcements: " + options.announcementMsg + " | Announcement Interval: " + options.songIntervalMessage + " | Log Join: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + ".");
+				API.sendChat("/em [" + from + "] Current Settings | Autowoot: " + options.woot + " | Announcements: " + options.announcementMsg + " | Announcement Interval: " + options.songIntervalMessage + " | Log Join: " + options.logUserJoin + " | AFKRemove: " + options.afkRemove + " | Blacklist: " + options.blackList + " | TimeGuard: " + options.timeGuard + ' | ChatGuard: ' + options.chatGuard + ' | Party: ' + party.on + '.');
 			}
 			break;
 			
