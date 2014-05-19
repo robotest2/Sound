@@ -77,7 +77,7 @@ options = {
 	timeGuard: true,
 	chatGuard: null,
 	saveSettings: true,
-	version: "Beta 7.4.6",
+	version: "Beta 7.4.9",
 };
 
 // UserData (Wayz)
@@ -368,7 +368,7 @@ if(options.chatGuard === true){
 }
 
 party = {
-	on: false
+	on: true
 }
 
 function loadCmds(){
@@ -630,18 +630,9 @@ function loadCmds(){
 				var d = new Date();
     				var n = d.getTimezoneOffset();
     				if(n === 240){ var zed = 'Eastern Standard Time'; }
-    				var pingD = new Date;
-				$.ajax({ type: "POST",
-    					url: "http://plug.dj/astroparty/",
-    					data: {....},
-    					cache: false,
-    					success: function(output){ 
-        					ping = new Date - pingD;
-    					}
-				});
-				API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + zed + ' ~ Ping: ' + ping + '.');
-				
+				API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + zed + ' ~ Party: ' + party.on);
 			}
+			break;
 		
 		case '!check':
 			API.moderateDeleteChat(chatid);
