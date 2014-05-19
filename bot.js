@@ -77,7 +77,7 @@ options = {
 	timeGuard: true,
 	chatGuard: null,
 	saveSettings: true,
-	version: "Beta 7.4.9.1",
+	version: "Beta 7.4.9.2",
 };
 
 // UserData (Wayz)
@@ -367,7 +367,7 @@ if(options.chatGuard === true){
 }
 
 party = {
-	on: true
+	on: false
 }
 
 function loadCmds(){
