@@ -76,6 +76,7 @@ options = {
 	blackList: true,
 	timeGuard: true,
 	chatGuard: null,
+	histSkip: true,
 	saveSettings: true,
 	version: "Beta 7.5",
 };
@@ -146,6 +147,7 @@ function startup(){
 	enableMsg();
 	timeGuard();
 	runGuards();
+	histSkip();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -246,7 +248,29 @@ function runGuards(){
 	API.on(API.DJ_ADVANCE, function(){
 		blacklist();
 		timeGuard();
+		histSkip();
 	});
+}
+
+function histSkip(){
+	API.on(API.HISTORY_UPDATE, callback);
+	function callback(items) {
+  		var len = items.length;
+  		for (var i = 0; i < len; ++i) {
+  			var hTitle = API.getMedia().title;
+ 			if(items[i] === hTitle){
+ 				API.sendChat('@' + API.getDJ().username + ' that song is in history!');
+ 				var p = [];
+ 				var pd = API.getDJ();
+ 				p.push(pd);
+ 				setTimeout(function(){
+ 					API.moderateForceSkip();
+ 				}, 500);
+ 				API.moderateAddDJ(pd.id);
+ 				API.moderateMoveDJ(pd.id, 1);
+ 			}
+  		}
+	}
 }
 
 var statusTime = Date.now();
