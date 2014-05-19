@@ -74,9 +74,10 @@ options = {
 	logUserJoin: true,
 	afkRemove: true,
 	blackList: true,
-	chatGuard: null,
+	timeGuard: true,
+	chatGuard: true,
 	saveSettings: true,
-	version: "Beta 7.4.4",
+	version: "Beta 7.4.5",
 };
 
 // UserData (Wayz)
@@ -143,7 +144,8 @@ function startup(){
 	loadCmds();
 	enableAfk();
 	enableMsg();
-	runBlackList();
+	timeGuard();
+	runGuards();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
@@ -178,6 +180,21 @@ function enableMsg(){
 		}, options.songIntervalMessage.interval);
 	}else{
 		console.log('enableMsg off');
+	}
+}
+
+function timeGuard(){
+	var a = $("#now-playing-time").children('span').text();
+	if(a > 10){
+		API.sendChat('@' + API.getDJ().username + ' that song is above the timelimit! (10 minutes)');
+		var b = API.getDJ();
+		var c = [];
+		c.push(b);
+		API.moderateForceSkip();
+		setTimeout(function(){
+			API.moderateAddDJ(c.id);
+			API.moderateMoveDJ(c.id, 1);
+		}, 100);
 	}
 }
 
@@ -224,10 +241,11 @@ function blacklist(){
 	}
 }
 
-//run blacklist whenever dj advances
-function runBlackList(){
+//run whenever dj advances
+function runGuards(){
 	API.on(API.DJ_ADVANCE, function(){
 		blacklist();
+		timeGuard();
 	});
 }
 
