@@ -75,7 +75,7 @@ options = {
 	afkRemove: true,
 	blackList: true,
 	timeGuard: true,
-	chatGuard: true,
+	chatGuard: null,
 	saveSettings: true,
 	version: "Beta 7.4.6",
 };
