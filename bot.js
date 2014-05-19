@@ -77,7 +77,7 @@ options = {
 	timeGuard: true,
 	chatGuard: null,
 	saveSettings: true,
-	version: "Beta 7.4.9.2",
+	version: "Beta 7.5",
 };
 
 // UserData (Wayz)
@@ -593,6 +593,15 @@ function loadCmds(){
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 1){
 				API.sendChat('/em [' + from + '] Parties are not available to be requested at the moment. They will be in the future though! :D');
+			}else{
+				API.sendChat('/em [' + from + '] No permission!');
+			}
+			break;
+			
+		case '!spaces':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 1){
+				API.sendChat('/em [' + from + '] SoundBot refuses to serve people with spaces! (sometimes)');
 			}else{
 				API.sendChat('/em [' + from + '] No permission!');
 			}
