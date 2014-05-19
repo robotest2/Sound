@@ -77,7 +77,7 @@ options = {
 	timeGuard: true,
 	chatGuard: null,
 	saveSettings: true,
-	version: "Beta 7.4.9",
+	version: "Beta 7.4.9.1",
 };
 
 // UserData (Wayz)
@@ -146,7 +146,6 @@ function startup(){
 	enableMsg();
 	timeGuard();
 	runGuards();
-	status();
 	saveSettings();
 	API.sendChat("/em now running!");
 }
