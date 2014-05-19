@@ -78,7 +78,7 @@ options = {
 	chatGuard: null,
 	histSkip: true,
 	saveSettings: true,
-	version: "Beta 7.5",
+	version: "Beta 7.5.5",
 };
 
 // UserData (Wayz)
