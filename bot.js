@@ -532,7 +532,9 @@ function loadCmds(){
 					var plock = $('.toggle-lock');
 					if(plock.hasClass('disabled')){
 						API.moderateLockWaitList(false);
-						API.moderateLockWaitList(true, true);
+						setTimeout(function(){
+							API.moderateLockWaitList(true, true);
+						}, 100);
 					}else{
 					API.moderateLockWaitList(true, true);
 					}
