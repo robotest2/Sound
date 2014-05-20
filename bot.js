@@ -198,6 +198,7 @@ function timeGuard(){
 			API.moderateMoveDJ(c.id, 1);
 		}, 100);
 	}
+	c = [];
 }
 
 //initial
@@ -240,6 +241,7 @@ function blacklist(){
 				}
 			}
 		}
+		dj = [];
 	}
 }
 
@@ -268,6 +270,7 @@ function histSkip(){
  				}, 500);
  				API.moderateAddDJ(pd.id);
  				API.moderateMoveDJ(pd.id, 1);
+				p = [];
  			}
   		}
 	}
