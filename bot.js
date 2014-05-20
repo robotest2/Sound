@@ -467,29 +467,24 @@ function loadCmds(){
 			
 		case '!spin':
 			API.moderateDeleteChat(chatid);
-		/*	API.sendChat("/em [" + from + "] Requested a game of spin! Type !join to join the game!");
-			if(spinGame.spin === false){
+			API.sendChat("/em [" + from + "] Requested a game of spin! Type !join to join the game!");
+			if(!spinGame.spin){
 				spinGame.spin = true;
-			}else{
-				API.sendChat("/em [" + from + "] Game is already running!");
+				spinJoin.push(from);
 			}
-			spinJoin.push(from);
-		*/	API.sendChat('/em [' + from + '] Spin is down for maitenence!');
 			break;
-		/*	
+			
 		case '!join':
 			API.moderateDeleteChat(chatid);
-			if(spinGame === true){
+			if(spinGame.spin){
 				API.sendChat("/em [" + from + "] Joined spin!");
 				spinJoin.push(from);
-			}else{
-				API.sendChat("/em [" + from + "] Spin isn't running!");
 			}
 			break;
 			
 		case '!start':
 			API.moderateDeleteChat(chatid);
-			if(spinGame === true){
+			if(spinGame.spin){
 				API.sendChat("/em [" + from + "] Started the game!");
 				var a = spinJoin;
 				var b = Math.floor(Math.random() * a.length);
@@ -501,6 +496,7 @@ function loadCmds(){
 					clearInterval(z);
 					if(spinJoin.length === 0){
 						API.sendChat("/em Spin has ended! All users are safe! :D");
+						spinGame.spin = false;
 						spinWhite = []; //clears array
 						spinJoin = []; //clears array
 					}
@@ -514,14 +510,12 @@ function loadCmds(){
 					}
 				}, y);
 				z(); //Starts !pass
-			}else{
-				API.sendChat("/em [" + from + "] Spin isn't running!");
 			}
 			break;
 			
 		case '!pass':
 			API.moderateDeleteChat(chatid);
-			if(spinGame === true){
+			if(spinGame.spin){
 				API.sendChat("/em [" + from + "] Passed the ball!");
 				spinJoin.pop(from);
 				spinWhite.push(from);
@@ -546,7 +540,7 @@ function loadCmds(){
 				API.sendChat("/em [" + from + "] No permission!");
 			}
 			break;
-			*/
+			
 		case '!emoji':
 			API.moderateDeleteChat(chatid);
 			API.sendChat("/em [" + from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
@@ -601,7 +595,7 @@ function loadCmds(){
 						type: 'POST',
 						url: 'http://plug.dj/_/gateway/moderate.update_name_1',
 						contentType: 'application/json',
-						data: '{"service":"moderate.update_name_1","body":["Pizza - #AstroParty"]}'
+						data: '{"service":"moderate.update_name_1","body":["pizza - #AstroParty"]}'
 					});
 					API.sendChat('/em ' + from + ' stopped a party!');
 					API.moderateLockWaitList(false);
