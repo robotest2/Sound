@@ -78,7 +78,7 @@ options = {
 	chatGuard: null,
 	histSkip: true,
 	saveSettings: true,
-	version: "Beta 7.5.6",
+	version: "Beta 7.5.7",
 };
 
 // UserData (Wayz)
@@ -956,7 +956,7 @@ function loadCmds(){
 			API.moderateDeleteChat(chatid);
 			if(API.getUser(fromid).permission >= 3){
 				var vr = API.getRoomScore();
-				API.sendChat('/em [' + from + '] Vote Ratio: Positive: ' + vr.positive + ' Negative: ' + vr.negative + ' Grabs: ' + vr.curate + '!');
+				API.sendChat('/em [' + from + '] Vote Ratio: Positive: ' + vr.positive + ' Negative: ' + vr.negative + ' Grabs: ' + vr.curates + ' with ' + API.getUsers().length + ' users in the room!');
 			}else{
 				API.sendChat('/em [' + from + '] No permission!');
 			}
