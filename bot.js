@@ -248,30 +248,7 @@ function runGuards(){
 	API.on(API.DJ_ADVANCE, function(){
 		blacklist();
 		timeGuard();
-		histSkip();
 	});
-}
-
-function histSkip(){
-	API.on(API.HISTORY_UPDATE, callback);
-	function callback(items) {
-    var len = items.length;
-    for (var i = 0; i < len; ++i) {
-      var hTitle = API.getMedia().title;
-      if(items[i] === hTitle){
-        API.sendChat('@' + API.getDJ().username + ' that song is in history!');
-        var p = [];
-        var pd = API.getDJ();
-        p.push(pd);
-        setTimeout(function(){
-          API.moderateForceSkip();
-        }, 500);
-        API.moderateAddDJ(pd.id);
-        API.moderateMoveDJ(pd.id, 1);
-        p = [];
-      }
-    }
-  }
 }
 
 var statusTime = Date.now();
@@ -367,8 +344,7 @@ ADMIN: 10
 */
 
 if(options.chatGuard){
-	API.on(API.CHAT, callback);
-	function callback(data) {
+	API.on(API.CHAT, function callback(data){
 		var username = data.from;
 		var id = data.fromID;
 		var msg = data.message;
