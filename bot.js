@@ -393,13 +393,11 @@ if(options.chatGuard){
 }
 
 if(options.statMsg){
-	API.on(API.DJ_ADVANCE, function(){
-		var a = API.getRoomScore();
-		var b = $("#now-playing-time").children('span').text();
-		if(b = '0:01'){
-			API.sendChat('/em ' + API.getDJ().username + ' recieved ' + a.positive + ' woots, ' + a.curates + ' grabs, ' + a.negative + ' mehs for the song \'' + API.getMedia().title + '\'!');
-		}
-	});
+	var a = API.getRoomScore();
+	var b = $("#now-playing-time").children('span').text();
+	if(b = '0:02'){
+		API.sendChat('/em ' + API.getDJ().username + ' recieved ' + a.positive + ' woots, ' + a.curates + ' grabs, ' + a.negative + ' mehs for the song \'' + API.getMedia().title + '\'!');
+	}
 }
 
 party = {
