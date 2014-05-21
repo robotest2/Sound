@@ -1214,8 +1214,7 @@ API.on(API.CHAT, function(data) {
 		if (userData[data.fromID].mute === true) API.moderateDeleteChat(data.chatID);
 	}
 });
-
-} //end function loadCmds();
+ //end function loadCmds();
 
 function saveSettings(){
 	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
