@@ -76,7 +76,7 @@ options = {
 	blackList: true,
 	statMsg: true,
 	timeGuard: true,
-	chatGuard: null,
+	chatGuard: true,
 	histSkip: true,
 	saveSettings: true,
 	version: "Beta 7.5.7",
@@ -370,26 +370,24 @@ ADMIN: 10
 */
 
 if(options.chatGuard){
-	API.on(API.CHAT, function(data){
-		if(data.message == '.'){
+	API.on(API.CHAT, callback);
+	function callback(data) {
+		var username = data.from;
+		var id = data.fromID;
+		var msg = data.message;
+		if(msg.indexOf("fan me") > -1){
 			API.moderateDeleteChat(data.chatID);
+			API.sendChat('@' + username + " please don't ask for fans!");
 		}
-		if(data.message.toLowerCase('fan')){
+		if(msg.indexOf("skip") > -1){
 			API.moderateDeleteChat(data.chatID);
-			API.sendChat('@' + data.from + ' please do not ask for fans!');
+			API.sendChat('@' + username + ' please don\'t ask for skips!');
 		}
-		if(data.message.toLowerCase('fuck' || 'shit' || 'asshole' || 'dick' || 'bitch' || 'cunt')){
-			API.moderateDeleteChat(data.chatID);
-			API.sendChat('@' + data.from + ' please do not swear!');
+		if(msg.indexOf("fuck" || "shit" || "cunt" || "dick" || "bitch" || "asshole" || "motherfucker" || "vagina" || "penis"){
+			API.moderatedeleteChat(data.chatID);
+			API.sendChat('@' + username + ' please don\'t swear!');
 		}
-		if(data.message == ','){
-			API.moderateDeleteChat(data.chatID);
-		}
-		if(data.message.toLowerCase('skip')){
-			API.moderateDeleteChat(chatid);
-			API.sendChat('@' + data.from + ' please do not ask for skips!');
-		}
-	});
+	}
 }
 
 if(options.statMsg){
