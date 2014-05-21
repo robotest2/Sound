@@ -162,7 +162,6 @@ function loadOptions(){
 	}else{
 		console.log('.');
 	}
-	saveSettings();
 }
 
 function enableAfk(){
