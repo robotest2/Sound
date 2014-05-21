@@ -383,7 +383,7 @@ if(options.chatGuard){
 			API.moderateDeleteChat(data.chatID);
 			API.sendChat('@' + username + ' please don\'t ask for skips!');
 		}
-		if(msg.indexOf("fuck" || "shit" || "cunt" || "dick" || "bitch" || "asshole" || "motherfucker" || "vagina" || "penis"){
+		if(msg.indexOf("fuck" || "shit" || "cunt" || "dick" || "bitch" || "asshole" || "motherfucker" || "vagina" || "penis")){
 			API.moderatedeleteChat(data.chatID);
 			API.sendChat('@' + username + ' please don\'t swear!');
 		}
