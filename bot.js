@@ -74,6 +74,7 @@ options = {
 	logUserJoin: true,
 	afkRemove: true,
 	blackList: true,
+	statMsg: true,
 	timeGuard: true,
 	chatGuard: null,
 	histSkip: true,
@@ -393,6 +394,13 @@ if(options.chatGuard === true){
 	API.sendChat('Warning! ChatGuard is not true! Any blacklist messages will NOT be deleted!');
 }
 
+if(options.statMsg){
+	API.on(API.DJ_ADVANCE, function(){
+		var a = API.getRoomScore();
+		API.sendChat('/em ' + API.getDJ().username + ' recieved ' + a.positive + ' woots, ' + a.curates + ' grabs, ' + a.negative + ' mehs for the song ' + API.getMedia().title + '!');
+	});
+}
+
 party = {
 	on: false
 }
@@ -660,6 +668,21 @@ function loadCmds(){
     				var n = d.getTimezoneOffset();
     				if(n === 240){ var zed = 'Eastern Standard Time'; }
 				API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + zed + ' ~ Party: ' + party.on);
+			}
+			break;
+			
+		case '!stats':
+			API.moderateDeleteChat(chatid);
+			if(API.getUser(fromid).permission >= 2){
+				if(!options.statMsg){
+					options.statMsg = true;
+					API.sendChat('/em [' + from + '] Set statMsg to ' + options.statMsg + '!');
+				}else{
+					options.statMsg = false;
+					API.sendChat('/em [' + from + '] Set statMsg to ' + options.statMsg + '!');
+				}
+			}else{
+				API.sendChat('/em [' + from + '] No permission!');
 			}
 			break;
 		
