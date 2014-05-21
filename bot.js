@@ -143,7 +143,6 @@ afkRemover: function(){
 
 function startup(){
 	loadOptions();
-	loadCmds();
 	enableAfk();
 	enableMsg();
 	timeGuard();
@@ -401,11 +400,9 @@ party = {
 	on: false
 };
 
-function loadCmds(){
-
-	function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
-		var users = API.getUsers();
-		switch(str) {
+function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
+	var users = API.getUsers();
+	switch(str) {
 
 		case '!help':
 			API.moderateDeleteChat(chatid);
@@ -419,8 +416,7 @@ function loadCmds(){
 			
 		case '!fight':
 			API.moderateDeleteChat(chatid);
-			var fm = str.substr(7).trim();
-			var fmsg = fm[1];
+			var fmsg = opt;
 			var fusers = API.getUsers();
 			for(var i in fusers){
 				if(fusers[i].username == fmsg){
