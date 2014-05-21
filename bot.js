@@ -369,7 +369,7 @@ AMBASSADOR: 8
 ADMIN: 10
 */
 
-if(options.chatGuard === true){
+if(options.chatGuard){
 	API.on(API.CHAT, function(data){
 		if(data.message == '.'){
 			API.moderateDeleteChat(data.chatID);
@@ -390,14 +390,17 @@ if(options.chatGuard === true){
 			API.sendChat('@' + data.from + ' please do not ask for skips!');
 		}
 	});
-}else{
-	API.sendChat('Warning! ChatGuard is not true! Any blacklist messages will NOT be deleted!');
 }
 
 if(options.statMsg){
 	API.on(API.DJ_ADVANCE, function(){
 		var a = API.getRoomScore();
-		API.sendChat('/em ' + API.getDJ().username + ' recieved ' + a.positive + ' woots, ' + a.curates + ' grabs, ' + a.negative + ' mehs for the song ' + API.getMedia().title + '!');
+		var b = $("#now-playing-time").children('span').text();
+		if(b = '0:01'){
+			setTimeout(function(){
+				API.sendChat('/em ' + API.getDJ().username + ' recieved ' + a.positive + ' woots, ' + a.curates + ' grabs, ' + a.negative + ' mehs for the song ' + API.getMedia().title + '!');
+			}, 950);
+		}
 	});
 }
 
