@@ -148,7 +148,6 @@ function startup(){
 	timeGuard();
 	runGuards();
 	histSkip();
-	saveSettings();
 	API.sendChat("/em now running!");
 }
 
