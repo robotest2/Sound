@@ -397,7 +397,7 @@ if(options.statMsg){
 		var a = API.getRoomScore();
 		var b = $("#now-playing-time").children('span').text();
 		if(b = '0:01'){
-			API.sendChat('/em ' + API.getDJ().username + ' recieved ' + a.positive + ' woots, ' + a.curates + ' grabs, ' + a.negative + ' mehs for the song ' + API.getMedia().title + '!');
+			API.sendChat('/em ' + API.getDJ().username + ' recieved ' + a.positive + ' woots, ' + a.curates + ' grabs, ' + a.negative + ' mehs for the song \'' + API.getMedia().title + '\'!');
 		}
 	});
 }
