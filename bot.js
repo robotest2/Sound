@@ -257,23 +257,23 @@ function runGuards(){
 function histSkip(){
 	API.on(API.HISTORY_UPDATE, callback);
 	function callback(items) {
-  		var len = items.length;
-  		for (var i = 0; i < len; ++i) {
-  			var hTitle = API.getMedia().title;
- 			if(items[i] === hTitle){
- 				API.sendChat('@' + API.getDJ().username + ' that song is in history!');
- 				var p = [];
- 				var pd = API.getDJ();
- 				p.push(pd);
- 				setTimeout(function(){
- 					API.moderateForceSkip();
- 				}, 500);
- 				API.moderateAddDJ(pd.id);
- 				API.moderateMoveDJ(pd.id, 1);
-				p = [];
- 			}
-  		}
-	}
+    var len = items.length;
+    for (var i = 0; i < len; ++i) {
+      var hTitle = API.getMedia().title;
+      if(items[i] === hTitle){
+        API.sendChat('@' + API.getDJ().username + ' that song is in history!');
+        var p = [];
+        var pd = API.getDJ();
+        p.push(pd);
+        setTimeout(function(){
+          API.moderateForceSkip();
+        }, 500);
+        API.moderateAddDJ(pd.id);
+        API.moderateMoveDJ(pd.id, 1);
+        p = [];
+      }
+    }
+  }
 }
 
 var statusTime = Date.now();
@@ -399,7 +399,7 @@ if(options.statMsg){
 
 party = {
 	on: false
-}
+};
 
 function loadCmds(){
 
@@ -432,8 +432,7 @@ function loadCmds(){
 			
 		case '!cookie':
 			API.moderateDeleteChat(chatid);
-			var cm = str.substr(8).trim();
-			var cmsg = cm[1];
+			var cmsg = opt;
 			var cusr = API.getUsers();
 			for(var i in cusr){
 				if(cusr[i].username == cmsg){
@@ -661,8 +660,8 @@ function loadCmds(){
 				var g = Date.now();
 				var v = statusTimeArray - g;
 				var d = new Date();
-    				var n = d.getTimezoneOffset();
-    				if(n === 240){ var zed = 'Eastern Standard Time'; }
+        var n = d.getTimezoneOffset();
+        if(n === 240){ var zed = 'Eastern Standard Time'; }
 				API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + zed + ' ~ Party: ' + party.on);
 			}
 			break;
@@ -1039,11 +1038,11 @@ function loadCmds(){
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " used cycle]");
 				var toggle = $(".cycle-toggle");
-        			if(toggle.hasClass("disabled")) {
-                			toggle.click();
-        			}else{
-                			toggle.click();
-        			}
+        if(toggle.hasClass("disabled")) {
+          toggle.click();
+        }else{
+          toggle.click();
+        }
 			}
 			break;
 			
