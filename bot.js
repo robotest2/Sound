@@ -360,7 +360,7 @@ if(options.chatGuard){
 			API.moderatedeleteChat(data.chatID);
 			API.sendChat('@' + username + ' please don\'t swear!');
 		}
-	}
+	});
 }
 
 if(options.statMsg){
