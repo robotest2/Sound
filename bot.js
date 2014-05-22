@@ -26,6 +26,7 @@ settings = {
 	cycleGuard: true,
 	histSkip: true,
 	save: true,
+	smartReply: true,
 	version: "1.0"
 };
 
@@ -688,7 +689,7 @@ function loadCommands(){
 	});
 }
 function saveSettings(){
-	localStorage.setItem('SoundBotOptions',JSON.stringify(options));
+	localStorage.setItem('SoundBotSettings',JSON.stringify(settings));
 	localStorage.setItem('SoundBotUserData', JSON.stringify(userData));
 }
 
@@ -755,11 +756,42 @@ if(settings.histSkip){
 }
 
 if(settings.blacklist){
+	var title = API.getMedia().title;
 	for(var i = 0; i < backlist.length; i++){
-		if(API.getMedia().title == blacklist[i]){
+		if(title.indexOf(blacklisti[i]) !=-1){
 			API.sendChat('@' + API.getDJ().username + ' that song is blacklisted!');
+			API.moderateForceSkip();
 		}
 	}
+}
+
+if(settings.smartReply){
+	API.on(API.CHAT, function(data){
+		msg = data.message.toLowerCase(), chatid = data.chatID, fromid = data.fromID, from = data.from;
+		if(msg.indexOf('hi' || 'hello' || 'hows it goin' || 'hi guys' || 'hey guys' || 'yo peepz' || 'waddup' || 'sup') !=-1){
+			var replyHI = ['Yo!', 'Hey there!', 'Hi', 'What\'up dud?', 'Wuddup bud', 'Hello!'];
+			API.sendChat('@' + msg.from + replyHI[Math.floor(Math.random() * replyHI.length)]);
+	 	}
+	 	if(msg.indexOf('how are you?' || 'hows it goin?' || 'hows life?') !=-1){
+	 		var replyHOW = ['I feel very botty!', 'Good!', 'Not much to say.', 'Alright.', 'Very good!'];
+	 		API.sendChat('@' + msg.from + replyHOW[Math.floor(Math.random() * replyHOW.length)]);
+	 	}
+	 	if(msg.indexOf('fuck you' || 'fuk u') !=-1){
+	 		var replyFck = ['Orlly m8? Fite me irl.', 'FITE ME DEN', 'Nah I\'m good', 'nop'];
+	 		var replyFckEnd = ['kden. I\'ll kick you for 5 seconds.', 'KICKED (5secs)', 'I\'ll just kick u den...'];
+	 		API.sendChat('@' + msg.from + replyFck[Math.floor(Math.random() * replyFck.length)]);
+	 		setTimeout(function(){
+	 			API.sendChat('@' + msg.from + replyFckEnd[Math.floor(Math.random() * replyFckEnd.length)]);
+	 		}, 1000);
+	 		setTimeout(function(){
+	 			API.moderateBanUser(fromid, 1, API.BAN.HOUR);
+	 		}, 3000);
+	 		setTimeout(function(){
+	 			API.moderateUnBanUser(fromid);
+	 			API.sendChat('/em Kicked user can now login!');
+	 		}, 8000);
+	 	}
+	});
 }
 
 var statusTime = Date.now();
@@ -776,7 +808,7 @@ var blacklist = [
 	"Friday Rebecca Black",
 	"Saturday Rebecca Black",
 	"Hello Kitty",
-	"dpritch16 - Make My Weed"
+	"Make My Weed"
 	];
 
 var askArray = [
