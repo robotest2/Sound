@@ -301,7 +301,7 @@ function loadCommands(){
 							API.moderateLockWaitList(false);
 							setTimeout(function(){ API.moderateLockWaitList(true, true); }, 100);
 						}else{
-							API.moderateLockWaitList(true, true,);
+							API.moderateLockWaitList(true, true);
 						}
 					}else{
 						API.sendChat('/em [' + from + '] In my records, no parties are running!');
