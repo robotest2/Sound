@@ -216,7 +216,7 @@ function loadCommands(){
 				if(games.spin){
 					spinstart.push(from);
 					API.sendChat('/em [' + from + '] Joined spin!');
-				}else API.sendChat('/em [' + from + '] Spin isn\'t running!);
+				}else API.sendChat('/em [' + from + '] Spin isn\'t running!');
 				break;
 				
 			case '!start':
