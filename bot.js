@@ -375,6 +375,17 @@ party = {
 	on: false
 };
 
+function histSkip(){
+	var a = API.getMedia().title;
+	var b = API.getHistory();
+	for(var i in b){
+		if(b[i] == a){
+			API.sendChat('@' + API.getDJ().username + ' that song is in history!');
+			API.moderateForceSkip();
+		}
+	}
+}
+
 function userc(str, from, fromid, chatid, opt) { // Commands (WAYZ IS GOD)
 	var users = API.getUsers();
 	switch(str) {
