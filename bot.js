@@ -716,29 +716,29 @@ if(settings.statMsg){
 if(settings.chatGuard){
 	API.on(API.CHAT, function(data){
 		switch(data){
-			case 'fan': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not ask for fans!'); break;
-			case 'fan4fan': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not ask for fans!'); break;
-			case 'fanme': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not ask for fans!'); break;
-			case 'skip': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not ask for skips!'); break;
-			case 'fuck': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'shit': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'nigga': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'asshole': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'dick': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'bitch': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'fak': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'fuk': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'shet': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'fuku': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'faku': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'dammit': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'damm': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'fucker': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'damn': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'damnit': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'penis': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'assdick': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
-			case 'cunt': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!'); break;
+			case 'fan': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not ask for fans!');
+			case 'fan4fan': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not ask for fans!');
+			case 'fanme': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not ask for fans!');
+			case 'skip': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not ask for skips!');
+			case 'fuck': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'shit': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'nigga': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'asshole': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'dick': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'bitch': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'fak': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'fuk': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'shet': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'fuku': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'faku': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'dammit': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'damm': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'fucker': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'damn': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'damnit': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'penis': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'assdick': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
+			case 'cunt': API.moderateDeleteChat(data.chatID); API.sendChat('@' + data.from + ' please do not swear!');
 		}
 	});
 }
