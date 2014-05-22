@@ -42,6 +42,7 @@ function startup(){
 	loadAfk();
 	loadAnnouncements();
 	loadCommands();
+	API.sendChat('/em now running!');
 }
 
 function loadSettings(){
