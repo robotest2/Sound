@@ -299,7 +299,7 @@ function loadCommands(){
 						var plock = $('.lock-toggle');
 						if(plock.hasClass('disabled')){
 							API.moderateLockWaitList(false);
-							setTimeout(function(){ API.moderateLockWaitList(true, true); ), 100};
+							setTimeout(function(){ API.moderateLockWaitList(true, true); }, 100);
 						}else{
 							API.moderateLockWaitList(true, true,);
 						}
