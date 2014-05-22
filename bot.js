@@ -63,7 +63,7 @@ API.on(API.USER_JOIN, function(user){
 	userData[user.id] = {
 		username: user.username,
 		afktime: Date.now(),
-		dctime: Date.now();
+		dctime: Date.now(),
 		warning: false,
 		mute: false
 	};
