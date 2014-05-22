@@ -589,7 +589,7 @@ function loadCommands(){
 							API.sendChat("[" + from + "] @" + userskick[i].username + " You will be kicked in 10 seconds.")
 							setTimeout(function(){API.moderateBanUser(userkick, 1, API.BAN.HOUR);}, 10000);
 							setTimeout(function(){API.moderateUnbanUser(userkick);}, 15000);
-							setTimeout(function(){API.moderateUnbanUser(userkick);}, 18000);
+							setTimeout(function(){API.moderateUnbanUser(userkick); API.sendChat('/em Kicked user can now login!')}, 18000);
 						}else{
 							if(userskick[i].username === undefined){
 								API.sendChat("/em [" + from + "] User not found!");
