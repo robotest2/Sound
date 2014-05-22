@@ -1,0 +1,14 @@
+{
+  "woot": true,
+  "announcementMsg": true,
+  "songIntervalMessage": { interval: 300000, offset: 0, msg: sendMsg },
+  "logUserJoin": true,
+  "afkRemove": true,
+  "blackList": true,
+  "statMsg": false,
+  "timeGuard": true,
+  "chatGuard": false,
+  "histSkip": true,
+  "saveSettings": true,
+  "version": "Beta 7.5.7",
+}
