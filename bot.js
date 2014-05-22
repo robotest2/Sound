@@ -161,7 +161,7 @@ function loadCommands(){
 					if(users[i].username == opt){
 						var ca = Math.floor(Math.random() * cookieArray.length);
 						var co = Math.floor(Math.random() * outcome.length);
-						API.sendChat('@' + users[i].username + ', ' + from + ' gives you ' + cookieArray[ca] + '!' + outcome[co[);
+						API.sendChat('@' + users[i].username + ', ' + from + ' gives you ' + cookieArray[ca] + '!' + outcome[co]);
 					}
 				}
 				break;
