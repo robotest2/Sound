@@ -775,7 +775,8 @@ var blacklist = [
 	"Longarms Dubstep Remix",
 	"Friday Rebecca Black",
 	"Saturday Rebecca Black",
-	"Hello Kitty"
+	"Hello Kitty",
+	"dpritch16 - Make My Weed"
 	];
 
 var askArray = [
