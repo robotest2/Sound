@@ -297,7 +297,7 @@ function loadCommands(){
 						});
 						API.sendChat('/em [' + from + '] Started a party!');
 						var plock = $('.lock-toggle');
-						if(plock.hasClass('disabled'){
+						if(plock.hasClass('disabled')){
 							API.moderateLockWaitList(false);
 							setTimeout(function(){ API.moderateLockWaitList(true, true); ), 100};
 						}else{
@@ -311,7 +311,7 @@ function loadCommands(){
 				
 			case '!endparty':
 				API.moderateDeleteChat(chatid);
-				if(API.getUser(fromid).permission === 5){
+				if(API.getUser(fromid).permission == 5){
 					if(party.on){
 						party.on = false;
 						$.ajax({
