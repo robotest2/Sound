@@ -296,7 +296,7 @@ function loadCommands(){
 							data: '{"service":"moderate.update_name_1","body":["LIVE: PARTY! - #AstroParty"]}'
 						});
 						API.sendChat('/em [' + from + '] Started a party!');
-						var plock = $('.lock-toggle);
+						var plock = $('.lock-toggle');
 						if(plock.hasClass('disabled'){
 							API.moderateLockWaitList(false);
 							setTimeout(function(){ API.moderateLockWaitList(true, true); ), 100};
