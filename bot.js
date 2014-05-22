@@ -76,7 +76,7 @@ options = {
 	blackList: true,
 	statMsg: true,
 	timeGuard: true,
-	chatGuard: true,
+	chatGuard: false,
 	histSkip: true,
 	saveSettings: true,
 	version: "Beta 7.5.7",
