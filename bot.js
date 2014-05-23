@@ -747,7 +747,7 @@ if(settings.statMsg){
 		}else{
 			return;
 		}
-	}
+	});
 }
 
 if(settings.chatGuard){
