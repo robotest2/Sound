@@ -741,7 +741,7 @@ if(settings.logJoin){
 		API.chatLog(user.username + ' has joined the room!');
 	});
 }
-
+/*
 if(settings.statMsg){
 	API.on(API.DJ_ADVANCE, function(){
 		var a = API.getRoomScore();
@@ -753,7 +753,7 @@ if(settings.statMsg){
 		}
 	});
 }
-
+*/
 if(settings.chatGuard){
 	API.on(API.CHAT, function(data){
 		switch(data){
@@ -808,7 +808,7 @@ if(settings.blacklist){
 		}
 	}
 }
-
+/*
 if(settings.smartReply){
 	API.on(API.CHAT, function(data){
 		msg = data.message.toLowerCase(), chatid = data.chatID, fromid = data.fromID, from = data.from;
@@ -837,7 +837,7 @@ if(settings.smartReply){
 	 	}
 	});
 }
-
+*/
 var statusTime = Date.now();
 var statusTimeArray = [];
 statusTimeArray.push(statusTime);
