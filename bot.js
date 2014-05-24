@@ -881,7 +881,7 @@ if(settings.lockGuard){
 				break;
 		}
 	});
-}else return;
+}
 
 if(settings.cycleGuard){
 	API.on(API.CHAT, function(a){
@@ -904,7 +904,7 @@ if(settings.cycleGuard){
 				break;
 		}
 	});
-}else return;
+}
 
 if(settings.timeGuard){
 	var a = API.getMedia().title;
@@ -913,7 +913,7 @@ if(settings.timeGuard){
 		API.sendChat('[TimeGuard] ' + a + ' is more than 10 minutes! Skipping...');
 		API.moderateForceSkip();
 	}
-}else return;
+}
 
 var statusTime = Date.now();
 var statusTimeArray = [];
