@@ -47,15 +47,15 @@ try{
 settings = {
 	woot: true,
 	announce: true,
-	announceInt: { interval: 300000, msg: sendMsg },
+	announceInt: { interval: 300000},
 	logJoin: true,
 	afkRemove: true,
 	backlist: true,
-	statMsg: true,
+	statMsg: false,
 	timeGuard: true,
-	chatGuard: true,
+	chatGuard: false,
 	lockGuard: true,
-	cycleGuard: true,
+	cycleGuard: false,
 	histSkip: true,
 	save: true,
 	smartReply: true,
@@ -68,6 +68,12 @@ party = {
 
 games = {
 	spin: false
+};
+
+guard = {
+	lock: {warning: false, exit: false },
+	cycle: {warning: false, exit: false },
+	time: {warning: false, exit: false }
 };
 
 function startup(){
@@ -319,7 +325,7 @@ function loadCommands(){
 				break;
 				
 			case '!party':
-				API.moderatedeleteChat(chatid);
+				API.moderateDeleteChat(chatid);
 				if(API.getUser(fromid).permission == 5){
 					if(!party.on){
 						party.on = true;
@@ -439,18 +445,31 @@ function loadCommands(){
 			case '!move':
 				API.moderateDeleteChat(chatid);
 				if(API.getUser(fromid).permission >= 2){
-					var allUsr = API.getUsers();
-					var getPoss = str.split(1, 2, 3, 4, 5, 6, 7, 8, 9);
-					var getPos = getPoss[1];
-					for(var i in allUsr){
-						if(allUsr[i].username == opt){
-							API.sendChat("/em [" + from + "] Used move on: " + allUsr[i].username);
-							API.moderateMoveDj(allUsr[i].id, getPos);
+					var fSpace = str.indexOf(' ');
+					var lSpace = str.lastIndexOf(' ');
+					var pos;
+					if(isNaN(parseInt(str.substring(lastSpace + 1))) ){
+						pos = 1;
+						name = opt;
+					}else{
+						pos = parseInt(str.substring(lastSpace + 1));
+						name = opt;
+					}
+					for(var i in users){
+						if(users[i].username == opt){
+							if(!NaN(pos)){
+								API.sendChat('/em [' + from + '] Moved ' + users[i].username);
+								API.moderateMoveDJ(users[i].id, pos);
+							}else{
+								API.sendChat('/em [' + from +'] Invalid position!');
+							}
 						}
-						if(allUsr[i].username === null){
-							API.sendChat("/em [" + from + "] User not found!");
+						if(users[i].username === undefined){
+							API.sendChat('/em [' + from + '] User not found!');
 						}
-					}	
+					}
+				}else{
+					API.sendChat('/em [' + from + '] No permission!');
 				}
 				break;
 
@@ -478,9 +497,9 @@ function loadCommands(){
 					var vr = API.getRoomScore();
 					var h = [];
 					var b = Math.floor(users.length - 1);
-					var c = Math.floor(((b - vr.curates) -  vr.negative) * 10) % 100;
-					var d = Math.floor(((b - vr.positive) - vr.negative) * 10) % 100;
-					var f = Math.floor(((b - vr.positive) -  vr.curates) * 10) % 100;
+					var c = Math.floor(((b - vr.curates) -  vr.negative) * 10);
+					var d = Math.floor(((b - vr.positive) - vr.negative) * 10);
+					var f = Math.floor(((b - vr.positive) -  vr.curates) * 10);
 					
 					API.sendChat('/em [' + from + '] ' + c + '% users wooted! ' + d + '% grabbed and ' + f + '% meh\'d!');
 				}else{
@@ -743,7 +762,7 @@ if(settings.logJoin){
 		API.chatLog(user.username + ' has joined the room!');
 	});
 }
-/*
+
 if(settings.statMsg){
 	API.on(API.DJ_ADVANCE, function(){
 		var a = API.getRoomScore();
@@ -755,7 +774,7 @@ if(settings.statMsg){
 		}
 	});
 }
-*/
+
 if(settings.chatGuard){
 	API.on(API.CHAT, function(data){
 		switch(data){
@@ -810,19 +829,19 @@ if(settings.blacklist){
 		}
 	}
 }
-/*
+
 if(settings.smartReply){
 	API.on(API.CHAT, function(data){
 		msg = data.message.toLowerCase(), chatid = data.chatID, fromid = data.fromID, from = data.from;
-		if(msg.indexOf('hi' || 'hello' || 'hows it goin' || 'hi guys' || 'hey guys' || 'yo peepz' || 'waddup' || 'sup') !=-1){
-			var replyHI = ['Yo!', 'Hey there!', 'Hi', 'What\'up dud?', 'Wuddup bud', 'Hello!'];
+		if(msg.indexOf('hi') !=-1){
+			var replyHI = ['Yo!', 'Hey there!', 'Hi', 'What\'s up dud?', 'Wuddup bud', 'Hello!'];
 			API.sendChat('@' + msg.from + replyHI[Math.floor(Math.random() * replyHI.length)]);
 	 	}
-	 	if(msg.indexOf('how are you?' || 'hows it goin?' || 'hows life?') !=-1){
+	 	if(msg.indexOf('how are you?') !=-1){
 	 		var replyHOW = ['I feel very botty!', 'Good!', 'Not much to say.', 'Alright.', 'Very good!'];
 	 		API.sendChat('@' + msg.from + replyHOW[Math.floor(Math.random() * replyHOW.length)]);
 	 	}
-	 	if(msg.indexOf('fuck you' || 'fuk u') !=-1){
+	 	if(msg.indexOf('fuck you') !=-1){
 	 		var replyFck = ['Orlly m8? Fite me irl.', 'FITE ME DEN', 'Nah I\'m good', 'nop'];
 	 		var replyFckEnd = ['kden. I\'ll kick you for 5 seconds.', 'KICKED (5secs)', 'I\'ll just kick u den...'];
 	 		API.sendChat('@' + msg.from + replyFck[Math.floor(Math.random() * replyFck.length)]);
@@ -839,7 +858,63 @@ if(settings.smartReply){
 	 	}
 	});
 }
-*/
+
+if(settings.lockGuard){
+	API.on(API.DJ_ADVANCE, function(a){
+		switch(a){
+		
+			case '!lock':
+				setTimeout(function(){
+					guard.lock.warning = true;
+					API.sendChat('/em [Warning] It has been 5 minutes since the waitlist has been locked!');
+				}, 300000);
+				setTimeout(function(){
+					guard.lock.exit = true;
+					API.sendChat('/em [Warning] It has been 15 minutes since the waitlist has been locked!');
+				}, 900000);
+				setTimeout(function(){
+					guard.lock.warning = false;
+					guard.lock.exit = false;
+					API.sendChat('/em [Warning] 30 minutes have passed! Unlocking the waitlist!');
+					API.moderateLockWaitLList(false);
+				}, 1800000);
+				break;
+		}
+	});
+}else return;
+
+if(settings.cycleGuard){
+	API.on(API.CHAT, function(a){
+		switch(a){
+			
+			case '!cycle':
+				setTimeout(function(){
+					guard.cycle.warning = true;
+					API.sendChat('/em [Warning] It has been 5 minutes since dj cycle has been enabled!');
+				}, 300000);
+				setTimeout(function(){
+					guard.cycle.exit = true;
+					API.sendChat('/em [Warning] It has been 5 minutes since dj cycle has been enabled!');
+				}, 900000);
+				setTimeout(function(){
+					guard.cycle.warning = false;
+					guard.cycle.exit = false;
+					API.sendChat('/em [Warning] 30 minutes have passed! disabling dj cycle!');
+				}, 1800000);
+				break;
+		}
+	});
+}else return;
+
+if(settings.timeGuard){
+	var a = API.getMedia().title;
+	var b = API.getTimeRemaining();
+	if(b > 10){
+		API.sendChat('[TimeGuard] ' + a + ' is more than 10 minutes! Skipping...');
+		API.moderateForceSkip();
+	}
+}else return;
+
 var statusTime = Date.now();
 var statusTimeArray = [];
 statusTimeArray.push(statusTime);
@@ -897,20 +972,8 @@ var askArray = [
 var cookieArray = [" a chocolate chip ", " a sugar ", " a banana ", " a morphed ", " a slime "];
 var outcome = [" touching it duplicates it. Wierd, but AWESOME!", " when you eat it, it makes you fall asleep.", " you decide to plant it, and it gives money!", " they take it back and eat it D:", " you accidently throw it out the window while driving."];
 
-var fightArray = [
-	" doesn't like water.",
-	" likes to wear thier pants at their knees.",
-	" hates cookies.",
-	" likes to take hot showers infront of homeless people.",
-	" doesn't know how to use an ipad.",
-	" abuses people.",
-	" wears hello-kitty clothes to work (or school).",
-	" is 40 years old and lives in their parents basement.",
-	" takes long walks in volcanos.",
-	" has water, never wakes up.",
-	" loves one-direction.",
-	" eats coconuts"];
+var fightArray = ['Array not found!'];
 
-}catch(e){API.sendChat('/em An error has occurred on ' + Date.now() + ' for ' + e + '!');}
+}catch(e){API.sendChat('/em An error has occurred on ' + Date() + ' for ' + e + '!');}
 startup();
 }else alert('This script is only authenticated for plug.dj/astroparty/!');
