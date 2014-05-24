@@ -476,7 +476,11 @@ function loadCommands(){
 				API.moderateDeleteChat(chatid);
 				if(API.getUser(fromid).permission >= 3){
 					var vr = API.getRoomScore();
-					API.sendChat('/em [' + from + '] Vote Ratio: Positive: ' + vr.positive + ' Negative: ' + vr.negative + ' Grabs: ' + vr.curates + ' with ' + API.getUsers().length + ' users in the room!');
+					var b = Math.floor(users.length - 1);
+					var c = Math.floor((b - vr.curates) - vr.negative);
+					var d = Math.floor((b - vr.positive) - vr.negative);
+					var f = Math.floor((b - vr.positive) - vr.curates);
+					API.sendChat('/em [' + from + '] ' + c + '% users wooted! ' + d + '% grabbed and ' + f + '% meh\'d!');
 				}else{
 					API.sendChat('/em [' + from + '] No permission!');
 				}
