@@ -455,31 +455,31 @@ function loadCommands(){
 						if(users[i].username == opt){
 							for(var i in lSpace){
 								if(i == '1'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
 									API.moderateMoveDJ(users[i].id, i);
 								}
 								if(i == '2'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
 									API.moderateMoveDJ(users[i].id, i);
 								}
 								if(i == '3'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
 									API.moderateMoveDJ(users[i].id, i);
 								}
 								if(i == '4'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
 									API.moderateMoveDJ(users[i].id, i);
 								}
 								if(i == '5'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
 									API.moderateMoveDJ(users[i].id, i);
 								}
 								if(i == '6'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.sendChat('/em [' + from + '] Moved ' + users[i].usernam);
 									API.moderateMoveDJ(users[i].id, i);
 								}
 								if(i == '7'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
 									API.moderateMoveDJ(users[i].id, i);
 								}
 							}
