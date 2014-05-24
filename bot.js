@@ -477,9 +477,9 @@ function loadCommands(){
 				if(API.getUser(fromid).permission >= 3){
 					var vr = API.getRoomScore();
 					var b = Math.floor(users.length - 1);
-					var c = Math.floor((b - vr.curates) - vr.negative);
-					var d = Math.floor((b - vr.positive) - vr.negative);
-					var f = Math.floor((b - vr.positive) - vr.curates);
+					var c = Math.floor(((b - vr.curates) - vr.negative) * 10);
+					var d = Math.floor(((b - vr.positive) - vr.negative) * 10);
+					var f = Math.floor(((b - vr.positive) - vr.curates) * 10);
 					API.sendChat('/em [' + from + '] ' + c + '% users wooted! ' + d + '% grabbed and ' + f + '% meh\'d!');
 				}else{
 					API.sendChat('/em [' + from + '] No permission!');
