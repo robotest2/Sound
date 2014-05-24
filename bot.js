@@ -151,12 +151,12 @@ var msgArray = [
 	"Please do not spam.",
 	"We are currently open for applications to be a bouncer. More info here: https://astroparty.typeform.com/to/fwvOjP",
 "If you submitted an application, please do not ask if we read it, if you do, we'll just delete it."];
-var msgR = Math.floor(Math.random() * msgArray.length);
-var sendMsg = "/em [Announcement] " + msgArray[msgR];
+msgR = Math.floor(Math.random() * msgArray.length); 
+API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 function loadAnnouncements(){
 	setInterval(function(){
-		API.sendChat(sendMsg);
+		API.sendChat("/em [Announcement] " + msgArray[msgR]);
 	}, settings.announceInt.interval);
 }
 
