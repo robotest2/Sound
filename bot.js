@@ -52,7 +52,7 @@ settings = {
 	afkRemove: true,
 	backlist: true,
 	statMsg: false,
-	timeGuard: true,
+	timeGuard: false,
 	chatGuard: false,
 	lockGuard: true,
 	cycleGuard: false,
