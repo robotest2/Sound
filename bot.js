@@ -448,11 +448,11 @@ function loadCommands(){
 					var fSpace = str.indexOf(' ');
 					var lSpace = str.lastIndexOf(' ');
 					var pos;
-					if(isNaN(parseInt(str.substring(lastSpace + 1))) ){
+					if(isNaN(parseInt(str.substring(lSpace + 1))) ){
 						pos = 1;
 						name = opt;
 					}else{
-						pos = parseInt(str.substring(lastSpace + 1));
+						pos = parseInt(str.substring(lSpace + 1));
 						name = opt;
 					}
 					for(var i in users){
