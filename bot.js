@@ -448,25 +448,45 @@ function loadCommands(){
 					var fSpace = str.indexOf(' ');
 					var lSpace = str.lastIndexOf(' ');
 					var pos;
-					if(isNaN(parseInt(str.substring(lSpace + 1))) ){
-						pos = 1;
-						name = opt;
-					}else{
-						pos = parseInt(str.substring(lSpace + 1));
-						name = opt;
+					if(lSpace === undefined){
+						API.sendChat('/em [' + from + '] Invalid position!');
 					}
 					for(var i in users){
 						if(users[i].username == opt){
-							if(!NaN(pos)){
-								API.sendChat('/em [' + from + '] Moved ' + users[i].username);
-								API.moderateMoveDJ(users[i].id, pos);
-							}else{
-								API.sendChat('/em [' + from +'] Invalid position!');
+							for(var i in lSpace){
+								if(i == '1'){
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.moderateMoveDJ(users[i].id, i);
+								}
+								if(i == '2'){
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.moderateMoveDJ(users[i].id, i);
+								}
+								if(i == '3'){
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.moderateMoveDJ(users[i].id, i);
+								}
+								if(i == '4'){
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.moderateMoveDJ(users[i].id, i);
+								}
+								if(i == '5'){
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.moderateMoveDJ(users[i].id, i);
+								}
+								if(i == '6'){
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.moderateMoveDJ(users[i].id, i);
+								}
+								if(i == '7'){
+									API.sendChat('/em [' + from + '] Moved ' + users[i].username '!');
+									API.moderateMoveDJ(users[i].id, i);
+								}
 							}
 						}
-						if(users[i].username === undefined){
+					}
+					if(users[i].username === undefined){
 							API.sendChat('/em [' + from + '] User not found!');
-						}
 					}
 				}else{
 					API.sendChat('/em [' + from + '] No permission!');
