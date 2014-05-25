@@ -240,60 +240,6 @@ function loadCommands(){
 				API.sendChat("/em [" + from + "] Getting annoying ads? Get ADBlock here: https://adblockplus.org");
 				break;
 				
-				//Spin Game Starts Here
-				
-			case '!spin':
-				API.moderateDeleteChat(chatid);
-				API.sendChat('/em [' + from + '] You requested a game of spin! Type !play to join!');
-				if(!games.spin){
-					games.spin = true;
-					spinstart.push(from);
-			case '!join':
-					spinstart.push(from);
-					API.sendChat('/em [' + from + '] Joined spin!');
-			case '!start':
-					API.sendChat("/em [" + from + "] Started the game!");
-					var a = spinstart;
-					var b = Math.floor(Math.random() * a.length);
-					var z = setInterval(function(){
-						API.sendChat("@" + a[b] + ", you got the ball! Type !pass to pass it!");
-					}, 5000);
-					var y = Math.floor(Math.random() * spinTime.length);
-					setTimeout(function(){ //ends game
-						clearInterval(z);
-						if(spinstart.length == 0){
-							API.sendChat("/em Spin has ended! All users are safe! :D");
-							games.spin = false;
-							whitelist = []; //clears array
-							spinstart = []; //clears array
-						}
-						if(spinstart.length > 1){
-							var c = Math.floor(Math.random() * a.length);
-							var d = Math.floor(Math.random() * spinOutcome.length);
-							API.sendChat("@" + a[c] + spinOutcome[d] + " :frowning:");
-							games.spin = false;
-							whitelist = []; //clears array
-							spinstart = []; //clears array
-						}
-					}, spinTime[y]);
-					z(); //Starts !pass
-			case '!pass':
-					API.sendChat('/em [' + from + '] Passed the ball!');
-					spinstart.pop(from);
-					whitelist.poop(from);
-			case '!endspin':
-				if(API.getUser(fromid).permission >= 2){
-					clearInterval(z);
-					spinstart = [];
-					whitelist = [];
-					games.spin = false;
-					API.sendChat('/em [' + from + '] Stopped spin!');
-					}else API.sendChat('/em [' + from + '] No permission!');
-				}
-				break;
-				
-				//Spin Game Stops Here
-				
 			case '!emoji':
 				API.moderateDeleteChat(chatid);
 				API.sendChat("/em [" + from + " List of all emoji's here: http://www.emoji-cheat-sheet.com]");
@@ -377,11 +323,12 @@ function loadCommands(){
 				API.moderateDeleteChat(chatid);
 				if(API.getUser(fromid).permission >= 2){
 					var g = Date.now();
-					var v = statusTimeArray - g;
+					var v = Math.floor(joined - g);
+					var tz = Date().split('(');
 					var d = new Date();
 			var n = d.getTimezoneOffset();
 			if(n === 240){ var zed = 'Eastern Standard Time'; }
-					API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + zed + ' ~ Party: ' + party.on);
+					API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + tz + ' ~ Party: ' + party.on);
 				}
 				break;
 				
@@ -745,6 +692,67 @@ function loadCommands(){
 		}
 	});
 }
+/*
+function loadSpin(){
+	var b = []; //init
+	var c = []; //safe
+	var f = [60000, 78000, 120000, 138000, 180000, 198000, 240000, 258000];
+	var d = setInterval(function(){
+			if(b.length >= 2){
+				API.sendChat('@' + j + ' you got the ball! Type !throw to trow it!');
+			}else{
+				g();
+			}
+	}, 2000);
+	var g = setTimeout(function(){
+			clearInterval(d);
+			if(b.length <= 0){
+				API.sendChat('/em Safe users: ' + );
+				b = [];
+				c = [];
+			}else{
+				API.sendChat('/em Uh oh! @' + b[Math.floor(Math.random() * b.length)] + ' got thier brains blasted out! :frowning:');
+				b = [];
+				c = [];
+		}
+	}, f[Math.floor(Math.random() * f.length)]);
+	var j = b[Math.floor(Math.random() * b.length)];
+	var k = Object.keys(c).forEach(function(key){console.log(key, c[key]);});
+	API.on(API.CHAT, function(a){
+		switch(a){
+			case '!spin':
+				if(!games.spin){
+					games.spin = true;
+					API.sendChat('/em ' + a.from + ' requested a game of spin! Type !play to play!');
+					
+				}else API.sendChat('/em [' + a.from + '] Spin isn\'t running!');
+			break;
+			case '!start':
+				if(!games.spin){
+					API.sendChat('/em [' + a.from + '] Spin isn\'t running!');
+				}else{
+					d(); //runs game
+			}
+			break;
+			case '!play':
+				if(!games.spin){
+					API.sendChat('/em [' + a.from + '] Spin isn\'t running!');
+				}else{
+					API.sendChat(a.from + ' joined the game!');
+					b.push(a.from);
+				}
+			break;
+			case '!pass':
+				if(!games.spin){
+					API.sendChat('/em [' + a.from + '] Spin isn\'t running!');
+				}else{
+					API.sendChat('/em [' + from + '] Passed the ball!');
+					b.pop(a.from);
+					c.push(a.from);
+				}
+		}
+	});
+}*/
 function saveSettings(){
 	localStorage.setItem('SoundBotSettings',JSON.stringify(settings));
 	localStorage.setItem('SoundBotUserData', JSON.stringify(userData));
@@ -915,7 +923,8 @@ if(settings.timeGuard){
 	}
 }
 
-var statusTime = Date.now();
+var statusTime = new Date().getTime();
+var joined = new Date().getTime();
 var statusTimeArray = [];
 statusTimeArray.push(statusTime);
 
