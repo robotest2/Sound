@@ -322,7 +322,7 @@ function loadCommands(){
 			case '!status':
 				API.moderateDeleteChat(chatid);
 				if(API.getUser(fromid).permission >= 2){
-					var g = Date.getTime(); //27
+					var g = Date().getTime(); //27
 					var z = Date();
 					var v = Math.floor(joined - g);
 					var tz = Date().split('(');
@@ -332,6 +332,14 @@ function loadCommands(){
 					var final = tzz + tmz;
 					var d = new Date();
 					API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + final + ' ~ Party: ' + party.on);
+				}
+				break;
+				
+			case '!kill':
+				if(API.getUser(fromid).permission >= 3){
+					window.reload();
+				}else{
+					API.sendChat('/em [' + from + '] No permission!');
 				}
 				break;
 				
