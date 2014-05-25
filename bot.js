@@ -248,20 +248,10 @@ function loadCommands(){
 				if(!games.spin){
 					games.spin = true;
 					spinstart.push(from);
-				}else API.sendChat('/em [' + from + '] Spin is already running!');
-				break;
-				
 			case '!join':
-				API.moderateDeleteChat(chatid);
-				if(games.spin){
 					spinstart.push(from);
 					API.sendChat('/em [' + from + '] Joined spin!');
-				}else API.sendChat('/em [' + from + '] Spin isn\'t running!');
-				break;
-				
 			case '!start':
-				API.moderateDeleteChat(chatid);
-				if(games.spin){
 					API.sendChat("/em [" + from + "] Started the game!");
 					var a = spinstart;
 					var b = Math.floor(Math.random() * a.length);
@@ -287,29 +277,19 @@ function loadCommands(){
 						}
 					}, spinTime[y]);
 					z(); //Starts !pass
-				}
-				break;
-				
 			case '!pass':
-				API.moderateDeleteChat(chatid);
-				if(games.spin){
 					API.sendChat('/em [' + from + '] Passed the ball!');
 					spinstart.pop(from);
 					whitelist.poop(from);
-				}
-				break;
-				
 			case '!endspin':
 				if(API.getUser(fromid).permission >= 2){
-					API.moderateDeleteChat(chatid);
-					if(games.spin){
-						clearInterval(z);
-						spinstart = [];
-						whitelist = [];
-						games.spin = false;
-						API.sendChat('/em [' + from + '] Stopped spin!');
-					}
-				}else API.sendChat('/em [' + from + '] No permission!');
+					clearInterval(z);
+					spinstart = [];
+					whitelist = [];
+					games.spin = false;
+					API.sendChat('/em [' + from + '] Stopped spin!');
+					}else API.sendChat('/em [' + from + '] No permission!');
+				}
 				break;
 				
 				//Spin Game Stops Here
