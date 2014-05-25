@@ -322,13 +322,16 @@ function loadCommands(){
 			case '!status':
 				API.moderateDeleteChat(chatid);
 				if(API.getUser(fromid).permission >= 2){
-					var g = Date.now();
+					var g = Date.getTime(); //27
+					var z = Date();
 					var v = Math.floor(joined - g);
 					var tz = Date().split('(');
+					var tzz = tz.trim();
+					var timez = z.split(')');
+					var tmz = timez.trim();
+					var final = tzz + tmz;
 					var d = new Date();
-			var n = d.getTimezoneOffset();
-			if(n === 240){ var zed = 'Eastern Standard Time'; }
-					API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + tz + ' ~ Party: ' + party.on);
+					API.sendChat('/em [' + from + '] Status | Uptime: ' + v + ' ~ My Time Zone: ' + final + ' ~ Party: ' + party.on);
 				}
 				break;
 				
@@ -923,10 +926,7 @@ if(settings.timeGuard){
 	}
 }
 
-var statusTime = new Date().getTime();
 var joined = new Date().getTime();
-var statusTimeArray = [];
-statusTimeArray.push(statusTime);
 
 var blacklist = [
 	"Mediks - By A Thread (Ft. Georgina Upton) (Official Video)",
