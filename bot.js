@@ -337,7 +337,8 @@ function loadCommands(){
 				
 			case '!kill':
 				if(API.getUser(fromid).permission >= 3){
-					API.sendChat('/em [' + frm + '] I\'m now ded.');
+					API.moderateDeleteChat(chatid);
+					API.sendChat('/em [' + from + '] I\'m now ded.');
 					location.reload();
 				}else{
 					API.sendChat('/em [' + from + '] No permission!');
