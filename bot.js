@@ -335,6 +335,39 @@ function loadCommands(){
 				}
 				break;
 				
+			case '!woot':
+				if(API.getUser(fromid).permission >= 2){
+					var a = API.getUser().vote;
+					if(a == 1){
+						API.sendChat('/em [' + from + '] It seems that I have already wooted!');
+					}else{
+						$('#woot').click();
+					}
+				}
+			break;
+			
+			case '!meh':
+				if(API.getuser(fromid).permission >= 2){
+					var a = API.getUser().vote;
+					if(a == -1){
+						API.sendChat('/em [' + from + '] It appears I have already meh\'d!');
+					}else{
+						$('#meh').click();
+					}
+				}
+			break;
+				
+			case '!grab':
+				if(API.getUser(fromid).permission >= 2){
+					if(API.getUser().curated === true){
+						API.sendChat('/em [' + from + '] It appears that I already grabbed!');
+					}else{
+						$(".icon-curate").click();
+        					$($(".curate").children(".menu").children().children()[0]).mousedown();
+					}
+				}
+				break;
+				
 			case '!kill':
 				if(API.getUser(fromid).permission >= 3){
 					API.moderateDeleteChat(chatid);
