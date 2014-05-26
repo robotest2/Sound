@@ -347,7 +347,7 @@ function loadCommands(){
 			break;
 			
 			case '!meh':
-				if(API.getuser(fromid).permission >= 2){
+				if(API.getUser(fromid).permission >= 2){
 					var a = API.getUser().vote;
 					if(a == -1){
 						API.sendChat('/em [' + from + '] It appears I have already meh\'d!');
