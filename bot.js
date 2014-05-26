@@ -337,10 +337,12 @@ function loadCommands(){
 				
 			case '!woot':
 				if(API.getUser(fromid).permission >= 2){
+					API.moderateDeleteChat(chatid);
 					var a = API.getUser().vote;
 					if(a == 1){
 						API.sendChat('/em [' + from + '] It seems that I have already wooted!');
 					}else{
+						API.sendChat('/em ' + from + ' made me woot!');
 						$('#woot').click();
 					}
 				}
@@ -348,10 +350,12 @@ function loadCommands(){
 			
 			case '!meh':
 				if(API.getUser(fromid).permission >= 2){
+					API.moderateDeleteChat(chatid);
 					var a = API.getUser().vote;
 					if(a == -1){
 						API.sendChat('/em [' + from + '] It appears I have already meh\'d!');
 					}else{
+						API.sendChat('/em ' + from + ' made me meh!');
 						$('#meh').click();
 					}
 				}
@@ -359,9 +363,11 @@ function loadCommands(){
 				
 			case '!grab':
 				if(API.getUser(fromid).permission >= 2){
+					API.moderateDeleteChat(chatid);
 					if(API.getUser().curated === true){
 						API.sendChat('/em [' + from + '] It appears that I already grabbed!');
 					}else{
+						API.sendChat('/em ' + from + ' made me grab!');
 						$(".icon-curate").click();
         					$($(".curate").children(".menu").children().children()[0]).mousedown();
 					}
