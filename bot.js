@@ -856,18 +856,18 @@ if(settings.smartReply){
 		msg = data.message.toLowerCase(), chatid = data.chatID, fromid = data.fromID, from = data.from;
 		if(msg.indexOf('hi') !=-1){
 			var replyHI = ['Yo!', 'Hey there!', 'Hi', 'What\'s up dud?', 'Wuddup bud', 'Hello!'];
-			API.sendChat('@' + msg.from + replyHI[Math.floor(Math.random() * replyHI.length)]);
+			API.sendChat('@' + ' ' + msg.from + replyHI[Math.floor(Math.random() * replyHI.length)]);
 	 	}
 	 	if(msg.indexOf('how are you?') !=-1){
 	 		var replyHOW = ['I feel very botty!', 'Good!', 'Not much to say.', 'Alright.', 'Very good!'];
-	 		API.sendChat('@' + msg.from + replyHOW[Math.floor(Math.random() * replyHOW.length)]);
+	 		API.sendChat('@' + '' + msg.from + replyHOW[Math.floor(Math.random() * replyHOW.length)]);
 	 	}
 	 	if(msg.indexOf('fuck you') !=-1){
 	 		var replyFck = ['Orlly m8? Fite me irl.', 'FITE ME DEN', 'Nah I\'m good', 'nop'];
 	 		var replyFckEnd = ['kden. I\'ll kick you for 5 seconds.', 'KICKED (5secs)', 'I\'ll just kick u den...'];
-	 		API.sendChat('@' + msg.from + replyFck[Math.floor(Math.random() * replyFck.length)]);
+	 		API.sendChat('@' + '' + msg.from + replyFck[Math.floor(Math.random() * replyFck.length)]);
 	 		setTimeout(function(){
-	 			API.sendChat('@' + msg.from + replyFckEnd[Math.floor(Math.random() * replyFckEnd.length)]);
+	 			API.sendChat('@' + '' + msg.from + replyFckEnd[Math.floor(Math.random() * replyFckEnd.length)]);
 	 		}, 1000);
 	 		setTimeout(function(){
 	 			API.moderateBanUser(fromid, 1, API.BAN.HOUR);
