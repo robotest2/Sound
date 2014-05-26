@@ -873,7 +873,7 @@ if(settings.smartReply){
 	 			API.moderateBanUser(fromid, 1, API.BAN.HOUR);
 	 		}, 3000);
 	 		setTimeout(function(){
-	 			API.moderateUnBanUser(fromid);
+	 			API.moderateUnbanUser(fromid);
 	 			API.sendChat('/em Kicked user can now login!');
 	 		}, 8000);
 	 	}
