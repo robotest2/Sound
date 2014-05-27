@@ -58,7 +58,7 @@ settings = {
 	cycleGuard: false,
 	histSkip: true,
 	save: true,
-	smartReply: true,
+	smartReply: false,
 	version: "1.0"
 };
 
