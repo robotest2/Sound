@@ -920,7 +920,7 @@ if(settings.smartReply){
 }
 
 if(settings.lockGuard){
-	API.on(API.DJ_ADVANCE, function(a){
+	API.on(API.CHAT, function(a){
 		switch(a){
 		
 			case '!lock':
