@@ -177,7 +177,7 @@ function loadCommands(){
 		switch(str){
 			case '!help':
 				API.moderateDeleteChat(chatid);
-				API.sendChat('/em [' + from + '] My commands: http://goo.gl/jopl9J');
+				API.sendChat('/em [' + from + '] My commands: The link is down! Please ask an admin for help!');
 				break;
 				
 			case '!theme':
