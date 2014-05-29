@@ -59,7 +59,7 @@ settings = {
 	histSkip: true,
 	save: true,
 	smartReply: false,
-	version: "1.0"
+	version: "1.1"
 };
 
 party = {
