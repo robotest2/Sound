@@ -46,8 +46,8 @@ try{
 
 settings = {
 	woot: true,
-	announce: true,
-	announceInt: { interval: 300000},
+	announce: false,
+	announceInt: {interval: 300000, msg: sendMsg},
 	logJoin: true,
 	afkRemove: true,
 	backlist: true,
@@ -158,11 +158,11 @@ var msgArray = [
 	"We are currently open for applications to be a bouncer. More info here: https://astroparty.typeform.com/to/fwvOjP",
 "If you submitted an application, please do not ask if we read it, if you do, we'll just delete it."];
 msgR = Math.floor(Math.random() * msgArray.length); 
-API.sendChat("/em [Announcement] " + msgArray[msgR]);
+var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 function loadAnnouncements(){
 	setInterval(function(){
-		API.sendChat("/em [Announcement] " + msgArray[msgR]);
+		API.sendChat("/em [Announcement] " + settings.announceInt.msg);
 	}, settings.announceInt.interval);
 }
 
