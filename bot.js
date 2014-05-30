@@ -706,7 +706,7 @@ function loadCommands(){
 		}
 	});
 }
-
+/*
 function loadSpin(){
 	var b = []; //init
 	var c = []; //safe
@@ -721,7 +721,7 @@ function loadSpin(){
 	var g = setTimeout(function(){
 			clearInterval(d);
 			if(b.length <= 0){
-				API.sendChat('/em Safe users: ' + /*List names*/);
+				API.sendChat('/em Safe users: ' + /*List names);
 				b = [];
 				c = [];
 			}else{
@@ -778,7 +778,7 @@ function loadSpin(){
 				break;
 		}
 	});
-}
+}*/
 
 function saveSettings(){
 	localStorage.setItem('SoundBotSettings',JSON.stringify(settings));
