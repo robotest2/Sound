@@ -447,7 +447,7 @@ function loadCommands(){
 							API.moderateRemoveDJ(users[i].id);
 						}
 					}
-				]else{
+				}else{
 					API.sendChat('/em [' + from + '] No permission!');
 				}
 				break;
