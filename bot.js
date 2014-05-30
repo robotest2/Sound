@@ -455,9 +455,6 @@ function loadCommands(){
 							API.sendChat("/em [" + from + "] used remove on " + rAll[i].username);
 							API.moderateRemoveDJ(rAll[i].id);
 						}
-						if(rAll[i].username === null){
-							API.sendChat("/em [" + from + "] User not found!");
-						}
 					}
 				}else{
 					API.sendChat("/em [" + from + "] No permission!");
