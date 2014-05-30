@@ -47,7 +47,9 @@ try{
 settings = {
 	woot: true,
 	announce: false,
-	announceInt: {interval: 300000, msg: sendMsg},
+	announceInt: {interval: 1500000, msg: sendMsg},
+	motd: true,
+	motdObj: {interval: 600000, msg: motdMsg},
 	logJoin: true,
 	afkRemove: true,
 	backlist: true,
@@ -80,6 +82,7 @@ function startup(){
 	loadSettings();
 	loadAfk();
 	loadAnnouncements();
+	loadMotd();
 	loadCommands();
 	API.sendChat('/em now running!');
 }
@@ -148,7 +151,6 @@ function loadAfk(){
 }
 
 var msgArray = [
-	"Welcome to the AstroShock plug.dj room!",
 	"Make sure to help out new users!",
 	"Need help? Type !help for a list of commands",
 	"This script is protected with an authentication system!",
@@ -157,13 +159,28 @@ var msgArray = [
 	"Please do not spam.",
 	"We are currently open for applications to be a bouncer. More info here: https://astroparty.typeform.com/to/fwvOjP",
 "If you submitted an application, please do not ask if we read it, if you do, we'll just delete it."];
-msgR = Math.floor(Math.random() * msgArray.length); 
+var msgR = Math.floor(Math.random() * msgArray.length); 
 var sendMsg = API.sendChat("/em [Announcement] " + msgArray[msgR]);
 
 function loadAnnouncements(){
-	setInterval(function(){
-		API.sendChat("/em [Announcement] " + settings.announceInt.msg);
-	}, settings.announceInt.interval);
+	if(settings.announce){
+		setInterval(function(){
+			API.sendChat("/em " + settings.announceInt.msg);
+		}, settings.announceInt.interval);
+	}
+}
+
+var motdArray = [
+		"Welcome to the AstroShock plug.dj room!"];
+var motdMath = Math.floor(Math.random() * motdArray.length);
+var motdMsg = API.sendChat('/em ' + motdArray[motdMath]);
+
+function loadMotd(){
+	if(settings.motd){
+		setInterval(function(){
+			API.sendChat('/em ' + settings.motdObj.msg);
+		}, settings.motdObj.interval);
+	}
 }
 
 var spinstart = [];
@@ -424,53 +441,10 @@ function loadCommands(){
 			case '!move':
 				API.moderateDeleteChat(chatid);
 				if(API.getUser(fromid).permission >= 2){
-					var fSpace = str.indexOf(' ');
-					var lSpace = str.lastIndexOf(' ');
-					var pos;
-					if(lSpace === undefined){
-						API.sendChat('/em [' + from + '] Invalid position!');
-					}
 					for(var i in users){
-						if(users[i].username == opt){
-							for(var i in lSpace){
-								if(i == '1'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
-									API.moderateMoveDJ(users[i].id, i);
-								}
-								if(i == '2'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
-									API.moderateMoveDJ(users[i].id, i);
-								}
-								if(i == '3'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
-									API.moderateMoveDJ(users[i].id, i);
-								}
-								if(i == '4'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
-									API.moderateMoveDJ(users[i].id, i);
-								}
-								if(i == '5'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
-									API.moderateMoveDJ(users[i].id, i);
-								}
-								if(i == '6'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].usernam);
-									API.moderateMoveDJ(users[i].id, i);
-								}
-								if(i == '7'){
-									API.sendChat('/em [' + from + '] Moved ' + users[i].username);
-									API.moderateMoveDJ(users[i].id, i);
-								}
-							}
-						}
-					}
-					if(users[i].username === undefined){
-							API.sendChat('/em [' + from + '] User not found!');
-					}
-				}else{
-					API.sendChat('/em [' + from + '] No permission!');
-				}
-				break;
+						if(user[i].username == opt){
+							
+						
 
 			case '!remove':
 				API.moderateDeleteChat(chatid);
@@ -744,7 +718,7 @@ function loadCommands(){
 		}
 	});
 }
-/*
+
 function loadSpin(){
 	var b = []; //init
 	var c = []; //safe
@@ -759,7 +733,7 @@ function loadSpin(){
 	var g = setTimeout(function(){
 			clearInterval(d);
 			if(b.length <= 0){
-				API.sendChat('/em Safe users: ' + );
+				API.sendChat('/em Safe users: ' + /*List names*/);
 				b = [];
 				c = [];
 			}else{
@@ -798,13 +772,26 @@ function loadSpin(){
 				if(!games.spin){
 					API.sendChat('/em [' + a.from + '] Spin isn\'t running!');
 				}else{
-					API.sendChat('/em [' + from + '] Passed the ball!');
+					API.sendChat('/em [' + a.from + '] Passed the ball!');
 					b.pop(a.from);
 					c.push(a.from);
 				}
+				break;
+			case '!endspin':
+				if(API.getUser(fromid).permssion >= 2){
+					clearInterval(d);
+					API.sendChat('/em [' + a.from +'] Stopped spin!');
+					games.spin = false;
+					b = [];
+					c = [];
+				}else{
+					API.sendChat('/em [' + a.from + '] No permission!');
+				}
+				break;
 		}
 	});
-}*/
+}
+
 function saveSettings(){
 	localStorage.setItem('SoundBotSettings',JSON.stringify(settings));
 	localStorage.setItem('SoundBotUserData', JSON.stringify(userData));
@@ -974,6 +961,150 @@ if(settings.timeGuard){
 		API.moderateForceSkip();
 	}
 }
+
+function moveCommand(){
+	API.on(API.CHAT, function(a){
+		if(a.message.indexOf('!move') && API.getUser(a.fromID).permission >= 2){
+			if(a.message.indexOf('@') !=-1){
+				var index = a.message.indexOf('!');
+				var endex = a.message.indexOf('@') -1;
+				var msg = a.message.substr(index, endex).trim();
+				var indexu = a.message.indexOf('@') +1;
+				var u = a.message.substr(indexu).trim();
+				var lastIndexlol = a.message.lastIndexOf(' ');
+				var lastIndex = lastIndexlol.trim();
+				API.sendChat('/em [' + a.from + '] Used move on: ' + u);
+				if(API.getWaitListPosition(u.id) == -1){
+					API.moderateAddDJ(u.id);
+					if(lastIndex == '1'){
+						API.moderateMoveDJ(u.id, 1);
+					}
+					if(lastIndex == '2'){
+						API.moderateMoveDJ(u.id, 2);
+					}
+					if(lastIndex == '3'){
+						API.moderateMoveDJ(u.id, 3);
+					}
+					if(lastIndex == '4'){
+						API.moderateMoveDJ(u.id, 4);
+					}
+					if(lastIndex == '5'){
+						API.moderateMoveDJ(u.id, 6);
+					}
+					if(lastIndex == '6'){
+						API.moderateMoveDJ(u.id, 6);
+					}
+					if(lastIndex == '7'){
+						API.moderateMoveDJ(u.id, 7);
+					}
+					if(lastIndex == '8'){
+						API.moderateMoveDJ(u.id, 8);
+					}
+					if(lastIndex == '9'){
+						API.moderateMoveDJ(u.id, 9);
+					}
+					if(lastIndex == '10'){
+						API.moderateMoveDJ(u.id, 10);
+					}
+					if(lastIndex == '11'){
+						API.moderateMoveDJ(u.id, 11);
+					}
+					if(lastIndex == '12'){
+						API.moderateMoveDJ(u.id, 12);
+					}
+					if(lastIndex == '13'){
+						API.moderateMoveDJ(u.id, 13);
+					}
+					if(lastIndex == '14'){
+						API.moderateMoveDJ(u.id, 14);
+					}
+					if(lastIndex == '15'){
+						API.moderateMoveDJ(u.id, 15);
+					}
+					if(lastIndex == '16'){
+						API.moderateMoveDJ(u.id, 16);
+					}
+					if(lastIndex == '17'){
+						API.moderateMoveDJ(u.id, 17);
+					}
+					if(lastIndex == '18'){
+						API.moderateMoveDJ(u.id, 18);
+					}
+					if(lastIndex == '19'){
+						API.moderateMoveDJ(u.id, 19);
+					}
+					if(lastIndex == '20'){
+						API.moderateMoveDJ(u.id, 20);
+					}
+				}
+				if(API.getWaitListPosition(u.id) >= 0){
+					if(lastIndex == '1'){
+						API.moderateMoveDJ(u.id, 1);
+					}
+					if(lastIndex == '2'){
+						API.moderateMoveDJ(u.id, 2);
+					}
+					if(lastIndex == '3'){
+						API.moderateMoveDJ(u.id, 3);
+					}
+					if(lastIndex == '4'){
+						API.moderateMoveDJ(u.id, 4);
+					}
+					if(lastIndex == '5'){
+						API.moderateMoveDJ(u.id, 6);
+					}
+					if(lastIndex == '6'){
+						API.moderateMoveDJ(u.id, 6);
+					}
+					if(lastIndex == '7'){
+						API.moderateMoveDJ(u.id, 7);
+					}
+					if(lastIndex == '8'){
+						API.moderateMoveDJ(u.id, 8);
+					}
+					if(lastIndex == '9'){
+						API.moderateMoveDJ(u.id, 9);
+					}
+					if(lastIndex == '10'){
+						API.moderateMoveDJ(u.id, 10);
+					}
+					if(lastIndex == '11'){
+						API.moderateMoveDJ(u.id, 11);
+					}
+					if(lastIndex == '12'){
+						API.moderateMoveDJ(u.id, 12);
+					}
+					if(lastIndex == '13'){
+						API.moderateMoveDJ(u.id, 13);
+					}
+					if(lastIndex == '14'){
+						API.moderateMoveDJ(u.id, 14);
+					}
+					if(lastIndex == '15'){
+						API.moderateMoveDJ(u.id, 15);
+					}
+					if(lastIndex == '16'){
+						API.moderateMoveDJ(u.id, 16);
+					}
+					if(lastIndex == '17'){
+						API.moderateMoveDJ(u.id, 17);
+					}
+					if(lastIndex == '18'){
+						API.moderateMoveDJ(u.id, 18);
+					}
+					if(lastIndex == '19'){
+						API.moderateMoveDJ(u.id, 19);
+					}
+					if(lastIndex == '20'){
+						API.moderateMoveDJ(u.id, 20);
+					}
+				}
+			}
+		}
+	});
+}
+
+
 
 var joined = new Date().getTime();
 
