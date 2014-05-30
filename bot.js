@@ -437,27 +437,18 @@ function loadCommands(){
 					API.sendChat("/em [" + from + "] No permission!");
 				}
 				break;
-
-			case '!move':
-				API.moderateDeleteChat(chatid);
-				if(API.getUser(fromid).permission >= 2){
-					for(var i in users){
-						if(user[i].username == opt){
-							
-						
-
+				
 			case '!remove':
 				API.moderateDeleteChat(chatid);
 				if(API.getUser(fromid).permission >= 2){
-					var rAll = API.getUsers();
-					for(var i in rAll){
-						if(rAll[i].username == opt){
-							API.sendChat("/em [" + from + "] used remove on " + rAll[i].username);
-							API.moderateRemoveDJ(rAll[i].id);
+					for(var i in users){
+						if(users[i].username == opt){
+							API.sendChat('/em [' + from + '] Removed: ' + users[i].username);
+							API.moderateRemoveDJ(users[i].id);
 						}
 					}
-				}else{
-					API.sendChat("/em [" + from + "] No permission!");
+				]else{
+					API.sendChat('/em [' + from + '] No permission!');
 				}
 				break;
 				
