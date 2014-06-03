@@ -194,7 +194,13 @@ function loadCommands(){
 		switch(str){
 			case '!help':
 				API.moderateDeleteChat(chatid);
-				API.sendChat('/em [' + from + '] My commands: The link is down! Please ask an admin for help!');
+				if(str.substring(6) == NaN || null || undefined){
+					API.sendChat('/em [' + from + '] My commands: The link is down! Please ask an admin for help!');
+				}else{
+					for(var i in users){
+						API.sendChat('[' + from + '] My commands: The link is down! Please ask an admin for help! @' + users[i].username);
+					}
+				}
 				break;
 				
 			case '!theme':
