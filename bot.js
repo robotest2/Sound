@@ -686,6 +686,18 @@ function loadCommands(){
 				}
 				break;
 				
+			case '.': API.moderateDeleteChat(chatid); break;
+			case './': API.moderateDeleteChat(chatid); break;
+			case 'fan': API.moderateDeleteChat(chatid); API.sendChat('@' + from + ' please do not ask for fans'); break;
+			case 'skip':
+				if(API.getUser(fromid).permission == 5 || API.getUser(fromid).permission == 4){
+					return 'good';
+				}else{
+					API.moderateDeleteChat(chatid);
+					API.sendChat('/em [' + from + '] Please don\'t ask for skips!');
+				}
+				break;
+				
 				default: API.moderateDeleteChat(chatid); API.sendChat('/em [' + from + '] Unknown command! Type !help for a list.');
 			}
 		}
