@@ -55,7 +55,7 @@ settings = {
 	backlist: true,
 	statMsg: false,
 	timeGuard: false,
-	chatGuard: false,
+	chatGuard: true,
 	lockGuard: true,
 	cycleGuard: false,
 	histSkip: true,
